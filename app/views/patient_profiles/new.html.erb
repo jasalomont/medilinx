@@ -1,0 +1,154 @@
+<!-- Validation failure messages -->
+<% if @patient_profile.errors.any? %>
+  <% @patient_profile.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Patient Profile</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_patient_profile" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for curp -->
+      <div class="form-group">
+        <label for="curp" class="control-label">
+          Curp
+        </label>
+
+        <input type="text" id="curp" name="curp" placeholder="Curp" class="form-control" value="<%= @patient_profile.curp %>">
+      </div>
+
+      <!-- Label and input for rfc -->
+      <div class="form-group">
+        <label for="rfc" class="control-label">
+          Rfc
+        </label>
+
+        <input type="text" id="rfc" name="rfc" placeholder="Rfc" class="form-control" value="<%= @patient_profile.rfc %>">
+      </div>
+
+      <!-- Label and input for first_name -->
+      <div class="form-group">
+        <label for="first_name" class="control-label">
+          First name
+        </label>
+
+        <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @patient_profile.first_name %>">
+      </div>
+
+      <!-- Label and input for last_name_father -->
+      <div class="form-group">
+        <label for="last_name_father" class="control-label">
+          Last name father
+        </label>
+
+        <input type="text" id="last_name_father" name="last_name_father" placeholder="Last name father" class="form-control" value="<%= @patient_profile.last_name_father %>">
+      </div>
+
+      <!-- Label and input for last_name_mother -->
+      <div class="form-group">
+        <label for="last_name_mother" class="control-label">
+          Last name mother
+        </label>
+
+        <input type="text" id="last_name_mother" name="last_name_mother" placeholder="Last name mother" class="form-control" value="<%= @patient_profile.last_name_mother %>">
+      </div>
+
+      <!-- Label and input for gender -->
+      <div class="form-group">
+        <label for="gender" class="control-label">
+          Gender
+        </label>
+
+        <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @patient_profile.gender %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @patient_profile.user_id %>">
+      </div>
+
+      <!-- Label and input for phone -->
+      <div class="form-group">
+        <label for="phone" class="control-label">
+          Phone
+        </label>
+
+        <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="<%= @patient_profile.phone %>">
+      </div>
+
+      <!-- Label and input for street_address -->
+      <div class="form-group">
+        <label for="street_address" class="control-label">
+          Street address
+        </label>
+
+        <input type="text" id="street_address" name="street_address" placeholder="Street address" class="form-control" value="<%= @patient_profile.street_address %>">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @patient_profile.city %>">
+      </div>
+
+      <!-- Label and input for state -->
+      <div class="form-group">
+        <label for="state" class="control-label">
+          State
+        </label>
+
+        <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @patient_profile.state %>">
+      </div>
+
+      <!-- Label and input for zipcode -->
+      <div class="form-group">
+        <label for="zipcode" class="control-label">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @patient_profile.zipcode %>">
+      </div>
+
+      <!-- Label and input for country -->
+      <div class="form-group">
+        <label for="country" class="control-label">
+          Country
+        </label>
+
+        <input type="text" id="country" name="country" placeholder="Country" class="form-control" value="<%= @patient_profile.country %>">
+      </div>
+
+      <!-- Label and input for birthdate -->
+      <div class="form-group">
+        <label for="birthdate" class="control-label">
+          Birthdate
+        </label>
+
+        <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @patient_profile.birthdate %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Patient Profile
+      </button>
+      or
+      <a href="/patient_profiles">Cancel</a>
+    </form>
+  </div>
+</div>

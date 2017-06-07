@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h3>Patient Profile #<%= @patient_profile.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Curp</dt>
+      <dd><%= @patient_profile.curp %></dd>
+
+      <dt>Rfc</dt>
+      <dd><%= @patient_profile.rfc %></dd>
+
+      <dt>First name</dt>
+      <dd><%= @patient_profile.first_name %></dd>
+
+      <dt>Last name father</dt>
+      <dd><%= @patient_profile.last_name_father %></dd>
+
+      <dt>Last name mother</dt>
+      <dd><%= @patient_profile.last_name_mother %></dd>
+
+      <dt>Gender</dt>
+      <dd><%= @patient_profile.gender %></dd>
+
+      <dt>User</dt>
+      <dd><%= @patient_profile.user_id %></dd>
+
+      <dt>Phone</dt>
+      <dd><%= @patient_profile.phone %></dd>
+
+      <dt>Street address</dt>
+      <dd><%= @patient_profile.street_address %></dd>
+
+      <dt>City</dt>
+      <dd><%= @patient_profile.city %></dd>
+
+      <dt>State</dt>
+      <dd><%= @patient_profile.state %></dd>
+
+      <dt>Zipcode</dt>
+      <dd><%= @patient_profile.zipcode %></dd>
+
+      <dt>Country</dt>
+      <dd><%= @patient_profile.country %></dd>
+
+      <dt>Birthdate</dt>
+      <dd><%= @patient_profile.birthdate %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/patient_profiles" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/patient_profiles/<%= @patient_profile.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_patient_profile/<%= @patient_profile.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
