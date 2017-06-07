@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Medical_relation resource:
+  # CREATE
+  get "/medical_relations/new", :controller => "medical_relations", :action => "new"
+  post "/create_medical_relation", :controller => "medical_relations", :action => "create"
+
+  # READ
+  get "/medical_relations", :controller => "medical_relations", :action => "index"
+  get "/medical_relations/:id", :controller => "medical_relations", :action => "show"
+
+  # UPDATE
+  get "/medical_relations/:id/edit", :controller => "medical_relations", :action => "edit"
+  post "/update_medical_relation/:id", :controller => "medical_relations", :action => "update"
+
+  # DELETE
+  get "/delete_medical_relation/:id", :controller => "medical_relations", :action => "destroy"
+  #------------------------------
+
+  devise_for :patients
+  devise_for :doctors
   # Routes for the Patient_profile resource:
   # CREATE
   get "/patient_profiles/new", :controller => "patient_profiles", :action => "new"
