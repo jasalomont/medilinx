@@ -2,12 +2,15 @@ class MedicalRelationsController < ApplicationController
   def index
     @medical_relations = MedicalRelation.all
 
+
+
+
     render("medical_relations/index.html.erb")
   end
 
   def show
     @medical_relation = MedicalRelation.find(params[:id])
-
+    @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")
   end
 
@@ -25,8 +28,16 @@ class MedicalRelationsController < ApplicationController
 
     save_status = @medical_relation.save
 
+    @specific_profile = OfficeProfile.new
+
+    @specific_profile.doctor_id = params[:doctor_id]
+    @specific_profile.patient_id = params[:patient_id]
+
+    save_status = @specific_profile.save
+
+
     if save_status == true
-      redirect_to("/medical_relations/#{@medical_relation.id}", :notice => "Medical relation created successfully.")
+      redirect_to("/medical_relations", :notice => "Medical relation created successfully.")
     else
       render("medical_relations/new.html.erb")
     end

@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
+  # Routes for the Office_profile resource:
+  # CREATE
+  get "/office_profiles/new", :controller => "office_profiles", :action => "new"
+  post "/create_office_profile", :controller => "office_profiles", :action => "create"
+
+  # READ
+  get "/office_profiles", :controller => "office_profiles", :action => "index"
+  get "/office_profiles/:id", :controller => "office_profiles", :action => "show"
+
+  # UPDATE
+  get "/office_profiles/:id/edit", :controller => "office_profiles", :action => "edit"
+  post "/update_office_profile/:id", :controller => "office_profiles", :action => "update"
+
+  # DELETE
+  get "/delete_office_profile/:id", :controller => "office_profiles", :action => "destroy"
+  #------------------------------
+
   # Routes for the Medical_relation resource:
+  root to: "medical_relations#index"
+
   # CREATE
   get "/medical_relations/new", :controller => "medical_relations", :action => "new"
   post "/create_medical_relation", :controller => "medical_relations", :action => "create"
@@ -36,4 +55,10 @@ Rails.application.routes.draw do
   #------------------------------
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    # get "/medilinx", => redirect("https://www.medilinx.net/)
+
+    #READ
+  
+  get "doctors/:id", :controller => "doctors", :action => "read"
+  get "patients/:id", :controller => "patients", :action => "read"
 end
