@@ -1,0 +1,65 @@
+
+
+<% if current_doctor != nil %>
+<div class="page-header">
+  <!-- doctor online true -->
+<%= current_doctor.practice_name %>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+    <h1>
+      <a href="/medical_relations/new" class="btn btn-lg btn-success">Add Patient</a>
+    </h1>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Patient</th>
+        <th>Actions</th>
+      </tr>
+      <% @medical_relations.where("doctor_id"=>current_doctor.id).each do |medical_relation| %>
+      <tr>
+
+        <td><%= medical_relation.patient.email %></td>
+        <td>
+
+          <a href="/office_profiles/<%= OfficeProfile.find_by("doctor_id"=>current_doctor.id, "patient_id" =>medical_relation.patient_id).id %>" class="btn btn-primary">Show</a>
+          <!-- <a href="/medical_relations/<%= medical_relation.id %>/edit" class="btn btn-warning">Edit</a> -->
+          <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+<%  elsif current_patient != nil %>
+<!-- patient online -->
+<div class="page-header">
+  <!-- doctor online true -->
+<%= current_patient.email %>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Doctor</th>
+        <th>Actions</th>
+      </tr>
+      <% @medical_relations.each do |medical_relation| %>
+      <tr>
+
+        <td><%= medical_relation.doctor.practice_name %></td>
+        <td>
+          <a href="/doctors/<%= medical_relation.doctor_id %>" class="btn btn-primary">Show</a>
+          <!-- <a href="/medical_relations/<%= medical_relation.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+<% else %>
+<!-- No one onlin -->
+
+  <% end %>
+</div>

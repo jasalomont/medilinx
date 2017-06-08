@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Office profiles
+    <a href="/office_profiles/new" class="btn btn-lg btn-success">New Office profile</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Birthdate</th>
+        <th>Gender</th>
+        <th>Phone mobile</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @office_profiles.each do |office_profile| %>
+      <tr>
+        <td><%= office_profile.doctor_id %></td>
+        <td><%= office_profile.patient_id %></td>
+        <td><%= office_profile.birthdate %></td>
+        <td><%= office_profile.gender %></td>
+        <td><%= office_profile.phone_mobile %></td>
+        <td>
+          <a href="/office_profiles/<%= office_profile.id %>" class="btn btn-primary">Show</a>
+          <a href="/office_profiles/<%= office_profile.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_office_profile/<%= office_profile.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
