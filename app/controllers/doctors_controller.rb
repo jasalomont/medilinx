@@ -1,4 +1,4 @@
-class DoctorsController < ActionController::Base
+class DoctorsController < ApplicationController
 
   def read
       @doctor = Doctor.find(params[:id])

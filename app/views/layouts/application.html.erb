@@ -30,7 +30,7 @@
         <li><a href="/doctors/edit"><i class="fa fa-user-md" aria-hidden="true"></i> <%= current_doctor.practice_name %></a></li>
         <li><a href="/doctors/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
         <% elsif current_patient != nil %>
-        <li><a href="/patients/edit"><i class="fa fa-user" aria-hidden="true"></i><%= current_patient.email %></a></li>
+        <li><a href="/patients/edit"><i class="fa fa-user" aria-hidden="true"></i> <%= current_patient.first_name %></a></li>
         <li><a href="/patients/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out </a></li>
         <%else %>
         <li><a href="/patients/sign_in"> Patient Sign In </a></li>
