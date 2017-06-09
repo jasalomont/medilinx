@@ -10,6 +10,13 @@ class MedicalRelationsController < ApplicationController
 
   def show
     @medical_relation = MedicalRelation.find(params[:id])
+
+    def age(dob)
+      today = Date.today
+      d = @medical_relation.patient.birthdate.new(today.year, dob.month, dob.day)
+      @age = d.year - dob.year - (d > today ? 1 : 0)
+    end
+
     @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")
   end
@@ -28,12 +35,12 @@ class MedicalRelationsController < ApplicationController
 
     save_status = @medical_relation.save
 
-    @specific_profile = OfficeProfile.new
+    # @specific_profile = OfficeProfile.new
+    #
+    # @specific_profile.doctor_id = params[:doctor_id]
+    # @specific_profile.patient_id = params[:patient_id]
 
-    @specific_profile.doctor_id = params[:doctor_id]
-    @specific_profile.patient_id = params[:patient_id]
-
-    save_status = @specific_profile.save
+    # save_status = @specific_profile.save
 
 
     if save_status == true

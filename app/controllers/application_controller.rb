@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, :keys => [:practice_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:practice_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:first_name])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:birthdate])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:gender])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:birthdate])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:phone_mobile])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:phone_home])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:street_address_work])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:zip_work])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:city_work])
+
   end
 
 end
