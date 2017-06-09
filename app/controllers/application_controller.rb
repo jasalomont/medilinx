@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, :keys => [:practice_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:practice_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:first_name])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:practice_name])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:last_father])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:birthdate])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:gender])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:birthdate])
