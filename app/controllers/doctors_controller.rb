@@ -24,6 +24,8 @@ class DoctorsController < ApplicationController
 
     @longitude = longitude
 
+    @events = Event.where("patient_id"=>current_patient.id)
+
     render("users/doctors/read.html.erb")
   end
 

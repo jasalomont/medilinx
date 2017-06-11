@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Record from: <%= @event.created_at.to_date %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Patient</dt>
+      <dd><%= @event.patient.first_name%> <%= @event.patient.last_father%></dd>
+
+      <dt>Doctor</dt>
+      <dd><%= @event.doctor.practice_name %></dd>
+
+      <dt>Diagnose</dt>
+      <dd><%= @event.diagnose %></dd>
+
+      <dt>Weight</dt>
+      <dd><%= @event.weight %></dd>
+
+      <dt>Treatment</dt>
+      <dd><%= @event.treatment %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <!-- <a href="/events" class="btn btn-primary">
+        Back
+      </a> -->
+      <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ class MedicalRelationsController < ApplicationController
       #
       @age = year
 
+      @events = Event.where("doctor_id"=>current_doctor.id)
 
     @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")
