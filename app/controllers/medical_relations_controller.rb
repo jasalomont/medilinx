@@ -11,11 +11,14 @@ class MedicalRelationsController < ApplicationController
   def show
     @medical_relation = MedicalRelation.find(params[:id])
 
-    def age(dob)
-      today = Date.today
-      d = @medical_relation.patient.birthdate.new(today.year, dob.month, dob.day)
-      @age = d.year - dob.year - (d > today ? 1 : 0)
-    end
+      @now = Date.today
+      year = @now.year - @medical_relation.patient.birthdate.year
+      # if (Date.today+year.year) > @now
+      #   year = year - 1
+      # end
+      #
+      @age = year
+
 
     @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")

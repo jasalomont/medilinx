@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Medical Relation #<%= @medical_relation.id %></h3>
+  <h3>Patient Profile: <%= @medical_relation.patient.first_name %></h3>
 </div>
 
 <div class="row">
@@ -10,8 +10,11 @@
       <dt>Patient</dt>
       <dd><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %></dd>
       <dt>Age</dt>
-      <dd><%= @medical_relation.patient.birthdate %>.</dd>
       <dd><%= @age %></dd>
+      <dt>Gender</dt>
+      <dd><%= @medical_relation.patient.gender %></dd>
+      <dt>Phone</dt>
+      <dd><%= @medical_relation.patient.phone_mobile %></dd>
 
     </dl>
 
