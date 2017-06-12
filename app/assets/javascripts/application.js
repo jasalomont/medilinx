@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-"scripts": {
-  "postdeploy": "bundle exec rails db:migrate && bundle exec rails db:seed"
-},
