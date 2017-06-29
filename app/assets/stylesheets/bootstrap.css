@@ -16,9 +16,10 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-body {
+html,body {
   margin: 0;
-  background-image: url('/assets/mxbgr2.png');
+  background-color: rgb(242,242,242);
+  /*background-image: url('/assets/mxbgr2.png');*/
 }
 article,
 aside,
@@ -190,10 +191,12 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+
 }
 td,
 th {
   padding: 0;
+
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
