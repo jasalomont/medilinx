@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Claim resource:
+  # CREATE
+  get "/claims/new", :controller => "claims", :action => "new"
+  post "/create_claim", :controller => "claims", :action => "create"
+
+  # READ
+  get "/claims", :controller => "claims", :action => "index"
+  get "/claims/:id", :controller => "claims", :action => "show"
+
+  # UPDATE
+  get "/claims/:id/edit", :controller => "claims", :action => "edit"
+  post "/update_claim/:id", :controller => "claims", :action => "update"
+
+  # DELETE
+  get "/delete_claim/:id", :controller => "claims", :action => "destroy"
+  #------------------------------
+
   # Routes for the Event resource:
   # CREATE
   get "/events/new", :controller => "events", :action => "new"

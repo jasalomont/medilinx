@@ -1,0 +1,268 @@
+<div class="page-header">
+  <h1>
+    Claims
+    <a href="/claims/new" class="btn btn-lg btn-success">New Claim</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Claim type</th>
+        <th>Civil status</th>
+        <th>Attention cause</th>
+        <th>Patient name</th>
+        <th>Doctor name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Clinical summary</th>
+        <th>Referral yn</th>
+        <th>Referral doctor</th>
+        <th>Referral specialty</th>
+        <th>Referral phone</th>
+        <th>Symptoms</th>
+        <th>First symptoms date</th>
+        <th>First consultation date</th>
+        <th>Disease type</th>
+        <th>Relation other disease yn</th>
+        <th>Relation other disease</th>
+        <th>Evolution</th>
+        <th>Disease cause</th>
+        <th>Origin primary yn</th>
+        <th>Origin primary type</th>
+        <th>Lab tests</th>
+        <th>Waiste size</th>
+        <th>Weight</th>
+        <th>Pressure</th>
+        <th>Physical exploration details</th>
+        <th>Lab studies results</th>
+        <th>Form accountable name</th>
+        <th>Form accountable address</th>
+        <th>Purpose</th>
+        <th>Data signature</th>
+        <th>Cie 10</th>
+        <th>Definite diagnose</th>
+        <th>Diagnose date</th>
+        <th>Cpt 4</th>
+        <th>Tx start</th>
+        <th>Medicine name</th>
+        <th>Medicine dose</th>
+        <th>Medicine duration number</th>
+        <th>Medicine duration type</th>
+        <th>Tx other name</th>
+        <th>Tx other justification</th>
+        <th>Tx other days</th>
+        <th>Tx other sessions</th>
+        <th>Chemo type</th>
+        <th>Chemo sessions</th>
+        <th>Chemo dose</th>
+        <th>Chemo intervals</th>
+        <th>Physical rehab days</th>
+        <th>Physical rehab sessions</th>
+        <th>Nursing days</th>
+        <th>Nursing hpd</th>
+        <th>Nursing morning</th>
+        <th>Nursing evening</th>
+        <th>Nursing night</th>
+        <th>Nursing 24</th>
+        <th>Tx observations</th>
+        <th>Technique description</th>
+        <th>Special equipment yn</th>
+        <th>Special equipment detail</th>
+        <th>Procedure mat yn</th>
+        <th>Procedure mat detail</th>
+        <th>Procedure mat complications yn</th>
+        <th>Procedure mat complications describe</th>
+        <th>List other doctors</th>
+        <th>Claim staff</th>
+        <th>Inter consultation name</th>
+        <th>Inter consultation specialty</th>
+        <th>Inter consultation network yn</th>
+        <th>Inter consultation dates</th>
+        <th>Inter consultation description</th>
+        <th>Other tx other doctor yn</th>
+        <th>Other tx other doctor name</th>
+        <th>Other tx other doctor specialty</th>
+        <th>Patient current status</th>
+        <th>Tx continues yn</th>
+        <th>Tx continues type</th>
+        <th>Tx continues duration</th>
+        <th>Tx continues doctors</th>
+        <th>Accident description</th>
+        <th>Discharge date</th>
+        <th>Hospital name</th>
+        <th>Hospital city</th>
+        <th>Hospital stay type</th>
+        <th>Surgery performed</th>
+        <th>Findings</th>
+        <th>Hospital admission date</th>
+        <th>Surgery admission date</th>
+        <th>Hospital discharge date</th>
+        <th>Disability caused yn</th>
+        <th>Disability caused type</th>
+        <th>Disability caused from</th>
+        <th>Disability caused until</th>
+        <th>Biopsy yn</th>
+        <th>Doctor specialty</th>
+        <th>Doctor address</th>
+        <th>Doctor cedula pro</th>
+        <th>Doctor cedula esp</th>
+        <th>Doctor rfc</th>
+        <th>Doctor phone</th>
+        <th>Doctor email</th>
+        <th>Doctor supplier number</th>
+        <th>Budget surgeon</th>
+        <th>Budget assistants</th>
+        <th>Budget anesthesiologist</th>
+        <th>Hospital surgery name</th>
+        <th>Hospital entity</th>
+        <th>Sugery date</th>
+        <th>Doctor signature</th>
+        <th>Doctor signature place</th>
+        <th>Doctor signature date</th>
+        <th>Agreement ins yn</th>
+        <th>Identification file</th>
+        <th>Health summary</th>
+        <th>Insurance name</th>
+        <th>Insurance</th>
+        <th>Tx descritption</th>
+        <th>Medicine quantity</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @claims.each do |claim| %>
+      <tr>
+        <td><%= claim.doctor_id %></td>
+        <td><%= claim.patient_id %></td>
+        <td><%= claim.claim_type %></td>
+        <td><%= claim.civil_status %></td>
+        <td><%= claim.attention_cause %></td>
+        <td><%= claim.patient_name %></td>
+        <td><%= claim.doctor_name %></td>
+        <td><%= claim.age %></td>
+        <td><%= claim.gender %></td>
+        <td><%= claim.clinical_summary %></td>
+        <td><%= claim.referral_yn %></td>
+        <td><%= claim.referral_doctor %></td>
+        <td><%= claim.referral_specialty %></td>
+        <td><%= claim.referral_phone %></td>
+        <td><%= claim.symptoms %></td>
+        <td><%= claim.first_symptoms_date %></td>
+        <td><%= claim.first_consultation_date %></td>
+        <td><%= claim.disease_type %></td>
+        <td><%= claim.relation_other_disease_yn %></td>
+        <td><%= claim.relation_other_disease %></td>
+        <td><%= claim.evolution %></td>
+        <td><%= claim.disease_cause %></td>
+        <td><%= claim.origin_primary_yn %></td>
+        <td><%= claim.origin_primary_type %></td>
+        <td><%= claim.lab_tests %></td>
+        <td><%= claim.waiste_size %></td>
+        <td><%= claim.weight %></td>
+        <td><%= claim.pressure %></td>
+        <td><%= claim.physical_exploration_details %></td>
+        <td><%= claim.lab_studies_results %></td>
+        <td><%= claim.form_accountable_name %></td>
+        <td><%= claim.form_accountable_address %></td>
+        <td><%= claim.purpose %></td>
+        <td><%= claim.data_signature %></td>
+        <td><%= claim.cie_10 %></td>
+        <td><%= claim.definite_diagnose %></td>
+        <td><%= claim.diagnose_date %></td>
+        <td><%= claim.cpt_4 %></td>
+        <td><%= claim.tx_start %></td>
+        <td><%= claim.medicine_name %></td>
+        <td><%= claim.medicine_dose %></td>
+        <td><%= claim.medicine_duration_number %></td>
+        <td><%= claim.medicine_duration_type %></td>
+        <td><%= claim.tx_other_name %></td>
+        <td><%= claim.tx_other_justification %></td>
+        <td><%= claim.tx_other_days %></td>
+        <td><%= claim.tx_other_sessions %></td>
+        <td><%= claim.chemo_type %></td>
+        <td><%= claim.chemo_sessions %></td>
+        <td><%= claim.chemo_dose %></td>
+        <td><%= claim.chemo_intervals %></td>
+        <td><%= claim.physical_rehab_days %></td>
+        <td><%= claim.physical_rehab_sessions %></td>
+        <td><%= claim.nursing_days %></td>
+        <td><%= claim.nursing_hpd %></td>
+        <td><%= claim.nursing_morning %></td>
+        <td><%= claim.nursing_evening %></td>
+        <td><%= claim.nursing_night %></td>
+        <td><%= claim.nursing_24 %></td>
+        <td><%= claim.tx_observations %></td>
+        <td><%= claim.technique_description %></td>
+        <td><%= claim.special_equipment_yn %></td>
+        <td><%= claim.special_equipment_detail %></td>
+        <td><%= claim.procedure_mat_yn %></td>
+        <td><%= claim.procedure_mat_detail %></td>
+        <td><%= claim.procedure_mat_complications_yn %></td>
+        <td><%= claim.procedure_mat_complications_describe %></td>
+        <td><%= claim.list_other_doctors %></td>
+        <td><%= claim.claim_staff_id %></td>
+        <td><%= claim.inter_consultation_name %></td>
+        <td><%= claim.inter_consultation_specialty %></td>
+        <td><%= claim.inter_consultation_network_yn %></td>
+        <td><%= claim.inter_consultation_dates %></td>
+        <td><%= claim.inter_consultation_description %></td>
+        <td><%= claim.other_tx_other_doctor_yn %></td>
+        <td><%= claim.other_tx_other_doctor_name %></td>
+        <td><%= claim.other_tx_other_doctor_specialty %></td>
+        <td><%= claim.patient_current_status %></td>
+        <td><%= claim.tx_continues_yn %></td>
+        <td><%= claim.tx_continues_type %></td>
+        <td><%= claim.tx_continues_duration %></td>
+        <td><%= claim.tx_continues_doctors %></td>
+        <td><%= claim.accident_description %></td>
+        <td><%= claim.discharge_date %></td>
+        <td><%= claim.hospital_name %></td>
+        <td><%= claim.hospital_city %></td>
+        <td><%= claim.hospital_stay_type %></td>
+        <td><%= claim.surgery_performed %></td>
+        <td><%= claim.findings %></td>
+        <td><%= claim.hospital_admission_date %></td>
+        <td><%= claim.surgery_admission_date %></td>
+        <td><%= claim.hospital_discharge_date %></td>
+        <td><%= claim.disability_caused_yn %></td>
+        <td><%= claim.disability_caused_type %></td>
+        <td><%= claim.disability_caused_from %></td>
+        <td><%= claim.disability_caused_until %></td>
+        <td><%= claim.biopsy_yn %></td>
+        <td><%= claim.doctor_specialty %></td>
+        <td><%= claim.doctor_address %></td>
+        <td><%= claim.doctor_cedula_pro %></td>
+        <td><%= claim.doctor_cedula_esp %></td>
+        <td><%= claim.doctor_rfc %></td>
+        <td><%= claim.doctor_phone %></td>
+        <td><%= claim.doctor_email %></td>
+        <td><%= claim.doctor_supplier_number %></td>
+        <td><%= claim.budget_surgeon %></td>
+        <td><%= claim.budget_assistants %></td>
+        <td><%= claim.budget_anesthesiologist %></td>
+        <td><%= claim.hospital_surgery_name %></td>
+        <td><%= claim.hospital_entity %></td>
+        <td><%= claim.sugery_date %></td>
+        <td><%= claim.doctor_signature %></td>
+        <td><%= claim.doctor_signature_place %></td>
+        <td><%= claim.doctor_signature_date %></td>
+        <td><%= claim.agreement_ins_yn %></td>
+        <td><%= claim.identification_file %></td>
+        <td><%= claim.health_summary_id %></td>
+        <td><%= claim.insurance_name %></td>
+        <td><%= claim.insurance_id %></td>
+        <td><%= claim.tx_descritption %></td>
+        <td><%= claim.medicine_quantity %></td>
+        <td>
+          <a href="/claims/<%= claim.id %>" class="btn btn-primary">Show</a>
+          <a href="/claims/<%= claim.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_claim/<%= claim.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
