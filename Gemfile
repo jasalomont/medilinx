@@ -7,6 +7,7 @@ end
 gem "pg", :group => :production
 gem "rails_12factor", :group => :production
 
+
 gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
 gem "devise"
 gem 'bcrypt', platforms: :ruby
