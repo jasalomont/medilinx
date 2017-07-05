@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Other backgrounds
+    <a href="/other_backgrounds/new" class="btn btn-lg btn-success">New Other background</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Patient</th>
+        <th>Perinatal</th>
+        <th>Other</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @other_backgrounds.each do |other_background| %>
+      <tr>
+        <td><%= other_background.patient_id %></td>
+        <td><%= other_background.perinatal %></td>
+        <td><%= other_background.other %></td>
+        <td>
+          <a href="/other_backgrounds/<%= other_background.id %>" class="btn btn-primary">Show</a>
+          <a href="/other_backgrounds/<%= other_background.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_other_background/<%= other_background.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

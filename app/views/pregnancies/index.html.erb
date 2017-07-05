@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Pregnancies
+    <a href="/pregnancies/new" class="btn btn-lg btn-success">New Pregnancy</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Patient</th>
+        <th>Fum</th>
+        <th>Number</th>
+        <th>Abortion</th>
+        <th>Caesarean</th>
+        <th>Normal</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @pregnancies.each do |pregnancy| %>
+      <tr>
+        <td><%= pregnancy.patient_id %></td>
+        <td><%= pregnancy.fum %></td>
+        <td><%= pregnancy.number %></td>
+        <td><%= pregnancy.abortion %></td>
+        <td><%= pregnancy.caesarean %></td>
+        <td><%= pregnancy.normal %></td>
+        <td>
+          <a href="/pregnancies/<%= pregnancy.id %>" class="btn btn-primary">Show</a>
+          <a href="/pregnancies/<%= pregnancy.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_pregnancy/<%= pregnancy.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

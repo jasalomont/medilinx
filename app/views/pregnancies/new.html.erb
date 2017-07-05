@@ -1,0 +1,78 @@
+<!-- Validation failure messages -->
+<% if @pregnancy.errors.any? %>
+  <% @pregnancy.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Pregnancy</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_pregnancy" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= current_patient.id %>">
+      </div>
+
+      <!-- Label and input for fum -->
+      <div class="form-group col-md-6">
+        <label for="fum" class="control-label">
+          FUM
+        </label>
+
+        <input type="text" id="fum" name="fum" placeholder="Fum" class="form-control" value="<%= @pregnancy.fum %>">
+      </div>
+
+      <!-- Label and input for number -->
+      <div class="form-group col-md-6">
+        <label for="number" class="control-label">
+          Numero de Embarazos
+        </label>
+
+        <input type="text" id="number" name="number" placeholder="#" class="form-control" value="<%= @pregnancy.number %>">
+      </div>
+
+      <!-- Label and input for abortion -->
+      <div class="form-group col-md-4">
+        <label for="abortion" class="control-label">
+          Abortos
+        </label>
+
+        <input type="text" id="abortion" name="abortion" placeholder="#" class="form-control" value="<%= @pregnancy.abortion %>">
+      </div>
+
+      <!-- Label and input for caesarean -->
+      <div class="form-group col-md-4">
+        <label for="caesarean" class="control-label">
+          Cesáreas
+        </label>
+
+        <input type="text" id="caesarean" name="caesarean" placeholder="#" class="form-control" value="<%= @pregnancy.caesarean %>">
+      </div>
+
+      <!-- Label and input for normal -->
+      <div class="form-group col-md-4">
+        <label for="normal" class="control-label">
+          Partos
+        </label>
+
+        <input type="text" id="normal" name="normal" placeholder="#" class="form-control" value="<%= @pregnancy.normal %>">
+      </div>
+
+      <button class="btn btn-success">
+        Agregar
+      </button>
+      or
+      <a href="/pregnancies">Cancelar</a>
+    </form>
+  </div>
+</div>

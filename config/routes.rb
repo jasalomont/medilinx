@@ -1,7 +1,58 @@
 Rails.application.routes.draw do
 
+  # Routes for the Other_background resource:
+  # CREATE
+  get "/other_backgrounds/new", :controller => "other_backgrounds", :action => "new"
+  post "/create_other_background", :controller => "other_backgrounds", :action => "create"
+
+  # READ
+  get "/other_backgrounds", :controller => "other_backgrounds", :action => "index"
+  get "/other_backgrounds/:id", :controller => "other_backgrounds", :action => "show"
+
+  # UPDATE
+  get "/other_backgrounds/:id/edit", :controller => "other_backgrounds", :action => "edit"
+  post "/update_other_background/:id", :controller => "other_backgrounds", :action => "update"
+
+  # DELETE
+  get "/delete_other_background/:id", :controller => "other_backgrounds", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Pregnancy resource:
+  # CREATE
+  get "/pregnancies/new", :controller => "pregnancies", :action => "new"
+  post "/create_pregnancy", :controller => "pregnancies", :action => "create"
+
+  # READ
+  get "/pregnancies", :controller => "pregnancies", :action => "index"
+  get "/pregnancies/:id", :controller => "pregnancies", :action => "show"
+
+  # UPDATE
+  get "/pregnancies/:id/edit", :controller => "pregnancies", :action => "edit"
+  post "/update_pregnancy/:id", :controller => "pregnancies", :action => "update"
+
+  # DELETE
+  get "/delete_pregnancy/:id", :controller => "pregnancies", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Surgical resource:
+  # CREATE
+  get "/surgicals/new", :controller => "surgicals", :action => "new"
+  post "/create_surgical", :controller => "surgicals", :action => "create"
+
+  # READ
+  get "/surgicals", :controller => "surgicals", :action => "index"
+  get "/surgicals/:id", :controller => "surgicals", :action => "show"
+
+  # UPDATE
+  get "/surgicals/:id/edit", :controller => "surgicals", :action => "edit"
+  post "/update_surgical/:id", :controller => "surgicals", :action => "update"
+
+  # DELETE
+  get "/delete_surgical/:id", :controller => "surgicals", :action => "destroy"
+  #------------------------------
+
 # Routes for the Medical History:
-get "/historial _medico", :controller => "historial", :action => "index"
+get "/historial _medico", :controller => "historial_medico", :action => "index"
 
   # Routes for the Non_pathological resource:
   # CREATE

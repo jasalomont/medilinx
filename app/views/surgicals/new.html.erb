@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @pathological.errors.any? %>
-  <% @pathological.errors.full_messages.each do |message| %>
+<% if @surgical.errors.any? %>
+  <% @surgical.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Agregar antecedente patológico</h3>
+  <h3>Agregar Cirugía</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_pathological" method="post">
+    <form action="/create_surgical" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -23,29 +23,29 @@
         <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= current_patient.id %>">
       </div>
 
-      <!-- Label and input for disease -->
+      <!-- Label and input for name -->
       <div class="form-group col-md-6">
-        <label for="disease" class="control-label">
-          Enfermedad
+        <label for="name" class="control-label">
+          Nombre de cirugía
         </label>
 
-        <input type="text" id="disease" name="disease" placeholder="Disease" class="form-control" value="<%= @pathological.disease %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @surgical.name %>">
       </div>
 
-      <!-- Label and input for start_date -->
+      <!-- Label and input for date -->
       <div class="form-group col-md-6">
-        <label for="start_date" class="control-label">
-          Fecha de Inicio
+        <label for="date" class="control-label">
+          Fecha
         </label>
 
-        <input type="date" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @pathological.start_date %>">
+        <input type="date" id="date" name="date" placeholder="Date" class="form-control" value="<%= @surgical.date %>">
       </div>
 
       <button class="btn btn-success">
-        Create Pathological
+        Agregar
       </button>
       or
-      <a href="/pathologicals">Cancel</a>
+      <a href="/surgicals">Cancel</a>
     </form>
   </div>
 </div>

@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Pregnancy #<%= @pregnancy.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Patient</dt>
+      <dd><%= @pregnancy.patient_id %></dd>
+
+      <dt>Fum</dt>
+      <dd><%= @pregnancy.fum %></dd>
+
+      <dt>Number</dt>
+      <dd><%= @pregnancy.number %></dd>
+
+      <dt>Abortion</dt>
+      <dd><%= @pregnancy.abortion %></dd>
+
+      <dt>Caesarean</dt>
+      <dd><%= @pregnancy.caesarean %></dd>
+
+      <dt>Normal</dt>
+      <dd><%= @pregnancy.normal %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/pregnancies" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/pregnancies/<%= @pregnancy.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_pregnancy/<%= @pregnancy.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Non Pathological</h3>
+  <h3>Agregar No Patológica</h3>
 </div>
 
 <div class="row">
@@ -21,35 +21,33 @@
       <!-- Label and input for drug_type -->
       <div class="form-group">
         <label for="drug_type" class="control-label">
-          Drug type
+          Tipo de droga o bebida alcoholica
         </label>
 
-        <input type="text" id="drug_type" name="drug_type" placeholder="Drug type" class="form-control" value="<%= @non_pathological.drug_type %>">
+        <input type="text" id="drug_type" name="drug_type" placeholder="ej. Alcohol" class="form-control" value="<%= @non_pathological.drug_type %>">
       </div>
 
       <!-- Label and input for quantity -->
       <div class="form-group">
         <label for="quantity" class="control-label">
-          Quantity
+          Cantidad
         </label>
 
-        <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @non_pathological.quantity %>">
+        <input type="text" id="quantity" name="quantity" placeholder="ej. 2 copas por semana" class="form-control" value="<%= @non_pathological.quantity %>">
       </div>
 
       <!-- Label and input for patient_id -->
       <div class="form-group">
-        <label for="patient_id" class="control-label">
-          Patient
-        </label>
 
-        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @non_pathological.patient_id %>">
+
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= current_patient.id %>">
       </div>
 
       <button class="btn btn-success">
-        Create Non Pathological
+        Agregar
       </button>
       or
-      <a href="/non_pathologicals">Cancel</a>
+      <a href="/non_pathologicals">Cancelar</a>
     </form>
   </div>
 </div>
