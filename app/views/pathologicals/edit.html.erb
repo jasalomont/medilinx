@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @pathological.errors.any? %>
+  <% @pathological.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Pathological #<%= @pathological.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_pathological/<%= @pathological.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <label for="patient_id" class="control-label">
+          Patient
+        </label>
+
+        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @pathological.patient_id %>">
+      </div>
+
+      <!-- Label and input for disease -->
+      <div class="form-group">
+        <label for="disease" class="control-label">
+          Disease
+        </label>
+
+        <input type="text" id="disease" name="disease" placeholder="Disease" class="form-control" value="<%= @pathological.disease %>">
+      </div>
+
+      <!-- Label and input for start_date -->
+      <div class="form-group">
+        <label for="start_date" class="control-label">
+          Start date
+        </label>
+
+        <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @pathological.start_date %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Pathological
+      </button>
+      or
+      <a href="/pathologicals/<%= @pathological.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

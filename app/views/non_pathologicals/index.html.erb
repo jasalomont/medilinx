@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Non pathologicals
+    <a href="/non_pathologicals/new" class="btn btn-lg btn-success">New Non pathological</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Drug type</th>
+        <th>Quantity</th>
+        <th>Patient</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @non_pathologicals.each do |non_pathological| %>
+      <tr>
+        <td><%= non_pathological.drug_type %></td>
+        <td><%= non_pathological.quantity %></td>
+        <td><%= non_pathological.patient_id %></td>
+        <td>
+          <a href="/non_pathologicals/<%= non_pathological.id %>" class="btn btn-primary">Show</a>
+          <a href="/non_pathologicals/<%= non_pathological.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_non_pathological/<%= non_pathological.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

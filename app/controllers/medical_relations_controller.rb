@@ -9,21 +9,25 @@ class MedicalRelationsController < ApplicationController
   end
 
   def show
+
     @medical_relation = MedicalRelation.find(params[:id])
 
-      @now = Date.today
-      year = @now.year - @medical_relation.patient.birthdate.year
-      # if (Date.today+year.year) > @now
-      #   year = year - 1
-      # end
-      #
+    if @medical_relation.patient.birthdate != nil
+      dob = @medical_relation.patient.birthdate
+      @now = Time.now.utc.to_date
+      year = @now.year - dob.year - ((@now.month > dob.month || (@now.month == dob.month && @now.day >= dob.day)) ? 0 : 1)
       @age = year
+    else
+      @age =""
+    end
 
-      @events = Event.where("doctor_id"=>current_doctor.id)
-
+    @events = Event.where("doctor_id"=>current_doctor.id)
+    @claims = Claim.where("doctor_id"=>current_doctor.id)
     @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")
   end
+
+
 
   def new
     @medical_relation = MedicalRelation.new

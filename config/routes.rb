@@ -1,4 +1,42 @@
 Rails.application.routes.draw do
+
+# Routes for the Medical History:
+get "/historial _medico", :controller => "historial", :action => "index"
+
+  # Routes for the Non_pathological resource:
+  # CREATE
+  get "/non_pathologicals/new", :controller => "non_pathologicals", :action => "new"
+  post "/create_non_pathological", :controller => "non_pathologicals", :action => "create"
+
+  # READ
+  get "/non_pathologicals", :controller => "non_pathologicals", :action => "index"
+  get "/non_pathologicals/:id", :controller => "non_pathologicals", :action => "show"
+
+  # UPDATE
+  get "/non_pathologicals/:id/edit", :controller => "non_pathologicals", :action => "edit"
+  post "/update_non_pathological/:id", :controller => "non_pathologicals", :action => "update"
+
+  # DELETE
+  get "/delete_non_pathological/:id", :controller => "non_pathologicals", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Pathological resource:
+  # CREATE
+  get "/pathologicals/new", :controller => "pathologicals", :action => "new"
+  post "/create_pathological", :controller => "pathologicals", :action => "create"
+
+  # READ
+  get "/pathologicals", :controller => "pathologicals", :action => "index"
+  get "/pathologicals/:id", :controller => "pathologicals", :action => "show"
+
+  # UPDATE
+  get "/pathologicals/:id/edit", :controller => "pathologicals", :action => "edit"
+  post "/update_pathological/:id", :controller => "pathologicals", :action => "update"
+
+  # DELETE
+  get "/delete_pathological/:id", :controller => "pathologicals", :action => "destroy"
+  #------------------------------
+
   # Routes for the Claim resource:
   # CREATE
   get "/claims/new", :controller => "claims", :action => "new"
@@ -92,7 +130,7 @@ Rails.application.routes.draw do
     # get "/medilinx", => redirect("https://www.medilinx.net/)
 
     #READ
-  
+
   get "doctors/:id", :controller => "doctors", :action => "read"
   get "patients/:id", :controller => "patients", :action => "read"
 end
