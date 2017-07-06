@@ -1,171 +1,201 @@
+
+<!-- <a href="#" onclick="this.style.backgroundColor='#990000'">Paint it red</a> -->
+
+
 <div class="page-header">
-  <h3>
-    Antecedentes Personales Patológicos
-    <a href="/pathologicals/new" class="btn  btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </h3>
+  <h2>Historial Medico</h2>
 </div>
 
+<div class="container">
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="">Antecedentes Personales Patológicos
+            <a href="/pathologicals/new" class="btn  btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-hover fixed">
+            <col width="30px" />
+            <col width="30px" />
+            <col width="30px" />
+            <tr>
 
-        <th>Enfermedad</th>
-        <th>Fecha de inicio</th>
-        <th></th>
-      </tr>
+              <th>Enfermedad</th>
+              <th>Fecha de inicio</th>
+              <th></th>
+            </tr>
 
-      <% @pathologicals.each do |pathological| %>
-      <tr>
+            <% @pathologicals.each do |pathological| %>
+            <tr>
 
-        <td><%= pathological.disease %></td>
-        <td><%= pathological.start_date %></td>
-        <td>
+              <td><%= pathological.disease %></td>
+              <td><%= pathological.start_date %></td>
+              <td>
 
-          <a href="/pathologicals/<%= pathological.id %>/edit" class="btn btn-warning">Editar</a>
-          <a href="/delete_pathological/<%= pathological.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+                <a href="/pathologicals/<%= pathological.id %>/edit" class="btn btn-warning">Editar</a>
+                <a href="/delete_pathological/<%= pathological.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="">
+            Antecedentes Personales No Patológicos
+            <a href="/non_pathologicals/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-hover fixed">
+            <col width="30px" />
+            <col width="30px" />
+            <col width="30px" />
+            <tr>
+              <th>Tipo</th>
+              <th>Cantidad</th>
+              <th></th>
+            </tr>
+
+            <% @non_pathologicals.each do |non_pathological| %>
+            <tr>
+              <td><%= non_pathological.drug_type %></td>
+              <td><%= non_pathological.quantity %></td>
+              <td>
+
+                <a href="/non_pathologicals/<%= non_pathological.id %>/edit" class="btn btn-warning">Editar</a>
+                <a href="/delete_non_pathological/<%= non_pathological.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="page-header">
-  <h3>
-    Antecedentes Personales No Patológicos
-    <a href="/non_pathologicals/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </h3>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Tipo</th>
-        <th>Cantidad</th>
-        <th></th>
-      </tr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="">
+            Cirugías realizadas
+            <a href="/surgicals/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-hover fixed">
+            <col width="30px" />
+            <col width="30px" />
+            <col width="30px" />
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th></th>
+            </tr>
 
-      <% @non_pathologicals.each do |non_pathological| %>
-      <tr>
-        <td><%= non_pathological.drug_type %></td>
-        <td><%= non_pathological.quantity %></td>
+            <% @surgicals.each do |surgical| %>
+            <tr>
+
+              <td><%= surgical.name %></td>
+              <td><%= surgical.date %></td>
+              <td>
+                <a href="/surgicals/<%= surgical.id %>/edit" class="btn btn-warning">Editar</a>
+                <a href="/delete_surgical/<%= surgical.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if current_patient.gender == "masculino" %>
+  <!-- true -->
+  <%else %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="">
+            Antecedentes Gineco-Obstétricos
+            <a href="/pregnancies/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </h4>
+        </div>
+        <div class="panel-body">
+      <table class="table table-striped table-hover">
+        <tr>
+
+          <th>FUM</th>
+          <th>Numero de Embarazo(s)</th>
+          <th>Aborto(s)</th>
+          <th>Cesárea(s)</th>
+          <th>Parto(s)</th>
+          <th></th>
+        </tr>
+
+        <% @pregnancies.each do |pregnancy| %>
+        <tr>
+
+          <td><%= pregnancy.fum %></td>
+          <td><%= pregnancy.number %></td>
+          <td><%= pregnancy.abortion %></td>
+          <td><%= pregnancy.caesarean %></td>
+          <td><%= pregnancy.normal %></td>
           <td>
 
-          <a href="/non_pathologicals/<%= non_pathological.id %>/edit" class="btn btn-warning">Editar</a>
-          <a href="/delete_non_pathological/<%= non_pathological.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+            <a href="/pregnancies/<%= pregnancy.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_pregnancy/<%= pregnancy.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="page-header">
+    <h3>
+      Adicionales
+      <a href="/other_backgrounds/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-hover">
+        <tr>
+
+          <th>Perinatales</th>
+          <th>Otros</th>
+          <th></th>
+        </tr>
+
+        <% @other_backgrounds.each do |other_background| %>
+        <tr>
+
+          <td><%= other_background.perinatal %></td>
+          <td><%= other_background.other %></td>
+          <td>
+
+            <a href="/other_backgrounds/<%= other_background.id %>/edit" class="btn btn-warning">Editar</a>
+            <a href="/delete_other_background/<%= other_background.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
-
-<div class="page-header">
-  <h3>
-    Cirugías realizadas
-    <a href="/surgicals/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Nombre</th>
-        <th>Fecha</th>
-        <th></th>
-      </tr>
-
-      <% @surgicals.each do |surgical| %>
-      <tr>
-
-        <td><%= surgical.name %></td>
-        <td><%= surgical.date %></td>
-        <td>
-          <a href="/surgicals/<%= surgical.id %>/edit" class="btn btn-warning">Editar</a>
-          <a href="/delete_surgical/<%= surgical.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<% if current_patient.gender == "masculino" %>
-  <!-- true -->
-<%else %>
-<div class="page-header">
-  <h3>
-    Antecedentes Gineco-Obstétricos
-    <a href="/pregnancies/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-
-        <th>FUM</th>
-        <th>Numero de Embarazo(s)</th>
-        <th>Aborto(s)</th>
-        <th>Cesárea(s)</th>
-        <th>Parto(s)</th>
-        <th></th>
-      </tr>
-
-      <% @pregnancies.each do |pregnancy| %>
-      <tr>
-
-        <td><%= pregnancy.fum %></td>
-        <td><%= pregnancy.number %></td>
-        <td><%= pregnancy.abortion %></td>
-        <td><%= pregnancy.caesarean %></td>
-        <td><%= pregnancy.normal %></td>
-        <td>
-
-          <a href="/pregnancies/<%= pregnancy.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_pregnancy/<%= pregnancy.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-<% end %>
-
-<div class="page-header">
-  <h3>
-    Adicionales
-    <a href="/other_backgrounds/new" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-
-        <th>Perinatales</th>
-        <th>Otros</th>
-        <th></th>
-      </tr>
-
-      <% @other_backgrounds.each do |other_background| %>
-      <tr>
-
-        <td><%= other_background.perinatal %></td>
-        <td><%= other_background.other %></td>
-        <td>
-
-          <a href="/other_backgrounds/<%= other_background.id %>/edit" class="btn btn-warning">Editar</a>
-          <a href="/delete_other_background/<%= other_background.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
 </div>

@@ -7,6 +7,7 @@ class HistorialMedicoController < ApplicationController
     @surgicals = Surgical.where("patient_id"=>current_patient.id)
     @other_backgrounds = OtherBackground.where("patient_id"=>current_patient.id)
 
+
     render("historial_medico/index.html.erb")
   end
 

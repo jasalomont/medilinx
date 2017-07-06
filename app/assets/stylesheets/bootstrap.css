@@ -1252,8 +1252,8 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 h4 small,
 .h4 small,
@@ -6910,3 +6910,5 @@ button.close {
 .panel-info > .panel-heading .badge {
   background-color: #fff;
 }
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: hidden; }
