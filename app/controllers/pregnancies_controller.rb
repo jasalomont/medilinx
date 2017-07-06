@@ -55,7 +55,7 @@ class PregnanciesController < ApplicationController
     save_status = @pregnancy.save
 
     if save_status == true
-      redirect_to("/pregnancies/#{@pregnancy.id}", :notice => "Pregnancy updated successfully.")
+      redirect_to("/historial_medico", :notice => "updated successfully")
     else
       render("pregnancies/edit.html.erb")
     end

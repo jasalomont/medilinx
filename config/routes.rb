@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   #------------------------------
 
 # Routes for the Medical History:
-get "/historial _medico", :controller => "historial_medico", :action => "index"
+get "/historial_medico", :controller => "historial_medico", :action => "index"
 
   # Routes for the Non_pathological resource:
   # CREATE

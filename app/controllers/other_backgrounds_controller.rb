@@ -49,7 +49,7 @@ class OtherBackgroundsController < ApplicationController
     save_status = @other_background.save
 
     if save_status == true
-      redirect_to("/other_backgrounds/#{@other_background.id}", :notice => "Other background updated successfully.")
+      redirect_to("/historial_medico", :notice => "updated successfully")
     else
       render("other_backgrounds/edit.html.erb")
     end
