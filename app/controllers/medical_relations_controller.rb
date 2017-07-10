@@ -29,6 +29,14 @@ class MedicalRelationsController < ApplicationController
       @age =""
     end
 
+    if @medical_relation.patient.gender == "m"
+    @gender = "Masculino"
+    elsif @medical_relation.patient.gender == "f"
+  @gender = "Femenino"
+    else
+     @gender = @medical_relation.patient.gender
+    end
+
     @events = Event.where("doctor_id"=>current_doctor.id)
     @claims = Claim.where("doctor_id"=>current_doctor.id)
     @specific_profile = OfficeProfile.all

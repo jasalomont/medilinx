@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Medical Relation</h3>
+  <h3>Agregar Paciente</h3>
 </div>
 
 <div class="row">
@@ -30,7 +30,7 @@
       <!-- Label and input for patient_id -->
       <div class="form-group">
         <label for="patient_id" class="control-label">
-          Patient e-mail
+          Correo Electrónico del paciente
         </label>
         <%= select_tag(:patient_id, options_from_collection_for_select(Patient.all, :id, :email, @medical_relation.patient_id), :class => "form-control") %>
 
@@ -38,11 +38,13 @@
       </div>
 
       <button class="btn btn-success">
-        Create Medical Relation
+        Agregar
       </button>
-      <a href="mailto:name1@rapidtables.com?subject=The%20subject%20of%20the%20email&amp;body=Join%20MediLinx%20http://localhost:3000/patients/sign_up">Invite</a>
-      or
-      <a href="/medical_relations">Cancel</a>
+
+      <a href="/medical_relations">Cancelar</a>
+      <p></p>
+      El paciente no esta en la lista? 
+      <a href="mailto:name1@rapidtables.com?subject=The%20subject%20of%20the%20email&amp;body=Join%20MediLinx%20http://localhost:3000/patients/sign_up">Enviar invitación MediLinx</a>
     </form>
   </div>
 </div>

@@ -19,4 +19,24 @@ class DoctorsController < ApplicationController
     render("users/doctors/index.html.erb")
   end
 
+
+  def show
+    @doctor = Doctor.find(params[:id])
+
+    render("users/doctors/show.html.erb")
+  end
+
+
+  def destroy
+    @doctor = Doctor.find(params[:id])
+
+    @doctor.destroy
+
+    if URI(request.referer).path == "/doctors/#{@doctor.id}"
+      redirect_to("/", :notice => "Doctor eliminado.")
+    else
+      redirect_to(:back, :notice => "Doctor eliminado.")
+    end
+  end
+
 end

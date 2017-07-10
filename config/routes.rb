@@ -184,6 +184,9 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
 
   get "doctors/index", :controller => "doctors", :action => "index"
   get "doctors/:id", :controller => "doctors", :action => "read"
+  get "doctors_profile/:id", :controller => "doctors", :action => "show"
+  get "/delete_doctor/:id", :controller => "doctors", :action => "destroy"
+
   get "patients/:id", :controller => "patients", :action => "read"
 
 

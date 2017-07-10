@@ -1,18 +1,17 @@
 <div class="page-header">
-  <h3>Patient Profile: <%= @medical_relation.patient.first_name %></h3>
+  <h3>Expediente de Paciente: <%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
 
-
       <dt>Paciente</dt>
-      <dd><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %></dd>
+      <dd><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></dd>
       <dt>Edad</dt>
       <dd><%= @age %></dd>
       <dt>Sexo</dt>
-      <dd><%= @medical_relation.patient.gender %></dd>
+      <dd> <%=@gender %></dd>
       <dt>Telefono</dt>
       <dd><%= @medical_relation.patient.phone_mobile %></dd>
 
@@ -34,7 +33,7 @@
         </div>
 
         <h3>
-          <button class="btn btn-lg btn-primary">
+          <button class="btn btn-md btn-primary">
             Nuevo Record
           </button>
         </h3>
@@ -65,8 +64,9 @@
 
             <td>
               <a href="/events/<%= event.id %>" class="btn btn-primary">Ver</a>
-              <a href="/events/<%= event.id %>/edit" class="btn btn-warning">Editar</a>
-              <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow">Eliminar</a>
+              <a href="/events/<%= event.id %>/edit" class="btn btn-warning; background-color:blue">Editar</a>
+              <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i>
+</a>
             </td>
             <td>
               <% ary = Array.new %>
@@ -85,34 +85,36 @@
                 <input type="hidden" id="doctor_name" name="doctor_name" placeholder="Doctor name" class="form-control" value="<%= @medical_relation.doctor.practice_name %>">
                 <input type="hidden" id="age" name="age" placeholder="Age" class="form-control" value="<%= @age %>">
                 <input type="hidden" id="patient_name" name="patient_name" placeholder="" class="form-control" value="<%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %>">
+                <input type="hidden" id="gender" name="gender" placeholder="" class="form-control" value="<%= @medical_relation.patient.gender.capitalize %>">
                 <input type="hidden" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= event.id %>">
+
                 <button class="btn btn-success">
                   Generar Reporte
                 </button>
               </form>
               <% else %>
               <a href="/claims/<%= ary.first %>" class="btn btn-primary">Ver Reporte</a>
-            <% end %>
-          </td>
-
+              <% end %>
             </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
+
+          </td>
+        </tr>
+        <% end %>
+      </table>
     </div>
-
-
-    <div class="btn-group btn-group-justified">
-      <a href="/medical_relations" class="btn btn-primary">
-        Back
-      </a>
-      <!-- <a href="/medical_relations/<%= @medical_relation.id %>/edit" class="btn btn-warning">
-      Edit
-    </a> -->
-    <a href="/delete_medical_relation/<%= @medical_relation.id %>" class="btn btn-danger" rel="nofollow">
-      Delete
-    </a>
   </div>
+
+
+  <div class="btn-group btn-group-justified">
+    <a href="/medical_relations" class="btn btn-primary">
+      Back
+    </a>
+    <!-- <a href="/medical_relations/<%= @medical_relation.id %>/edit" class="btn btn-warning">
+    Edit
+  </a> -->
+  <a href="/delete_medical_relation/<%= @medical_relation.id %>" class="btn btn-danger" rel="nofollow">
+    Delete
+  </a>
+</div>
 </div>
 </div>

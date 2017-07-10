@@ -49,13 +49,16 @@
         </div>
 
         <!-- Panel de Ficha de Identificación -->
+
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Ficha de Identificación</h3>
               </div>
+
               <div class="panel-body">
+
 
                 <!-- Label and input for patient_name -->
                 <div class="form-group col-md-12">
@@ -72,8 +75,21 @@
                     Sexo:
                   </label>
                   <br>
-                  <input type="checkbox" id="gender" name="gender" value="Masculino"> Masculino
-                  <input type="checkbox" id="gender" name="gender" value="Femenino" checked> Femenino
+                  <% if  @claim.gender == "f" %>
+                  <input type="radio" id="gender" name="gender" value="M" > Masculino
+                  <input type="radio" id="gender" name="gender" value="F" checked="checked"> Femenino
+
+                  <% else %>
+                  <input type="radio" id="gender" name="gender" value="M" checked="checked"> Masculino
+                  <input type="radio" id="gender" name="gender" value="F"> Femenino
+                  <% end %>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-4">
+
+                    </div>
+                      </div>
                 </div>
 
                 <!-- Label and input for age -->
