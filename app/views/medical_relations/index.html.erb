@@ -5,7 +5,7 @@
   <title></title>
 </head>
 
-
+<!-- Doctor Sign in -->
 <% if current_doctor != nil %>
 <div class="page-header">
   <!-- doctor online true -->
@@ -39,12 +39,18 @@
     <% end %>
   </table>
 </div>
+
+
+<!-- Patient Sign in -->
+
 <%  elsif current_patient != nil %>
 <!-- patient online -->
 <div class="page-header">
   <!-- doctor online true -->
   <h2><%= current_patient.first_name %>'s Chart</h2>
   <a href="/historial_medico" class="btn btn-primary">Historial Medico</a>
+  <a href="/doctors/index" class="btn btn-primary">Lista de Doctores</a>
+
 </div>
 <div class="row">
 

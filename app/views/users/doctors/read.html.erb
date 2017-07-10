@@ -39,22 +39,23 @@
         </div>
       </div>
       <div >
-        <h3>Doctor's Contact Information</h3>
+        <h3>Información de Contacto</h3>
       </div>
   <dl class="dl-horizontal">
-    <dt>Name</dt>
+    <dt>Nombre</dt>
     <dd><%= @doctor.practice_name%></dd>
-    <dt>Mobile Phone</dt>
+    <dt>Celular</dt>
     <dd><%= @doctor.phone_mobile %></dd>
-    <dt>Office Phone</dt>
+    <dt>Telefono Oficina</dt>
     <dd><%= @doctor.phone_work %></dd>
-    <dt>Address</dt>
+    <dt>Dirección</dt>
     <dd><%= @street_address %></dd>
-    <dt>City</dt>
+    <dt>Ciudad</dt>
     <dd><%= @doctor.city_work %></dd>
 
-  
-      <dt>Map</dt>
+  <% if @street_address != nil %>
+    <!-- true -->
+      <dt>Mapa</dt>
     <dd>
 
       <!-- Code for Google Map -->
@@ -67,6 +68,7 @@
         </iframe>
       </div>
 
+      <% end %>
       <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
       <script>
       var map;

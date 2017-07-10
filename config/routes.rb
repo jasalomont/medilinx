@@ -182,6 +182,9 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
 
     #READ
 
+  get "doctors/index", :controller => "doctors", :action => "index"
   get "doctors/:id", :controller => "doctors", :action => "read"
   get "patients/:id", :controller => "patients", :action => "read"
+
+
 end

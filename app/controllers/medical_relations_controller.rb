@@ -2,8 +2,16 @@ class MedicalRelationsController < ApplicationController
   def index
     @medical_relations = MedicalRelation.all
 
-
-
+    # @filterrific = initialize_filterrific(
+    # MedicalRelation,
+    # params[:filterrific]
+    # ) or return
+    # @medical_relation = @filterrific.find.page(params[:page])
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
 
     render("medical_relations/index.html.erb")
   end

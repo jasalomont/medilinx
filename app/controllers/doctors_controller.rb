@@ -13,5 +13,10 @@ class DoctorsController < ApplicationController
   end
 
 
+  def index
+    @doctors = Doctor.all
+
+    render("users/doctors/index.html.erb")
+  end
 
 end
