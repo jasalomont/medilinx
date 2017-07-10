@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, :keys => [:street_address_work])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:zip_work])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:city_work])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:curp])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:rfc])
 
   end
 

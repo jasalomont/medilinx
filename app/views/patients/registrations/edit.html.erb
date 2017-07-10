@@ -1,140 +1,197 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">
         <!-- <h2 class="panel-title">Editar Información Personal <%= resource_name.to_s.humanize %></h2> -->
-          <h2 class="panel-title">Editar Información Personal </h2>
+        <h2 class="panel-title">Editar Información Personal </h2>
       </div>
 
       <div class="panel-body">
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal", role: "form" }) do |f| %>
-          <%= devise_error_messages! %>
+        <%= devise_error_messages! %>
 
-          <div class="form-group">
-            <%= f.label :email, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.email_field :email, autofocus: true, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.label :email, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="col-sm-2">
-            <label for="first_name" class="control-label">Nombre</label>
+        <div class="form-group">
+          <%= f.label :first_name, "Nombre(s)", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
           </div>
-            <div class="col-sm-10">
-              <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
-            </div>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <div class="col-sm-2">
-            <label for="first_name" class="control-label">Apellido Paterno</label>
-
-          </div>
-            <div class="col-sm-10">
-              <%= f.text_field :last_father, autofocus: true, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-2">
-            <label for="first_name" class="control-label">Apellido Materno</label>
-
-          </div>
-            <div class="col-sm-10">
-              <%= f.text_field :last_mother, autofocus: true, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :genero, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <span class="option">Masculino <span><%= f.radio_button :gender, "m" %></br>
-                <span class="option">Femenino <span><%= f.radio_button :gender, "f" %></br>
-                </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group ">
+              <%= f.label :last_father, "Paterno", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :last_father, autofocus: true, class: "form-control" %>
               </div>
 
-          <div class="form-group">
-            <%= f.label :Celular, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.phone_field :phone_mobile, autofocus: true, class: "form-control" %>
+              <%= f.label :last_mother, "Materno", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :last_mother, autofocus: true, class: "form-control" %>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <%= f.label :Telefono_de_Casa, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.phone_field :phone_home, autofocus: true, class: "form-control" %>
-            </div>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :Fecha_de_Nacimiento, class: "col-sm-2 control-label" %>
-            <div class="col-sm-5">
-              <%= f.date_field :birthdate, autofocus: true, class: "form-control" %>
-            </div>
-            <div class="col-sm-5">
-            (mm/dd/aaaa)
-            </div>
-          </div>
+        <div class="row">
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="col-sm-12">
             <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-2">
+              <%= f.label :gender, "Sexo", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <span class="option">Masculino </span><%= f.radio_button :gender, "m" %></br>
+                <span class="option">Femenino </span><%= f.radio_button :gender, "f" %></br>
+              </div>
+
+              <%= f.label :birthdate, "Fecha de Nacmiento", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4 ">
+                <%= f.date_field :birthdate, autofocus: true, class: "form-control" %>
                 <p class="help-block">
-                  Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+                  (mm/dd/aaaa)
                 </p>
               </div>
             </div>
-          <% end %>
+          </div>
+        </div>
 
-          <div class="panel panel-default">
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :phone_mobile, "Celular", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.phone_field :phone_mobile, autofocus: true, class: "form-control" %>
+              </div>
+
+              <%= f.label :phone_home, "Tel. Casa", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.phone_field :phone_home, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :street_address, "Dirección", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :street_address, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :country, "País", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :country, autofocus: true, class: "form-control" %>
+              </div>
+
+              <%= f.label :state, "Estado", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :state, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :city, "Ciudad", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :phone_mobile, autofocus: true, class: "form-control" %>
+              </div>
+
+              <%= f.label :zipcode, "Código Postal", class: "col-sm-2 control-label" %>
+              <div class="col-sm-4">
+                <%= f.text_field :zipcode, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <%= f.label :curp, "CURP", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :curp, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :RFC, "RFC", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :rfc, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <p class="help-block">
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="panel panel-default">
           <div class="panel-heading">
             <!-- <h2 class="panel-title">Editar Información Personal <%= resource_name.to_s.humanize %></h2> -->
-              <h2 class="panel-title"><b>Cambiar Contraseña?</b> (dejar en blanco si no es necesario)</h2>
+            <h2 class="panel-title"><b>Cambiar Contraseña?</b> (dejar en blanco si no es necesario)</h2>
           </div>
           <div class="panel-body">
 
-          <div class="form-group">
-            <%= f.label :Contraseña, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-              <p class="help-block">
-                <!-- Leave blank if you don't want to change it. -->
-              </p>
+            <div class="form-group">
+              <%= f.label :Contraseña, class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                <p class="help-block">
+                  <!-- Leave blank if you don't want to change it. -->
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <%= f.label :Confirmar_contraseña, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            <div class="form-group">
+              <%= f.label :Confirmar_contraseña, class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+              </div>
             </div>
           </div>
-          </div>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :Contraseña, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-              <p class="help-block">
-                Se requiere ingresar contraseña para confirmar cambios.
-              </p>
-            </div>
+        <div class="form-group">
+          <%= f.label :Contraseña, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+            <p class="help-block">
+              Se requiere ingresar contraseña para confirmar cambios.
+            </p>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-              <%= f.submit "Update", class: "btn btn-success btn-block" %>
-            </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <%= f.submit "Actualizar", class: "btn btn-success btn-block" %>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-              <%= link_to "Back", :back, class: "btn btn-link btn-block" %>
-            </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <%= link_to "Regresar", :back, class: "btn btn-link btn-block" %>
           </div>
+        </div>
         <% end %>
 
       </div>
@@ -142,17 +199,19 @@
       <div class="panel-footer">
         <div class="row">
           <div class="col-sm-2">
-            Unhappy?
+            No estas feliz?
           </div>
 
           <div class="col-sm-10">
-            <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
+            <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas super seguro?" }, method: :delete, class: "btn btn-danger btn-block" %>
           </div>
         </div>
       </div>
 
     </div>
   </div>
+</div>
+</div>
 </div>
 
 
@@ -167,39 +226,39 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="field">
+<%= f.label :email %><br />
+<%= f.email_field :email, autofocus: true %>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+<div class="field">
+<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+<%= f.password_field :password, autocomplete: "off" %>
+<% if @minimum_password_length %>
+<br />
+<em><%= @minimum_password_length %> characters minimum</em>
+<% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<div class="field">
+<%= f.label :password_confirmation %><br />
+<%= f.password_field :password_confirmation, autocomplete: "off" %>
+</div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+<div class="field">
+<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+<%= f.password_field :current_password, autocomplete: "off" %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<div class="actions">
+<%= f.submit "Update" %>
+</div>
 <% end %>
 
 <h3>Cancel my account</h3>
