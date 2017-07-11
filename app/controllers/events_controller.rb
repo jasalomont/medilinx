@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
   def index
+    
     @events = Event.all
+    @q = Event.ransack(params[:q])
+    @events = @q.result
 
     render("events/index.html.erb")
   end
@@ -13,7 +16,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    
+
 
     render("events/new.html.erb")
   end

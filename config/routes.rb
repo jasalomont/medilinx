@@ -95,6 +95,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
 
   # READ
   get "/claims", :controller => "claims", :action => "index"
+  get "/claims/record", :controller => "claims", :action => "record"
   get "/claims/:id", :controller => "claims", :action => "show"
 
   # UPDATE

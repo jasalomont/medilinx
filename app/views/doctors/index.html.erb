@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+</head>
+<body>
+  <div class="page-header">
+    <h3>Doctores</h3>
+  </div>
+
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Buscar Doctor:</h3>
+          </div>
+          <div class="panel-body">
+            <%= search_form_for(@q, url: "/doctors/index", method: :get) do |f| %>
+            <div class="form-group">
+              <%= f.label :practice_name_cont, "Nombre del doctor" %>
+              <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :city_work_cont, "Ubicación (ciudad)" %>
+              <%= f.text_field :city_work_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+            </div>
+
+            <%= f.submit :class => "btn btn-primary btn-block" %>
+            <a href="/doctors/index" class="btn btn-default btn-block">Eliminar Filtros</a>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Ubicación</th>
+                <th></th>
+              </tr>
+
+              <% @doctors.each do |doctor| %>
+              <tr>
+
+                <td><a href="/doctors/<%= doctor.id %>"> <%= doctor.practice_name  %></a></td>
+                <td><%=  %></td>
+                <td><%= doctor.city_work %></td>
+                <td><a href="/doctors/<%= doctor.id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                  <% if current_patient.email == "admin@gmail.com" %>
+                  <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                  <% end %>
+                </td>
+
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Pathological #<%= @pathological.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Patient</dt>
+      <dd><%= @doctor.id %></dd>
+
+      <dt>Disease</dt>
+      <dd><%= @doctor.email %></dd>
+
+      <dt>Start date</dt>
+      <dd><%= @doctor.practice_name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/pathologicals" class="btn btn-primary">
+        Back
+      </a>
+
+      </a>
+    
+      <a href="/delete_doctor/<%= @doctor.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

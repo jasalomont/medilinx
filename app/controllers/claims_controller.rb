@@ -5,6 +5,13 @@ class ClaimsController < ApplicationController
     render("claims/index.html.erb")
   end
 
+  def record
+    @claims = Claim.where("patient_id"=>current_patient.id)
+
+    render("claims/record.html.erb")
+  end
+
+
   def show
     @claim = Claim.find(params[:id])
 
