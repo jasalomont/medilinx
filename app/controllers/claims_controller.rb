@@ -14,6 +14,7 @@ class ClaimsController < ApplicationController
 
   def show
     @claim = Claim.find(params[:id])
+    @pathologicals = Pathological.where("patient_id"=>@claim.patient_id)
 
     render("claims/show.html.erb")
   end
@@ -161,12 +162,20 @@ class ClaimsController < ApplicationController
 
   def edit
     @claim = Claim.find(params[:id])
+    @pathologicals = Pathological.where("patient_id"=>@claim.patient_id)
+    @surgicals = Surgical.where("patient_id"=>@claim.patient_id)
+    @non_pathologicals = NonPathological.where("patient_id"=>@claim.patient_id)
+    @pregnancies = Pregnancy.where("patient_id"=>@claim.patient_id)
+    @other_backgrounds = OtherBackground.where("patient_id"=>@claim.patient_id)
+
 
     render("claims/edit.html.erb")
   end
 
   def update
+
     @claim = Claim.find(params[:id])
+
 
     @claim.doctor_id = params[:doctor_id]
     @claim.patient_id = params[:patient_id]
