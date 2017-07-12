@@ -129,13 +129,25 @@
                   </datalist>
                 </div>
 
+              </div>
+            </div>
+
+            <!-- Panel de Ficha de Historia Clínica -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><input type="checkbox" id="referral_yn" name="referral_yn" value="1" <%= "checked" if @claim.referral_yn %>>
+                    <b>Referido por otro médico o unidad? (Si)</b></h3>
+                  </div>
+                  <div class="panel-body">
+
                 <!-- Label and input for referral_yn --> <!-- Label and input for referral_doctor -->
-                <div class="checkbox col-md-4">
-                  <label for="referral_yn">
-                    <input type="checkbox" id="referral_yn" name="referral_yn" value="1" <%= "checked" if @claim.referral_yn %>>
-                    <b>Referido por otro médico o unidad (Si)</b>
+                <div class="form-group col-md-4">
+                  <label for="referral_doctor" class="control-label">
+                    Nombre Doctor
                   </label>
-                  <input type="text" id="referral_doctor" name="referral_doctor" placeholder="Cuál" class="form-control" value="<%= @claim.referral_doctor %>">
+                  <input type="text" id="referral_doctor" name="referral_doctor" placeholder="Nombre" class="form-control" value="<%= @claim.referral_doctor %>">
                 </div>
 
                 <!-- Label and input for referral_specialty -->
@@ -260,7 +272,7 @@
                     <p> <font color="red"> No hay registros en el perfil del paciente</font></p>
                     <% else %>
                     <% @pregnancies.each do |pregnancy| %>
-                    <table class="table  table-hover">>
+                    <table class="table  table-hover">
 
                       <tr>
                         <td>FUM: </td>
@@ -351,105 +363,107 @@
                   <!-- Label and input for first_symptoms_date -->
                   <div class="row">
 
+                    <div class="form-group col-md-4">
+                      <label for="first_symptoms_date" class="control-label">
+                        Fecha de primeros síntomas del padecimiento
+                      </label>
 
-                  <div class="form-group col-md-4">
-                    <label for="first_symptoms_date" class="control-label">
-                      Fecha de primeros síntomas del padecimiento
-                    </label>
-
-                    <input type="date" id="first_symptoms_date" name="first_symptoms_date" placeholder="First symptoms date" class="form-control" value="<%= @claim.first_symptoms_date %>">
-                  </div>}
+                      <input type="date" id="first_symptoms_date" name="first_symptoms_date" placeholder="First symptoms date" class="form-control" value="<%= @claim.first_symptoms_date %>">
+                    </div>
 
 
-                  <!-- Label and input for first_consultation_date -->
-                  <div class="form-group col-md-4">
-                    <label for="first_consultation_date" class="control-label">
-                      Fecha de primera consulta
-                    </label>
+                    <!-- Label and input for first_consultation_date -->
+                    <div class="form-group col-md-4">
+                      <label for="first_consultation_date" class="control-label">
+                        Fecha de primera consulta
+                      </label>
 
-                    <input type="date" id="first_consultation_date" name="first_consultation_date" placeholder="First consultation date" class="form-control" value="<%= @claim.first_consultation_date %>">
-                  </div>
+                      <input type="date" id="first_consultation_date" name="first_consultation_date" placeholder="First consultation date" class="form-control" value="<%= @claim.first_consultation_date %>">
+                    </div>
 
-                  <!-- Label and input for diagnose_date -->
-                  <div class="form-group col-md-4">
-                    <label for="diagnose_date" class="control-label">
-                      Fecha de diagnóstico de este padecimiento
-                    </label>
+                    <!-- Label and input for diagnose_date -->
+                    <div class="form-group col-md-4">
+                      <label for="diagnose_date" class="control-label">
+                        Fecha de diagnóstico de este padecimiento
+                      </label>
 
-                    <input type="date" id="diagnose_date" name="diagnose_date" placeholder="Diagnose date" class="form-control" value="<%= @claim.diagnose_date %>">
-                  </div>
+                      <input type="date" id="diagnose_date" name="diagnose_date" placeholder="Diagnose date" class="form-control" value="<%= @claim.diagnose_date %>">
+                    </div>
                   </div>
 
                   <!-- Label and input for definite_diagnose -->
-                  <div class="form-group col-md-8">
-                    <label for="definite_diagnose" class="control-label">
-                      Diagnóstico (s)
-                    </label>
+                  <div class="row">
+                    <div class="form-group col-md-8">
+                      <label for="definite_diagnose" class="control-label">
+                        DIAGNÓSTICO(S)
+                      </label>
 
-                    <input type="text" id="definite_diagnose" name="definite_diagnose" placeholder="Definite diagnose" class="form-control" value="<%= @claim.definite_diagnose %>">
+                      <input type="text" id="definite_diagnose" name="definite_diagnose" placeholder="Definite diagnose" class="form-control" value="<%= @claim.definite_diagnose %>">
+                    </div>
+
+                    <!-- Label and input for cie_10 -->
+                    <div class="form-group col-md-4">
+                      <label for="cie_10" class="control-label">
+                        Cie 10
+                      </label>
+
+                      <input type="text" id="cie_10" name="cie_10" placeholder="Cie 10" class="form-control" value="<%= @claim.cie_10 %>">
+                    </div>
                   </div>
-
-                  <!-- Label and input for cie_10 -->
-                  <div class="form-group col-md-4">
-                    <label for="cie_10" class="control-label">
-                      Cie 10
-                    </label>
-
-                    <input type="text" id="cie_10" name="cie_10" placeholder="Cie 10" class="form-control" value="<%= @claim.cie_10 %>">
-                  </div>
-
-                  <!-- Label and input for disease_type -->
-                  <div class="form-group">
-                    <label for="disease_type" class="control-label">
-                      Disease type
-                    </label>
-
-                    <input type="text" id="disease_type" name="disease_type" placeholder="Disease type" class="form-control" value="<%= @claim.disease_type %>">
-                  </div>
-
-                  <!-- Label and input for relation_other_disease_yn -->
-                  <div class="checkbox">
-                    <label for="relation_other_disease_yn">
-                      <input type="checkbox" id="relation_other_disease_yn" name="relation_other_disease_yn" value="1" <%= "checked" if @claim.relation_other_disease_yn %>>
-                      Relation other disease yn
-                    </label>
-                  </div>
-
-                  <!-- Label and input for relation_other_disease -->
-                  <div class="form-group">
-                    <label for="relation_other_disease" class="control-label">
-                      Relation other disease
-                    </label>
-
-                    <input type="text" id="relation_other_disease" name="relation_other_disease" placeholder="Relation other disease" class="form-control" value="<%= @claim.relation_other_disease %>">
-                  </div>
-
-
 
                   <!-- Label and input for disease_cause -->
                   <div class="form-group">
                     <label for="disease_cause" class="control-label">
-                      Disease cause
+                      CAUSA / ETIOLOGÍA DEL PADECIMIENTO
                     </label>
 
                     <input type="text" id="disease_cause" name="disease_cause" placeholder="Disease cause" class="form-control" value="<%= @claim.disease_cause %>">
                   </div>
 
-                  <!-- Label and input for origin_primary_yn -->
-                  <div class="checkbox">
-                    <label for="origin_primary_yn">
-                      <input type="checkbox" id="origin_primary_yn" name="origin_primary_yn" value="1" <%= "checked" if @claim.origin_primary_yn %>>
-                      Origin primary yn
+                  <!-- Label and input for disease_type -->
+                  <div class="form-group">
+                    <label for="disease_type" class="control-label">
+                      Tipo de padecimiento:
                     </label>
+                    <input type="radio" id="disease_type" name="disease_type" value="Congenito" > Congénito
+                    <input type="radio" id="disease_type" name="disease_type" value="Adquirido" > Adquirido
+                    <input type="radio" id="disease_type" name="disease_type" value="Agudo" > Agudo
+                    <input type="radio" id="disease_type" name="disease_type" value="Cronico" > Crónico
+
                   </div>
 
-                  <!-- Label and input for origin_primary_type -->
-                  <div class="form-group">
-                    <label for="origin_primary_type" class="control-label">
-                      Origin primary type
-                    </label>
+                  <!-- Label and input for relation_other_disease_yn -->
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="form-group">
+                        <label for="relation_other_disease_yn" class="control-label">
+                          Se ha relacionado con algún otro padecimiento, enfermedad o accidente: Si
+                        </label>
+                        <input type="checkbox" id="relation_other_disease_yn" name="relation_other_disease_yn" value="1" <%= "checked" if @claim.relation_other_disease_yn %>>
+                        <input type="text" id="relation_other_disease" name="relation_other_disease" placeholder="¿Cuál?" class="form-control" value="<%= @claim.relation_other_disease %>">
+                      </div>
+                    </div>
 
-                    <input type="text" id="origin_primary_type" name="origin_primary_type" placeholder="Origin primary type" class="form-control" value="<%= @claim.origin_primary_type %>">
+
+
+                  <!-- Label and input for origin_primary_yn -->
+
+
+                    <div class="form-group col-md-6">
+                      <div class="form-group">
+                        <label for="origin_primary_yn">
+                          ¿El origen del padecimiento es primario? Si
+                        </label>
+                        <input type="checkbox" id="origin_primary_yn" name="origin_primary_yn" value="1" <%= "checked" if @claim.origin_primary_yn %>>
+                        <br>
+                        <input type="text" id="origin_primary_type" name="origin_primary_type" placeholder="¿Cuál?" class="form-control" value="<%= @claim.origin_primary_type %>">
+                        <!-- Label and input for origin_primary_type -->
+                        <!-- <input type="radio" id="origin_primary_type" name="origin_primary_type" value="Parcial" > Parcial
+                        <input type="radio" id="origin_primary_type" name="origin_primary_type" value="Total"> Total
+                        <input type="radio" id="origin_primary_type" name="origin_primary_type" value="NA"> NA -->
+
+                      </div>
+                    </div>
                   </div>
 
                   <!-- Label and input for lab_tests -->

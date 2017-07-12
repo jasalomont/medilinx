@@ -24,7 +24,11 @@
         <div class="panel-body">
           <h5> <font color="black">Nombre:</font> <%= current_patient.first_name %> <%= current_patient.last_father %> <%= current_patient.last_mother %></h5>
           <p></p>
-          <h5><font color="black">Fecha de Nacimiento:</font> <%= current_patient.birthdate.strftime("%B")  %> <%= current_patient.birthdate.month%>, <%= current_patient.birthdate.year %> </h5>
+          <h5><font color="black">Fecha de Nacimiento:</font>
+<% if current_patient.birthdate != nil %>
+  <%= current_patient.birthdate.strftime("%B")  %> <%= current_patient.birthdate.month%>, <%= current_patient.birthdate.year %> </h5>
+<% end %>
+
         </div>
       </div>
     </div>
