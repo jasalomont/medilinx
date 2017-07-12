@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705224642) do
+ActiveRecord::Schema.define(version: 20170712184514) do
 
   create_table "claims", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20170705224642) do
     t.boolean  "origin_primary_yn"
     t.string   "origin_primary_type"
     t.string   "lab_tests"
-    t.integer  "waiste_size"
-    t.integer  "weight"
-    t.integer  "pressure"
+    t.float    "waiste_size"
+    t.float    "weight"
+    t.float    "pressure"
     t.string   "physical_exploration_details"
     t.string   "lab_studies_results"
     t.string   "form_accountable_name"

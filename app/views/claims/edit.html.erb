@@ -44,9 +44,19 @@
 
         <!-- Label and input for doctor_name -->
         <div class="form-group col-md-offset-2 col-md-5">
-
           <input type="text" id="doctor_name" name="doctor_name" placeholder="Doctor*" class="form-control" value="<%= @claim.doctor_name %>">
         </div>
+
+        <!-- Label and input for insurance_name -->
+        <div class="form-group col-md-5">
+            <input type="text" id="insurance_name" name="insurance_name" placeholder="Nombre de Aseguradora*" class="form-control" value="<%= @claim.insurance_name %>">
+        </div>
+
+        <!-- Label and input for insurance_id -->
+        <div class="form-group">
+                <input type="hidden" id="insurance_id" name="insurance_id" placeholder="Insurance" class="form-control" value="<%= @claim.insurance_id %>">
+        </div>
+
 
         <!-- Panel de Ficha de Identificación -->
 
@@ -357,7 +367,7 @@
                           Favor de especificar evolución y estado actual del parecimiento:
                         </label>
 
-                        <input type="text" id="evolution" name="evolution" placeholder="Evolution" class="form-control" value="<%= @claim.evolution %>">
+                        <input type="text" id="evolution" name="evolution" placeholder="Evolución" class="form-control" value="<%= @claim.evolution %>">
                       </div>
 
                       <!-- Label and input for first_symptoms_date -->
@@ -417,7 +427,7 @@
                           CAUSA / ETIOLOGÍA DEL PADECIMIENTO
                         </label>
 
-                        <input type="text" id="disease_cause" name="disease_cause" placeholder="Disease cause" class="form-control" value="<%= @claim.disease_cause %>">
+                        <input type="text" id="disease_cause" name="disease_cause" placeholder="Causa" class="form-control" value="<%= @claim.disease_cause %>">
                       </div>
 
                       <!-- Label and input for disease_type -->
@@ -525,808 +535,368 @@
                             <!-- Label and input for pressure -->
                             <div class="form-group col-md-4">
                               <label for="pressure" class="control-label">
-                                Pressure
+                                Presión (mm/HG)
                               </label>
 
-                              <input type="text" id="pressure" name="pressure" placeholder="Pressure" class="form-control" value="<%= @claim.pressure %>">
+                              <input type="float" id="pressure" name="pressure" placeholder="mm/HG" class="form-control" value="<%= @claim.pressure %>">
                             </div>
+                          </div>
+
+                          <!-- Label and input for physical_exploration_details -->
+                          <div class="form-group">
+                            <label for="physical_exploration_details" class="control-label">
+                              Señale los datos relevantes de la exploración física:                              </label>
+
+                              <input type="text" id="physical_exploration_details" name="physical_exploration_details" placeholder="" class="form-control" value="<%= @claim.physical_exploration_details %>">
                             </div>
 
                             <!-- Label and input for lab_tests -->
                             <div class="form-group">
                               <label for="lab_tests" class="control-label">
-                                Lab tests
+                                Examenes realizados
                               </label>
 
-                              <input type="text" id="lab_tests" name="lab_tests" placeholder="Lab tests" class="form-control" value="<%= @claim.lab_tests %>">
+                              <input type="text" id="lab_tests" name="lab_tests" placeholder="" class="form-control" value="<%= @claim.lab_tests %>">
                             </div>
 
-                            <!-- Label and input for waiste_size -->
 
-                            <!-- Label and input for physical_exploration_details -->
-                            <div class="form-group">
-                              <label for="physical_exploration_details" class="control-label">
-                                Physical exploration details
-                              </label>
-
-                              <input type="text" id="physical_exploration_details" name="physical_exploration_details" placeholder="Physical exploration details" class="form-control" value="<%= @claim.physical_exploration_details %>">
-                            </div>
 
                             <!-- Label and input for lab_studies_results -->
                             <div class="form-group">
                               <label for="lab_studies_results" class="control-label">
-                                Lab studies results
+                                Señale los resultados de exámenes de laboratorio, gabinete, imagenología u otros, que sustenten el diagnóstico
                               </label>
 
-                              <input type="text" id="lab_studies_results" name="lab_studies_results" placeholder="Lab studies results" class="form-control" value="<%= @claim.lab_studies_results %>">
+                              <input type="text" id="lab_studies_results" name="lab_studies_results" placeholder="" class="form-control" value="<%= @claim.lab_studies_results %>">
                             </div>
-
-                            <!-- Label and input for form_accountable_name -->
-                            <div class="form-group">
-                              <label for="form_accountable_name" class="control-label">
-                                Form accountable name
-                              </label>
-
-                              <input type="text" id="form_accountable_name" name="form_accountable_name" placeholder="Form accountable name" class="form-control" value="<%= @claim.form_accountable_name %>">
-                            </div>
-
-                            <!-- Label and input for form_accountable_address -->
-                            <div class="form-group">
-                              <label for="form_accountable_address" class="control-label">
-                                Form accountable address
-                              </label>
-
-                              <input type="text" id="form_accountable_address" name="form_accountable_address" placeholder="Form accountable address" class="form-control" value="<%= @claim.form_accountable_address %>">
-                            </div>
-
-                            <!-- Label and input for purpose -->
-                            <div class="form-group">
-                              <label for="purpose" class="control-label">
-                                Purpose
-                              </label>
-
-                              <input type="text" id="purpose" name="purpose" placeholder="Purpose" class="form-control" value="<%= @claim.purpose %>">
-                            </div>
-
-                            <!-- Label and input for data_signature -->
-                            <div class="form-group">
-                              <label for="data_signature" class="control-label">
-                                Data signature
-                              </label>
-
-                              <input type="text" id="data_signature" name="data_signature" placeholder="Data signature" class="form-control" value="<%= @claim.data_signature %>">
-                            </div>
-
-
-
-
-
-                            <!-- Label and input for cpt_4 -->
-                            <div class="form-group">
-                              <label for="cpt_4" class="control-label">
-                                Cpt 4
-                              </label>
-
-                              <input type="text" id="cpt_4" name="cpt_4" placeholder="Cpt 4" class="form-control" value="<%= @claim.cpt_4 %>">
-                            </div>
-
-                            <!-- Label and input for tx_start -->
-                            <div class="form-group">
-                              <label for="tx_start" class="control-label">
-                                Tx start
-                              </label>
-
-                              <input type="text" id="tx_start" name="tx_start" placeholder="Tx start" class="form-control" value="<%= @claim.tx_start %>">
-                            </div>
-
-                            <!-- Label and input for medicine_name -->
-                            <div class="form-group">
-                              <label for="medicine_name" class="control-label">
-                                Medicine name
-                              </label>
-
-                              <input type="text" id="medicine_name" name="medicine_name" placeholder="Medicine name" class="form-control" value="<%= @claim.medicine_name %>">
-                            </div>
-
-                            <!-- Label and input for medicine_dose -->
-                            <div class="form-group">
-                              <label for="medicine_dose" class="control-label">
-                                Medicine dose
-                              </label>
-
-                              <input type="text" id="medicine_dose" name="medicine_dose" placeholder="Medicine dose" class="form-control" value="<%= @claim.medicine_dose %>">
-                            </div>
-
-                            <!-- Label and input for medicine_duration_number -->
-                            <div class="form-group">
-                              <label for="medicine_duration_number" class="control-label">
-                                Medicine duration number
-                              </label>
-
-                              <input type="text" id="medicine_duration_number" name="medicine_duration_number" placeholder="Medicine duration number" class="form-control" value="<%= @claim.medicine_duration_number %>">
-                            </div>
-
-                            <!-- Label and input for medicine_duration_type -->
-                            <div class="form-group">
-                              <label for="medicine_duration_type" class="control-label">
-                                Medicine duration type
-                              </label>
-
-                              <input type="text" id="medicine_duration_type" name="medicine_duration_type" placeholder="Medicine duration type" class="form-control" value="<%= @claim.medicine_duration_type %>">
-                            </div>
-
-                            <!-- Label and input for tx_other_name -->
-                            <div class="form-group">
-                              <label for="tx_other_name" class="control-label">
-                                Tx other name
-                              </label>
-
-                              <input type="text" id="tx_other_name" name="tx_other_name" placeholder="Tx other name" class="form-control" value="<%= @claim.tx_other_name %>">
-                            </div>
-
-                            <!-- Label and input for tx_other_justification -->
-                            <div class="form-group">
-                              <label for="tx_other_justification" class="control-label">
-                                Tx other justification
-                              </label>
-
-                              <input type="text" id="tx_other_justification" name="tx_other_justification" placeholder="Tx other justification" class="form-control" value="<%= @claim.tx_other_justification %>">
-                            </div>
-
-                            <!-- Label and input for tx_other_days -->
-                            <div class="form-group">
-                              <label for="tx_other_days" class="control-label">
-                                Tx other days
-                              </label>
-
-                              <input type="text" id="tx_other_days" name="tx_other_days" placeholder="Tx other days" class="form-control" value="<%= @claim.tx_other_days %>">
-                            </div>
-
-                            <!-- Label and input for tx_other_sessions -->
-                            <div class="form-group">
-                              <label for="tx_other_sessions" class="control-label">
-                                Tx other sessions
-                              </label>
-
-                              <input type="text" id="tx_other_sessions" name="tx_other_sessions" placeholder="Tx other sessions" class="form-control" value="<%= @claim.tx_other_sessions %>">
-                            </div>
-
-                            <!-- Label and input for chemo_type -->
-                            <div class="form-group">
-                              <label for="chemo_type" class="control-label">
-                                Chemo type
-                              </label>
-
-                              <input type="text" id="chemo_type" name="chemo_type" placeholder="Chemo type" class="form-control" value="<%= @claim.chemo_type %>">
-                            </div>
-
-                            <!-- Label and input for chemo_sessions -->
-                            <div class="form-group">
-                              <label for="chemo_sessions" class="control-label">
-                                Chemo sessions
-                              </label>
-
-                              <input type="text" id="chemo_sessions" name="chemo_sessions" placeholder="Chemo sessions" class="form-control" value="<%= @claim.chemo_sessions %>">
-                            </div>
-
-                            <!-- Label and input for chemo_dose -->
-                            <div class="form-group">
-                              <label for="chemo_dose" class="control-label">
-                                Chemo dose
-                              </label>
-
-                              <input type="text" id="chemo_dose" name="chemo_dose" placeholder="Chemo dose" class="form-control" value="<%= @claim.chemo_dose %>">
-                            </div>
-
-                            <!-- Label and input for chemo_intervals -->
-                            <div class="form-group">
-                              <label for="chemo_intervals" class="control-label">
-                                Chemo intervals
-                              </label>
-
-                              <input type="text" id="chemo_intervals" name="chemo_intervals" placeholder="Chemo intervals" class="form-control" value="<%= @claim.chemo_intervals %>">
-                            </div>
-
-                            <!-- Label and input for physical_rehab_days -->
-                            <div class="form-group">
-                              <label for="physical_rehab_days" class="control-label">
-                                Physical rehab days
-                              </label>
-
-                              <input type="text" id="physical_rehab_days" name="physical_rehab_days" placeholder="Physical rehab days" class="form-control" value="<%= @claim.physical_rehab_days %>">
-                            </div>
-
-                            <!-- Label and input for physical_rehab_sessions -->
-                            <div class="form-group">
-                              <label for="physical_rehab_sessions" class="control-label">
-                                Physical rehab sessions
-                              </label>
-
-                              <input type="text" id="physical_rehab_sessions" name="physical_rehab_sessions" placeholder="Physical rehab sessions" class="form-control" value="<%= @claim.physical_rehab_sessions %>">
-                            </div>
-
-                            <!-- Label and input for nursing_days -->
-                            <div class="form-group">
-                              <label for="nursing_days" class="control-label">
-                                Nursing days
-                              </label>
-
-                              <input type="text" id="nursing_days" name="nursing_days" placeholder="Nursing days" class="form-control" value="<%= @claim.nursing_days %>">
-                            </div>
-
-                            <!-- Label and input for nursing_hpd -->
-                            <div class="form-group">
-                              <label for="nursing_hpd" class="control-label">
-                                Nursing hpd
-                              </label>
-
-                              <input type="text" id="nursing_hpd" name="nursing_hpd" placeholder="Nursing hpd" class="form-control" value="<%= @claim.nursing_hpd %>">
-                            </div>
-
-                            <!-- Label and input for nursing_morning -->
-                            <div class="checkbox">
-                              <label for="nursing_morning">
-                                <input type="checkbox" id="nursing_morning" name="nursing_morning" value="1" <%= "checked" if @claim.nursing_morning %>>
-                                Nursing morning
-                              </label>
-                            </div>
-
-                            <!-- Label and input for nursing_evening -->
-                            <div class="checkbox">
-                              <label for="nursing_evening">
-                                <input type="checkbox" id="nursing_evening" name="nursing_evening" value="1" <%= "checked" if @claim.nursing_evening %>>
-                                Nursing evening
-                              </label>
-                            </div>
-
-                            <!-- Label and input for nursing_night -->
-                            <div class="checkbox">
-                              <label for="nursing_night">
-                                <input type="checkbox" id="nursing_night" name="nursing_night" value="1" <%= "checked" if @claim.nursing_night %>>
-                                Nursing night
-                              </label>
-                            </div>
-
-                            <!-- Label and input for nursing_24 -->
-                            <div class="checkbox">
-                              <label for="nursing_24">
-                                <input type="checkbox" id="nursing_24" name="nursing_24" value="1" <%= "checked" if @claim.nursing_24 %>>
-                                Nursing 24
-                              </label>
-                            </div>
-
-                            <!-- Label and input for tx_observations -->
-                            <div class="form-group">
-                              <label for="tx_observations" class="control-label">
-                                Tx observations
-                              </label>
-
-                              <input type="text" id="tx_observations" name="tx_observations" placeholder="Tx observations" class="form-control" value="<%= @claim.tx_observations %>">
-                            </div>
-
-                            <!-- Label and input for technique_description -->
-                            <div class="form-group">
-                              <label for="technique_description" class="control-label">
-                                Technique description
-                              </label>
-
-                              <input type="text" id="technique_description" name="technique_description" placeholder="Technique description" class="form-control" value="<%= @claim.technique_description %>">
-                            </div>
-
-                            <!-- Label and input for special_equipment_yn -->
-                            <div class="checkbox">
-                              <label for="special_equipment_yn">
-                                <input type="checkbox" id="special_equipment_yn" name="special_equipment_yn" value="1" <%= "checked" if @claim.special_equipment_yn %>>
-                                Special equipment yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for special_equipment_detail -->
-                            <div class="form-group">
-                              <label for="special_equipment_detail" class="control-label">
-                                Special equipment detail
-                              </label>
-
-                              <input type="text" id="special_equipment_detail" name="special_equipment_detail" placeholder="Special equipment detail" class="form-control" value="<%= @claim.special_equipment_detail %>">
-                            </div>
-
-                            <!-- Label and input for procedure_mat_yn -->
-                            <div class="checkbox">
-                              <label for="procedure_mat_yn">
-                                <input type="checkbox" id="procedure_mat_yn" name="procedure_mat_yn" value="1" <%= "checked" if @claim.procedure_mat_yn %>>
-                                Procedure mat yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for procedure_mat_detail -->
-                            <div class="form-group">
-                              <label for="procedure_mat_detail" class="control-label">
-                                Procedure mat detail
-                              </label>
-
-                              <input type="text" id="procedure_mat_detail" name="procedure_mat_detail" placeholder="Procedure mat detail" class="form-control" value="<%= @claim.procedure_mat_detail %>">
-                            </div>
-
-                            <!-- Label and input for procedure_mat_complications_yn -->
-                            <div class="checkbox">
-                              <label for="procedure_mat_complications_yn">
-                                <input type="checkbox" id="procedure_mat_complications_yn" name="procedure_mat_complications_yn" value="1" <%= "checked" if @claim.procedure_mat_complications_yn %>>
-                                Procedure mat complications yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for procedure_mat_complications_describe -->
-                            <div class="form-group">
-                              <label for="procedure_mat_complications_describe" class="control-label">
-                                Procedure mat complications describe
-                              </label>
-
-                              <input type="text" id="procedure_mat_complications_describe" name="procedure_mat_complications_describe" placeholder="Procedure mat complications describe" class="form-control" value="<%= @claim.procedure_mat_complications_describe %>">
-                            </div>
-
-                            <!-- Label and input for list_other_doctors -->
-                            <div class="form-group">
-                              <label for="list_other_doctors" class="control-label">
-                                List other doctors
-                              </label>
-
-                              <input type="text" id="list_other_doctors" name="list_other_doctors" placeholder="List other doctors" class="form-control" value="<%= @claim.list_other_doctors %>">
-                            </div>
-
-                            <!-- Label and input for claim_staff_id -->
-                            <div class="form-group">
-                              <label for="claim_staff_id" class="control-label">
-                                Claim staff
-                              </label>
-
-                              <input type="text" id="claim_staff_id" name="claim_staff_id" placeholder="Claim staff" class="form-control" value="<%= @claim.claim_staff_id %>">
-                            </div>
-
-                            <!-- Label and input for inter_consultation_name -->
-                            <div class="form-group">
-                              <label for="inter_consultation_name" class="control-label">
-                                Inter consultation name
-                              </label>
-
-                              <input type="text" id="inter_consultation_name" name="inter_consultation_name" placeholder="Inter consultation name" class="form-control" value="<%= @claim.inter_consultation_name %>">
-                            </div>
-
-                            <!-- Label and input for inter_consultation_specialty -->
-                            <div class="form-group">
-                              <label for="inter_consultation_specialty" class="control-label">
-                                Inter consultation specialty
-                              </label>
-
-                              <input type="text" id="inter_consultation_specialty" name="inter_consultation_specialty" placeholder="Inter consultation specialty" class="form-control" value="<%= @claim.inter_consultation_specialty %>">
-                            </div>
-
-                            <!-- Label and input for inter_consultation_network_yn -->
-                            <div class="checkbox">
-                              <label for="inter_consultation_network_yn">
-                                <input type="checkbox" id="inter_consultation_network_yn" name="inter_consultation_network_yn" value="1" <%= "checked" if @claim.inter_consultation_network_yn %>>
-                                Inter consultation network yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for inter_consultation_dates -->
-                            <div class="form-group">
-                              <label for="inter_consultation_dates" class="control-label">
-                                Inter consultation dates
-                              </label>
-
-                              <input type="text" id="inter_consultation_dates" name="inter_consultation_dates" placeholder="Inter consultation dates" class="form-control" value="<%= @claim.inter_consultation_dates %>">
-                            </div>
-
-                            <!-- Label and input for inter_consultation_description -->
-                            <div class="form-group">
-                              <label for="inter_consultation_description" class="control-label">
-                                Inter consultation description
-                              </label>
-
-                              <input type="text" id="inter_consultation_description" name="inter_consultation_description" placeholder="Inter consultation description" class="form-control" value="<%= @claim.inter_consultation_description %>">
-                            </div>
-
-                            <!-- Label and input for other_tx_other_doctor_yn -->
-                            <div class="checkbox">
-                              <label for="other_tx_other_doctor_yn">
-                                <input type="checkbox" id="other_tx_other_doctor_yn" name="other_tx_other_doctor_yn" value="1" <%= "checked" if @claim.other_tx_other_doctor_yn %>>
-                                Other tx other doctor yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for other_tx_other_doctor_name -->
-                            <div class="form-group">
-                              <label for="other_tx_other_doctor_name" class="control-label">
-                                Other tx other doctor name
-                              </label>
-
-                              <input type="text" id="other_tx_other_doctor_name" name="other_tx_other_doctor_name" placeholder="Other tx other doctor name" class="form-control" value="<%= @claim.other_tx_other_doctor_name %>">
-                            </div>
-
-                            <!-- Label and input for other_tx_other_doctor_specialty -->
-                            <div class="form-group">
-                              <label for="other_tx_other_doctor_specialty" class="control-label">
-                                Other tx other doctor specialty
-                              </label>
-
-                              <input type="text" id="other_tx_other_doctor_specialty" name="other_tx_other_doctor_specialty" placeholder="Other tx other doctor specialty" class="form-control" value="<%= @claim.other_tx_other_doctor_specialty %>">
-                            </div>
-
-                            <!-- Label and input for patient_current_status -->
-                            <div class="form-group">
-                              <label for="patient_current_status" class="control-label">
-                                Patient current status
-                              </label>
-
-                              <input type="text" id="patient_current_status" name="patient_current_status" placeholder="Patient current status" class="form-control" value="<%= @claim.patient_current_status %>">
-                            </div>
-
-                            <!-- Label and input for tx_continues_yn -->
-                            <div class="checkbox">
-                              <label for="tx_continues_yn">
-                                <input type="checkbox" id="tx_continues_yn" name="tx_continues_yn" value="1" <%= "checked" if @claim.tx_continues_yn %>>
-                                Tx continues yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for tx_continues_type -->
-                            <div class="form-group">
-                              <label for="tx_continues_type" class="control-label">
-                                Tx continues type
-                              </label>
-
-                              <input type="text" id="tx_continues_type" name="tx_continues_type" placeholder="Tx continues type" class="form-control" value="<%= @claim.tx_continues_type %>">
-                            </div>
-
-                            <!-- Label and input for tx_continues_duration -->
-                            <div class="form-group">
-                              <label for="tx_continues_duration" class="control-label">
-                                Tx continues duration
-                              </label>
-
-                              <input type="text" id="tx_continues_duration" name="tx_continues_duration" placeholder="Tx continues duration" class="form-control" value="<%= @claim.tx_continues_duration %>">
-                            </div>
-
-                            <!-- Label and input for tx_continues_doctors -->
-                            <div class="form-group">
-                              <label for="tx_continues_doctors" class="control-label">
-                                Tx continues doctors
-                              </label>
-
-                              <input type="text" id="tx_continues_doctors" name="tx_continues_doctors" placeholder="Tx continues doctors" class="form-control" value="<%= @claim.tx_continues_doctors %>">
-                            </div>
-
-                            <!-- Label and input for accident_description -->
-                            <div class="form-group">
-                              <label for="accident_description" class="control-label">
-                                Accident description
-                              </label>
-
-                              <input type="text" id="accident_description" name="accident_description" placeholder="Accident description" class="form-control" value="<%= @claim.accident_description %>">
-                            </div>
-
-                            <!-- Label and input for discharge_date -->
-                            <div class="form-group">
-                              <label for="discharge_date" class="control-label">
-                                Discharge date
-                              </label>
-
-                              <input type="text" id="discharge_date" name="discharge_date" placeholder="Discharge date" class="form-control" value="<%= @claim.discharge_date %>">
-                            </div>
-
-                            <!-- Label and input for hospital_name -->
-                            <div class="form-group">
-                              <label for="hospital_name" class="control-label">
-                                Hospital name
-                              </label>
-
-                              <input type="text" id="hospital_name" name="hospital_name" placeholder="Hospital name" class="form-control" value="<%= @claim.hospital_name %>">
-                            </div>
-
-                            <!-- Label and input for hospital_city -->
-                            <div class="form-group">
-                              <label for="hospital_city" class="control-label">
-                                Hospital city
-                              </label>
-
-                              <input type="text" id="hospital_city" name="hospital_city" placeholder="Hospital city" class="form-control" value="<%= @claim.hospital_city %>">
-                            </div>
-
-                            <!-- Label and input for hospital_stay_type -->
-                            <div class="form-group">
-                              <label for="hospital_stay_type" class="control-label">
-                                Hospital stay type
-                              </label>
-
-                              <input type="text" id="hospital_stay_type" name="hospital_stay_type" placeholder="Hospital stay type" class="form-control" value="<%= @claim.hospital_stay_type %>">
-                            </div>
-
-                            <!-- Label and input for surgery_performed -->
-                            <div class="form-group">
-                              <label for="surgery_performed" class="control-label">
-                                Surgery performed
-                              </label>
-
-                              <input type="text" id="surgery_performed" name="surgery_performed" placeholder="Surgery performed" class="form-control" value="<%= @claim.surgery_performed %>">
-                            </div>
-
-                            <!-- Label and input for findings -->
-                            <div class="form-group">
-                              <label for="findings" class="control-label">
-                                Findings
-                              </label>
-
-                              <input type="text" id="findings" name="findings" placeholder="Findings" class="form-control" value="<%= @claim.findings %>">
-                            </div>
-
-                            <!-- Label and input for hospital_admission_date -->
-                            <div class="form-group">
-                              <label for="hospital_admission_date" class="control-label">
-                                Hospital admission date
-                              </label>
-
-                              <input type="text" id="hospital_admission_date" name="hospital_admission_date" placeholder="Hospital admission date" class="form-control" value="<%= @claim.hospital_admission_date %>">
-                            </div>
-
-                            <!-- Label and input for surgery_admission_date -->
-                            <div class="form-group">
-                              <label for="surgery_admission_date" class="control-label">
-                                Surgery admission date
-                              </label>
-
-                              <input type="text" id="surgery_admission_date" name="surgery_admission_date" placeholder="Surgery admission date" class="form-control" value="<%= @claim.surgery_admission_date %>">
-                            </div>
-
-                            <!-- Label and input for hospital_discharge_date -->
-                            <div class="form-group">
-                              <label for="hospital_discharge_date" class="control-label">
-                                Hospital discharge date
-                              </label>
-
-                              <input type="text" id="hospital_discharge_date" name="hospital_discharge_date" placeholder="Hospital discharge date" class="form-control" value="<%= @claim.hospital_discharge_date %>">
-                            </div>
-
-
-
-                            <!-- Label and input for biopsy_yn -->
-                            <div class="checkbox">
-                              <label for="biopsy_yn">
-                                <input type="checkbox" id="biopsy_yn" name="biopsy_yn" value="1" <%= "checked" if @claim.biopsy_yn %>>
-                                Biopsy yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for doctor_specialty -->
-                            <div class="form-group">
-                              <label for="doctor_specialty" class="control-label">
-                                Doctor specialty
-                              </label>
-
-                              <input type="text" id="doctor_specialty" name="doctor_specialty" placeholder="Doctor specialty" class="form-control" value="<%= @claim.doctor_specialty %>">
-                            </div>
-
-                            <!-- Label and input for doctor_address -->
-                            <div class="form-group">
-                              <label for="doctor_address" class="control-label">
-                                Doctor address
-                              </label>
-
-                              <input type="text" id="doctor_address" name="doctor_address" placeholder="Doctor address" class="form-control" value="<%= @claim.doctor_address %>">
-                            </div>
-
-                            <!-- Label and input for doctor_cedula_pro -->
-                            <div class="form-group">
-                              <label for="doctor_cedula_pro" class="control-label">
-                                Doctor cedula pro
-                              </label>
-
-                              <input type="text" id="doctor_cedula_pro" name="doctor_cedula_pro" placeholder="Doctor cedula pro" class="form-control" value="<%= @claim.doctor_cedula_pro %>">
-                            </div>
-
-                            <!-- Label and input for doctor_cedula_esp -->
-                            <div class="form-group">
-                              <label for="doctor_cedula_esp" class="control-label">
-                                Doctor cedula esp
-                              </label>
-
-                              <input type="text" id="doctor_cedula_esp" name="doctor_cedula_esp" placeholder="Doctor cedula esp" class="form-control" value="<%= @claim.doctor_cedula_esp %>">
-                            </div>
-
-                            <!-- Label and input for doctor_rfc -->
-                            <div class="form-group">
-                              <label for="doctor_rfc" class="control-label">
-                                Doctor rfc
-                              </label>
-
-                              <input type="text" id="doctor_rfc" name="doctor_rfc" placeholder="Doctor rfc" class="form-control" value="<%= @claim.doctor_rfc %>">
-                            </div>
-
-                            <!-- Label and input for doctor_phone -->
-                            <div class="form-group">
-                              <label for="doctor_phone" class="control-label">
-                                Doctor phone
-                              </label>
-
-                              <input type="text" id="doctor_phone" name="doctor_phone" placeholder="Doctor phone" class="form-control" value="<%= @claim.doctor_phone %>">
-                            </div>
-
-                            <!-- Label and input for doctor_email -->
-                            <div class="form-group">
-                              <label for="doctor_email" class="control-label">
-                                Doctor email
-                              </label>
-
-                              <input type="text" id="doctor_email" name="doctor_email" placeholder="Doctor email" class="form-control" value="<%= @claim.doctor_email %>">
-                            </div>
-
-                            <!-- Label and input for doctor_supplier_number -->
-                            <div class="form-group">
-                              <label for="doctor_supplier_number" class="control-label">
-                                Doctor supplier number
-                              </label>
-
-                              <input type="text" id="doctor_supplier_number" name="doctor_supplier_number" placeholder="Doctor supplier number" class="form-control" value="<%= @claim.doctor_supplier_number %>">
-                            </div>
-
-                            <!-- Label and input for budget_surgeon -->
-                            <div class="form-group">
-                              <label for="budget_surgeon" class="control-label">
-                                Budget surgeon
-                              </label>
-
-                              <input type="text" id="budget_surgeon" name="budget_surgeon" placeholder="Budget surgeon" class="form-control" value="<%= @claim.budget_surgeon %>">
-                            </div>
-
-                            <!-- Label and input for budget_assistants -->
-                            <div class="form-group">
-                              <label for="budget_assistants" class="control-label">
-                                Budget assistants
-                              </label>
-
-                              <input type="text" id="budget_assistants" name="budget_assistants" placeholder="Budget assistants" class="form-control" value="<%= @claim.budget_assistants %>">
-                            </div>
-
-                            <!-- Label and input for budget_anesthesiologist -->
-                            <div class="form-group">
-                              <label for="budget_anesthesiologist" class="control-label">
-                                Budget anesthesiologist
-                              </label>
-
-                              <input type="text" id="budget_anesthesiologist" name="budget_anesthesiologist" placeholder="Budget anesthesiologist" class="form-control" value="<%= @claim.budget_anesthesiologist %>">
-                            </div>
-
-                            <!-- Label and input for hospital_surgery_name -->
-                            <div class="form-group">
-                              <label for="hospital_surgery_name" class="control-label">
-                                Hospital surgery name
-                              </label>
-
-                              <input type="text" id="hospital_surgery_name" name="hospital_surgery_name" placeholder="Hospital surgery name" class="form-control" value="<%= @claim.hospital_surgery_name %>">
-                            </div>
-
-                            <!-- Label and input for hospital_entity -->
-                            <div class="form-group">
-                              <label for="hospital_entity" class="control-label">
-                                Hospital entity
-                              </label>
-
-                              <input type="text" id="hospital_entity" name="hospital_entity" placeholder="Hospital entity" class="form-control" value="<%= @claim.hospital_entity %>">
-                            </div>
-
-                            <!-- Label and input for sugery_date -->
-                            <div class="form-group">
-                              <label for="sugery_date" class="control-label">
-                                Sugery date
-                              </label>
-
-                              <input type="text" id="sugery_date" name="sugery_date" placeholder="Sugery date" class="form-control" value="<%= @claim.sugery_date %>">
-                            </div>
-
-                            <!-- Label and input for doctor_signature -->
-                            <div class="form-group">
-                              <label for="doctor_signature" class="control-label">
-                                Doctor signature
-                              </label>
-
-                              <input type="text" id="doctor_signature" name="doctor_signature" placeholder="Doctor signature" class="form-control" value="<%= @claim.doctor_signature %>">
-                            </div>
-
-                            <!-- Label and input for doctor_signature_place -->
-                            <div class="form-group">
-                              <label for="doctor_signature_place" class="control-label">
-                                Doctor signature place
-                              </label>
-
-                              <input type="text" id="doctor_signature_place" name="doctor_signature_place" placeholder="Doctor signature place" class="form-control" value="<%= @claim.doctor_signature_place %>">
-                            </div>
-
-                            <!-- Label and input for doctor_signature_date -->
-                            <div class="form-group">
-                              <label for="doctor_signature_date" class="control-label">
-                                Doctor signature date
-                              </label>
-
-                              <input type="text" id="doctor_signature_date" name="doctor_signature_date" placeholder="Doctor signature date" class="form-control" value="<%= @claim.doctor_signature_date %>">
-                            </div>
-
-                            <!-- Label and input for agreement_ins_yn -->
-                            <div class="checkbox">
-                              <label for="agreement_ins_yn">
-                                <input type="checkbox" id="agreement_ins_yn" name="agreement_ins_yn" value="1" <%= "checked" if @claim.agreement_ins_yn %>>
-                                Agreement ins yn
-                              </label>
-                            </div>
-
-                            <!-- Label and input for identification_file -->
-                            <div class="form-group">
-                              <label for="identification_file" class="control-label">
-                                Identification file
-                              </label>
-
-                              <input type="text" id="identification_file" name="identification_file" placeholder="Identification file" class="form-control" value="<%= @claim.identification_file %>">
-                            </div>
-
-                            <!-- Label and input for health_summary_id -->
-                            <div class="form-group">
-                              <label for="health_summary_id" class="control-label">
-                                Health summary
-                              </label>
-
-                              <input type="text" id="health_summary_id" name="health_summary_id" placeholder="Health summary" class="form-control" value="<%= @claim.health_summary_id %>">
-                            </div>
-
-                            <!-- Label and input for insurance_name -->
-                            <div class="form-group">
-                              <label for="insurance_name" class="control-label">
-                                Insurance name
-                              </label>
-
-                              <input type="text" id="insurance_name" name="insurance_name" placeholder="Insurance name" class="form-control" value="<%= @claim.insurance_name %>">
-                            </div>
-
-                            <!-- Label and input for insurance_id -->
-                            <div class="form-group">
-                              <label for="insurance_id" class="control-label">
-                                Insurance
-                              </label>
-
-                              <input type="text" id="insurance_id" name="insurance_id" placeholder="Insurance" class="form-control" value="<%= @claim.insurance_id %>">
-                            </div>
-
-                            <!-- Label and input for tx_descritption -->
-                            <div class="form-group">
-                              <label for="tx_descritption" class="control-label">
-                                Tx descritption
-                              </label>
-
-                              <input type="text" id="tx_descritption" name="tx_descritption" placeholder="Tx descritption" class="form-control" value="<%= @claim.tx_descritption %>">
-                            </div>
-
-                            <!-- Label and input for medicine_quantity -->
-                            <div class="form-group">
-                              <label for="medicine_quantity" class="control-label">
-                                Medicine quantity
-                              </label>
-
-                              <input type="text" id="medicine_quantity" name="medicine_quantity" placeholder="Medicine quantity" class="form-control" value="<%= @claim.medicine_quantity %>">
-                            </div>
-
-                            <!-- Label and input for event_id -->
-                            <div class="form-group">
-                              <label for="event_id" class="control-label">
-                                Event
-                              </label>
-                              <input type="hidden" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= @claim.event_id %>">
-                            </div>
-
-                            <button class="btn btn-warning">
-                              Update Claim
-                            </button>
-                            or
-                            <a href="/claims/<%= @claim.id %>">Cancel</a>
-                          </form>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="panel panel-default">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Tratamiento</h3>
+                              </div>
+                              <div class="panel-body">
+
+                                <!-- Label and input for tx_descritption -->
+                                <div class="form-group">
+                                  <label for="tx_descritption" class="control-label">
+                                    Descripción del tratamiento:
+                                  </label>
+
+                                  <input type="text" id="tx_descritption" name="tx_descritption" placeholder="" class="form-control" value="<%= @claim.tx_descritption %>">
+                                </div>
+
+                                <div class="row">
+
+                                  <!-- Label and input for tx_start -->
+                                  <div class="form-group col-md-6">
+                                    <label for="tx_start" class="control-label">
+                                      En caso de Tratamiento Médico/Quirúrgico, favor de indicar fecha de inicio
+                                    </label>
+
+                                    <input type="date" id="tx_start" name="tx_start" placeholder="Tx start" class="form-control" value="<%= @claim.tx_start %>">
+                                  </div>
+
+                                  <!-- Label and input for cpt_4 -->
+                                  <div class="form-group col-md-6">
+                                    <label for="cpt_4" class="control-label">
+                                      Código CPT-4
+                                    </label>
+
+                                    <input type="text" id="cpt_4" name="cpt_4" placeholder="" class="form-control" value="<%= @claim.cpt_4 %>">
+                                  </div>
+                                </div>
+
+
+                                <!-- Label and input for procedure_mat_complications_yn -->
+                                <div class="form-group">
+                                  <label for="procedure_mat_complications_yn">
+                                    ¿Hubo complicaciones?  Si
+                                  </label>
+                                  <input type="checkbox" id="procedure_mat_complications_yn" name="procedure_mat_complications_yn" value="1" <%= "checked" if @claim.procedure_mat_complications_yn %>>
+
+                                  <input type="text" id="procedure_mat_complications_describe" name="procedure_mat_complications_describe" placeholder="Descripción de las complicaciones" class="form-control" value="<%= @claim.procedure_mat_complications_describe %>">
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title">En caso de Hospitalización</h3>
+                                  </div>
+                                  <div class="panel-body">
+
+                                    <div class="row">
+
+                                      <!-- Label and input for hospital_name -->
+                                      <div class="form-group col-md-6">
+                                        <label for="hospital_name" class="control-label">
+                                          Nombre del Hospital:
+                                        </label>
+
+                                        <input type="text" id="hospital_name" name="hospital_name" placeholder="" class="form-control" value="<%= @claim.hospital_name %>">
+                                      </div>
+
+                                      <!-- Label and input for hospital_city -->
+                                      <div class="form-group col-md-6">
+                                        <label for="hospital_city" class="control-label">
+                                          Ciudad:
+                                        </label>
+
+                                        <input type="text" id="hospital_city" name="hospital_city" placeholder="" class="form-control" value="<%= @claim.hospital_city %>">
+                                      </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                      <!-- Label and input for hospital_stay_type -->
+                                      <div class="form-group col-md-4">
+                                        <label for="hospital_stay_type" class="control-label">
+                                          Hospital stay type
+                                        </label>
+                                        <input list="tipo_hospitalizacion" id="hospital_stay_type" name="hospital_stay_type" placeholder="" class="form-control" value="<%= @claim.hospital_stay_type %>">
+                                        <datalist class="" id="tipo_hospitalizacion">
+                                          <option value="Urgencia"></option>
+                                          <option value="Hospitalaria"></option>
+                                          <option value="Corta Estancia/Ambulatoria"></option>
+                                        </datalist>
+                                      </div>
+
+                                      <!-- Label and input for hospital_admission_date -->
+                                      <div class="form-group col-md-4">
+                                        <label for="hospital_admission_date" class="control-label">
+                                          Fecha de ingreso
+                                        </label>
+
+                                        <input type="date" id="hospital_admission_date" name="hospital_admission_date" placeholder="Hospital admission date" class="form-control" value="<%= @claim.hospital_admission_date %>">
+                                      </div>
+                                      <!-- Label and input for hospital_discharge_date -->
+                                      <div class="form-group col-md-4">
+                                        <label for="hospital_discharge_date" class="control-label">
+                                          Fecha de egreso
+                                        </label>
+
+                                        <input type="date" id="hospital_discharge_date" name="hospital_discharge_date" placeholder="Hospital discharge date" class="form-control" value="<%= @claim.hospital_discharge_date %>">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading">
+                                        <h3 class="panel-title">Datos Generales del Médico Tratante</h3>
+                                      </div>
+                                      <div class="panel-body">
+
+                                        <!-- Label and input for doctor_name -->
+                                        <div class="form-group col-md-6">
+                                          <label for="doctor_name" class="control-label">
+                                            Nombre del Médico
+                                          </label>
+                                          <input type="text" id="doctor_name" name="doctor_name" placeholder="" class="form-control" value="<%= @claim.doctor_name %>">
+                                        </div>
+
+                                        <!-- Label and input for doctor_specialty -->
+                                        <div class="form-group col-md-6">
+                                          <label for="doctor_specialty" class="control-label">
+                                            Especialidad:
+                                          </label>
+
+                                          <input type="text" id="doctor_specialty" name="doctor_specialty" placeholder="" class="form-control" value="<%= @claim.doctor_specialty %>">
+                                        </div>
+
+
+                                        <!-- Label and input for doctor_cedula_pro -->
+                                        <div class="form-group col-md-6">
+                                          <label for="doctor_cedula_pro" class="control-label">
+                                            Cédula Profesional
+                                          </label>
+
+                                          <input type="text" id="doctor_cedula_pro" name="doctor_cedula_pro" placeholder="" class="form-control" value="<%= @claim.doctor_cedula_pro %>">
+                                        </div>
+
+                                        <!-- Label and input for doctor_cedula_esp -->
+                                        <div class="form-group col-md-6">
+                                          <label for="doctor_cedula_esp" class="control-label">
+                                            Cédula Especialización
+                                          </label>
+
+                                          <input type="text" id="doctor_cedula_esp" name="doctor_cedula_esp" placeholder="" class="form-control" value="<%= @claim.doctor_cedula_esp %>">
+                                        </div>
+
+
+                                        <!-- Label and input for doctor_phone -->
+                                        <div class="form-group col-md-4">
+                                          <label for="doctor_phone" class="control-label">
+                                            Teléfono
+                                          </label>
+
+                                          <input type="text" id="doctor_phone" name="doctor_phone" placeholder="" class="form-control" value="<%= @claim.doctor_phone %>">
+                                        </div>
+
+                                        <!-- Label and input for doctor_email -->
+                                        <div class="form-group col-md-4">
+                                          <label for="doctor_email" class="control-label">
+                                            E-mail
+                                          </label>
+
+                                          <input type="text" id="doctor_email" name="doctor_email" placeholder="@" class="form-control" value="<%= @claim.doctor_email %>">
+                                        </div>
+                                        <!-- Label and input for doctor_rfc -->
+                                        <div class="form-group col-md-4">
+                                          <label for="doctor_rfc" class="control-label">
+                                            RFC
+                                          </label>
+
+                                          <input type="text" id="doctor_rfc" name="doctor_rfc" placeholder="" class="form-control" value="<%= @claim.doctor_rfc %>">
+                                        </div>
+
+                                      </div>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                          <div class="panel-heading">
+                                            <h3 class="panel-title">Programación de Cirugía</h3>
+                                          </div>
+                                          <div class="panel-body">
+
+                                            <!-- Label and input for agreement_ins_yn -->
+                                            <div class="form control">
+                                              <label for="agreement_ins_yn">
+                                                Tiene convenio con la aseguradora: Si
+                                              </label>
+                                              <input type="checkbox" id="agreement_ins_yn" name="agreement_ins_yn" value="1" <%= "checked" if @claim.agreement_ins_yn %>>
+                                              <br>En caso de haber contestado NO a la respuesta anterior: Acepto los tabuladores en el entendido que relevo de cualquier pago
+                                              complementario por este padecimiento a la Compañía de Seguros y al paciente.
+                                              <br>
+                                              <br>En caso de no aceptar tabulador de la aseguradora especiﬁcar presupuesto de honorarios por tratamiento médico/quirúrgico.
+                                            </div>
+
+                                            <!-- Label and input for budget_surgeon -->
+                                            <div class="form-group col-md-4">
+                                              <label for="budget_surgeon" class="control-label">
+                                                Cirujano $
+                                              </label>
+
+                                              <input type="number" id="budget_surgeon" name="budget_surgeon" placeholder="$" class="form-control" value="<%= @claim.budget_surgeon %>">
+                                            </div>
+
+                                            <!-- Label and input for budget_assistants -->
+                                            <div class="form-group col-md-4">
+                                              <label for="budget_assistants" class="control-label">
+                                                Ayudante $
+                                              </label>
+
+                                              <input type="number" id="budget_assistants" name="budget_assistants" placeholder="$" class="form-control" value="<%= @claim.budget_assistants %>">
+                                            </div>
+
+                                            <!-- Label and input for budget_anesthesiologist -->
+                                            <div class="form-group col-md-4">
+                                              <label for="budget_anesthesiologist" class="control-label">
+                                                Anestesista $
+                                              </label>
+
+                                              <input type="number" id="budget_anesthesiologist" name="budget_anesthesiologist" placeholder="$" class="form-control" value="<%= @claim.budget_anesthesiologist %>">
+                                            </div>
+
+
+
+                                            <!-- Label and input for sugery_date -->
+                                            <div class="form-group col-md-4">
+                                              <label for="sugery_date" class="control-label">
+                                                Fecha exacta de la cirugía
+                                              </label>
+
+                                              <input type="text" id="sugery_date" name="sugery_date" placeholder="Sugery date" class="form-control" value="<%= @claim.sugery_date %>">
+                                            </div>
+
+                                            <!-- Label and input for hospital_surgery_name -->
+                                            <div class="form-group col-md-4">
+                                              <label for="hospital_surgery_name" class="control-label">
+                                                Hospital dónde se practicará la cirugía
+                                              </label>
+                                              <input type="text" id="hospital_surgery_name" name="hospital_surgery_name" placeholder="Hospital surgery name" class="form-control" value="<%= @claim.hospital_surgery_name %>">
+                                            </div>
+
+                                            <!-- Label and input for hospital_entity -->
+                                            <div class="form-group col-md-4">
+                                              <label for="hospital_entity" class="control-label">
+                                                Ubicación del hospital
+                                              </label>
+
+                                              <input type="text" id="hospital_entity" name="hospital_entity" placeholder="Hospital entity" class="form-control" value="<%= @claim.hospital_entity %>">
+                                            </div>
+
+
+                                            Nota: Como médico tratante, autorizo a los hospitales donde fue internado el paciente, a que proporcione a <%= @claim.insurance_name%> todos
+                                            los informes que se reﬁeren a la salud del mismo, inclusive todos los datos de los padecimientos anteriores. Asimismo, relevo a
+                                            las Instituciones o personas involucradas, del secreto profesional y de cualquier responsabilidad, y hago constar que la inexacta o
+                                            falsa declaración en el presente informe médico puede invalidar toda responsabilidad de la Aseguradora hacia con el Asegurado.
+                                            La información asentada en este documento es proporcionada conforme a la evaluación médica que he brindado al paciente y
+                                            conforme al conocimiento y los estudios médicos que le he realizado o solicitado bajo mi responsabilidad, y asimismo por las
+                                            referencias del propio paciente o de sus familiares, la cual será tratada conforme al Aviso de Privacidad de <%= @claim.insurance_name%> con la
+                                            que el “PACIENTE-ASEGURADO” tiene celebrado el contrato. Se le informa que la inexacta o falsa declaración proporcionada en
+                                            este formato, releva de toda Responsabilidad a <%= @claim.insurance_name%>. El llenado de este formato no obliga a <%= @claim.insurance_name%>, a asumir la
+                                            obligación de realizar pagos de gastos improcedentes.
+                                            <br>
+                                            <br>
+                                            Como Médico tratante me comprometo a hacer del conocimiento a de <%= @claim.insurance_name%>, de todos los informes que se refieran a la salud del paciente en caso de requerirlos.
+                                            <br>
+                                            <br>
+
+
+                                            <!-- Label and input for doctor_signature_place -->
+                                            <div class="form-group col-md-3">
+                                              <label for="doctor_signature_place" class="control-label">
+                                                Lugar
+                                              </label>
+
+                                              <input type="text" id="doctor_signature_place" name="doctor_signature_place" placeholder="Doctor signature place" class="form-control" value="<%= @claim.doctor_signature_place %>">
+                                            </div>
+
+                                            <!-- Label and input for doctor_signature_date -->
+                                            <div class="form-group col-md-3">
+                                              <label for="doctor_signature_date" class="control-label">
+                                                Fecha
+                                              </label>
+
+                                              <input type="date" id="doctor_signature_date" name="doctor_signature_date" placeholder="México D.F." class="form-control" value="<%= Date.today %>">
+                                            </div>
+
+                                            <!-- Label and input for doctor_signature -->
+                                            <div class="form-group col-md-6">
+                                              <label for="doctor_signature" class="control-label">
+                                                Firma del Médico Tratante
+                                              </label>
+
+                                              <input type="text" id="doctor_signature" name="doctor_signature" placeholder="" class="form-control" value="<%= @claim.doctor_signature %>">
+                                            </div>
+                                            </div>
+                                            </div>
+
+
+
+
+                                            <button class="btn btn-warning">
+                                              Update Claim
+                                            </button>
+                                            or
+                                            <a href="/claims/<%= @claim.id %>">Cancel</a>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
