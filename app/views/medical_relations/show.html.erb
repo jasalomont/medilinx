@@ -44,6 +44,8 @@
 
     <div class="row">
       <div class="col-md-12">
+        <div class="panel panel-default">
+
         <table class="table table-striped table-hover">
           <tr>
             <th>Fecha</th>
@@ -64,7 +66,7 @@
 
             <td>
               <a href="/events/<%= event.id %>" class="btn btn-primary">Ver</a>
-              <a href="/events/<%= event.id %>/edit" class="btn btn-warning; background-color:blue">Editar</a>
+              <!-- <a href="/events/<%= event.id %>/edit" class="btn btn-warning; background-color:blue">Editar</a> -->
               <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i>
 </a>
             </td>
@@ -104,17 +106,18 @@
       </table>
     </div>
   </div>
+  </div>
 
-
+<br><br><br>
   <div class="btn-group btn-group-justified">
     <a href="/medical_relations" class="btn btn-primary">
-      Back
+      Regresar
     </a>
     <!-- <a href="/medical_relations/<%= @medical_relation.id %>/edit" class="btn btn-warning">
     Edit
   </a> -->
   <a href="/delete_medical_relation/<%= @medical_relation.id %>" class="btn btn-danger" rel="nofollow">
-    Delete
+    Eliminar Paciente!
   </a>
 </div>
 </div>

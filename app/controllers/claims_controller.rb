@@ -15,6 +15,10 @@ class ClaimsController < ApplicationController
   def show
     @claim = Claim.find(params[:id])
     @pathologicals = Pathological.where("patient_id"=>@claim.patient_id)
+    @surgicals = Surgical.where("patient_id"=>@claim.patient_id)
+    @non_pathologicals = NonPathological.where("patient_id"=>@claim.patient_id)
+    @pregnancies = Pregnancy.where("patient_id"=>@claim.patient_id)
+    @other_backgrounds = OtherBackground.where("patient_id"=>@claim.patient_id)
 
     render("claims/show.html.erb")
   end

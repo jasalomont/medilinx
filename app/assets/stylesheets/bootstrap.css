@@ -12,7 +12,7 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: Myriad-Pro, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -1461,9 +1461,10 @@ dd {
 @media (min-width: 768px) {
   .dl-horizontal dt {
     float: left;
-    width: 160px;
+    width: 260px;
     clear: left;
     text-align: right;
+    padding-right: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -6912,3 +6913,48 @@ button.close {
 }
 table.fixed { table-layout:fixed; }
 table.fixed td { overflow: hidden; }
+
+.allianz-title {
+  background-color: #005393;
+  height: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  color: white;
+  padding-left: 20px;
+  vertical-align: middle;
+  font-size: 18px;
+
+}
+.allianz-text{
+  font-size: 15px;
+  padding-left: 12px;
+  margin-bottom: 5px;
+
+
+  font-weight:    bold;
+
+}
+/*.allianz-text p{
+  font-size: 15px;
+  padding-left: 12px;
+  margin-bottom: 5px
+}*/
+
+.allianz-label{
+  font-size: 15px;
+  padding-left: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.allianz-text li {
+color:#005393;
+font-weight: bold;
+}
+.allianz-text li span {
+color:black;
+font-weight: normal;
+}
+.allianz-campo{
+  margin-bottom: 5px;
+}

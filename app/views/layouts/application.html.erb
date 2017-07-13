@@ -3,7 +3,6 @@
 <head>
   <title>Medilinx</title>
   <%= csrf_meta_tags %>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -32,8 +31,9 @@
         <li><a href="/patients/edit"><i class="fa fa-user" aria-hidden="true"></i> <%= current_patient.first_name %></a></li>
         <li><a href="/patients/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión </a></li>
         <%else %>
-        <li><a href="/patients/sign_in"> Patient Sign In </a></li>
-        <li><a href="/doctors/sign_in"> Doctor Sign In </a></li>
+        <li><a href="/patients/sign_in"> Paciente <i class="fa fa-user" aria-hidden="true"></i></a></li>
+        <li><a href="/doctors/sign_in"> Doctor <i class="fa fa-user-md" aria-hidden="true"></i></a></li>
+        <li><a href="/"> Aseguradora </a></li>
         <%end %>
       </ul>
 

@@ -1,3 +1,62 @@
+
+<h2><center>MediLinx | Doctores</center></h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Inicio de Sesión</h2>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email,"E-mail", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.email_field :email, autofocus: true, class:  "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, "Contraseña", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Recordarme en este equipo" %>
+            </div>
+            <% end -%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <%= f.submit "Iniciar Sesión", class: "btn btn-success btn-block" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <%= render "patients/shared/links" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
 <h2>Doctor Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -23,4 +82,4 @@
   </div>
 <% end %>
 
-<%= render "doctors/shared/links" %>
+<%= render "doctors/shared/links" %> -->

@@ -1,0 +1,10 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+html,body {
+  margin: 1000;
+  background-color: rgb(242,242,242);
+  /*background-image: url('/assets/mxbgr2.png');*/
+}
