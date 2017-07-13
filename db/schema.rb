@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713225204) do
+ActiveRecord::Schema.define(version: 20170712184514) do
 
   create_table "claims", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -176,30 +176,6 @@ ActiveRecord::Schema.define(version: 20170713225204) do
     t.string   "treatment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "insurers", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "insurance_name"
-    t.string   "position"
-    t.string   "first_name"
-    t.string   "last_father"
-    t.string   "last_mother"
-    t.integer  "employee_id"
-    t.string   "employee_ref"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_insurers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_insurers_on_reset_password_token", unique: true
   end
 
   create_table "medical_relations", force: :cascade do |t|

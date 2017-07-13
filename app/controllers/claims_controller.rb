@@ -11,12 +11,6 @@ class ClaimsController < ApplicationController
     render("claims/record.html.erb")
   end
 
-  def controlpanel
-    @claims = Claim.all
-
-    render("claims/controlpanel.html.erb")
-  end
-
 
   def show
     @claim = Claim.find(params[:id])
