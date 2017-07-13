@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+    devise_for :insurers
+    devise_for :patients
+    devise_for :doctors
   # Routes for the Other_background resource:
   # CREATE
   get "/other_backgrounds/new", :controller => "other_backgrounds", :action => "new"
@@ -96,6 +99,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
   # READ
   get "/claims", :controller => "claims", :action => "index"
   get "/claims/record", :controller => "claims", :action => "record"
+  get "/claims/controlpanel", :controller => "claims", :action => "controlpanel"
   get "/claims/:id", :controller => "claims", :action => "show"
 
   # UPDATE
@@ -159,8 +163,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
   get "/delete_medical_relation/:id", :controller => "medical_relations", :action => "destroy"
   #------------------------------
 
-  devise_for :patients
-  devise_for :doctors
+
   # Routes for the Patient_profile resource:
   # CREATE
   get "/patient_profiles/new", :controller => "patient_profiles", :action => "new"
