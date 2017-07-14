@@ -87,7 +87,9 @@
                 <input type="hidden" id="doctor_name" name="doctor_name" placeholder="Doctor name" class="form-control" value="<%= @medical_relation.doctor.practice_name %>">
                 <input type="hidden" id="age" name="age" placeholder="Age" class="form-control" value="<%= @age %>">
                 <input type="hidden" id="patient_name" name="patient_name" placeholder="" class="form-control" value="<%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %>">
-                <input type="hidden" id="gender" name="gender" placeholder="" class="form-control" value="<%= @medical_relation.patient.gender.capitalize %>">
+                <% if @medical_relation.patient.gender != nil %>
+                  <input type="hidden" id="gender" name="gender" placeholder="" class="form-control" value="<%= @medical_relation.patient.gender.capitalize %>">
+                <% end %>
                 <input type="hidden" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= event.id %>">
                 <input type="hidden" id="definite_diagnose" name="definite_diagnose" placeholder="Event" class="form-control" value="<%= event.diagnose %>">
 

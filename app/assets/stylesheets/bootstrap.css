@@ -20,6 +20,11 @@ html,body {
   margin: 0;
   background-color: rgb(242,242,242);
   /*background-image: url('/assets/mxbgr2.png');*/
+  background: url('/assets/fondoCompS.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 article,
 aside,
@@ -6929,11 +6934,8 @@ table.fixed td { overflow: hidden; }
   font-size: 15px;
   padding-left: 12px;
   margin-bottom: 5px;
+  }
 
-
-  font-weight:    bold;
-
-}
 /*.allianz-text p{
   font-size: 15px;
   padding-left: 12px;
@@ -6957,4 +6959,11 @@ font-weight: normal;
 }
 .allianz-campo{
   margin-bottom: 5px;
+}
+
+.userbox {
+
+align-items: center;
+vertical-align: middle;
+
 }
