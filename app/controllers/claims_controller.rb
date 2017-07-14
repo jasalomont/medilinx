@@ -11,6 +11,12 @@ class ClaimsController < ApplicationController
     render("claims/record.html.erb")
   end
 
+  def controlpanel
+    @claims = Claim.where("insurance_name"=>current_insurer.insurance_name)
+
+    render("claims/controlpanel.html.erb")
+  end
+
 
   def show
     @claim = Claim.find(params[:id])
