@@ -62,9 +62,12 @@
                 <td><%=  %></td>
                 <td><%= doctor.city_work %></td>
                 <td><a href="/doctors/<%= doctor.id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-                  <% if current_patient.email == "admin@gmail.com" %>
-                  <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                  <% end %>
+<% if current_patient != nil %>
+
+  <% if current_patient.email == "admin@gmail.com" %>
+  <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+  <% end %>
+<% end %>
                 </td>
 
               </tr>

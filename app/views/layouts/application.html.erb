@@ -22,8 +22,13 @@
         </button>
         <a href="/" class="navbar-brand">MediLinx</a>
       </div>
+<ul class="nav navbar-nav navbar-left">
 
+</ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://www.medilinx.net/contacto"> Contacto</a></li>
+        <li> </li>
+
         <%if current_doctor != nil %>
         <li><a href="/doctors/edit"><i class="fa fa-user-md" aria-hidden="true"></i> <%= current_doctor.practice_name %></a></li>
         <li><a href="/doctors/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión </a></li>

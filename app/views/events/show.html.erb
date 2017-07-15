@@ -27,11 +27,15 @@
       <!-- <a href="/events" class="btn btn-primary">
         Back
       </a> -->
-      <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
-        Edit
+      <!-- <a href="/medical_relation/<%= @event.patient_id %>" class="btn btn-primary">
+        Regresar
+      </a> -->
+
+      <a href="/events/<%= @event.id %>/edit" class="btn btn-info">
+        Ediar
       </a>
       <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
+        Eliminar
       </a>
       <%else %>
       <%= link_to "Regresar", :back, class: "btn btn-link btn-block" %>

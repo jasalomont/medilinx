@@ -4,7 +4,8 @@ class MedicalRelation < ApplicationRecord
 
 belongs_to :doctor
 belongs_to :patient
-# 
+
+#
 # filterrific(
 #   default_filter_params: { sorted_by: 'doctor_id_desc' },
 #   available_filters: [

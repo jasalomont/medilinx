@@ -36,6 +36,9 @@
           <button class="btn btn-md btn-primary">
             Nuevo Record
           </button>
+          <a href="mailto:<%= @medical_relation.patient.email %>?subject=The%20subject%20of%20the%20email&amp" class="btn btn-md btn-info">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          </a>
         </h3>
       </form>
 
@@ -94,11 +97,11 @@
                 <input type="hidden" id="definite_diagnose" name="definite_diagnose" placeholder="Event" class="form-control" value="<%= event.diagnose %>">
 
                 <button class="btn btn-success">
-                  Generar Reporte
+                  Generar Informe
                 </button>
               </form>
               <% else %>
-              <a href="/claims/<%= ary.first %>" class="btn btn-primary">Ver Reporte</a>
+              <a href="/claims/<%= ary.first %>" class="btn btn-primary">Ver Informe</a>
               <% end %>
             </td>
 
@@ -119,7 +122,7 @@
     Edit
   </a> -->
   <a href="/delete_medical_relation/<%= @medical_relation.id %>" class="btn btn-danger" rel="nofollow">
-    Eliminar Paciente!
+    Eliminar Paciente !
   </a>
 </div>
 </div>
