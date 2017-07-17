@@ -143,7 +143,8 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
   #------------------------------
 
   # Routes for the Medical_relation resource:
-  root to: "medical_relations#index"
+  root to: "home#dashboard"
+  get "/home/dashboard", :controller => "home", :action => "show"
 
   # CREATE
   get "/medical_relations/new", :controller => "medical_relations", :action => "new"

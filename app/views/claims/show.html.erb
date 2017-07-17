@@ -1,5 +1,6 @@
 
 
+<div class="container">
 <div class="page-header">
   <h3 >Informe Médico #<%= @claim.id %></h3>
 </div>
@@ -10,12 +11,11 @@
   <a href="/claims/<%= @claim.id %>/edit" class="btn btn-info">
     Editar
   </a>
-  <a href="/delete_claim/<%= @claim.id %>" class="btn btn-danger" rel="nofollow">
+  <a href="/delete_claim/<%= @claim.id %>" class="btn btn-warning" rel="nofollow">
     Eliminar
   </a>
 </div>
 <br>
-<div class="container">
   <div class="row">
     <div class="col-md-12 mb-2">
       <dl class="dl-horizontal">

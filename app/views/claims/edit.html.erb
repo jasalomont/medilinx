@@ -32,24 +32,28 @@
         </div>
 
         <!-- Label and input for claim_type -->
-        <div class="form-group col-md-5">
+        <div class="row">
+          <div class="form-group col-md-5">
 
-          <input list="tipo_reclamo" id="claim_type" name="claim_type" placeholder="Tipo de Informe*" class="form-control" value="<%= @claim.claim_type %>">
-          <datalist class="" id="tipo_reclamo">
-            <option value="Programación de cirugía"></option>
-            <option value="Tratamiento médico"></option>
-            <option value="Reembolso"></option>
-          </datalist>
+            <input list="tipo_reclamo" id="claim_type" name="claim_type" placeholder="Tipo de Informe*" class="form-control" value="<%= @claim.claim_type %>">
+            <datalist class="" id="tipo_reclamo">
+              <option value="Programación de cirugía"></option>
+              <option value="Tratamiento médico"></option>
+              <option value="Reembolso"></option>
+            </datalist>
+          </div>
         </div>
 
         <!-- Label and input for doctor_name -->
-        <div class="form-group col-md-offset-2 col-md-5">
+        <!-- <div class="form-group col-md-offset-2 col-md-5">
           <input type="text" id="doctor_name" name="doctor_name" placeholder="Doctor*" class="form-control" value="<%= @claim.doctor_name %>">
-        </div>
+        </div> -->
 
         <!-- Label and input for insurance_name -->
+        <div class="row">
         <div class="form-group col-md-5">
             <input type="text" id="insurance_name" name="insurance_name" placeholder="Nombre de Aseguradora*" class="form-control" value="<%= @claim.insurance_name %>">
+        </div>
         </div>
 
         <!-- Label and input for insurance_id -->
