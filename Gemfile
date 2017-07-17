@@ -8,6 +8,8 @@ gem "pg", :group => :production
 gem "rails_12factor", :group => :production
 gem 'filterrific'
 gem 'ransack'
+gem 'carrierwave'
+gem 'simple_form'
 
 gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
 gem "devise"
