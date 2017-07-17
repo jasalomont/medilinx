@@ -17,10 +17,11 @@
         <th>Doctor</th>
         <th>Tipo</th>
         <th>Causa</th>
+        <th>Folio</th>
         <th>Fecha de creación</th>
         <th>Última actualización</th>
         <th>Status</th>
-        <th>Actions</th>
+        <th>Acción</th>
       </tr>
 
       <% @claims.each do |claim| %>
@@ -29,6 +30,7 @@
         <td><%= claim.doctor_name %></td>
         <td><%= claim.claim_type %></td>
         <td><%= claim.attention_cause %></td>
+          <td><%= claim.event_id %></td>
         <td><%= claim.created_at.to_date %></td>
         <td><%= claim.updated_at.to_date %></td>
         <td></td>

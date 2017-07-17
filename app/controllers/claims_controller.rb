@@ -1,6 +1,8 @@
 class ClaimsController < ApplicationController
   def index
     @claims = Claim.all
+    @patients = Patient.all
+    @claim = Claim.new
 
     render("claims/index.html.erb")
   end
