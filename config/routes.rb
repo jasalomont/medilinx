@@ -173,7 +173,9 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
 
   # UPDATE
   get "/medical_relations/:id/edit", :controller => "medical_relations", :action => "edit"
+  get "/medical_relations/:id/permission", :controller => "medical_relations", :action => "approve"
   post "/update_medical_relation/:id", :controller => "medical_relations", :action => "update"
+
 
   # DELETE
   get "/delete_medical_relation/:id", :controller => "medical_relations", :action => "destroy"

@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="page-header">
-    <h3>Doctores</h3>
+    <h3>Directorio Médico</h3>
   </div>
 
 
@@ -59,7 +59,11 @@
               <tr>
 
                 <td><a href="/doctors/<%= doctor.id %>"> <%= doctor.practice_name  %></a></td>
-                <td><%=  %></td>
+                <% if doctor.credential != nil %>
+                <td><%= doctor.credential.practice %></td>
+                  <% else %>
+                  <td></td>
+                <% end %>
                 <td><%= doctor.city_work %></td>
                 <td><a href="/doctors/<%= doctor.id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
                   <% if current_patient != nil %>

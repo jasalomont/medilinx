@@ -14,9 +14,15 @@
       <h2><%= current_doctor.practice_name %></h2>
     </div>
 
-    <h1>
+    <h1 style="margin-bottom:0px">
+      <div class="row">
+      <div class="col-md-4">
+      <div class="btn-group btn-group-justified">
       <a href="/medical_relations/new" class="btn btn-md btn-default">Agregar Paciente</a>
-      <a href="/doctors/index" class="btn btn-md btn-default">Directorio</a>
+      <a href="/doctors/index" class="btn btn-md btn-default">Directorio Médico</a>
+    </div>
+    </div>
+    </div>
     </h1>
 
 
@@ -34,10 +40,11 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-user-md" aria-hidden="true"></i> Perfil</h3>
-                    <p style="color:green"><%=(Doctor.find(current_doctor.id).attributes.values.select(&:nil?).count/8)*100%>% Completado</p>
+                      <p style="color:green"><%=((11-(Doctor.find(current_doctor.id).attributes.values.select(&:nil?).count + Doctor.find(current_doctor.id).attributes.values.count("")-5)).to_f/11*100).round(0)%>% Completado</p>
+
                     <br>
                     <div class="btn-group btn-group-justified">
-                      <a href="/doctors/edit" class="btn btn-md btn-info">Ver/Editar mi Perfil</a>
+                      <a href="/doctors/edit" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
@@ -50,7 +57,7 @@
                     <p>Ver y crear expedientes electrónicos</p>
                     <br>
                     <div class="btn-group btn-group-justified">
-                      <a href="/medical_relations" class="btn btn-md btn-info">Abrir expedientes</a>
+                      <a href="/medical_relations" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
@@ -64,7 +71,7 @@
                     <br>
                     <div class="btn-group btn-group-justified">
 
-                      <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-md btn-info">Comunicarse con pacientes y doctores</a>
+                      <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
@@ -80,7 +87,7 @@
                     <p>Crear informes médicos para tus pacientes</p>
                     <br>
                     <div class="btn-group btn-group-justified">
-                      <a href="/claims" class="btn btn-md btn-info">Ver registro de informes</a>
+                      <a href="/claims" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
@@ -92,7 +99,7 @@
                     <p>Recetas electrónicas</p>
                     <br>
                     <div class="btn-group btn-group-justified">
-                      <a href="/" class="btn btn-md btn-info">Bloc de recetas médicas</a>
+                      <a href="/" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
@@ -105,9 +112,9 @@
                     <br>
                     <div class="btn-group btn-group-justified">
                       <% if Credential.where("doctor_id"=>current_doctor).count!=1 %>
-                      <a href="/credentials/new" class="btn btn-md btn-info">Agregar credenciales</a>
+                      <a href="/credentials/new" class="btn btn-md btn-info"><i class="fa fa-plus" aria-hidden="true"></i></a>
                       <% else%>
-                      <a href="/credentials/<%=Credential.where("doctor_id"=>current_doctor.id).first.id%>" class="btn btn-md btn-info">Editar credenciales</a>
+                      <a href="/credentials/<%=Credential.where("doctor_id"=>current_doctor.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         <% end %>
                       </div>
                     </div>
@@ -129,9 +136,18 @@
     <div class="page-header">
       <!-- doctor online true -->
       <h2><%= current_patient.first_name %>'s Chart</h2>
-      <a href="/historial_medico" class="btn btn-primary">Historial Medico</a>
-      <a href="/doctors/index" class="btn btn-primary">Busqueda de Doctores</a>
-      <a href="/claims/record" class="btn btn-primary">Reclamos</a>
+    </div>
+
+      <h1 style="margin-bottom:0px">
+        <div class="row">
+        <div class="col-md-8">
+        <div class="btn-group btn-group-justified">
+      <a href="/historial_medico" class="btn btn-default">Historial Medico</a>
+      <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
+      <a href="/claims/record" class="btn btn-default">Reclamos</a>
+      <a href="/" class="btn btn-default">Solicitudes</a>
+    </div>
+    </div>
     </div>
 
     <div class="row">

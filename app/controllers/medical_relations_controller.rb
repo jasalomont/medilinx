@@ -37,8 +37,10 @@ class MedicalRelationsController < ApplicationController
      @gender = @medical_relation.patient.gender
     end
 
-    @events = Event.where("doctor_id"=>current_doctor.id)
-    @claims = Claim.where("doctor_id"=>current_doctor.id)
+if current_doctor != nil
+  @events = Event.where("doctor_id"=>current_doctor.id)
+  @claims = Claim.where("doctor_id"=>current_doctor.id)
+end
     @specific_profile = OfficeProfile.all
     render("medical_relations/show.html.erb")
   end
@@ -85,15 +87,25 @@ class MedicalRelationsController < ApplicationController
 
     @medical_relation.doctor_id = params[:doctor_id]
     @medical_relation.patient_id = params[:patient_id]
+    @medical_relation.permission = params[:permission]
 
     save_status = @medical_relation.save
 
     if save_status == true
-      redirect_to("/medical_relations/#{@medical_relation.id}", :notice => "Medical relation updated successfully.")
+      redirect_to("/medical_relations", :notice => "Medical relation updated successfully.")
     else
       render("medical_relations/edit.html.erb")
     end
   end
+
+def approve
+
+  @medical_relation = MedicalRelation.find(params[:id])
+
+  render("medical_relations/approve.html.erb")
+
+end
+
 
   def destroy
     @medical_relation = MedicalRelation.find(params[:id])

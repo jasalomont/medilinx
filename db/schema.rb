@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718003222) do
+ActiveRecord::Schema.define(version: 20170718183335) do
 
   create_table "claims", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 20170718003222) do
     t.integer  "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "permission"
   end
 
   create_table "non_pathologicals", force: :cascade do |t|

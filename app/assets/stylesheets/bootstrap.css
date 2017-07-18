@@ -3073,6 +3073,7 @@ fieldset[disabled] a.btn {
   color: #555555;
   background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.1);
+  margin: 0px;
 }
 .btn-default:focus,
 .btn-default.focus {
