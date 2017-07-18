@@ -1,22 +1,5 @@
 Rails.application.routes.draw do
 
-  # Routes for the Credential resource:
-  # CREATE
-  get "/credentials/new", :controller => "credentials", :action => "new"
-  post "/create_credential", :controller => "credentials", :action => "create"
-
-  # READ
-  get "/credentials", :controller => "credentials", :action => "index"
-  get "/credentials/:id", :controller => "credentials", :action => "show"
-
-  # UPDATE
-  get "/credentials/:id/edit", :controller => "credentials", :action => "edit"
-  post "/update_credential/:id", :controller => "credentials", :action => "update"
-
-  # DELETE
-  get "/delete_credential/:id", :controller => "credentials", :action => "destroy"
-  #------------------------------
-
   devise_for :insurers
   # Routes for the Other_background resource:
   # CREATE
