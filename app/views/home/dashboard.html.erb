@@ -34,7 +34,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-user-md" aria-hidden="true"></i> Perfil</h3>
-                    <p></p>
+                    <p style="color:green"><%=(Doctor.find(current_doctor.id).attributes.values.select(&:nil?).count/8)*100%>% Completado</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/doctors/edit" class="btn btn-md btn-info">Ver/Editar mi Perfil</a>
@@ -47,7 +47,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-book" aria-hidden="true"></i> Expedientes</h3>
-                    <p></p>
+                    <p>Ver y crear expedientes electrónicos</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/medical_relations" class="btn btn-md btn-info">Abrir expedientes</a>
@@ -60,7 +60,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-comments" aria-hidden="true"></i> Mensajería</h3>
-                    <p></p>
+                    <p>Comunicate con tus pacientes</p>
                     <br>
                     <div class="btn-group btn-group-justified">
 
@@ -77,7 +77,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-money" aria-hidden="true"></i> Informes Médicos</h3>
-                    <p></p>
+                    <p>Crear informes médicos para tus pacientes</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/claims" class="btn btn-md btn-info">Ver registro de informes</a>
@@ -89,10 +89,27 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h3><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Prescripciones</h3>
-                    <p></p>
+                    <p>Recetas electrónicas</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/" class="btn btn-md btn-info">Bloc de recetas médicas</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h3><i class="fa fa-id-card" aria-hidden="true"></i> Credenciales</h3>
+                    <p>Credenciales para tu perfil en línea</p>
+                    <br>
+                    <div class="btn-group btn-group-justified">
+                      <% if Credential.where("doctor_id"=>current_doctor).count!=1 %>
+                      <a href="/credentials/new" class="btn btn-md btn-info">Agregar credenciales</a>
+                      <% else%>
+                      <a href="/credentials/<%=Credential.where("doctor_id"=>current_doctor.id).first.id%>" class="btn btn-md btn-info">Editar credenciales</a>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>

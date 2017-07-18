@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713234040) do
+ActiveRecord::Schema.define(version: 20170718003222) do
 
   create_table "claims", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -137,6 +137,22 @@ ActiveRecord::Schema.define(version: 20170713234040) do
     t.integer  "event_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+  end
+
+  create_table "credentials", force: :cascade do |t|
+    t.string   "practice"
+    t.string   "school"
+    t.integer  "doctor_id"
+    t.string   "rfc"
+    t.string   "curp"
+    t.string   "expertise"
+    t.string   "cedula_pro"
+    t.string   "languages"
+    t.string   "about_me"
+    t.string   "photo"
+    t.string   "cedula_esp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "doctors", force: :cascade do |t|
