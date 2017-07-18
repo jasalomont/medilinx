@@ -7,7 +7,12 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
     @doctor2 = Doctor.find(params[:id])
     @street_address = @doctor.street_address_work
-    @events = Event.where("patient_id"=>current_patient.id)
+
+    
+
+    if current_patient != nil
+      @events = Event.where("patient_id"=>current_patient.id)
+    end
 
     render("doctor_list/read.html.erb")
   end

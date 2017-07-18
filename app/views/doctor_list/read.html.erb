@@ -11,6 +11,8 @@
   </div>
 
 
+
+  <% if current_patient != nil %>
   <h4>Expedientes Electrónicos</h4>
   <div class="row">
     <div class="col-md-12">
@@ -38,64 +40,143 @@
       </div>
     </div>
   </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Credenciales del Médico</h4>
+        </div>
+        <div class="panel-body">
+          <div class="row ">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <% if @doctor.credential != nil %>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img src="<%= @doctor.credential.photo %>" class="img-responsive" height="200" width="200">
+
+                    </div>
+                    <div class="col-md-9">
+                      <dl class="dl-horizontal">
+
+                        <dt>Especialidad</dt>
+                        <dd><%= @doctor.credential.practice %></dd>
+
+                        <dt>Cedula Profesional</dt>
+                        <dd><%= @doctor.credential.cedula_pro %></dd>
+
+                        <dt>Escuela</dt>
+                        <dd><%= @doctor.credential.school %></dd>
+
+                        <dt>Subespecialidad</dt>
+                        <dd><%= @doctor.credential.expertise %></dd>
+
+                        <dt>Cedula de Especialización</dt>
+                        <dd><%= @doctor.credential.cedula_esp %></dd>
+
+                        <dt>Idiomas</dt>
+                        <dd><%= @doctor.credential.languages %></dd>
+
+                        <dt>Acerca de mí</dt>
+                        <dd><%= @doctor.credential.about_me %></dd>
+
+                        <dt>RFC</dt>
+                        <dd><%= @doctor.credential.rfc %></dd>
+
+                        <dt>CURP</dt>
+                        <dd><%= @doctor.credential.curp %></dd>
+
+                      </dl>
+
+                    </div>
+                  </div>
+                  <% else %>
+                  <p style="color:red">No se tienen credenciales registradas del Médico</p>
+
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4>Información de Contacto del Médico</h4>
         </div>
+
         <div class="panel-body">
-        <dl class="dl-horizontal">
-          <dt>Nombre</dt>
-          <dd><%= @doctor.practice_name%></dd>
-          <dt>Celular</dt>
-          <dd><%= @doctor.phone_mobile %></dd>
-          <dt>Telefono Oficina</dt>
-          <dd><%= @doctor.phone_work %></dd>
-          <dt>Dirección</dt>
-          <dd><%= @street_address %></dd>
-          <dt>Ciudad</dt>
-          <dd><%= @doctor.city_work %></dd>
+          <div class="row">
+            <div class="col-md-6">
+              <dl class="dl-horizontal">
+                <dt>Nombre</dt>
+                <dd><%= @doctor.practice_name%></dd>
+                <dt>Celular</dt>
+                <dd><%= @doctor.phone_mobile %></dd>
+                <dt>Telefono Oficina</dt>
+                <dd><%= @doctor.phone_work %></dd>
+                <dt>Dirección</dt>
+                <dd><%= @street_address %></dd>
+                <dt>Ciudad</dt>
+                <dd><%= @doctor.city_work %></dd>
+              </div>
+              <div class="col-md-6">
+                <% if @street_address != nil %>
+                <!-- true -->
+                <dt></dt>
+                <dd>
 
-          <% if @street_address != nil %>
-          <!-- true -->
-          <dt>Mapa</dt>
-          <dd>
+                  <!-- Code for Google Map -->
 
-            <!-- Code for Google Map -->
-            <div class="row">
-              <iframe
-              width="600"
-              height="450"
-              frameborder="0" style="border:0"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') %>" allowfullscreen>
-            </iframe>
+                  <iframe
+                  width="500"
+                  height="350"
+                  frameborder="0" style="border:10px solid #154360"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') %>" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <% end %>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script>
-    var map;
-    function initialize() {
+  <% end %>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script>
+  var map;
+  function initialize() {
 
-    var myLatlng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+  var myLatlng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
 
-    var mapOptions = {
-    zoom: 15,
-    center: myLatlng
-  };
+  var mapOptions = {
+  zoom: 15,
+  center: myLatlng
+};
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-  mapOptions);
+map = new google.maps.Map(document.getElementById('map-canvas'),
+mapOptions);
 
 
-  var marker = new google.maps.Marker({
-  position: myLatlng,
-  map: map,
-  title: 'Address'
+var marker = new google.maps.Marker({
+position: myLatlng,
+map: map,
+title: 'Address'
 });
 }
 
