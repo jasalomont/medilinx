@@ -131,7 +131,8 @@ def approve
   @medical_relation = MedicalRelation.find(params[:id])
 
 
-  render("medical_relations/approve.html.erb",:layout=>false)
+  render("medical_relations/approve.html.erb")
+  # ,:layout=>false
 
 end
 

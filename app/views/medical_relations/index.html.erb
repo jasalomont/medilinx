@@ -22,7 +22,7 @@
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Buscar Doctor:</h3>
+        <h3 class="panel-title">Buscar Paciente:</h3>
       </div>
       <div class="panel-body">
         <%= search_form_for(@q, url: "/medical_relations", method: :get) do |f| %>
@@ -79,13 +79,13 @@
 
             <% if medical_relation.permission == true %>
             <a href="/medical_relations/<%= medical_relation.id %>" class="btn btn-primary" style="width:170px">Ver expediente</i></a>
-            <!-- true --><% else %>
-            <p style="color:red"><i class="fa fa-clock-o" aria-hidden="true"></i> Esperando confirmación</p>
+            <% else %>
+            <span style="color:red ">
+              <i class="fa fa-clock-o" aria-hidden="true"></i> Esperando confirmación <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
             <% end %>
 
             <!-- <a href="/medical_relations/<%= medical_relation.id %>/edit" class="btn btn-warning">Edit</a> -->
-            <!-- <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i> -->
-          </a>
+
         </td>
       </tr>
       <% end %>
