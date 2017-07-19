@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719193322) do
+ActiveRecord::Schema.define(version: 20170719222735) do
 
   create_table "blogs", force: :cascade do |t|
     t.date     "post_date"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20170719193322) do
     t.integer  "author_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "claim_follows", force: :cascade do |t|
+    t.boolean  "patient_request"
+    t.boolean  "doctor_start"
+    t.boolean  "doctor_sign"
+    t.boolean  "insurance_read"
+    t.boolean  "insurance_approved"
+    t.text     "insurance_comments"
+    t.integer  "claim_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "doctor_email"
+    t.integer  "patient_id"
+    t.integer  "insurer_id"
   end
 
   create_table "claims", force: :cascade do |t|

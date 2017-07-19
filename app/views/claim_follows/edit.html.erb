@@ -1,0 +1,86 @@
+<!-- Validation failure messages -->
+<% if @claim_follow.errors.any? %>
+  <% @claim_follow.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Claim Follow #<%= @claim_follow.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_claim_follow/<%= @claim_follow.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for patient_request -->
+      <div class="checkbox">
+        <label for="patient_request">
+          <input type="checkbox" id="patient_request" name="patient_request" value="1" <%= "checked" if @claim_follow.patient_request %>>
+          Patient request
+        </label>
+      </div>
+
+      <!-- Label and input for doctor_start -->
+      <div class="checkbox">
+        <label for="doctor_start">
+          <input type="checkbox" id="doctor_start" name="doctor_start" value="1" <%= "checked" if @claim_follow.doctor_start %>>
+          Doctor start
+        </label>
+      </div>
+
+      <!-- Label and input for doctor_sign -->
+      <div class="checkbox">
+        <label for="doctor_sign">
+          <input type="checkbox" id="doctor_sign" name="doctor_sign" value="1" <%= "checked" if @claim_follow.doctor_sign %>>
+          Doctor sign
+        </label>
+      </div>
+
+      <!-- Label and input for insurance_read -->
+      <div class="checkbox">
+        <label for="insurance_read">
+          <input type="checkbox" id="insurance_read" name="insurance_read" value="1" <%= "checked" if @claim_follow.insurance_read %>>
+          Insurance read
+        </label>
+      </div>
+
+      <!-- Label and input for insurance_approved -->
+      <div class="checkbox">
+        <label for="insurance_approved">
+          <input type="checkbox" id="insurance_approved" name="insurance_approved" value="1" <%= "checked" if @claim_follow.insurance_approved %>>
+          Insurance approved
+        </label>
+      </div>
+
+      <!-- Label and input for insurance_comments -->
+      <div class="form-group">
+        <label for="insurance_comments" class="control-label">
+          Insurance comments
+        </label>
+
+        <textarea id="insurance_comments" name="insurance_comments" placeholder="Insurance comments" class="form-control" rows="3"><%= @claim_follow.insurance_comments %></textarea>
+      </div>
+
+      <!-- Label and input for claim_id -->
+      <div class="form-group">
+        <label for="claim_id" class="control-label">
+          Claim
+        </label>
+
+        <input type="text" id="claim_id" name="claim_id" placeholder="Claim" class="form-control" value="<%= @claim_follow.claim_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Claim Follow
+      </button>
+      or
+      <a href="/claim_follows/<%= @claim_follow.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class Claim < ApplicationRecord
 
-  
+
   belongs_to :doctor
   belongs_to :patient
   belongs_to :event, :required => false
@@ -10,5 +10,6 @@ class Claim < ApplicationRecord
   has_one :pregnancy, :through => :patient, :source => :pregnancy
   has_one :surgical, :through => :patient, :source => :surgical
   has_one :other_background, :through => :patient, :source => :other_background
+  has_one :claim_follow, :dependent => :nullify
 
 end

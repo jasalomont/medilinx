@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Claim_follow resource:
+  # CREATE
+  get "/claim_follows/new", :controller => "claim_follows", :action => "new"
+  post "/create_claim_follow", :controller => "claim_follows", :action => "create"
+
+  # READ
+  get "/claim_follows", :controller => "claim_follows", :action => "index"
+  get "/claim_follows/:id", :controller => "claim_follows", :action => "show"
+
+  # UPDATE
+  get "/claim_follows/:id/edit", :controller => "claim_follows", :action => "edit"
+  post "/update_claim_follow/:id", :controller => "claim_follows", :action => "update"
+
+  # DELETE
+  get "/delete_claim_follow/:id", :controller => "claim_follows", :action => "destroy"
+  #------------------------------
+
   # Routes for the Blog resource:
   # CREATE
   get "/blogs/new", :controller => "blogs", :action => "new"
