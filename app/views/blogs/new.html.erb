@@ -1,0 +1,135 @@
+<!-- Validation failure messages -->
+<% if @blog.errors.any? %>
+  <% @blog.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Blog</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_blog" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for post_date -->
+      <div class="form-group">
+        <label for="post_date" class="control-label">
+          Fecha
+        </label>
+
+        <input type="date" id="post_date" name="post_date" placeholder="Post date" class="form-control" value="<%= Date.today %>">
+      </div>
+
+      <!-- Label and input for post_content -->
+      <div class="form-group">
+        <label for="post_content" class="control-label">
+          Contenido del Post
+        </label>
+
+        <textarea id="post_content" name="post_content" placeholder="Post content" class="form-control" rows="3"><%= @blog.post_content %></textarea>
+      </div>
+
+      <!-- Label and input for post_status -->
+      <!-- <div class="form-group">
+        <label for="post_status" class="control-label">
+          Post status
+        </label>
+
+        <input type="text" id="post_status" name="post_status" placeholder="Post status" class="form-control" value="<%= @blog.post_status %>">
+      </div> -->
+
+      <!-- Label and input for post_type -->
+      <!-- <div class="form-group">
+        <label for="post_type" class="control-label">
+          Post type
+        </label>
+
+        <input type="text" id="post_type" name="post_type" placeholder="Post type" class="form-control" value="<%= @blog.post_type %>">
+      </div> -->
+
+      <!-- Label and input for post_like_count -->
+      <!-- <div class="form-group">
+        <label for="post_like_count" class="control-label">
+          Post like count
+        </label>
+
+        <input type="text" id="post_like_count" name="post_like_count" placeholder="Post like count" class="form-control" value="<%= @blog.post_like_count %>">
+      </div> -->
+
+      <!-- Label and input for post_comment_count -->
+      <!-- <div class="form-group">
+        <label for="post_comment_count" class="control-label">
+          Post comment count
+        </label>
+
+        <input type="text" id="post_comment_count" name="post_comment_count" placeholder="Post comment count" class="form-control" value="<%= @blog.post_comment_count %>">
+      </div> -->
+
+      <!-- Label and input for post_has_article -->
+      <div class="checkbox">
+        <label for="post_has_article">
+          <input type="checkbox" id="post_has_article" name="post_has_article" value="1" <%= "checked" if @blog.post_has_article %>>
+          Contiene articulo?
+        </label>
+      </div>
+
+      <!-- Label and input for article_title -->
+      <div class="form-group">
+        <label for="article_title" class="control-label">
+          Título del artículo
+        </label>
+
+        <textarea id="article_title" name="article_title" placeholder="Article title" class="form-control" rows="3"><%= @blog.article_title %></textarea>
+      </div>
+
+      <!-- Label and input for article_content -->
+      <div class="form-group">
+        <label for="article_content" class="control-label">
+          Cuerpo del artículo
+        </label>
+
+        <textarea id="article_content" name="article_content" placeholder="Article content" class="form-control" rows="3"><%= @blog.article_content %></textarea>
+      </div>
+
+      <!-- Label and input for article_references -->
+      <div class="form-group">
+        <label for="article_references" class="control-label">
+          Referencias
+        </label>
+
+        <textarea id="article_references" name="article_references" placeholder="Article references" class="form-control" rows="3"><%= @blog.article_references %></textarea>
+      </div>
+
+      <!-- Label and input for post_author -->
+      <div class="form-group">
+        <label for="post_author" class="control-label">
+          Autor
+        </label>
+
+        <input type="text" id="post_author" name="post_author" placeholder="Post author" class="form-control" value="<%= @blog.post_author %>">
+      </div>
+
+      <!-- Label and input for author_id -->
+      <div class="form-group">
+        <label for="author_id" class="control-label">
+          ID de autor
+        </label>
+
+        <input type="text" id="author_id" name="author_id" placeholder="Author" class="form-control" value="<%= @blog.author_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Crear post
+      </button>
+
+      <a href="/blogs">Cancelar</a>
+    </form>
+  </div>
+</div>

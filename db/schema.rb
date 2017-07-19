@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718183335) do
+ActiveRecord::Schema.define(version: 20170719193322) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.date     "post_date"
+    t.text     "post_content"
+    t.string   "post_status"
+    t.string   "post_type"
+    t.integer  "post_like_count"
+    t.integer  "post_comment_count"
+    t.boolean  "post_has_article"
+    t.text     "article_title"
+    t.text     "article_content"
+    t.text     "article_references"
+    t.string   "post_author"
+    t.integer  "author_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "claims", force: :cascade do |t|
     t.integer  "doctor_id"

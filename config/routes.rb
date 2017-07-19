@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Blog resource:
+  # CREATE
+  get "/blogs/new", :controller => "blogs", :action => "new"
+  post "/create_blog", :controller => "blogs", :action => "create"
+
+  # READ
+  get "/blogs", :controller => "blogs", :action => "index"
+  get "/blogs/:id", :controller => "blogs", :action => "show"
+
+  # UPDATE
+  get "/blogs/:id/edit", :controller => "blogs", :action => "edit"
+  post "/update_blog/:id", :controller => "blogs", :action => "update"
+
+  # DELETE
+  get "/delete_blog/:id", :controller => "blogs", :action => "destroy"
+  #------------------------------
+
   # Routes for the Credential resource:
 
   

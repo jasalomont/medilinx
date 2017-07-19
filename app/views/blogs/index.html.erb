@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    MediLinx | Blog
+    <a href="/blogs/new" class="btn btn-lg btn-success">New Blog</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Contenido</th>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>Fecha</th>
+        <th>Likes</th>
+        <th></th>
+      </tr>
+
+      <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.post_content %></td>
+        <td><%= blog.article_title %></td>
+        <td><%= blog.post_author %></td>
+        <td><%= blog.post_date %></td>
+        <td><%= blog.post_like_count %></td>
+        <td>
+          <a href="/blogs/<%= blog.id %>" class="btn btn-primary">Ver</a>
+          <!-- <a href="/blogs/<%= blog.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_blog/<%= blog.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
