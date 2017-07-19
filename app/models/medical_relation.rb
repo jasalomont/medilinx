@@ -5,6 +5,7 @@ class MedicalRelation < ApplicationRecord
 belongs_to :doctor
 belongs_to :patient
 
+has_one :credential, :through => :doctor, :source => :credentials
 #
 # filterrific(
 #   default_filter_params: { sorted_by: 'doctor_id_desc' },

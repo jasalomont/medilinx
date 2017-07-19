@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   # Routes for the Credential resource:
+
+  
   # CREATE
   get "/credentials/new", :controller => "credentials", :action => "new"
   post "/create_credential", :controller => "credentials", :action => "create"
@@ -169,6 +171,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
 
   # READ
   get "/medical_relations", :controller => "medical_relations", :action => "index"
+  get "/expediente/paciente", :controller => "medical_relations", :action => "indexpaciente"
   get "/medical_relations/:id", :controller => "medical_relations", :action => "show"
 
   # UPDATE

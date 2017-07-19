@@ -13,7 +13,9 @@
 
 
   <% if current_patient != nil %>
-  <h4>Expedientes Electrónicos</h4>
+  <h4>Expediente Electrónico</h4>
+  <% if @events.where("doctor_id" => @doctor.id).count > 0 %>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -40,6 +42,9 @@
       </div>
     </div>
   </div>
+  <% else %>
+  <p style="color:red">No se tienen registros con este doctor</p>
+  <% end %>
   <% end %>
 
 
@@ -61,7 +66,7 @@
 
                     </div>
                     <div class="col-md-9">
-                      <dl class="dl-horizontal">
+                      <dl class="dl-horizontal" >
 
                         <dt>Especialidad</dt>
                         <dd><%= @doctor.credential.practice %></dd>
@@ -69,7 +74,7 @@
                         <dt>Cedula Profesional</dt>
                         <dd><%= @doctor.credential.cedula_pro %></dd>
 
-                        <dt>Escuela</dt>
+                        <dt>Educación</dt>
                         <dd><%= @doctor.credential.school %></dd>
 
                         <dt>Subespecialidad</dt>
@@ -84,11 +89,11 @@
                         <dt>Acerca de mí</dt>
                         <dd><%= @doctor.credential.about_me %></dd>
 
-                        <dt>RFC</dt>
+                        <!-- <dt>RFC</dt>
                         <dd><%= @doctor.credential.rfc %></dd>
 
                         <dt>CURP</dt>
-                        <dd><%= @doctor.credential.curp %></dd>
+                        <dd><%= @doctor.credential.curp %></dd> -->
 
                       </dl>
 

@@ -1,3 +1,4 @@
+
 <% if @medical_relation.errors.any? %>
 <% @medical_relation.errors.full_messages.each do |message| %>
 <div class="alert alert-dismissable alert-danger">
@@ -8,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Medical Relation #<%= @medical_relation.id %></h3>
+  <h3>Aceptar solicitud!? </h3>
 </div>
 
 
@@ -42,10 +43,10 @@
 
 
       <button class="btn btn-warning">
-        Aprobar
+          Actualizar
       </button>
-      or
-      <a href="/medical_relations">Cancel</a>
+
+      <a href="/expediente/paciente" onclick="parent.window.close()">Cancelar</a>
     </form>
   </div>
 </div>

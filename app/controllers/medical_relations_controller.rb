@@ -1,6 +1,11 @@
 class MedicalRelationsController < ApplicationController
   def index
-    @medical_relations = MedicalRelation.all
+
+    @q = MedicalRelation.ransack(params[:q])
+    @medical_relations = @q.result
+    # render("doctors/index.html.erb")
+    #
+    # @medical_relations = MedicalRelation.all
 
     # @filterrific = initialize_filterrific(
     # MedicalRelation,
@@ -14,6 +19,29 @@ class MedicalRelationsController < ApplicationController
     # end
 
     render("medical_relations/index.html.erb")
+  end
+
+  def indexpaciente
+
+    @q = MedicalRelation.ransack(params[:q])
+    @medical_relations = @q.result
+    @credentials = Credential.all
+    # render("doctors/index.html.erb")
+    #
+    # @medical_relations = MedicalRelation.all
+
+    # @filterrific = initialize_filterrific(
+    # MedicalRelation,
+    # params[:filterrific]
+    # ) or return
+    # @medical_relation = @filterrific.find.page(params[:page])
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+
+    render("medical_relations/indexpaciente.html.erb")
   end
 
   def show
@@ -92,7 +120,7 @@ end
     save_status = @medical_relation.save
 
     if save_status == true
-      redirect_to("/medical_relations", :notice => "Medical relation updated successfully.")
+      redirect_to("/expediente/paciente", :notice => "Medical relation updated successfully.")
     else
       render("medical_relations/edit.html.erb")
     end
@@ -102,7 +130,8 @@ def approve
 
   @medical_relation = MedicalRelation.find(params[:id])
 
-  render("medical_relations/approve.html.erb")
+
+  render("medical_relations/approve.html.erb",:layout=>false)
 
 end
 

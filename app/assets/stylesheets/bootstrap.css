@@ -1452,21 +1452,26 @@ ol ol {
 dl {
   margin-top: 0;
   margin-bottom: 20px;
+
 }
 dt,
 dd {
-  line-height: 1.42857143;
+  line-height: 1.62857143;
+
 }
 dt {
   font-weight: bold;
+
+
 }
 dd {
   margin-left: 0;
+  border-bottom: 1px solid #D7DBDD;
 }
 @media (min-width: 768px) {
   .dl-horizontal dt {
     float: left;
-    width: 260px;
+    width: 220px;
     clear: left;
     text-align: right;
     padding-right: 10px;
@@ -1475,7 +1480,7 @@ dd {
     white-space: nowrap;
   }
   .dl-horizontal dd {
-    margin-left: 180px;
+    margin-left: 220px;
   }
 }
 abbr[title],
