@@ -3,9 +3,9 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
+  <div class="col-md-8 mb-2">
 
-<br>
+    <br>
     <h4><%= @blog.article_title %></h4>
     <p>Autor: <%= @blog.post_author %>, <i><%= @blog.post_date %></i></p>
     <div class="">
@@ -13,46 +13,47 @@
 
       <dd></dd>
     </div>
+    <br>
+    <div class="panel panel-default ">
 
-<div class="panel panel-default">
 
 
+      <div class="panel-body" >
+        <% if @blog.article_content.split("°°").size > 1 %>
+        <% body = @blog.article_content.split("°°") %>
+        <% body.each do |bullet| %>
+        <ul>
+          <li><%= simple_format(bullet) %></li>
+        </ul>
+        <% end %>
+        <% else %>
+        <p align="right"> <%= simple_format(@blog.article_content) %></p>
+        <% end %>
 
-  <div class="panel-body">
-    <% if @blog.article_content.split("°°").size > 1 %>
-    <% body = @blog.article_content.split("°°") %>
-    <% body.each do |bullet| %>
-    <ul>
-      <li><%= simple_format(bullet) %></li>
-    </ul>
-  <% end %>
-    <% else %>
-    <%= simple_format(@blog.article_content) %>
+      </div>
+      <div class="panel-body">
 
-    <% end %>
-
+        <dt></dt>
+        <dd></dd>
+        <dt>Referencias</dt>
+        <dd style="font-size:12px"><i><%= simple_format(@blog.article_references) %></i></dd>
+      </div>
+      <div class="panel-body">
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%= @blog.post_like_count %>
+        <br>
+      </div>
     </div>
-    <div class="panel-body">
-
-      <dt></dt>
-      <dd></dd>
-      <dt>Referencias</dt>
-      <dd style="font-size:12px"><i><%= simple_format(@blog.article_references) %></i></dd>
-    </div>
-    </div>
-    <dt>Likes</dt>
-    <dd><%= @blog.post_like_count %></dd>
 
     <div class="btn-group btn-group-justified">
       <a href="/blogs" class="btn btn-primary">
         Regresar
       </a>
       <!-- <a href="/blogs/<%= @blog.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_blog/<%= @blog.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a> -->
-    </div>
-  </div>
+      Edit
+    </a>
+    <a href="/delete_blog/<%= @blog.id %>" class="btn btn-danger" rel="nofollow">
+    Delete
+  </a> -->
+</div>
+</div>
 </div>

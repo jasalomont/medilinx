@@ -9,6 +9,7 @@ class ClaimsController < ApplicationController
 
   def record
     @claims = Claim.where("patient_id"=>current_patient.id)
+    @claim = Claim.new
 
     render("claims/record.html.erb")
   end

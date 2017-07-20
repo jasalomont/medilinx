@@ -4,8 +4,8 @@
   </h1>
 </div>
 
-    <form action="/create_claim" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
+    <!-- <form action="/create_claim" method="post">
+
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-    </form>
+    </form> -->
 
 
 
@@ -47,7 +47,7 @@
         <th>Acción</th>
       </tr>
 
-      <% @claims.where("doctor_id"=>current_doctor.id).each do |claim| %>
+      <% @claims.where("doctor_id"=>current_doctor.id).reverse.each do |claim| %>
       <tr>
 
         <td><%= claim.patient_name %></td>
@@ -57,7 +57,11 @@
         <td><%= claim.id %></td>
         <td><%= claim.created_at.to_date %></td>
         <td><%= claim.updated_at.to_date %></td>
-        <td></td>
+        <td><%= claim.patient_request %>
+
+
+
+        </td>
         <td>
           <a href="/claims/<%= claim.id %>" class="btn btn-primary">Ver</a>
           <!-- <a href="/claims/<%= claim.id %>/edit" class="btn btn-warning">Edit</a>

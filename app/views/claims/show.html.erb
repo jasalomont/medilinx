@@ -48,6 +48,15 @@
 
                 <div class="panel-body allianz-text">
 
+                  <dt>Solicitud</dt>
+                  <dd><% if @claim.patient_request == true %>
+                    Si
+                    <% else %>
+                    No
+                    <% end %>
+
+                  </dd>
+
                   <dt>Nombre del Paciente</dt>
                   <dd><%= @claim.patient_name %></dd>
 
