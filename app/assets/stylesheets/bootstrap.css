@@ -6973,3 +6973,15 @@ align-items: center;
 vertical-align: middle;
 
 }
+
+.under-row{
+overflow-x: visible;
+margin:0;
+padding:0;
+background-color: #1B2631;
+-webkit-column-width: 100%;
+position: absolute;
+    width: 100%;
+    left: 0;
+
+}

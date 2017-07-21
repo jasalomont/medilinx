@@ -9,10 +9,10 @@
 <form action="/create_claim" method="post">
   <!-- Hidden input for authenticity token to protect from forgery -->
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
   <input type="hidden" id="patient_id" name="patient_id" placeholder="" class="form-control" value="<%= current_patient.id %>">
   <input type="hidden" id="patient_name" name="patient_name" placeholder="" class="form-control" value="<%= current_patient.first_name %> <%= current_patient.last_father%> <%= current_patient.last_mother%>">
-  <input type="hidden" id="patient_request" name="patient_request" class="form-control" value="1">
+
+
 
   <div class="row">
     <div class="col-md-12">
@@ -23,16 +23,29 @@
               Solicitar Informe Médico
             </button>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-3">
             <%= select_tag(:doctor_id, options_from_collection_for_select(Doctor.all, :id, :practice_name, @claim.doctor_id), :class => "form-control") %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <input list="tipo_reclamo" id="claim_type" name="claim_type" placeholder="Tipo de Informe*" class="form-control" value="<%= @claim.claim_type %>">
             <datalist class="" id="tipo_reclamo">
               <option value="Programación de cirugía"></option>
               <option value="Tratamiento médico"></option>
               <option value="Reembolso"></option>
             </datalist>
+          </div>
+          <div class="col-md-3">
+            <input list="nombre_aseguradora" id="insurance_name" name="insurance_name" placeholder="Nombre de Aseguradora*" class="form-control" value="<%= @claim.insurance_name %>">
+            <datalist class="" id="nombre_aseguradora">
+              <option value="Allianz"></option>
+              <option value="AXA"></option>
+
+            </datalist>
+          </div>
+          <div class="col-md-offset-3 col-md-9">
+
+            <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" %>>
+            <!-- <span style="color:red">Acepto las condiciones de enviar la solicitud de reclamo</span> -->
           </div>
         </div>
       </div>
@@ -55,11 +68,11 @@
         <th>Causa</th>
         <th>Fecha de creación</th>
         <th>Última actualización</th>
-        <th>Status</th>
-        <th>Actions</th>
+        <th style="text-align: center">Status</th>
+        <th></th>
       </tr>
 
-      <% @claims.each do |claim| %>
+      <% @claims.reverse.each do |claim| %>
       <tr>
         <td><%= claim.doctor_name %></td>
         <td><%= claim.insurance_name %></td>
@@ -67,11 +80,32 @@
         <td><%= claim.attention_cause %></td>
         <td><%= claim.created_at.to_date %></td>
         <td><%= claim.updated_at.to_date %></td>
-        <td></td>
-        <td>
-          <a href="/claims/<%= claim.id %>" class="btn btn-primary">Show</a>
-          <a href="/delete_claim/<%= claim.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+        <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
+        <td  style="text-align: center"><span style="color:red"> Enviado a <%= claim.insurance_name %></span></td>
+        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
+        <% else %>
+
+        <% if claim.patient_request == true %>
+        <td  style="text-align: center"><span style="color:red">  <i class="fa fa-bell-o" aria-hidden="true"></i> Solicitud Dr. Pendiente</span></td>
+        <td><a href="/delete_claim/<%= claim.id %>" class="btn btn-sm btn-danger" rel="nofollow" style="width:65px"><i class="fa fa-trash-o" aria-hidden="true"></i</a>
+
         </td>
+        <% elsif claim.doctor_start == true%>
+        <td style="color:blue; text-align: center">En proceso</td>
+        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
+        <% elsif claim.doctor_sign == true %>
+        <td style="color:green; text-align: center">Firmado</td>
+        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
+        <% else %>
+        <td style="color:blue; text-align: center">En proceso</td>
+        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
+        <% end %>
+        <% end %>
       </tr>
       <% end %>
     </table>

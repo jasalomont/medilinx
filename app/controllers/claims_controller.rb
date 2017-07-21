@@ -10,12 +10,16 @@ class ClaimsController < ApplicationController
   def record
     @claims = Claim.where("patient_id"=>current_patient.id)
     @claim = Claim.new
+    @claim_follows = ClaimFollow.all
+
 
     render("claims/record.html.erb")
   end
 
   def controlpanel
     @claims = Claim.where("insurance_name"=>current_insurer.insurance_name)
+  @claim_follows = ClaimFollow.all
+
 
     render("claims/controlpanel.html.erb")
   end
@@ -28,6 +32,8 @@ class ClaimsController < ApplicationController
     @non_pathologicals = NonPathological.where("patient_id"=>@claim.patient_id)
     @pregnancies = Pregnancy.where("patient_id"=>@claim.patient_id)
     @other_backgrounds = OtherBackground.where("patient_id"=>@claim.patient_id)
+    @claim_follows = ClaimFollow.all
+    @claim_follow = ClaimFollow.new
 
     render("claims/show.html.erb")
   end
@@ -163,6 +169,15 @@ class ClaimsController < ApplicationController
     @claim.tx_descritption = params[:tx_descritption]
     @claim.medicine_quantity = params[:medicine_quantity]
     @claim.event_id = params[:event_id]
+
+    @claim.patient_request = params[:patient_request]
+    @claim.patient_approved = params[:patient_approved]
+    @claim.doctor_start = params[:doctor_start]
+    @claim.doctor_sign = params[:doctor_sign]
+    @claim.insurance_read = params[:insurance_read]
+    @claim.insurance_approved = params[:insurance_approved]
+    @claim.insurance_comments = params[:insurance_comments]
+
 
     save_status = @claim.save
 
@@ -312,6 +327,14 @@ class ClaimsController < ApplicationController
     @claim.tx_descritption = params[:tx_descritption]
     @claim.medicine_quantity = params[:medicine_quantity]
     @claim.event_id = params[:event_id]
+
+    @claim.patient_request = params[:patient_request]
+    @claim.patient_approved = params[:patient_approved]
+    @claim.doctor_start = params[:doctor_start]
+    @claim.doctor_sign = params[:doctor_sign]
+    @claim.insurance_read = params[:insurance_read]
+    @claim.insurance_approved = params[:insurance_approved]
+    @claim.insurance_comments = params[:insurance_comments]
 
     save_status = @claim.save
 

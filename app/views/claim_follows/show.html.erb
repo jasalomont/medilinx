@@ -1,43 +1,67 @@
 <div class="page-header">
-  <h3>Claim Follow #<%= @claim_follow.id %></h3>
+  <h3>Recibo de confirmación de envío a <%= @claim_follow.claim.insurance_name %> </h3>
+  <h4 style="color:gray">Folio #<%= @claim_follow.id %></h4>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Patient request</dt>
-      <dd><%= @claim_follow.patient_request %></dd>
 
-      <dt>Doctor start</dt>
-      <dd><%= @claim_follow.doctor_start %></dd>
 
-      <dt>Doctor sign</dt>
-      <dd><%= @claim_follow.doctor_sign %></dd>
+      <dt>Paciente</dt>
+      <dd><%= @claim_follow.claim.patient_name %></dd>
 
-      <dt>Insurance read</dt>
-      <dd><%= @claim_follow.insurance_read %></dd>
+      <dt>Fecha y Hora de envío</dt>
+      <dd><%= @claim_follow.created_at %></dd>
 
-      <dt>Insurance approved</dt>
-      <dd><%= @claim_follow.insurance_approved %></dd>
+      <dt>Doctor</dt>
+      <dd><%= @claim_follow.claim.doctor_name %></dd>
 
-      <dt>Insurance comments</dt>
-      <dd><%= @claim_follow.insurance_comments %></dd>
+      <dt>Fecha de firma de documento</dt>
+      <dd><%= @claim_follow.claim.doctor_signature_date %></dd>
 
-      <dt>Claim</dt>
+      <dt>Aseguradora</dt>
+      <dd><%= @claim_follow.claim.insurance_name %></dd>
+
+      <dt>Folio</dt>
       <dd><%= @claim_follow.claim_id %></dd>
+
+      <dt>Status</dt>
+      <% if @claim_follow.insurance_read == true %>
+      <dd>Iniciado el proceso de aprobación</dd>
+        <% else %>
+      <% if @claim_follow.insurance_approved == nil %>
+      <dd>Enviado</dd>
+      <% elsif @claim_follow.insurance_approved == true %>
+      <dd>Aprobado</dd>
+      <% else %>
+      <dd>Rechazado</dd>
+      <% end %>
+      <% end %>
+
+      <dt>Comentarios</dt>
+      <dd><%= @claim_follow.insurance_comments %></dd>
 
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/claim_follows" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/claim_follows/<%= @claim_follow.id %>/edit" class="btn btn-warning">
+<% if current_patient != nil %>
+<a href="/claims/record" class="btn btn-primary">
+  Salir
+</a>
+  <% elsif current_insurer != nil %>
+  <a href="/claims/controlpanel" class="btn btn-primary">
+    Salir
+  </a>
+<% end %>
+<a href="/claims/<%= @claim_follow.claim_id %>" class="btn btn-info">
+  Ver informe
+</a>
+      <!-- <a href="/claim_follows/<%= @claim_follow.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_claim_follow/<%= @claim_follow.id %>" class="btn btn-danger" rel="nofollow">
         Delete
-      </a>
-    </div>
+      </a> -->
+
   </div>
 </div>
