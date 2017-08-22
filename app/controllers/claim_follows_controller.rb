@@ -1,4 +1,7 @@
 class ClaimFollowsController < ApplicationController
+
+
+
   def index
     @claim_follows = ClaimFollow.all
 

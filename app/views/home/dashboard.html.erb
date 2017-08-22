@@ -145,7 +145,7 @@
         <div class="btn-group btn-group-justified">
       <a href="/historial_medico" class="btn btn-default">Historial Medico</a>
       <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
-      <a href="/claims/record" class="btn btn-default">Reclamos</a>
+      <a href="/claims/record" class="btn btn-default">Lista de Informes</a>
       <a href="/" class="btn btn-default">Solicitudes</a>
     </div>
     </div>
@@ -238,12 +238,24 @@
     <%  elsif current_insurer != nil %>
     <div class="page-header">
       <!-- doctor online true -->
-      <h2>Home</h2>
+      <h2><i class="fa fa-home" aria-hidden="true"></i> <%= current_insurer.insurance_name %></h2>
+</div>
+      <h1 style="margin-bottom:0px">
+        <div class="row">
+        <div class="col-md-8">
+        <div class="btn-group btn-group-justified">
 
-      <a href="/doctors/index" class="btn btn-primary">Busqueda de Doctores</a>
-      <a href="/claims/controlpanel" class="btn btn-primary">Reclamos</a>
+      <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
+      <a href="/claims/controlpanel" class="btn btn-default">Lista de Informes</a>
+      <a href="/" class="btn btn-default">Busqueda de Pacientes</a>
 
     </div>
+    </div>
+    </div>
+
+
+
+
 
 
     <div class="row">
@@ -323,7 +335,7 @@
 
           <td align="center"><a href="/patients/sign_in"> Paciente </a></li></td>
           <td align="center"><a href="/doctors/sign_in"> Doctor  </a></li></td>
-          <td align="center"><a href="/insurers/sign_in"> Aseguradora  </a></li></td>
+          <td align="center"><a href="/insurers/sign_in"> Broker / Aseguradora  </a></li></td>
         </tr>
       </table>
 

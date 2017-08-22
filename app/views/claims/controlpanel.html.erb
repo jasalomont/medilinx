@@ -44,7 +44,7 @@
         <% end %>
 
         <% elsif claim.claim_follow.insurance_read == true %>
-        <td  style="text-align: center"><span style="color:blue">   Proceso Iniciado </span></td>
+        <td  style="text-align: left"><span style="color:blue">   Proceso Iniciado </span></td>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
         <% elsif %>
         <td  style="text-align: center"><span style="color:red">  <i class="fa fa-bell-o" aria-hidden="true"></i> Revisión Pendiente </span></td>
