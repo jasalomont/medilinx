@@ -27,16 +27,16 @@
       <dd><%= @claim_follow.claim_id %></dd>
 
       <dt>Status</dt>
-      <% if @claim_follow.insurance_read == true %>
-      <dd>Iniciado el proceso de aprobación</dd>
-        <% else %>
-      <% if @claim_follow.insurance_approved == nil %>
-      <dd>Enviado</dd>
-      <% elsif @claim_follow.insurance_approved == true %>
+
+      <% if @claim_follow.insurance_approved == true %>
       <dd>Aprobado</dd>
-      <% else %>
+      <% elsif @claim_follow.insurance_approved == false %>
       <dd>Rechazado</dd>
-      <% end %>
+
+      <% elsif @claim_follow.insurance_read == true %>
+      <dd>Iniciado el proceso de aprobación</dd>
+        
+
       <% end %>
 
       <dt>Comentarios</dt>

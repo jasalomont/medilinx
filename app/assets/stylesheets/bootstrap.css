@@ -6940,7 +6940,9 @@ table.fixed td { overflow: hidden; }
   font-size: 15px;
   padding-left: 12px;
   margin-bottom: 5px;
-  }
+  border-bottom: 1px solid #D7DBDD;
+  width: 100%;
+}
 
 /*.allianz-text p{
   font-size: 15px;
@@ -6955,6 +6957,13 @@ table.fixed td { overflow: hidden; }
   font-weight: bold;
 }
 
+.allianz-label2{
+  font-size: 15px;
+  padding-left: 12px;
+  margin-bottom: 5px;
+
+}
+
 .allianz-text li {
 color:#005393;
 font-weight: bold;
@@ -6962,9 +6971,11 @@ font-weight: bold;
 .allianz-text li span {
 color:black;
 font-weight: normal;
+border-bottom: 1px solid #D7DBDD;
 }
 .allianz-campo{
   margin-bottom: 5px;
+
 }
 
 .userbox {

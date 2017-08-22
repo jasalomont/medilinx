@@ -63,6 +63,16 @@ class ClaimFollowsController < ApplicationController
     end
   end
 
+  def approve
+
+    @claim_follow = ClaimFollow.find(params[:id])
+
+
+    render("claims/approveclaim.html.erb")
+    # ,:layout=>false
+
+  end
+
   def destroy
     @claim_follow = ClaimFollow.find(params[:id])
 

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # UPDATE
   get "/claim_follows/:id/edit", :controller => "claim_follows", :action => "edit"
+  get "/claim_follows/:id/control", :controller => "claim_follows", :action => "approve"
   post "/update_claim_follow/:id", :controller => "claim_follows", :action => "update"
 
   # DELETE
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
 
   # Routes for the Credential resource:
 
-  
+
   # CREATE
   get "/credentials/new", :controller => "credentials", :action => "new"
   post "/create_credential", :controller => "credentials", :action => "create"
