@@ -24,6 +24,7 @@
             </button>
           </div>
           <div class="col-md-3">
+            
             <%= select_tag(:doctor_id, options_from_collection_for_select(Doctor.all, :id, :practice_name, @claim.doctor_id), :class => "form-control") %>
           </div>
           <div class="col-md-3">
@@ -74,24 +75,17 @@
 
       <% @claims.reverse.each do |claim| %>
       <tr>
-        <td><%= claim.doctor_name %></td>
+        <td><%= Doctor.find(claim.doctor_id).practice_name %></td>
         <td><%= claim.insurance_name %></td>
         <td><%= claim.claim_type %></td>
         <td><%= claim.attention_cause %></td>
         <td><%= claim.created_at.to_date %></td>
         <td><%= claim.updated_at.to_date %></td>
 
-
-
         <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
-        <% if claim.claim_follow.insurance_approved == true %>
-        <td  style="text-align: center"><span style="color:green"> <b> Aprobado por <%= claim.insurance_name %></span></td></b>
-        <% elsif claim.claim_follow.insurance_approved == false %>
-        <td  style="text-align: center"><span style="color:red"><b>Rechazado por <%= claim.insurance_name %></span></td></b>
-        <% else %>
-        <td  style="text-align: center"><span style="color:red"> Enviado a <%= claim.insurance_name %> </span></td>
+        <td  style="text-align: center"><span style="color:red"> Enviado a <%= claim.insurance_name %></span></td>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
-        <% end %>
+
         <% else %>
 
         <% if claim.patient_request == true %>
@@ -103,8 +97,8 @@
         <td style="color:blue; text-align: center">En proceso</td>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
 
-        <% elsif claim.doctor_sign == true %>                                                   
-        <td style="color:green; text-align: center">Firmado por Doctor</td>
+        <% elsif claim.doctor_sign == true %>
+        <td style="color:green; text-align: center">Firmado</td>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
 
         <% else %>

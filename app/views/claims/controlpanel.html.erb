@@ -34,17 +34,8 @@
           <td><%= claim.event_id %></td>
         <td><%= claim.claim_follow.created_at %></td>
 
-        <% if claim.claim_follow.insurance_approved != nil %>
-        <% if claim.claim_follow.insurance_approved == true%>
-        <td  style="text-align: left"><span style="color:green"> Aprobado </span></td>
-        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
-        <%else %>
-        <td  style="text-align: left"><span style="color:red">Rechazado </span></td>
-        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
-        <% end %>
-
-        <% elsif claim.claim_follow.insurance_read == true %>
-        <td  style="text-align: left"><span style="color:blue">   Proceso Iniciado </span></td>
+        <% if claim.claim_follow.insurance_read == true %>
+        <td  style="text-align: center"><span style="color:blue">   Proceso Iniciado </span></td>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
         <% elsif %>
         <td  style="text-align: center"><span style="color:red">  <i class="fa fa-bell-o" aria-hidden="true"></i> Revisión Pendiente </span></td>
@@ -52,9 +43,9 @@
           <form action="/update_claim_follow/<%= claim.claim_follow.id %>" method="post">
             <!-- Hidden input for authenticity token to protect from forgery -->
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-            <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" if claim.claim_follow.patient_request %>>
-            <input type="hidden" id="insurance_read" name="insurance_read" value="1" <%= "checked" if claim.claim_follow.insurance_read %>>
-            <input type="hidden" id="claim_id" name="claim_id" placeholder="Claim" class="form-control" value="<%= claim.claim_follow.claim_id %>">
+                <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" if claim.claim_follow.patient_request %>>
+                <input type="hidden" id="insurance_read" name="insurance_read" value="1" <%= "checked" if claim.claim_follow.insurance_read %>>
+              <input type="hidden" id="claim_id" name="claim_id" placeholder="Claim" class="form-control" value="<%= claim.claim_follow.claim_id %>">
             <button class="btn btn-info">
               Iniciar proceso
             </button>
