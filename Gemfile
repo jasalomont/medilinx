@@ -4,6 +4,13 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
+#PDF upload
+gem 'carrierwave', '~> 0.9'
+gem 'bootstrap-sass', '~> 2.3.2'
+
+
+
 gem "pg", :group => :production
 gem "rails_12factor", :group => :production
 gem 'filterrific'

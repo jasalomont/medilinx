@@ -11,5 +11,6 @@ class Claim < ApplicationRecord
   has_one :surgical, :through => :patient, :source => :surgical
   has_one :other_background, :through => :patient, :source => :other_background
   has_one :claim_follow, :dependent => :nullify
+  has_many :attachments, :dependent => :destroy
 
 end

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720182825) do
+ActiveRecord::Schema.define(version: 20170829192016) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "attachment"
+    t.string   "type"
+    t.integer  "claim_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.date     "post_date"
