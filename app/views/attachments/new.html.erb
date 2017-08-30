@@ -10,12 +10,18 @@
    </div>
 <% end %>
 
-<div class = "well">
+<div class = "container" style = "padding-top:20px;">
    <%= form_for @attachment, html: { multipart: true } do |f| %>
-      <%= f.label :name %>
+      <%= f.label :name, "Nombre de Archivo" %>
       <%= f.text_field :name %>
-      <%= f.label :attachment %>
+      <%= f.label :type, "Tipo" %>
+      <%= f.text_field :type %>
+      <%= f.label :claim_id, "ID Reclamo" %>
+      <%= f.number_field :claim_id %>
+      <br />
+      <%= f.label :attachment, "Archivo" %>
       <%= f.file_field :attachment %>
-      <%= f.submit "Save", class: "btn btn-primary" %>
+      <br />
+      <%= f.submit "Guardar", class: "btn btn-primary" %>
    <% end %>
 </div>

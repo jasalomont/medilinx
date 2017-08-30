@@ -11,7 +11,7 @@ class ClaimsController < ApplicationController
     @claims = Claim.where("patient_id"=>current_patient.id)
     @claim = Claim.new
     @claim_follows = ClaimFollow.all
-
+    @attachments = Attachment.all
 
     render("claims/record.html.erb")
   end

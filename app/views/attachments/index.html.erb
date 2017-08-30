@@ -14,6 +14,7 @@
    <thead>.
       <tr>
          <th>Name</th>
+         <th>ID</th>
          <th>Download Link</th>
          <th> </th>
       </tr>
@@ -25,6 +26,7 @@
          <tr>
             <td><%= attachment.name %></td>
             <td><%= link_to "Download attachment", attachment.attachment_url, :target => "blank" %></td>
+            <td><%= attachment.claim_id %></td>
             <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.name}?" %></td>
          </tr>
 

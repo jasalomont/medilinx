@@ -21,7 +21,8 @@
         <th>Fecha de recibido</th>
 
         <th>Status</th>
-        <th>Acción</th>
+        <th></th>
+        <th>Archivos </th>
       </tr>
 
       <% @claims.reverse.each do |claim| %>
@@ -64,10 +65,17 @@
 
           </form>
         </td>
-      </tr>
+
       <% end %>
+      <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
+      <!-- true -->
+      <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
+        <% else %>
+        <td style=" text-align: center"></td>
+        <% end %>
+        <% end %>
       <% end %>
-      <% end %>
+    </tr>
     </table>
   </div>
 </div>
