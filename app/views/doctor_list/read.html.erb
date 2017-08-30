@@ -151,7 +151,7 @@
                   width="500"
                   height="350"
                   frameborder="0" style="border:10px solid #154360"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') %>" allowfullscreen>
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') + (@doctor.city_work).gsub(' ', '+') %>" allowfullscreen>
                 </iframe>
               </div>
             </div>

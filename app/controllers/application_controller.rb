@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, :keys => [:curp])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:rfc])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:insurance_name])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:position])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:employee_id])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:employee_ref])
 
   end
 

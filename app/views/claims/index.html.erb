@@ -28,8 +28,49 @@
         </div>
       </div>
     </form> -->
-<!--
-<% if current_doctor.email == "admin@medilinx.net" %> -->
+
+<% if current_doctor.email == "admindoc@medilinx.net" %>
+<div class="row">
+  <div class="col-md-12" >
+    <div class="panel panel-default" >
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Paciente</th>
+        <th>Causa</th>
+        <th>Aseguradora</th>
+        <th>Tipo de informe</th>
+        <th>Folio</th>
+        <th>Fecha de creación</th>
+        <th>Última actualización</th>
+        <th>Acción</th>
+      </tr>
+
+      <% @claims.each do |claim| %>
+      <tr>
+
+        <td><%= claim.patient_name %></td>
+        <td><%= claim.attention_cause %></td>
+        <td><%= claim.insurance_name %></td>
+        <td><%= claim.claim_type %></td>
+        <td><%= claim.id %></td>
+        <td><%= claim.updated_at.to_date %></td>
+        <td><%= claim.created_at.to_date %></td>
+    <td style="text-align: left">
+
+                <a href="/delete_claim/<%= claim.id %>" class="btn " rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i</a>
+                </form>
+              </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+    </div>
+</div>
+<% else %>
+
+
+
 
 <% if current_doctor != nil %>
 <div class="row">
@@ -105,4 +146,5 @@
   </div>
     </div>
 </div>
+<% end %>
 <% end %>

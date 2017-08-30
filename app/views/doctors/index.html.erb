@@ -29,6 +29,8 @@
               <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
             </div>
 
+      
+
             <div class="form-group">
               <%= f.label :city_work_cont, "Ubicación (ciudad)" %>
               <%= f.text_field :city_work_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
@@ -66,12 +68,13 @@
                 <% end %>
                 <td><%= doctor.city_work %></td>
                 <td><a href="/doctors/<%= doctor.id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-                  <% if current_patient != nil %>
 
-                  <% if current_patient.email == "admin@gmail.com" %>
-                  <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                  <% if current_doctor != nil %>
+                  <% if current_doctor.email == "admindoc@medilinx.net" %>
+                  <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Eliminar!</a>
                   <% end %>
                   <% end %>
+
                 </td>
 
               </tr>

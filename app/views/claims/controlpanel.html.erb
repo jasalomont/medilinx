@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Lista de Reclamos
+    Panel de Control de Reclamos
     <!-- <a href="/claims/new" class="btn btn-md btn-success">Generar nuevo</a> -->
   </h1>
 </div>
@@ -31,23 +31,35 @@
         <td><%= claim.doctor_name %></td>
         <td><%= claim.claim_type %></td>
         <td><%= claim.attention_cause %></td>
-          <td><%= claim.event_id %></td>
+        <td><%= claim.claim_follow.id %></td>
         <td><%= claim.claim_follow.created_at %></td>
 
-        <% if claim.claim_follow.insurance_read == true %>
-        <td  style="text-align: center"><span style="color:blue">   Proceso Iniciado </span></td>
+        <% if claim.claim_follow.insurance_approved != nil %>
+
+        <!-- #Aporbado/No Aprobado -->
+        <% if claim.claim_follow.insurance_approved == true %>
+        <td  style="text-align: center"><span style="color:green"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></span></td>
+        <% else %>
+        <td  style="text-align: center"><span style="color:red"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></i></span></td>
+        <% end %>
         <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
+        <!-- #Proceseo iniciado -->
+        <% elsif claim.claim_follow.insurance_read == true %>
+        <td  style="text-align: center"><span style="color:blue">  <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </span></td>
+        <td style="text-align: left"><a href="/claims/<%= claim.id %>" class="btn btn-sm btn-primary" style="width:65px">Abrir</a></td>
+
         <% elsif %>
-        <td  style="text-align: center"><span style="color:red">  <i class="fa fa-bell-o" aria-hidden="true"></i> Revisión Pendiente </span></td>
+        <td  style="text-align: center"><span style="color:red">  <i class="fa fa-bell-o " aria-hidden="true"></i>  </span></td>
         <td>
           <form action="/update_claim_follow/<%= claim.claim_follow.id %>" method="post">
             <!-- Hidden input for authenticity token to protect from forgery -->
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" if claim.claim_follow.patient_request %>>
-                <input type="hidden" id="insurance_read" name="insurance_read" value="1" <%= "checked" if claim.claim_follow.insurance_read %>>
-              <input type="hidden" id="claim_id" name="claim_id" placeholder="Claim" class="form-control" value="<%= claim.claim_follow.claim_id %>">
-            <button class="btn btn-info">
-              Iniciar proceso
+            <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" if claim.claim_follow.patient_request %>>
+            <input type="hidden" id="insurance_read" name="insurance_read" value="1" <%= "checked" if claim.claim_follow.insurance_read %>>
+            <input type="hidden" id="claim_id" name="claim_id" placeholder="Claim" class="form-control" value="<%= claim.claim_follow.claim_id %>">
+            <button class="btn btn-sm btn-info" style="width:65px">
+              Revisar
             </button>
 
           </form>
@@ -58,5 +70,5 @@
       <% end %>
     </table>
   </div>
-  </div>
+</div>
 </div>
