@@ -1,27 +1,51 @@
 <% if !@attachment.errors.empty? %>
-   <div class = "alert alert-error">
+<div class = "alert alert-error">
 
-      <ul>
-         <% @attachment.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-         <% end %>
-      </ul>
+  <ul>
+    <% @attachment.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
 
-   </div>
+</div>
 <% end %>
 
 <div class = "container" style = "padding-top:20px;">
-   <%= form_for @attachment, html: { multipart: true } do |f| %>
-      <%= f.label :name, "Nombre de Archivo" %>
-      <%= f.text_field :name %>
-      <%= f.label :type, "Tipo" %>
-      <%= f.text_field :type %>
-      <%= f.label :claim_id, "ID Reclamo" %>
-      <%= f.number_field :claim_id %>
-      <br />
-      <%= f.label :attachment, "Archivo" %>
-      <%= f.file_field :attachment %>
-      <br />
-      <%= f.submit "Guardar", class: "btn btn-primary" %>
-   <% end %>
+  <%= form_for @attachment, html: { multipart: true } do |f| %>
+  <!-- <%= f.label :name, "Nombre de Archivo" %>
+  <%= f.text_field :name %> -->
+  <!-- <%= f.label :type, "Tipo" %>
+  <%= f.text_field :type %> -->
+  <!-- <%= f.label :claim_id, "ID Reclamo" %>
+  <%= f.number_field :claim_id%> -->
+  <div class="panel panel-default col-md-8">
+      <div class="panel-body ">
+  <div class="row col-md-12">
+    <div class="form-group col-md-6">
+      <label for="name" class="control-label">
+        Nombre de archivo
+      </label>
+      <input type="text" id="name" name="name" placeholder="" class="form-control" value="<%= @attachment.name %>">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="type" class="control-label">
+        Tipo de documento
+      </label>
+      <input type="text" id="type" name="type" placeholder="" class="form-control" value="<%= @attachment.name %>">
+    </div>
+
+  </div>
+  <div class="row col-md-12">
+    <input type="hidden" id="claim_id" name="claim_id" placeholder="" class="form-control" value="<%= params[:id] %>">
+  </div>
+  <br />
+  <div class="row col-md-12">
+    <%= f.label :attachment, "Archivo" %>
+    <%= f.file_field :attachment %>
+    <br />
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  </div>
+</div>
 </div>

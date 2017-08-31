@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :attachments, only: [:index, :new, :create, :destroy, :show]
   get "/attachment/:id", :controller => "attachments", :action => "show"
+  get "/attachment/new/:id", :controller => "attachments", :action => "new"
 
 
   # Routes for the Claim_follow resource:

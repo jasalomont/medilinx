@@ -5,32 +5,22 @@
   </h1>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Contenido</th>
-        <th>Titulo</th>
-        <th>Autor</th>
-        <th>Fecha</th>
-        <th>Likes</th>
-        <th></th>
-      </tr>
+<div class="row" >
+  <% @blogs.each do |blog| %>
+  <div class="col-md-4" >
+    <div class="panel panel-default" style="height:200px">
+      <div class="panel-heading" style="height:40px">
+        <h4 ><%= blog.post_content %></h4>
+      </div>
 
-      <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.post_content %></td>
-        <td><%= blog.article_title %></td>
-        <td><%= blog.post_author %></td>
-        <td><%= blog.post_date %></td>
-        <td><%= blog.post_like_count %></td>
-        <td>
-          <a href="/blogs/<%= blog.id %>" class="btn btn-primary">Ver</a>
-          <!-- <a href="/blogs/<%= blog.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_blog/<%= blog.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
-        </td>
-      </tr>
-      <% end %>
-    </table>
+      <div class="panel-body" style="height:120px">
+        <p><a href="/blogs/<%= blog.id %>"  style="color:#181818; font-size:20px; font-family:calibri"><%= blog.article_title %></a></p>
+      </div>
+      <div class="panel-body" >
+        <%= blog.post_date %> | <%= blog.post_author %>
+
   </div>
+  </div>
+</div>
+<% end %>
 </div>

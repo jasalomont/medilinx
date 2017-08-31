@@ -133,7 +133,9 @@
             <!-- true -->
         <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
           <% else %>
-          <td style=" text-align: center"><%= link_to "+", new_attachment_path, class: "btn btn-sm btn-default", style:"color:blue" %></td>
+          <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
+
+          <!-- <td style=" text-align: center"><%= link_to "+", new_attachment_path, class: "btn btn-sm btn-default", style:"color:blue" %></td> -->
         <% end %>
 
       </tr>
