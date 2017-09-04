@@ -27,7 +27,7 @@
       <!-- Label and input for fum -->
       <div class="form-group">
         <label for="fum" class="control-label">
-          Fum
+          FUM (Fecha de Última menstruación)
         </label>
 
         <input type="date" id="fum" name="fum" placeholder="Fum" class="form-control" value="<%= @pregnancy.fum %>">
@@ -36,7 +36,7 @@
       <!-- Label and input for number -->
       <div class="form-group">
         <label for="number" class="control-label">
-          Number
+          Número de Embarazos
         </label>
 
         <input type="text" id="number" name="number" placeholder="Number" class="form-control" value="<%= @pregnancy.number %>">
@@ -45,7 +45,7 @@
       <!-- Label and input for abortion -->
       <div class="form-group">
         <label for="abortion" class="control-label">
-          Abortion
+          Número de Abortos
         </label>
 
         <input type="text" id="abortion" name="abortion" placeholder="Abortion" class="form-control" value="<%= @pregnancy.abortion %>">
@@ -54,7 +54,7 @@
       <!-- Label and input for caesarean -->
       <div class="form-group">
         <label for="caesarean" class="control-label">
-          Caesarean
+          Número de Cesáreas
         </label>
 
         <input type="text" id="caesarean" name="caesarean" placeholder="Caesarean" class="form-control" value="<%= @pregnancy.caesarean %>">
@@ -63,17 +63,17 @@
       <!-- Label and input for normal -->
       <div class="form-group">
         <label for="normal" class="control-label">
-          Normal
+          Número de Partos Naturales
         </label>
 
         <input type="text" id="normal" name="normal" placeholder="Normal" class="form-control" value="<%= @pregnancy.normal %>">
       </div>
 
       <button class="btn btn-warning">
-        Update Pregnancy
+        Actualizar
       </button>
       or
-      <a href="/pregnancies/<%= @pregnancy.id %>">Cancel</a>
+      <a href="/pregnancies/<%= @pregnancy.id %>">Cancelar</a>
     </form>
   </div>
 </div>

@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Non Pathological #<%= @non_pathological.id %></h3>
+  <h3>Editar registro</h3>
 </div>
 
 <div class="row">
@@ -21,7 +21,7 @@
       <!-- Label and input for drug_type -->
       <div class="form-group">
         <label for="drug_type" class="control-label">
-          Drug type
+          Tipo de droga o bebida alcoholica
         </label>
 
         <input type="text" id="drug_type" name="drug_type" placeholder="Drug type" class="form-control" value="<%= @non_pathological.drug_type %>">
@@ -30,7 +30,7 @@
       <!-- Label and input for quantity -->
       <div class="form-group">
         <label for="quantity" class="control-label">
-          Quantity
+          Detalles (cantidad consumida)
         </label>
 
         <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @non_pathological.quantity %>">
@@ -38,11 +38,11 @@
 
       <!-- Label and input for patient_id -->
       <div class="form-group">
-        <label for="patient_id" class="control-label">
+        <!-- <label for="patient_id" class="control-label">
           Patient
-        </label>
+        </label> -->
 
-        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @non_pathological.patient_id %>">
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @non_pathological.patient_id %>">
       </div>
 
       <button class="btn btn-warning">

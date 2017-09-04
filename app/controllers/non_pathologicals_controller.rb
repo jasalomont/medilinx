@@ -27,7 +27,7 @@ class NonPathologicalsController < ApplicationController
     save_status = @non_pathological.save
 
     if save_status == true
-      redirect_to("/non_pathologicals/#{@non_pathological.id}", :notice => "Non pathological created successfully.")
+      redirect_to("/historial_medico", :notice => "Non pathological created successfully.")
     else
       render("non_pathologicals/new.html.erb")
     end
@@ -49,7 +49,7 @@ class NonPathologicalsController < ApplicationController
     save_status = @non_pathological.save
 
     if save_status == true
-      redirect_to("/non_pathologicals/#{@non_pathological.id}", :notice => "Non pathological updated successfully.")
+      redirect_to("/historial_medico", :notice => "Non pathological updated successfully.")
     else
       render("non_pathologicals/edit.html.erb")
     end

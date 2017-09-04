@@ -2,7 +2,7 @@ class HistorialMedicoController < ApplicationController
 
   def index
 
-      @pathologicals = Pathological.where("patient_id"=>current_patient.id)
+    @pathologicals = Pathological.where("patient_id"=>current_patient.id)
     @non_pathologicals = NonPathological.where("patient_id"=>current_patient.id)
     @pregnancies = Pregnancy.where("patient_id"=>current_patient.id)
     @pregnancy_size = Pregnancy.where("patient_id"=>current_patient.id).count
