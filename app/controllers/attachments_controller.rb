@@ -26,7 +26,7 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
-    redirect_to attachments_path, notice:  "El archivo #{@attachment.name} se ha eliminado."
+    redirect_to("/attachment/#{@attachment.claim_id}", notice: "El archivo #{@attachment.name} se ha eliminado.")
   end
 
   private

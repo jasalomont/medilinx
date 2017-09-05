@@ -6,8 +6,13 @@
 <h3>Archivos Adjuntos del reclamo #<%=params[:id] %></h3>
 <br />
 <% if current_insurer != nil %>
+<a href="/claims/controlpanel">Regresar</a>
+<% elsif current_patient != nil %>
+<a href="/attachment/new/<%=params[:id] %>" class="btn btn-primary">Agregar archivo</a>
+<a href="/claims/record">Regresar</a>
 <% else %>
-<%= link_to "Agregar Archivo", new_attachment_path, class: "btn btn-primary" %>
+<a href="/attachment/new/<%=params[:id] %>" class="btn btn-primary">Agregar archivo</a>
+<a href="/claims">Regresar</a>
 <% end %>
 <br />
 <br />
