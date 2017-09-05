@@ -335,6 +335,7 @@ DEPENDENCIES
   devise
   filterrific
   fog (~> 1.38)
+  fog-aws
   jbuilder (~> 2.5)
   jquery-rails
   mini_magick
