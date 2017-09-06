@@ -15,20 +15,39 @@
       <h2><%= current_doctor.practice_name %></h2>
     </div>
 
-    <h1 style="margin-bottom:0px">
-      <div class="row">
-      <div class="col-md-4">
-      <div class="btn-group btn-group-justified">
-      <a href="/medical_relations/new" class="btn btn-md btn-default">Agregar Paciente</a>
-      <a href="/doctors/index" class="btn btn-md btn-default">Directorio Médico</a>
-    </div>
-    </div>
-    </div>
-    </h1>
+
 
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-3">
+        <br>
+        <div class="panel panel-default" >
+          <div class="panel-heading">
+            <h3 class="panel-title"><b>Notificaciones</b></h3>
+          </div>
+          <div class="panel-body">
+            <p>
+              <ul style="list-style-type:square; font-size:20px">
+                <% Claim.where(doctor_id: current_doctor.id, doctor_start: true).each do |claim| %>
+                <li>Terminar reclamo de <%= claim.patient_name %>, #<%= claim.id %></li>
+                <br>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h1 style="margin-bottom:0px">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="btn-group btn-group-justified">
+                <a href="/medical_relations/new" class="btn btn-md btn-default">Agregar Paciente</a>
+                <a href="/doctors/index" class="btn btn-md btn-default">Directorio Médico</a>
+              </div>
+            </div>
+          </div>
+        </h1>
         <div class="panel panel-default"  style="background-color:#E7E7E7">
           <div class="panel-heading">
             <h3 class="panel-title"><b>Panel de Control</b></h3>
@@ -54,8 +73,8 @@
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <h3><i class="fa fa-book" aria-hidden="true"></i> Expedientes</h3>
-                    <p>Ver y crear expedientes electrónicos</p>
+                    <h3><i class="fa fa-archive" aria-hidden="true"></i> Expedientes</h3>
+                    <p>Administra expedientes</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/medical_relations" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -84,8 +103,8 @@
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <h3><i class="fa fa-money" aria-hidden="true"></i> Informes Médicos</h3>
-                    <p>Crear informes médicos para tus pacientes</p>
+                    <h3><i class="fa fa-inbox" aria-hidden="true"></i> Informes Médicos</h3>
+                    <p>Centro de administarción</p>
                     <br>
                     <div class="btn-group btn-group-justified">
                       <a href="/claims" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -96,7 +115,7 @@
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <h3><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Prescripciones</h3>
+                    <h3><i class="fa fa-medkit" aria-hidden="true"></i> Prescripciones</h3>
                     <p>Recetas electrónicas</p>
                     <br>
                     <div class="btn-group btn-group-justified">
@@ -117,6 +136,18 @@
                       <% else%>
                       <a href="/credentials/<%=Credential.where("doctor_id"=>current_doctor.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <h3><i class="fa fa-money" aria-hidden="true"></i> Factoraje</h3>
+                      <p> </p>
+                      <br>
+                      <div class="btn-group btn-group-justified">
+                        <a href="/" class="btn btn-md btn-info">Proximamente</a>
                       </div>
                     </div>
                   </div>
