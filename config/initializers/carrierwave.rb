@@ -1,6 +1,21 @@
-# if Rails.env.production?
+ # if Rails.env.production?
 CarrierWave.configure do |config|
 
+  # Use local storage if in development or test
+  if Rails.env.development? || Rails.env.test? #borrar
+    CarrierWave.configure do |config|
+      config.storage = :file
+    end
+  end
+
+  # Use AWS storage if in production
+  if Rails.env.production? #borrar
+    CarrierWave.configure do |config|
+      config.storage = :fog
+    end
+  end
+
+if Rails.env.production? #borrar
   config.fog_credentials = {
     # Configuration for Amazon S3 should be made available through an Environment variable.
     # For local installations, export the env variable through the shell OR
@@ -25,7 +40,7 @@ CarrierWave.configure do |config|
 #      config.enable_processing = false
 #      config.root = "#{Rails.root}/tmp"
   # else
-    config.storage = :fog
+    # config.storage = :fog
 
   #
    config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
@@ -34,4 +49,4 @@ CarrierWave.configure do |config|
    config.fog_public     = false                             # Generate http:// urls. Defaults to :authenticated_read (https://)
    config.fog_attributes = {'Cache-Control'=>'max-age=315576000'} # optional, defaults to {}
 end
-# end
+end #borrar
