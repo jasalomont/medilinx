@@ -29,7 +29,7 @@
               <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
             </div>
 
-      
+
 
             <div class="form-group">
               <%= f.label :city_work_cont, "Ubicación (ciudad)" %>
@@ -71,6 +71,7 @@
 
                   <% if current_doctor != nil %>
                   <% if current_doctor.email == "admindoc@medilinx.net" %>
+                  <%= doctor.email %>
                   <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Eliminar!</a>
                   <% end %>
                   <% end %>
