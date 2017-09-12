@@ -32,6 +32,7 @@
         <label for="patient_id" class="control-label">
           Correo Electrónico del paciente
         </label>
+        <!-- <input type="hidden" id="patient_id" name="doctor_id" placeholder="paciente@ejemplo.com" class="form-control" value="<%= @medical_relation %>"> -->
         <%= select_tag(:patient_id, options_from_collection_for_select(Patient.all, :id, :email, @medical_relation.patient_id), :class => "form-control") %>
 
 

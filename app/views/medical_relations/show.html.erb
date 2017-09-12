@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<!-- <div class="panel panel-default">
   <h3 style="background-color:white; padding-left:10px"><b> Expediente de Paciente: <u> <%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></u></b></h3>
-</div>
+</div> -->
 
 <div class="row">
   <div class="col-md-8">
@@ -12,6 +12,8 @@
           <% if current_patient != nil %>
           <!-- true -->
           <span style="float:right;"><a href="/patients/edit" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+          <% else %>
+          <!-- <span style="float:right;"><%= link_to "Regresar", :back, :class=>"btn btn-sm btn-default" %></span> -->
           <% end %>
 
         </h4>
@@ -25,8 +27,8 @@
           <div class="col-md-10">
 
             <dl class="dl-horizontal">
-              <dt>Paciente</dt>
-              <dd><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></dd>
+              <dt style="font-size:20px">Paciente</dt>
+              <dd style="font-size:20px; color:#317eac; font-weight:bold"><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></dd>
               <dt>Sexo</dt>
               <dd> <%=@gender %></dd>
               <dt>Edad</dt>

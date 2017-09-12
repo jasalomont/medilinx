@@ -17,6 +17,12 @@ class CredentialsController < ApplicationController
     render("credentials/new.html.erb")
   end
 
+  def new_spec
+    @credential = Credential.new
+    @doctor = Doctor.find(params[:did])
+    render("credentials/new.html.erb")
+  end
+
   def create
     @credential = Credential.new
 

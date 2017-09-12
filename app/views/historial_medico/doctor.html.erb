@@ -20,22 +20,27 @@
       <td align="center"><%= image_tag("general/pat_icon.png", width:"100px" ) %></td>
     </div>
     <div class="col-md-8">
-      <h5> <font color="black">Nombre:</font> <%= @patient.first_name %> <%= @patient.last_father %> <%= @patient.last_mother %></h5>
+      <h5 style="font-size:20px"> <font color="black">Nombre:</font> <%= @patient.first_name %> <%= @patient.last_father %> <%= @patient.last_mother %></h5>
       <p></p>
       <h5> <font color="black">Sexo:</font> <% if @patient.gender == "m" %>
         Masculino
         <% else %>
         Femenino
-        <% end %> </h5>
-        <p></p>
-        <h5><font color="black">Fecha de Nacimiento:</font>
-          <% if @patient.birthdate != nil %>
-          <%= @patient.birthdate.strftime("%B")  %> <%= @patient.birthdate.month%>, <%= @patient.birthdate.year %> </h5>
-          <% end %>
-
-        </div>
-      </div>
+        <% end %>
+      </h5>
+      <p></p>
+      <h5><font color="black">Fecha de Nacimiento:</font>
+        <% if @patient.birthdate != nil %>
+        <%= @patient.birthdate.strftime("%B")  %> <%= @patient.birthdate.month%>, <%= @patient.birthdate.year %>
+      </h5>
+      <% end %>
     </div>
+  </div>
+</div>
+
+  <%= link_to "Regresar", :back, :class=>"btn btn-sm btn-info" %>
+
+
   </div>
 </div>
 </div>

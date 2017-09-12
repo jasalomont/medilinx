@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 
   # CREATE
   get "/credentials/new", :controller => "credentials", :action => "new"
+  get "/credentials/new/:did", :controller => "credentials", :action => "new_spec"
   post "/create_credential", :controller => "credentials", :action => "create"
 
   # READ
