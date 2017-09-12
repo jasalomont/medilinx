@@ -34,11 +34,7 @@ class PathologicalsController < ApplicationController
     save_status = @pathological.save
 
     if save_status == true
-      if current_doctor != nil
         redirect_to("/historial_medico/doctor/#{@pathological.patient_id}", :notice => "Registro creado exitosamente")
-      else
-        redirect_to("/historial_medico", :notice => "Registro creado exitosamente")
-      end
     else
       render("historial_medico/pathologicals/new.html.erb")
     end
