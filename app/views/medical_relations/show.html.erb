@@ -1,5 +1,5 @@
-<div class="page-header">
-  <h3>Expediente de Paciente: <%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></h3>
+<div class="panel panel-default">
+  <h3 style="background-color:white; padding-left:10px"><b> Expediente de Paciente: <u> <%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></u></b></h3>
 </div>
 
 <div class="row">
@@ -7,9 +7,12 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h4 class="">
-          <span style="text-align:left;">Datos Generales</span>
-            <span style="float:right;"><a href="/patients/edit" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+        <h4 style="margin:0px">
+          <span style="text-align:left"><b> Ficha de Identificación</b></span>
+          <% if current_patient != nil %>
+          <!-- true -->
+          <span style="float:right;"><a href="/patients/edit" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+          <% end %>
 
         </h4>
 
@@ -20,10 +23,8 @@
             <%= image_tag("general/pat_icon.png", width:"100px" ) %>
           </div>
           <div class="col-md-10">
-            <!-- <div class="row">
-            <div class="col-md-12 mb-2"> -->
-            <dl class="dl-horizontal">
 
+            <dl class="dl-horizontal">
               <dt>Paciente</dt>
               <dd><%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></dd>
               <dt>Sexo</dt>
@@ -45,46 +46,52 @@
   </div>
   <div class="col-md-4">
 
-    <a href=" <%=  %>" class="btn btn-md btn-default" style="width:200px">Historia Clínica</a>
+    <a href="/historial_medico/doctor/<%=@medical_relation.patient_id %>" class="btn btn-lg btn-info" style="width:100%">Historia Clínica</a>
     <p></p>
-    <button class="btn btn-md btn-default" style="width:200px">Alergias</button>
+    <!-- <button class="btn btn-md btn-default" style="width:200px">Alergias</button> -->
 
-</div>
+  </div>
 </div>
 
     <!-- Boton Crear nota medica  -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h3 style="margin:0px"><b> Notas Médicas</b></h3>
+        </div>
+        <div class="panel-body" style="padding:0px; margin-bottom:10px">
+          <form action="/create_event" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for patient_id -->
+            <div class="form-group">
+              <input type="hidden" id="patient_id" name="patient_id" placeholder="patient_id" class="form-control" value="<%= @medical_relation.patient_id %>">
+            </div>
+            <!-- Label and input for doctor_id -->
+            <div class="form-group">
+              <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
+            </div>
+
+            <h3 style="margin:0px">
+              <button class="btn btn-md btn-primary">
+                Nuevo Encuentro
+              </button>
+              <a href="mailto:<%= @medical_relation.patient.email %>?subject=The%20subject%20of%20the%20email&amp" class="btn btn-md btn-info">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              </a>
+            </h3>
+          </form>
+        </div>
+
     <div class="row">
-      <form action="/create_event" method="post">
-        <!-- Hidden input for authenticity token to protect from forgery -->
-        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <!-- Barra de filtro -->
 
-        <!-- Label and input for patient_id -->
-        <div class="form-group">
-          <input type="hidden" id="patient_id" name="patient_id" placeholder="patient_id" class="form-control" value="<%= @medical_relation.patient_id %>">
-        </div>
-        <!-- Label and input for doctor_id -->
-        <div class="form-group">
-          <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
-        </div>
-
-        <h3>
-          <button class="btn btn-md btn-primary">
-            Nuevo Encuentro
-          </button>
-          <a href="mailto:<%= @medical_relation.patient.email %>?subject=The%20subject%20of%20the%20email&amp" class="btn btn-md btn-info">
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-          </a>
-        </h3>
-      </form>
     </div>
 
-    <div class="row">
-      Barra de filtro
-
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
+    <!-- <div class="row">
+      <div class="col-md-12"> -->
         <div class="panel panel-default">
 
         <table class="table table-striped table-hover">

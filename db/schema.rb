@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829192016) do
+ActiveRecord::Schema.define(version: 20170911165846) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -280,6 +280,7 @@ ActiveRecord::Schema.define(version: 20170829192016) do
     t.integer  "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
   create_table "office_profiles", force: :cascade do |t|
@@ -298,6 +299,7 @@ ActiveRecord::Schema.define(version: 20170829192016) do
     t.string   "other"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
   create_table "pathologicals", force: :cascade do |t|
@@ -306,6 +308,7 @@ ActiveRecord::Schema.define(version: 20170829192016) do
     t.date     "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
   create_table "patient_profiles", force: :cascade do |t|
@@ -368,6 +371,7 @@ ActiveRecord::Schema.define(version: 20170829192016) do
     t.integer  "normal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
   create_table "surgicals", force: :cascade do |t|
@@ -376,6 +380,7 @@ ActiveRecord::Schema.define(version: 20170829192016) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
 end

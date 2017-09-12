@@ -39,8 +39,12 @@
       <!-- Label and input for patient_id -->
       <div class="form-group">
 
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= params[:pid] %>">
+      </div>
 
-        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= current_patient.id %>">
+      <div class="form-group">
+
+        <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
       </div>
 
       <button class="btn btn-success">

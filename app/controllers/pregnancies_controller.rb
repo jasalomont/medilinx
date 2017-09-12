@@ -2,19 +2,19 @@ class PregnanciesController < ApplicationController
   def index
     @pregnancies = Pregnancy.all
 
-    render("pregnancies/index.html.erb")
+    render("historial_medico/pregnancies/index.html.erb")
   end
 
   def show
     @pregnancy = Pregnancy.find(params[:id])
 
-    render("pregnancies/show.html.erb")
+    render("historial_medico/pregnancies/show.html.erb")
   end
 
   def new
     @pregnancy = Pregnancy.new
 
-    render("pregnancies/new.html.erb")
+    render("historial_medico/pregnancies/new.html.erb")
   end
 
   def create
@@ -26,20 +26,25 @@ class PregnanciesController < ApplicationController
     @pregnancy.abortion = params[:abortion]
     @pregnancy.caesarean = params[:caesarean]
     @pregnancy.normal = params[:normal]
+    @pregnancy.doctor_id = params[:doctor_id]
 
     save_status = @pregnancy.save
 
     if save_status == true
-      redirect_to("/pregnancies/#{@pregnancy.id}", :notice => "Pregnancy created successfully.")
+      if current_doctor != nil
+        redirect_to("/historial_medico/doctor/#{@pregnancy.patient_id}", :notice => "Registro creado exitosamente")
+      else
+        redirect_to("/historial_medico", :notice => "Registro creado exitosamente")
+      end
     else
-      render("pregnancies/new.html.erb")
+      render("historial_medico/pregnancies/new.html.erb")
     end
   end
 
   def edit
     @pregnancy = Pregnancy.find(params[:id])
 
-    render("pregnancies/edit.html.erb")
+    render("historial_medico/pregnancies/edit.html.erb")
   end
 
   def update
@@ -51,13 +56,18 @@ class PregnanciesController < ApplicationController
     @pregnancy.abortion = params[:abortion]
     @pregnancy.caesarean = params[:caesarean]
     @pregnancy.normal = params[:normal]
+    @pregnancy.doctor_id = params[:doctor_id]
 
     save_status = @pregnancy.save
 
     if save_status == true
-      redirect_to("/historial_medico", :notice => "updated successfully")
+      if current_doctor != nil
+        redirect_to("/historial_medico/doctor/#{@pregnancy.patient_id}", :notice => "Registro creado exitosamente")
+      else
+        redirect_to("/historial_medico", :notice => "Registro creado exitosamente")
+      end
     else
-      render("pregnancies/edit.html.erb")
+      render("historial_medico/pregnancies/edit.html.erb")
     end
   end
 

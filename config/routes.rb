@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   resources :attachments, only: [:index, :new, :create, :destroy, :show]
   get "/attachment/:id", :controller => "attachments", :action => "show"
   get "/attachment/new/:id", :controller => "attachments", :action => "new"
@@ -63,6 +65,7 @@ Rails.application.routes.draw do
   # Routes for the Other_background resource:
   # CREATE
   get "/other_backgrounds/new", :controller => "other_backgrounds", :action => "new"
+  get "/other_backgrounds/new/:pid", :controller => "other_backgrounds", :action => "new_spec"
   post "/create_other_background", :controller => "other_backgrounds", :action => "create"
 
   # READ
@@ -80,6 +83,7 @@ Rails.application.routes.draw do
   # Routes for the Pregnancy resource:
   # CREATE
   get "/pregnancies/new", :controller => "pregnancies", :action => "new"
+  get "/pregnancies/new/:pid", :controller => "pregancies", :action => "new_ spec"
   post "/create_pregnancy", :controller => "pregnancies", :action => "create"
 
   # READ
@@ -97,6 +101,7 @@ Rails.application.routes.draw do
   # Routes for the Surgical resource:
   # CREATE
   get "/surgicals/new", :controller => "surgicals", :action => "new"
+  get "/surgicals/new/:pid", :controller => "surgicals", :action => "new_spec"
   post "/create_surgical", :controller => "surgicals", :action => "create"
 
   # READ
@@ -113,10 +118,12 @@ Rails.application.routes.draw do
 
 # Routes for the Medical History:
 get "/historial_medico", :controller => "historial_medico", :action => "index"
+get "/historial_medico/doctor/:pid", :controller => "historial_medico", :action => "doctor_show"
 
   # Routes for the Non_pathological resource:
   # CREATE
   get "/non_pathologicals/new", :controller => "non_pathologicals", :action => "new"
+  get "/non_pathologicals/new/:pid", :controller => "non_pathologicals", :action => "new_spec"
   post "/create_non_pathological", :controller => "non_pathologicals", :action => "create"
 
   # READ
@@ -134,6 +141,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
   # Routes for the Pathological resource:
   # CREATE
   get "/pathologicals/new", :controller => "pathologicals", :action => "new"
+  get "/pathologicals/new/:pid", :controller => "pathologicals", :action => "new_spec"
   post "/create_pathological", :controller => "pathologicals", :action => "create"
 
   # READ
@@ -204,6 +212,7 @@ get "/historial_medico", :controller => "historial_medico", :action => "index"
   # Routes for the Medical_relation resource:
   root to: "home#dashboard"
   get "/home/dashboard", :controller => "home", :action => "show"
+  get "/home/contacto", :controller => "home", :action => "contact"
 
   # CREATE
   get "/medical_relations/new", :controller => "medical_relations", :action => "new"

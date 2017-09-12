@@ -7,4 +7,9 @@ class HomeController < ApplicationController
     render("home/dashboard.html.erb")
 
   end
+
+  def contact
+    render("home/contacto.html.erb")
+  end
+
 end
