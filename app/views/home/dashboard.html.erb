@@ -23,7 +23,7 @@
         <div class="panel panel-default">
 
         <div class="panel-body" style="height:285px; padding:20px" align="center">
-          <% if current_doctor.credential.photo != nil %>
+          <% if current_doctor.credential != nil && current_doctor.credential.photo != nil %>
             <img class="img-circle" src="<%= current_doctor.credential.photo %>" class="img-responsive" height="100" width="100" >
             <% else %>
             <%= image_tag("general/doc_icon.png", width:"100px" ) %>
