@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911165846) do
+ActiveRecord::Schema.define(version: 20170914230046) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -199,8 +199,19 @@ ActiveRecord::Schema.define(version: 20170911165846) do
     t.string   "about_me"
     t.string   "photo"
     t.string   "cedula_esp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "email"
+    t.string   "phone_work"
+    t.string   "phone_mobile"
+    t.string   "street_address_work"
+    t.string   "neighborhood_work"
+    t.string   "district_work"
+    t.string   "zip_work"
+    t.string   "city_work"
+    t.string   "state_work"
+    t.string   "practice_name"
+    t.boolean  "permission_public"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -240,6 +251,44 @@ ActiveRecord::Schema.define(version: 20170911165846) do
     t.string   "treatment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "evol_mednotes", force: :cascade do |t|
+    t.integer  "prescription_id"
+    t.integer  "lab_tests_id"
+    t.integer  "doctor_id"
+    t.string   "mednote_responsible"
+    t.string   "mednote_responsible_sign"
+    t.integer  "patient_id"
+    t.string   "patient_name"
+    t.string   "patient_gender"
+    t.integer  "patient_age"
+    t.float    "record_id"
+    t.string   "exterior_obs"
+    t.float    "temperature"
+    t.float    "blood_pressure"
+    t.float    "heart_freq"
+    t.float    "breathing_rate"
+    t.float    "weight"
+    t.float    "size"
+    t.string   "data_head"
+    t.string   "data_neck"
+    t.string   "data_chest"
+    t.string   "data_abdomen"
+    t.string   "data_limbs"
+    t.string   "data_genitals"
+    t.text     "lab_results"
+    t.text     "clinical_diagnose"
+    t.text     "forecast"
+    t.text     "therapeutic_indic"
+    t.text     "evolution_update_cc"
+    t.text     "tx_results"
+    t.text     "tx"
+    t.string   "evol_dose"
+    t.string   "evol_med_intake"
+    t.string   "evol_med_periodicity"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "insurers", force: :cascade do |t|

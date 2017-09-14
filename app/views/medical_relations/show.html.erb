@@ -2,9 +2,13 @@
   <h3 style="background-color:white; padding-left:10px"><b> Expediente de Paciente: <u> <%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %></u></b></h3>
 </div> -->
 
+
+
+<% if @medical_relation.permission %>
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-default">
+  <!-- true -->
 
       <div class="panel-heading">
         <h4 style="margin:0px">
@@ -50,10 +54,30 @@
 
     <a href="/historial_medico/doctor/<%=@medical_relation.patient_id %>" class="btn btn-lg btn-info" style="width:100%">Historia Clínica</a>
     <p></p>
+    <a href="" class="btn btn-lg btn-info" style="width:100%">Resumen de Exploración Física</a>
     <!-- <button class="btn btn-md btn-default" style="width:200px">Alergias</button> -->
 
   </div>
 </div>
+    <% else %>
+    <!-- En caso de no tener permiso -->
+    <span style="color:red; font-size:20px">
+      <i class="fa fa-clock-o" aria-hidden="true"></i> <b>En Espera de Aprobación:</b> Este Usuario no ha otorgado permisos para compartir información personal.  Se requieren de los permisos para ver Ficha de identificación y el Historial Médico </span></a>
+      <p></p>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-default">
+        <!-- true -->
+
+            <div class="panel-heading">
+              <h4 style="margin:0px">
+                <span style="text-align:left"><b> Ficha de Identificación</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
 
     <!-- Boton Crear nota medica  -->
 
@@ -78,8 +102,10 @@
 
             <h3 style="margin:0px">
               <button class="btn btn-md btn-primary">
-                Nuevo Encuentro
+                Nueva Encuentro
               </button>
+              <a href="/evol_mednotes/new/<%= @medical_relation.patient_id %>" class="btn btn-md btn-primary">Nueva Nota de Evolución
+              </a>
               <a href="mailto:<%= @medical_relation.patient.email %>?subject=The%20subject%20of%20the%20email&amp" class="btn btn-md btn-info">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
               </a>
@@ -101,6 +127,7 @@
             <th>Fecha</th>
             <th>Tipo de encuentro</th>
             <th>Diagnostico</th>
+
             <th>Tratamiento</th>
             <!-- <th>Acción</th> -->
             <th>Status Reclamo</th>
