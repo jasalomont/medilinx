@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914230046) do
+ActiveRecord::Schema.define(version: 20170914235017) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -199,19 +199,8 @@ ActiveRecord::Schema.define(version: 20170914230046) do
     t.string   "about_me"
     t.string   "photo"
     t.string   "cedula_esp"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "email"
-    t.string   "phone_work"
-    t.string   "phone_mobile"
-    t.string   "street_address_work"
-    t.string   "neighborhood_work"
-    t.string   "district_work"
-    t.string   "zip_work"
-    t.string   "city_work"
-    t.string   "state_work"
-    t.string   "practice_name"
-    t.boolean  "permission_public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "doctors", force: :cascade do |t|

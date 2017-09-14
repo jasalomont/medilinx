@@ -60,17 +60,17 @@
               <% @doctors.each do |doctor| %>
               <tr>
 
-<% if doctor.doctor_id != nil %>
-<td><a href="/doctors/<%= doctor.doctor_id %>"> <%= doctor.practice_name  %></a></td>
-<td><%= doctor.practice %></td>
-<td><%= doctor.city_work %></td>
-<td><a href="/doctors/<%= doctor.doctor_id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-  <% else %>
-  <td><%= doctor.practice_name  %></td>
-  <td><%= doctor.practice %></td>
-  <td><%= doctor.city_work %></td>
-  <td></td>
-<% end %>
+                <% if doctor.doctor_id != nil %>
+                <td><a href="/doctors/<%= doctor.doctor_id %>"> <%= doctor.practice_name  %></a></td>
+                <td><%= doctor.practice %></td>
+                <td><%= doctor.city_work %></td>
+                <td><a href="/doctors/<%= doctor.doctor_id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                  <% else %>
+                  <td><%= doctor.practice_name  %></td>
+                  <td><%= doctor.practice %></td>
+                  <td><%= doctor.city_work %></td>
+                  <td></td>
+                  <% end %>
 
 
                   <!-- <% if current_doctor != nil %>
