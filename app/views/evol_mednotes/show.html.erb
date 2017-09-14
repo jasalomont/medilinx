@@ -1,0 +1,121 @@
+<div class="page-header">
+  <h3>Evol Mednote #<%= @evol_mednote.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Prescription</dt>
+      <dd><%= @evol_mednote.prescription_id %></dd>
+
+      <dt>Lab tests</dt>
+      <dd><%= @evol_mednote.lab_tests_id %></dd>
+
+      <dt>Doctor</dt>
+      <dd><%= @evol_mednote.doctor_id %></dd>
+
+      <dt>Mednote responsible</dt>
+      <dd><%= @evol_mednote.mednote_responsible %></dd>
+
+      <dt>Mednote responsible sign</dt>
+      <dd><%= @evol_mednote.mednote_responsible_sign %></dd>
+
+      <dt>Patient</dt>
+      <dd><%= @evol_mednote.patient_id %></dd>
+
+      <dt>Patient name</dt>
+      <dd><%= @evol_mednote.patient_name %></dd>
+
+      <dt>Patient gender</dt>
+      <dd><%= @evol_mednote.patient_gender %></dd>
+
+      <dt>Patient age</dt>
+      <dd><%= @evol_mednote.patient_age %></dd>
+
+      <dt>Record</dt>
+      <dd><%= @evol_mednote.record_id %></dd>
+
+      <dt>Exterior obs</dt>
+      <dd><%= @evol_mednote.exterior_obs %></dd>
+
+      <dt>Temperature</dt>
+      <dd><%= @evol_mednote.temperature %></dd>
+
+      <dt>Blood pressure</dt>
+      <dd><%= @evol_mednote.blood_pressure %></dd>
+
+      <dt>Heart freq</dt>
+      <dd><%= @evol_mednote.heart_freq %></dd>
+
+      <dt>Breathing rate</dt>
+      <dd><%= @evol_mednote.breathing_rate %></dd>
+
+      <dt>Weight</dt>
+      <dd><%= @evol_mednote.weight %></dd>
+
+      <dt>Size</dt>
+      <dd><%= @evol_mednote.size %></dd>
+
+      <dt>Data head</dt>
+      <dd><%= @evol_mednote.data_head %></dd>
+
+      <dt>Data neck</dt>
+      <dd><%= @evol_mednote.data_neck %></dd>
+
+      <dt>Data chest</dt>
+      <dd><%= @evol_mednote.data_chest %></dd>
+
+      <dt>Data abdomen</dt>
+      <dd><%= @evol_mednote.data_abdomen %></dd>
+
+      <dt>Data limbs</dt>
+      <dd><%= @evol_mednote.data_limbs %></dd>
+
+      <dt>Data genitals</dt>
+      <dd><%= @evol_mednote.data_genitals %></dd>
+
+      <dt>Lab results</dt>
+      <dd><%= @evol_mednote.lab_results %></dd>
+
+      <dt>Clinical diagnose</dt>
+      <dd><%= @evol_mednote.clinical_diagnose %></dd>
+
+      <dt>Forecast</dt>
+      <dd><%= @evol_mednote.forecast %></dd>
+
+      <dt>Therapeutic indic</dt>
+      <dd><%= @evol_mednote.therapeutic_indic %></dd>
+
+      <dt>Evolution update cc</dt>
+      <dd><%= @evol_mednote.evolution_update_cc %></dd>
+
+      <dt>Tx results</dt>
+      <dd><%= @evol_mednote.tx_results %></dd>
+
+      <dt>Tx</dt>
+      <dd><%= @evol_mednote.tx %></dd>
+
+      <dt>Evol dose</dt>
+      <dd><%= @evol_mednote.evol_dose %></dd>
+
+      <dt>Evol med intake</dt>
+      <dd><%= @evol_mednote.evol_med_intake %></dd>
+
+      <dt>Evol med periodicity</dt>
+      <dd><%= @evol_mednote.evol_med_periodicity %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/evol_mednotes" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/evol_mednotes/<%= @evol_mednote.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_evol_mednote/<%= @evol_mednote.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

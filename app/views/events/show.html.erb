@@ -2,6 +2,8 @@
   <h3>Record: <%= @event.created_at.to_date %></h3>
 </div>
 
+<a href="" class="btn  btn-primary" >Agregar Nota Evolutiva</a>
+<br>
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
@@ -14,8 +16,7 @@
       <dt>Diagnose</dt>
       <dd><%= @event.diagnose %></dd>
 
-      <dt>Weight</dt>
-      <dd><%= @event.weight %></dd>
+
 
       <dt>Treatment</dt>
       <dd><%= @event.treatment %></dd>
@@ -31,8 +32,9 @@
         Regresar
       </a> -->
 
+      <%= link_to "Regresar", :back, class: "btn btn-primary" %>
       <a href="/events/<%= @event.id %>/edit" class="btn btn-info">
-        Ediar
+        Editar
       </a>
       <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
         Eliminar

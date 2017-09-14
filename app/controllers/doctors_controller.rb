@@ -8,7 +8,7 @@ class DoctorsController < ApplicationController
     @doctor2 = Doctor.find(params[:id])
     @street_address = @doctor.street_address_work
 
-    
+
 
     if current_patient != nil
       @events = Event.where("patient_id"=>current_patient.id)
@@ -20,7 +20,7 @@ class DoctorsController < ApplicationController
 
   def index
 
-    @q = Doctor.ransack(params[:q])
+    @q = Credential.ransack(params[:q])
     @doctors = @q.result
     render("doctors/index.html.erb")
 

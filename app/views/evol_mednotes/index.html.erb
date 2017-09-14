@@ -1,0 +1,92 @@
+<div class="page-header">
+  <h1>
+    Evol mednotes
+    <a href="/evol_mednotes/new" class="btn btn-lg btn-success">New Evol mednote</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Prescription</th>
+        <th>Lab tests</th>
+        <th>Doctor</th>
+        <th>Mednote responsible</th>
+        <th>Mednote responsible sign</th>
+        <th>Patient</th>
+        <th>Patient name</th>
+        <th>Patient gender</th>
+        <th>Patient age</th>
+        <th>Record</th>
+        <th>Exterior obs</th>
+        <th>Temperature</th>
+        <th>Blood pressure</th>
+        <th>Heart freq</th>
+        <th>Breathing rate</th>
+        <th>Weight</th>
+        <th>Size</th>
+        <th>Data head</th>
+        <th>Data neck</th>
+        <th>Data chest</th>
+        <th>Data abdomen</th>
+        <th>Data limbs</th>
+        <th>Data genitals</th>
+        <th>Lab results</th>
+        <th>Clinical diagnose</th>
+        <th>Forecast</th>
+        <th>Therapeutic indic</th>
+        <th>Evolution update cc</th>
+        <th>Tx results</th>
+        <th>Tx</th>
+        <th>Evol dose</th>
+        <th>Evol med intake</th>
+        <th>Evol med periodicity</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @evol_mednotes.each do |evol_mednote| %>
+      <tr>
+        <td><%= evol_mednote.prescription_id %></td>
+        <td><%= evol_mednote.lab_tests_id %></td>
+        <td><%= evol_mednote.doctor_id %></td>
+        <td><%= evol_mednote.mednote_responsible %></td>
+        <td><%= evol_mednote.mednote_responsible_sign %></td>
+        <td><%= evol_mednote.patient_id %></td>
+        <td><%= evol_mednote.patient_name %></td>
+        <td><%= evol_mednote.patient_gender %></td>
+        <td><%= evol_mednote.patient_age %></td>
+        <td><%= evol_mednote.record_id %></td>
+        <td><%= evol_mednote.exterior_obs %></td>
+        <td><%= evol_mednote.temperature %></td>
+        <td><%= evol_mednote.blood_pressure %></td>
+        <td><%= evol_mednote.heart_freq %></td>
+        <td><%= evol_mednote.breathing_rate %></td>
+        <td><%= evol_mednote.weight %></td>
+        <td><%= evol_mednote.size %></td>
+        <td><%= evol_mednote.data_head %></td>
+        <td><%= evol_mednote.data_neck %></td>
+        <td><%= evol_mednote.data_chest %></td>
+        <td><%= evol_mednote.data_abdomen %></td>
+        <td><%= evol_mednote.data_limbs %></td>
+        <td><%= evol_mednote.data_genitals %></td>
+        <td><%= evol_mednote.lab_results %></td>
+        <td><%= evol_mednote.clinical_diagnose %></td>
+        <td><%= evol_mednote.forecast %></td>
+        <td><%= evol_mednote.therapeutic_indic %></td>
+        <td><%= evol_mednote.evolution_update_cc %></td>
+        <td><%= evol_mednote.tx_results %></td>
+        <td><%= evol_mednote.tx %></td>
+        <td><%= evol_mednote.evol_dose %></td>
+        <td><%= evol_mednote.evol_med_intake %></td>
+        <td><%= evol_mednote.evol_med_periodicity %></td>
+        <td>
+          <a href="/evol_mednotes/<%= evol_mednote.id %>" class="btn btn-primary">Show</a>
+          <a href="/evol_mednotes/<%= evol_mednote.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_evol_mednote/<%= evol_mednote.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

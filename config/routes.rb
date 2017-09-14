@@ -2,6 +2,23 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Evol_mednote resource:
+  # CREATE
+  get "/evol_mednotes/new/:pid", :controller => "evol_mednotes", :action => "new"
+  post "/create_evol_mednote", :controller => "evol_mednotes", :action => "create"
+
+  # READ
+  get "/evol_mednotes", :controller => "evol_mednotes", :action => "index"
+  get "/evol_mednotes/:id", :controller => "evol_mednotes", :action => "show"
+
+  # UPDATE
+  get "/evol_mednotes/:id/edit", :controller => "evol_mednotes", :action => "edit"
+  post "/update_evol_mednote/:id", :controller => "evol_mednotes", :action => "update"
+
+  # DELETE
+  get "/delete_evol_mednote/:id", :controller => "evol_mednotes", :action => "destroy"
+  #------------------------------
+
   resources :attachments, only: [:index, :new, :create, :destroy, :show]
   get "/attachment/:id", :controller => "attachments", :action => "show"
   get "/attachment/new/:id", :controller => "attachments", :action => "new"

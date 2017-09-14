@@ -20,7 +20,7 @@ class CredentialsController < ApplicationController
   def new_spec
     @credential = Credential.new
     @doctor = Doctor.find(params[:did])
-    render("credentials/new.html.erb")
+    render("credentials/new_spec.html.erb")
   end
 
   def create
@@ -36,7 +36,18 @@ class CredentialsController < ApplicationController
     @credential.languages = params[:languages]
     @credential.about_me = params[:about_me]
     @credential.photo = params[:photo]
-    @credential.cedula_esp = params[:cedula_esp]
+    @credential.email = params[:email]
+    @credential.phone_work = params[:phone_work]
+    @credential.phone_mobile = params[:phone_mobile]
+    @credential.street_address_work = params[:street_address_work]
+    @credential.neighborhood_work = params[:neighborhood_work]
+    @credential.district_work = params[:district_work]
+    @credential.zip_work = params[:zip_work]
+    @credential.city_work = params[:city_work]
+    @credential.state_work = params[:state_work]
+    @credential.practice_name = params[:practice_name]
+    @credential.permission_public = params[:permission_public]
+
 
     save_status = @credential.save
 
@@ -67,6 +78,18 @@ class CredentialsController < ApplicationController
     @credential.about_me = params[:about_me]
     @credential.photo = params[:photo]
     @credential.cedula_esp = params[:cedula_esp]
+    @credential.email = params[:email]
+    @credential.phone_work = params[:phone_work]
+    @credential.phone_mobile = params[:phone_mobile]
+    @credential.street_address_work = params[:street_address_work]
+    @credential.neighborhood_work = params[:neighborhood_work]
+    @credential.district_work = params[:district_work]
+    @credential.zip_work = params[:zip_work]
+    @credential.city_work = params[:city_work]
+    @credential.state_work = params[:state_work]
+    @credential.practice_name = params[:practice_name]
+    @credential.permission_public = params[:permission_public]
+
 
     save_status = @credential.save
 

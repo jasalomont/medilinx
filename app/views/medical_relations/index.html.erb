@@ -81,12 +81,12 @@
           <td style="text-align:center"><%= age %></td>
           <td style="text-align:center">
 
-            <% if medical_relation.permission == true %>
             <a href="/medical_relations/<%= medical_relation.id %>" class="btn btn-sm btn-primary" style="width:150px">Ver expediente</i></a>
-            <% else %>
+            <!-- <% if medical_relation.permission == true %> -->
+            <!-- <% else %>
             <span style="color:red; font-size:10px">
               <i class="fa fa-clock-o" aria-hidden="true"></i> Espera de Aprobación <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-small btn-sm btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
-            <% end %>
+            <% end %> -->
 
             <!-- <a href="/medical_relations/<%= medical_relation.id %>/edit" class="btn btn-warning">Edit</a> -->
 

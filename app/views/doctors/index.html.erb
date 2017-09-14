@@ -60,23 +60,27 @@
               <% @doctors.each do |doctor| %>
               <tr>
 
-                <td><a href="/doctors/<%= doctor.id %>"> <%= doctor.practice_name  %></a></td>
-                <% if doctor.credential != nil %>
-                <td><%= doctor.credential.practice %></td>
-                  <% else %>
-                  <td></td>
-                <% end %>
-                <td><%= doctor.city_work %></td>
-                <td><a href="/doctors/<%= doctor.id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+<% if doctor.doctor_id != nil %>
+<td><a href="/doctors/<%= doctor.doctor_id %>"> <%= doctor.practice_name  %></a></td>
+<td><%= doctor.practice %></td>
+<td><%= doctor.city_work %></td>
+<td><a href="/doctors/<%= doctor.doctor_id %>"class="btn btn-primary"> <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+  <% else %>
+  <td><%= doctor.practice_name  %></td>
+  <td><%= doctor.practice %></td>
+  <td><%= doctor.city_work %></td>
+  <td></td>
+<% end %>
 
-                  <% if current_doctor != nil %>
+
+                  <!-- <% if current_doctor != nil %>
                   <% if current_doctor.email == "admindoc@medilinx.net" %>
                   <%= doctor.email %>
                   <a href="/delete_doctor/<%= doctor.id %>" class="btn btn-danger" rel="nofollow">Eliminar!</a>
                   <% end %>
                   <% end %>
 
-                </td>
+                </td> -->
 
               </tr>
               <% end %>

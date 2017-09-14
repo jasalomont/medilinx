@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    
+
     @events = Event.all
     @q = Event.ransack(params[:q])
     @events = @q.result
@@ -65,13 +65,16 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-
+    pat = @event.patient_id
     @event.destroy
 
+    medrel = MedicalRelation.where("patient_id"=>pat).first
+    relid = medrel.id
+
     if URI(request.referer).path == "/events/#{@event.id}"
-      redirect_to("/", :notice => "Event deleted.")
+      redirect_to("/medical_relations/#{relid}", :notice => "Event deleted.")
     else
-      redirect_to(:back, :notice => "Event deleted.")
+      redirect_to(:back, :notice => "Registro eliminado.")
     end
   end
 end

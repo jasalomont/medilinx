@@ -1,0 +1,325 @@
+<!-- Validation failure messages -->
+<% if @evol_mednote.errors.any? %>
+  <% @evol_mednote.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Evol Mednote #<%= @evol_mednote.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_evol_mednote/<%= @evol_mednote.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for prescription_id -->
+      <div class="form-group">
+        <label for="prescription_id" class="control-label">
+          Prescription
+        </label>
+
+        <input type="text" id="prescription_id" name="prescription_id" placeholder="Prescription" class="form-control" value="<%= @evol_mednote.prescription_id %>">
+      </div>
+
+      <!-- Label and input for lab_tests_id -->
+      <div class="form-group">
+        <label for="lab_tests_id" class="control-label">
+          Lab tests
+        </label>
+
+        <input type="text" id="lab_tests_id" name="lab_tests_id" placeholder="Lab tests" class="form-control" value="<%= @evol_mednote.lab_tests_id %>">
+      </div>
+
+      <!-- Label and input for doctor_id -->
+      <div class="form-group">
+        <label for="doctor_id" class="control-label">
+          Doctor
+        </label>
+
+        <input type="text" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= @evol_mednote.doctor_id %>">
+      </div>
+
+      <!-- Label and input for mednote_responsible -->
+      <div class="form-group">
+        <label for="mednote_responsible" class="control-label">
+          Mednote responsible
+        </label>
+
+        <input type="text" id="mednote_responsible" name="mednote_responsible" placeholder="Mednote responsible" class="form-control" value="<%= @evol_mednote.mednote_responsible %>">
+      </div>
+
+      <!-- Label and input for mednote_responsible_sign -->
+      <div class="form-group">
+        <label for="mednote_responsible_sign" class="control-label">
+          Mednote responsible sign
+        </label>
+
+        <input type="text" id="mednote_responsible_sign" name="mednote_responsible_sign" placeholder="Mednote responsible sign" class="form-control" value="<%= @evol_mednote.mednote_responsible_sign %>">
+      </div>
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <label for="patient_id" class="control-label">
+          Patient
+        </label>
+
+        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @evol_mednote.patient_id %>">
+      </div>
+
+      <!-- Label and input for patient_name -->
+      <div class="form-group">
+        <label for="patient_name" class="control-label">
+          Patient name
+        </label>
+
+        <input type="text" id="patient_name" name="patient_name" placeholder="Patient name" class="form-control" value="<%= @evol_mednote.patient_name %>">
+      </div>
+
+      <!-- Label and input for patient_gender -->
+      <div class="form-group">
+        <label for="patient_gender" class="control-label">
+          Patient gender
+        </label>
+
+        <input type="text" id="patient_gender" name="patient_gender" placeholder="Patient gender" class="form-control" value="<%= @evol_mednote.patient_gender %>">
+      </div>
+
+      <!-- Label and input for patient_age -->
+      <div class="form-group">
+        <label for="patient_age" class="control-label">
+          Patient age
+        </label>
+
+        <input type="text" id="patient_age" name="patient_age" placeholder="Patient age" class="form-control" value="<%= @evol_mednote.patient_age %>">
+      </div>
+
+      <!-- Label and input for record_id -->
+      <div class="form-group">
+        <label for="record_id" class="control-label">
+          Record
+        </label>
+
+        <input type="text" id="record_id" name="record_id" placeholder="Record" class="form-control" value="<%= @evol_mednote.record_id %>">
+      </div>
+
+      <!-- Label and input for exterior_obs -->
+      <div class="form-group">
+        <label for="exterior_obs" class="control-label">
+          Exterior obs
+        </label>
+
+        <input type="text" id="exterior_obs" name="exterior_obs" placeholder="Exterior obs" class="form-control" value="<%= @evol_mednote.exterior_obs %>">
+      </div>
+
+      <!-- Label and input for temperature -->
+      <div class="form-group">
+        <label for="temperature" class="control-label">
+          Temperature
+        </label>
+
+        <input type="text" id="temperature" name="temperature" placeholder="Temperature" class="form-control" value="<%= @evol_mednote.temperature %>">
+      </div>
+
+      <!-- Label and input for blood_pressure -->
+      <div class="form-group">
+        <label for="blood_pressure" class="control-label">
+          Blood pressure
+        </label>
+
+        <input type="text" id="blood_pressure" name="blood_pressure" placeholder="Blood pressure" class="form-control" value="<%= @evol_mednote.blood_pressure %>">
+      </div>
+
+      <!-- Label and input for heart_freq -->
+      <div class="form-group">
+        <label for="heart_freq" class="control-label">
+          Heart freq
+        </label>
+
+        <input type="text" id="heart_freq" name="heart_freq" placeholder="Heart freq" class="form-control" value="<%= @evol_mednote.heart_freq %>">
+      </div>
+
+      <!-- Label and input for breathing_rate -->
+      <div class="form-group">
+        <label for="breathing_rate" class="control-label">
+          Breathing rate
+        </label>
+
+        <input type="text" id="breathing_rate" name="breathing_rate" placeholder="Breathing rate" class="form-control" value="<%= @evol_mednote.breathing_rate %>">
+      </div>
+
+      <!-- Label and input for weight -->
+      <div class="form-group">
+        <label for="weight" class="control-label">
+          Weight
+        </label>
+
+        <input type="text" id="weight" name="weight" placeholder="Weight" class="form-control" value="<%= @evol_mednote.weight %>">
+      </div>
+
+      <!-- Label and input for size -->
+      <div class="form-group">
+        <label for="size" class="control-label">
+          Size
+        </label>
+
+        <input type="text" id="size" name="size" placeholder="Size" class="form-control" value="<%= @evol_mednote.size %>">
+      </div>
+
+      <!-- Label and input for data_head -->
+      <div class="form-group">
+        <label for="data_head" class="control-label">
+          Data head
+        </label>
+
+        <input type="text" id="data_head" name="data_head" placeholder="Data head" class="form-control" value="<%= @evol_mednote.data_head %>">
+      </div>
+
+      <!-- Label and input for data_neck -->
+      <div class="form-group">
+        <label for="data_neck" class="control-label">
+          Data neck
+        </label>
+
+        <input type="text" id="data_neck" name="data_neck" placeholder="Data neck" class="form-control" value="<%= @evol_mednote.data_neck %>">
+      </div>
+
+      <!-- Label and input for data_chest -->
+      <div class="form-group">
+        <label for="data_chest" class="control-label">
+          Data chest
+        </label>
+
+        <input type="text" id="data_chest" name="data_chest" placeholder="Data chest" class="form-control" value="<%= @evol_mednote.data_chest %>">
+      </div>
+
+      <!-- Label and input for data_abdomen -->
+      <div class="form-group">
+        <label for="data_abdomen" class="control-label">
+          Data abdomen
+        </label>
+
+        <input type="text" id="data_abdomen" name="data_abdomen" placeholder="Data abdomen" class="form-control" value="<%= @evol_mednote.data_abdomen %>">
+      </div>
+
+      <!-- Label and input for data_limbs -->
+      <div class="form-group">
+        <label for="data_limbs" class="control-label">
+          Data limbs
+        </label>
+
+        <input type="text" id="data_limbs" name="data_limbs" placeholder="Data limbs" class="form-control" value="<%= @evol_mednote.data_limbs %>">
+      </div>
+
+      <!-- Label and input for data_genitals -->
+      <div class="form-group">
+        <label for="data_genitals" class="control-label">
+          Data genitals
+        </label>
+
+        <input type="text" id="data_genitals" name="data_genitals" placeholder="Data genitals" class="form-control" value="<%= @evol_mednote.data_genitals %>">
+      </div>
+
+      <!-- Label and input for lab_results -->
+      <div class="form-group">
+        <label for="lab_results" class="control-label">
+          Lab results
+        </label>
+
+        <textarea id="lab_results" name="lab_results" placeholder="Lab results" class="form-control" rows="3"><%= @evol_mednote.lab_results %></textarea>
+      </div>
+
+      <!-- Label and input for clinical_diagnose -->
+      <div class="form-group">
+        <label for="clinical_diagnose" class="control-label">
+          Clinical diagnose
+        </label>
+
+        <textarea id="clinical_diagnose" name="clinical_diagnose" placeholder="Clinical diagnose" class="form-control" rows="3"><%= @evol_mednote.clinical_diagnose %></textarea>
+      </div>
+
+      <!-- Label and input for forecast -->
+      <div class="form-group">
+        <label for="forecast" class="control-label">
+          Forecast
+        </label>
+
+        <textarea id="forecast" name="forecast" placeholder="Forecast" class="form-control" rows="3"><%= @evol_mednote.forecast %></textarea>
+      </div>
+
+      <!-- Label and input for therapeutic_indic -->
+      <div class="form-group">
+        <label for="therapeutic_indic" class="control-label">
+          Therapeutic indic
+        </label>
+
+        <textarea id="therapeutic_indic" name="therapeutic_indic" placeholder="Therapeutic indic" class="form-control" rows="3"><%= @evol_mednote.therapeutic_indic %></textarea>
+      </div>
+
+      <!-- Label and input for evolution_update_cc -->
+      <div class="form-group">
+        <label for="evolution_update_cc" class="control-label">
+          Evolution update cc
+        </label>
+
+        <textarea id="evolution_update_cc" name="evolution_update_cc" placeholder="Evolution update cc" class="form-control" rows="3"><%= @evol_mednote.evolution_update_cc %></textarea>
+      </div>
+
+      <!-- Label and input for tx_results -->
+      <div class="form-group">
+        <label for="tx_results" class="control-label">
+          Tx results
+        </label>
+
+        <textarea id="tx_results" name="tx_results" placeholder="Tx results" class="form-control" rows="3"><%= @evol_mednote.tx_results %></textarea>
+      </div>
+
+      <!-- Label and input for tx -->
+      <div class="form-group">
+        <label for="tx" class="control-label">
+          Tx
+        </label>
+
+        <textarea id="tx" name="tx" placeholder="Tx" class="form-control" rows="3"><%= @evol_mednote.tx %></textarea>
+      </div>
+
+      <!-- Label and input for evol_dose -->
+      <div class="form-group">
+        <label for="evol_dose" class="control-label">
+          Evol dose
+        </label>
+
+        <input type="text" id="evol_dose" name="evol_dose" placeholder="Evol dose" class="form-control" value="<%= @evol_mednote.evol_dose %>">
+      </div>
+
+      <!-- Label and input for evol_med_intake -->
+      <div class="form-group">
+        <label for="evol_med_intake" class="control-label">
+          Evol med intake
+        </label>
+
+        <input type="text" id="evol_med_intake" name="evol_med_intake" placeholder="Evol med intake" class="form-control" value="<%= @evol_mednote.evol_med_intake %>">
+      </div>
+
+      <!-- Label and input for evol_med_periodicity -->
+      <div class="form-group">
+        <label for="evol_med_periodicity" class="control-label">
+          Evol med periodicity
+        </label>
+
+        <input type="text" id="evol_med_periodicity" name="evol_med_periodicity" placeholder="Evol med periodicity" class="form-control" value="<%= @evol_mednote.evol_med_periodicity %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Evol Mednote
+      </button>
+      or
+      <a href="/evol_mednotes/<%= @evol_mednote.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

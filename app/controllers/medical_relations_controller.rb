@@ -67,6 +67,7 @@ class MedicalRelationsController < ApplicationController
 
 if current_doctor != nil
   @events = Event.where("doctor_id"=>current_doctor.id)
+  @evol_mednotes = EvolMednote.where("doctor_id"=>current_doctor.id)
   @claims = Claim.where("doctor_id"=>current_doctor.id)
 end
     @specific_profile = OfficeProfile.all
