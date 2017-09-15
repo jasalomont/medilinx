@@ -30,8 +30,8 @@
       <tr>
         <th>Patient</th>
         <th>Doctor</th>
+        <th>Tipo</th>
         <th>Diagnose</th>
-        <th>Weight</th>
         <th>Treatment</th>
         <th>Actions</th>
       </tr>
@@ -40,8 +40,8 @@
       <tr>
         <td><%= event.patient_id %></td>
         <td><%= event.doctor_id %></td>
+        <td><%= event.encounter_type %></td>
         <td><%= event.diagnose %></td>
-        <td><%= event.weight %></td>
         <td><%= event.treatment %></td>
         <td>
           <a href="/events/<%= event.id %>" class="btn btn-primary">Show</a>

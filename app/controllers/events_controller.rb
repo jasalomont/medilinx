@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @event = Event.find(params[:id])
 
     render("events/show.html.erb")
@@ -29,13 +30,14 @@ class EventsController < ApplicationController
     @event.diagnose = params[:diagnose]
     @event.weight = params[:weight]
     @event.treatment = params[:treatment]
+    @event.encounter_type = params[:encounter_type]
 
     save_status = @event.save
 
     if save_status == true
-      redirect_to("/events/#{@event.id}", :notice => "Event created successfully.")
+      redirect_to :back, :notice => "Event created successfully."
     else
-      render("events/new.html.erb")
+      redirect_to :back,:notice => "Se requiere definir un tipo de encuentro"
     end
   end
 
@@ -53,6 +55,7 @@ class EventsController < ApplicationController
     @event.diagnose = params[:diagnose]
     @event.weight = params[:weight]
     @event.treatment = params[:treatment]
+    @event.encounter_type = params[:encounter_type]
 
     save_status = @event.save
 

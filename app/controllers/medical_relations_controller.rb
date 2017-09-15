@@ -59,20 +59,21 @@ class MedicalRelationsController < ApplicationController
 
     if @medical_relation.patient.gender == "m"
     @gender = "Masculino"
-    elsif @medical_relation.patient.gender == "f"
-  @gender = "Femenino"
-    else
-     @gender = @medical_relation.patient.gender
-    end
-
-if current_doctor != nil
-  @events = Event.where("doctor_id"=>current_doctor.id)
-  @evol_mednotes = EvolMednote.where("doctor_id"=>current_doctor.id)
-  @claims = Claim.where("doctor_id"=>current_doctor.id)
-end
-    @specific_profile = OfficeProfile.all
-    render("medical_relations/show.html.erb")
+  elsif @medical_relation.patient.gender == "f"
+    @gender = "Femenino"
+  else
+    @gender = @medical_relation.patient.gender
   end
+
+  if current_doctor != nil
+    @event_new = Event.new
+    @events = Event.where("doctor_id"=>current_doctor.id)
+    @evol_mednotes = EvolMednote.where("doctor_id"=>current_doctor.id)
+    @claims = Claim.where("doctor_id"=>current_doctor.id)
+  end
+  @specific_profile = OfficeProfile.all
+  render("medical_relations/show.html.erb")
+end
 
 
 

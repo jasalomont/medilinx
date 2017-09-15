@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Routes for the Evol_mednote resource:
   # CREATE
-  get "/evol_mednotes/new/:pid", :controller => "evol_mednotes", :action => "new"
+  get "/evol_mednotes/new/:pid/:eid", :controller => "evol_mednotes", :action => "new"
   post "/create_evol_mednote", :controller => "evol_mednotes", :action => "create"
 
   # READ

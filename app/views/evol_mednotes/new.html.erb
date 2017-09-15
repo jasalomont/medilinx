@@ -42,7 +42,7 @@
           Doctor
         </label>
 
-        <input type="text" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= @evol_mednote.doctor_id %>">
+        <input type="text" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
       </div>
 
       <!-- Label and input for mednote_responsible -->
@@ -69,7 +69,16 @@
           Patient
         </label>
 
-        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @evol_mednote.patient_id %>">
+        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= params[:pid] %>">
+      </div>
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <label for="event_id" class="control-label">
+          Encuentro
+        </label>
+
+        <input type="text" id="event_id" name="event_id" placeholder="Patient" class="form-control" value="<%= params[:eid] %>">
       </div>
 
       <!-- Label and input for patient_name -->

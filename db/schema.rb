@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914235017) do
+ActiveRecord::Schema.define(version: 20170915184426) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -238,8 +238,9 @@ ActiveRecord::Schema.define(version: 20170914235017) do
     t.string   "diagnose"
     t.string   "weight"
     t.string   "treatment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "encounter_type"
   end
 
   create_table "evol_mednotes", force: :cascade do |t|
@@ -278,6 +279,7 @@ ActiveRecord::Schema.define(version: 20170914235017) do
     t.string   "evol_med_periodicity"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "event_id"
   end
 
   create_table "insurers", force: :cascade do |t|
@@ -300,6 +302,7 @@ ActiveRecord::Schema.define(version: 20170914235017) do
     t.string   "employee_ref"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "insurance_co"
     t.index ["email"], name: "index_insurers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_insurers_on_reset_password_token", unique: true
   end
@@ -307,9 +310,10 @@ ActiveRecord::Schema.define(version: 20170914235017) do
   create_table "medical_relations", force: :cascade do |t|
     t.integer  "doctor_id"
     t.integer  "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.boolean  "permission"
+    t.string   "patient_email"
   end
 
   create_table "non_pathologicals", force: :cascade do |t|

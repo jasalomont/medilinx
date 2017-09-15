@@ -23,6 +23,9 @@
       <dt>Patient</dt>
       <dd><%= @evol_mednote.patient_id %></dd>
 
+      <dt>Encuentro</dt>
+      <dd><%= @evol_mednote.event_id %></dd>
+
       <dt>Patient name</dt>
       <dd><%= @evol_mednote.patient_name %></dd>
 
@@ -107,7 +110,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/evol_mednotes" class="btn btn-primary">
+      <a href="/medical_relations/<%= @medical_relation %>" class="btn btn-primary">
         Back
       </a>
       <a href="/evol_mednotes/<%= @evol_mednote.id %>/edit" class="btn btn-warning">

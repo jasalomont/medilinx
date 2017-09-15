@@ -1,72 +1,78 @@
 <!-- Validation failure messages -->
 <% if @event.errors.any? %>
-  <% @event.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @event.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
   <h3>Record Clínico - <%= @event.patient.first_name %></h3>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <form action="/update_event/<%= @event.id %>" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<form action="/update_event/<%= @event.id %>" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <div class="row">
+    <div class="col-md-8">
 
       <!-- Label and input for patient_id -->
       <div class="form-group">
-        <!-- <label for="patient_id" class="control-label">
-          Patient
-        </label> -->
+        <label for="patient_id" class="control-label">
+
+        </label>
 
         <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @event.patient_id %>">
       </div>
 
       <!-- Label and input for doctor_id -->
       <div class="form-group">
-        <!-- <label for="doctor_id" class="control-label">
-          Doctor
-        </label> -->
+        <label for="doctor_id" class="control-label">
+        </label>
 
         <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= @event.doctor_id %>">
       </div>
 
-      <!-- Label and input for diagnose -->
-      <div class="form-group">
-        <label for="diagnose" class="control-label">
-          Diagnose
+
+      <div class="form-group col-md-6">
+        <label for="encounter_type" class="control-label">
+          Tipo de Encuentro
         </label>
 
-        <input type="text" id="diagnose" name="diagnose" placeholder="Diagnose" class="form-control" value="<%= @event.diagnose %>">
+        <input list="tipo_encuentro" id="encounter_type" name="encounter_type" placeholder="Visita" class="form-control" value="<%= @event.encounter_type %>">
+        <datalist class="" id="tipo_encuentro">
+          <option value="Visita"></option>
+          <option value="Llamada"></option>
+          <option value="Otro"></option>
+        </datalist>
+      </div>
+
+      <!-- Label and input for diagnose -->
+      <div class="form-group col-md-6">
+        <label for="diagnose" class="control-label">
+          Diagnóstico General
+        </label>
+
+        <input type="text" id="diagnose" name="diagnose" placeholder="" class="form-control" value="<%= @event.diagnose %>">
       </div>
 
       <!-- Label and input for weight -->
-      <div class="form-group">
-        <label for="weight" class="control-label">
-          Weight
-        </label>
-
-        <input type="text" id="weight" name="weight" placeholder="Weight" class="form-control" value="<%= @event.weight %>">
-      </div>
 
       <!-- Label and input for treatment -->
-      <div class="form-group">
+      <div class="form-group col-md-12">
         <label for="treatment" class="control-label">
-          Treatment
+          Notas
         </label>
-
-        <input type="text" id="treatment" name="treatment" placeholder="Treatment" class="form-control" value="<%= @event.treatment %>">
+        <textarea id="treatment" name="treatment" placeholder="Notas" class="form-control" rows="2"><%= @event.treatment %></textarea>
+        <!-- <input type="text" id="treatment" name="treatment" placeholder="Nota" class="form-control" value="<%= @event.treatment %>"> -->
       </div>
 
       <button class="btn btn-warning">
         Guardar
       </button>
 
-    </form>
+    </div>
   </div>
-</div>
+</form>
