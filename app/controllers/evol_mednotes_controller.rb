@@ -112,7 +112,7 @@ class EvolMednotesController < ApplicationController
     save_status = @evol_mednote.save
 
     if save_status == true
-      redirect_to("/evol_mednotes/#{@evol_mednote.id}", :notice => "Evol mednote updated successfully.")
+      redirect_to("/evol_mednotes/#{@evol_mednote.id}", :notice => "Nota actualizada exitosamente.")
     else
       render("evol_mednotes/edit.html.erb")
     end
@@ -124,9 +124,9 @@ class EvolMednotesController < ApplicationController
     @evol_mednote.destroy
 
     if URI(request.referer).path == "/evol_mednotes/#{@evol_mednote.id}"
-      redirect_to("/", :notice => "Evol mednote deleted.")
+      redirect_to("/", :notice => "Nota eliminada.")
     else
-      redirect_to(:back, :notice => "Evol mednote deleted.")
+      redirect_to(:back, :notice => "Nota eliminada.")
     end
   end
 end
