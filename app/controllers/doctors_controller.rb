@@ -6,7 +6,7 @@ class DoctorsController < ApplicationController
   def read
     @doctor = Doctor.find(params[:id])
     @doctor2 = Doctor.find(params[:id])
-    @street_address = @doctor.street_address_work
+    @street_address = @doctor.credential.street_address_work
 
 
 

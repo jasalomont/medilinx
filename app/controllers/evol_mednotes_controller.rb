@@ -15,7 +15,26 @@ class EvolMednotesController < ApplicationController
     @evol_mednote = EvolMednote.new
     @patient = Patient.find(params[:pid])
     @event = Event.find(params[:eid])
-    render("evol_mednotes/new.html.erb")
+
+
+
+    if @patient.birthdate != nil
+      dob = @patient.birthdate
+      @now = Time.now.utc.to_date
+      year = @now.year - dob.year - ((@now.month > dob.month || (@now.month == dob.month && @now.day >= dob.day)) ? 0 : 1)
+      @patient_age = year
+    else
+      @patient_age =""
+    end
+
+    if @patient.gender == "m"
+      @gender = "Masculino"
+    elsif @patient.gender == "f"
+      @gender = "Femenino"
+    else
+      @gender = ""
+    end
+render("evol_mednotes/new.html.erb")
   end
 
   def create

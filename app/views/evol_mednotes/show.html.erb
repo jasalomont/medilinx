@@ -1,125 +1,303 @@
 <div class="page-header">
-  <h3>Evol Mednote #<%= @evol_mednote.id %></h3>
+  <h3>Nota de Evolución </h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Prescription</dt>
-      <dd><%= @evol_mednote.prescription_id %></dd>
 
-      <dt>Lab tests</dt>
-      <dd><%= @evol_mednote.lab_tests_id %></dd>
+      <div class="row">
+        <div class="col-md-12">
 
-      <dt>Doctor</dt>
-      <dd><%= @evol_mednote.doctor_id %></dd>
+          <dt>Fecha de creación:</dt>
+          <dd><%= @evol_mednote.created_at.to_date %></dd>
 
-      <dt>Mednote responsible</dt>
-      <dd><%= @evol_mednote.mednote_responsible %></dd>
+          <dt>Última actualización:</dt>
+          <dd><%= @evol_mednote.updated_at.to_date %></dd>
+        </div>
+      </div>
+      <p></p>
+      <hr>
+      <p></p>
 
-      <dt>Mednote responsible sign</dt>
-      <dd><%= @evol_mednote.mednote_responsible_sign %></dd>
+      <div class="container">
 
-      <dt>Patient</dt>
-      <dd><%= @evol_mednote.patient_id %></dd>
+        <div class="row">
+          <div class="form-group  col-md-4">
+            <label for="mednote_responsible" class="control-label">
+              Nombre completo de quien elabora la nota:
+            </label>
+            <p> <%= @evol_mednote.mednote_responsible %></p>
+          </div>
+        </div>
 
-      <dt>Encuentro</dt>
-      <dd><%= @evol_mednote.event_id %></dd>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Datos de Paciente</h3>
+          </div>
 
-      <dt>Patient name</dt>
-      <dd><%= @evol_mednote.patient_name %></dd>
+          <div class="panel-body">
 
-      <dt>Patient gender</dt>
-      <dd><%= @evol_mednote.patient_gender %></dd>
 
-      <dt>Patient age</dt>
-      <dd><%= @evol_mednote.patient_age %></dd>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="patient_name" class="control-label">
+                  Nombre:
+                </label>
+                <p><%= @evol_mednote.patient_name %></p>
+              </div>
 
-      <dt>Record</dt>
-      <dd><%= @evol_mednote.record_id %></dd>
+              <!-- Label and input for patient_gender -->
+              <div class="form-group col-md-3">
+                <label for="patient_gender" class="control-label">
+                  Genero:
+                </label>
+                <p><%= @evol_mednote.patient_gender %></p>
+              </div>
 
-      <dt>Exterior obs</dt>
-      <dd><%= @evol_mednote.exterior_obs %></dd>
+              <!-- Label and input for patient_age -->
+              <div class="form-group col-md-3">
+                <label for="patient_age" class="control-label">
+                  Edad
+                </label>
+                <p><%= @evol_mednote.patient_age %></p>
+              </div>
+            </div>
 
-      <dt>Temperature</dt>
-      <dd><%= @evol_mednote.temperature %></dd>
+            <!-- Label and input for record_id -->
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="record_id" class="control-label">
+                  Número de cama o expediente:
+                </label>
+                <p><%= @evol_mednote.record_id %></p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <dt>Blood pressure</dt>
-      <dd><%= @evol_mednote.blood_pressure %></dd>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Exploración Física</h3>
+          </div>
+          <div class="panel-body">
 
-      <dt>Heart freq</dt>
-      <dd><%= @evol_mednote.heart_freq %></dd>
 
-      <dt>Breathing rate</dt>
-      <dd><%= @evol_mednote.breathing_rate %></dd>
+            <div class="form-group">
+              <label for="exterior_obs" class="control-label">
+                Notas Generales de exploración Física:
+              </label>
 
-      <dt>Weight</dt>
-      <dd><%= @evol_mednote.weight %></dd>
+              <p><%= @evol_mednote.exterior_obs %></p>
+            </div>
 
-      <dt>Size</dt>
-      <dd><%= @evol_mednote.size %></dd>
+            <div class="panel panel-info col-md-5" style="padding:0px">
+              <div class="panel-heading">
+                <h3 class="panel-title">Exploración Física</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <table class="table table-striped table-hover" style="">
+                    <tr>
+                      <th>Temperatura: </th>
+                      <th style="width: 80px;"><%= @evol_mednote.temperature %></th>
+                      <th>°C</th>
+                    </tr>
+                    <tr>
+                      <th>Tensión Arterial:</th>
+                      <th>  <%= @evol_mednote.blood_pressure %></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th>Frecuencia Cardiaca:</th>
+                      <th><%= @evol_mednote.heart_freq %></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th>Frecuencia Respiratoria:</th>
+                      <th><%= @evol_mednote.breathing_rate %></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th>Peso:</th>
+                      <th><%= @evol_mednote.weight %></th>
+                      <th>kg</th>
+                    </tr>
+                    <tr>
+                      <th>Talla:</th>
+                      <th><%= @evol_mednote.size %></th>
+                      <th>cm</th>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-      <dt>Data head</dt>
-      <dd><%= @evol_mednote.data_head %></dd>
+            <div class="panel panel-info col-sm-offset-2 col-sm-5" style="padding:0px">
+              <div class="panel-heading">
+                <h3 class="panel-title">Exploración Física</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <table class="table table-striped table-hover" style="">
+                    <tr>
+                      <th>Cabeza:</th>
+                      <th style="width: 100%;"> <%= @evol_mednote.data_head %></th>
+                    </tr>
+                    <tr>
+                      <th>Cuello:</th>
+                      <th> <%= @evol_mednote.data_neck %></th>
+                    </tr>
+                    <tr>
+                      <th>Tórax:</th>
+                      <th><%= @evol_mednote.data_chest %></th>
+                    </tr>
+                    <tr>
+                      <th>Abdomen:</th>
+                      <th><%= @evol_mednote.data_abdomen %></th>
+                    </tr>
+                    <tr>
+                      <th>Miembros:</th>
+                      <th><%= @evol_mednote.data_limbs %></th>
+                    </tr>
+                    <tr>
+                      <th>Genitales:</th>
+                      <th><%= @evol_mednote.data_genitals %></th>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-      <dt>Data neck</dt>
-      <dd><%= @evol_mednote.data_neck %></dd>
+          </div>
+        </div>
 
-      <dt>Data chest</dt>
-      <dd><%= @evol_mednote.data_chest %></dd>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Detalles de Diagnóstico y Tratamiento</h3>
+          </div>
+          <div class="panel-body">
 
-      <dt>Data abdomen</dt>
-      <dd><%= @evol_mednote.data_abdomen %></dd>
+            <!-- Label and input for lab_results -->
+            <div class="form-group">
+              <label for="lab_results" class="control-label">
+                Resultados previos y actuales de estudios de laboratorio, gabinete y otros:
+              </label>
+              <p><%= @evol_mednote.lab_results %></p>
+            </div>
 
-      <dt>Data limbs</dt>
-      <dd><%= @evol_mednote.data_limbs %></dd>
+            <!-- Label and input for clinical_diagnose -->
+            <div class="form-group">
+              <label for="clinical_diagnose" class="control-label">
+                Diagnósticos o problemas clínicos:
+              </label>
 
-      <dt>Data genitals</dt>
-      <dd><%= @evol_mednote.data_genitals %></dd>
+              <p><%= @evol_mednote.clinical_diagnose %></p>
+            </div>
 
-      <dt>Lab results</dt>
-      <dd><%= @evol_mednote.lab_results %></dd>
+            <!-- Label and input for forecast -->
+            <div class="form-group">
+              <label for="forecast" class="control-label">
+                Pronóstico:
+              </label>
 
-      <dt>Clinical diagnose</dt>
-      <dd><%= @evol_mednote.clinical_diagnose %></dd>
+              <p><%= @evol_mednote.forecast %></p>
+            </div>
 
-      <dt>Forecast</dt>
-      <dd><%= @evol_mednote.forecast %></dd>
+            <!-- Label and input for therapeutic_indic -->
+            <div class="form-group">
+              <label for="therapeutic_indic" class="control-label">
+                Indicación terapéutica:
+              </label>
 
-      <dt>Therapeutic indic</dt>
-      <dd><%= @evol_mednote.therapeutic_indic %></dd>
+              <p><%= @evol_mednote.therapeutic_indic %></p>
+            </div>
 
-      <dt>Evolution update cc</dt>
-      <dd><%= @evol_mednote.evolution_update_cc %></dd>
+            <!-- Label and input for evolution_update_cc -->
+            <div class="form-group">
+              <label for="evolution_update_cc" class="control-label">
+                Evolución y actualización del cuadro clínico:
+              </label>
 
-      <dt>Tx results</dt>
-      <dd><%= @evol_mednote.tx_results %></dd>
+              <p><%= @evol_mednote.evolution_update_cc %></p>
+            </div>
 
-      <dt>Tx</dt>
-      <dd><%= @evol_mednote.tx %></dd>
+            <!-- Label and input for tx_results -->
+            <div class="form-group">
+              <label for="tx_results" class="control-label">
+                Resultados relevantes de los estudios de los servicios:
+              </label>
 
-      <dt>Evol dose</dt>
-      <dd><%= @evol_mednote.evol_dose %></dd>
+              <p><%= @evol_mednote.tx_results %></p>
+            </div>
 
-      <dt>Evol med intake</dt>
-      <dd><%= @evol_mednote.evol_med_intake %></dd>
+            <!-- Label and input for tx -->
+            <div class="form-group">
+              <label for="tx" class="control-label">
+                Tratamiento e indicaciones médicas:
+              </label>
 
-      <dt>Evol med periodicity</dt>
-      <dd><%= @evol_mednote.evol_med_periodicity %></dd>
+              <p><%= @evol_mednote.tx %></p>
+            </div>
 
-    </dl>
+            <!-- Label and input for evol_dose -->
+            <div class="form-group">
+              <label for="evol_dose" class="control-label">
+                Dosis:
+              </label>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/medical_relations/<%= @medical_relation %>" class="btn btn-primary">
-        Regresar
-      </a>
-      
-      <a href="/evol_mednotes/<%= @evol_mednote.id %>/edit" class="btn btn-warning">
-        Editar
-      </a>
-      <a href="/delete_evol_mednote/<%= @evol_mednote.id %>" class="btn btn-danger" rel="nofollow">
-        Eliminar
-      </a>
+              <p><%= @evol_mednote.evol_dose %></p>
+            </div>
+
+            <!-- Label and input for evol_med_intake -->
+            <div class="form-group">
+              <label for="evol_med_intake" class="control-label">
+                Vía de administración:
+              </label>
+
+              <p><%= @evol_mednote.evol_med_intake %></p>
+            </div>
+
+            <!-- Label and input for evol_med_periodicity -->
+            <div class="form-group">
+              <label for="evol_med_periodicity" class="control-label">
+                Periodicidad:
+              </label>
+
+              <p><%= @evol_mednote.evol_med_periodicity %></p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+
+          <div class="panel-body">
+
+            <!-- Label and input for mednote_responsible_sign -->
+            <div class="form-group">
+              <label for="mednote_responsible_sign" class="control-label">
+                Firma de Médico Responsable
+              </label>
+
+              <p><%= @evol_mednote.mednote_responsible_sign %></p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="btn-group btn-group-justified">
+          <a href="/medical_relations/<%= @medical_relation %>" class="btn btn-primary">
+            Regresar
+          </a>
+
+          <a href="/evol_mednotes/<%= @evol_mednote.id %>/edit" class="btn btn-warning">
+            Editar
+          </a>
+          <a href="/delete_evol_mednote/<%= @evol_mednote.id %>" class="btn btn-danger" rel="nofollow">
+            Eliminar
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

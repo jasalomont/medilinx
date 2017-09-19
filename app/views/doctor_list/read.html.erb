@@ -128,16 +128,18 @@
           <div class="row">
             <div class="col-md-6">
               <dl class="dl-horizontal">
-                <dt>Nombre</dt>
-                <dd><%= @doctor.practice_name%></dd>
+                <dt></dt>
+                <dd><h4><b> <%= @doctor.credential.practice_name%></b></h4></dd>
                 <dt>Celular</dt>
-                <dd><%= @doctor.phone_mobile %></dd>
+                <dd><%= @doctor.credential.phone_mobile %></dd>
                 <dt>Telefono Oficina</dt>
-                <dd><%= @doctor.phone_work %></dd>
+                <dd><%= @doctor.credential.phone_work %></dd>
                 <dt>Dirección</dt>
                 <dd><%= @street_address %></dd>
+                <dt>Municipio / Delegación</dt>
+                <dd><%= @doctor.credential.neighborhood_work %></dd>
                 <dt>Ciudad</dt>
-                <dd><%= @doctor.city_work %></dd>
+                <dd><%= @doctor.credential.city_work %></dd>
               </div>
               <div class="col-md-6">
                 <% if @street_address != nil %>
@@ -149,9 +151,9 @@
 
                   <iframe
                   width="500"
-                  height="350"
+                  height="250"
                   frameborder="0" style="border:10px solid #154360"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') + (@doctor.city_work).gsub(' ', '+') %>" allowfullscreen>
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAqR7RmmqU2var6sGPxY7SBHbzprKpHbrA&q=<%= @street_address.gsub(' ', '+') + (@doctor.credential.city_work).gsub(' ', '+') %>" allowfullscreen>
                 </iframe>
               </div>
             </div>
