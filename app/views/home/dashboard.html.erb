@@ -29,7 +29,7 @@
 
             <p></p>
             <hr>
-            <h4><%= current_doctor.practice_name %></h4>
+            <h4><%= current_doctor.credential.practice_name %> </h4>
             <hr>
             <h3 style="margin-bottom:0px"> <%= MedicalRelation.where(doctor_id: current_doctor.id, permission: true).count %>  </h3>
             Conexiones
@@ -311,7 +311,7 @@
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <h3><i class="fa fa-inbox" aria-hidden="true"></i> Informed Med</h3>
+                    <h3><i class="fa fa-inbox" aria-hidden="true"></i> Informes Médicos</h3>
                     <p></p>
                     <br>
                     <div class="btn-group btn-group-justified">
@@ -435,9 +435,9 @@
 
     <table class="table userbox">
       <tr>
-        <td align="center"><%= image_tag("general/pat_icon.png", width:"100px" ) %></td>
-        <td align="center"><%= image_tag("general/doc_icon.png", width:"100px" ) %></td>
-        <td align="center"><%= image_tag("general/ins_icon.png", width:"100px" ) %></td>
+        <td align="center"><a href="/patients/sign_in"><%= image_tag("general/pat_icon.png", width:"100px" ) %></a></td>
+        <td align="center"><a href="/doctors/sign_in"><%= image_tag("general/doc_icon.png", width:"100px" ) %></a></td>
+        <td align="center"><a href="/insurers/sign_in"><%= image_tag("general/ins_icon.png", width:"100px" ) %></a></td>
       </tr>
       <tr>
 
