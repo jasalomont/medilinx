@@ -29,7 +29,7 @@
 
             <p></p>
             <hr>
-            <h4><%= current_doctor.credential.practice_name %> </h4>
+            <h4><%= current_doctor.practice_name %> </h4>
             <hr>
             <h3 style="margin-bottom:0px"> <%= MedicalRelation.where(doctor_id: current_doctor.id, permission: true).count %>  </h3>
             Conexiones

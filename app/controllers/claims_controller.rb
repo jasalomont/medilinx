@@ -13,6 +13,13 @@ class ClaimsController < ApplicationController
     @claim_follows = ClaimFollow.all
     @attachments = Attachment.all
 
+    ary1 = Array.new
+    MedicalRelation.where("patient_id"=>current_patient.id).each do |rels|
+    ary1.push(rels.doctor_id)
+  end
+    @relations = Doctor.where("id"=>ary1)
+
+
     render("claims/record.html.erb")
   end
 
@@ -182,9 +189,9 @@ class ClaimsController < ApplicationController
     save_status = @claim.save
 
     if save_status == true
-      redirect_to("/claims/#{@claim.id}", :notice => "Claim created successfully.")
+      redirect_to :back, :notice => "Solicitud Creada Exitosamente."
     else
-      render("claims/new.html.erb")
+      render("claims/record.html.erb")
     end
   end
 

@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     save_status = @event.save
 
     if save_status == true
-      redirect_to :back, :notice => "Event created successfully."
+      redirect_to :back, :notice => "Encuentro Creado Exitosamente."
     else
       redirect_to :back,:notice => "Se requiere definir un tipo de encuentro"
     end

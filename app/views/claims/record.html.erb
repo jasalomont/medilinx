@@ -25,9 +25,9 @@
           </div>
           <div class="col-md-3">
 
-            <%= select_tag(:doctor_id, options_from_collection_for_select(Doctor.all, :id, :practice_name, @claim.doctor_id), :class => "form-control") %>
+            <%= select_tag(:doctor_id, options_from_collection_for_select(@relations, :id, :practice_name, @claim.doctor_id), :class => "form-control") %>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input list="tipo_reclamo" id="claim_type" name="claim_type" placeholder="Tipo de Informe*" class="form-control" value="<%= @claim.claim_type %>">
             <datalist class="" id="tipo_reclamo">
               <option value="Programación de cirugía"></option>
@@ -35,12 +35,21 @@
               <option value="Reembolso"></option>
             </datalist>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <input list="nombre_aseguradora" id="insurance_name" name="insurance_name" placeholder="Nombre de Aseguradora*" class="form-control" value="<%= @claim.insurance_name %>">
             <datalist class="" id="nombre_aseguradora">
               <option value="Allianz"></option>
               <option value="AXA"></option>
 
+            </datalist>
+          </div>
+          <div class="col-md-2">
+            <input list="causa" id="attention_cause" name="attention_cause" placeholder="Causa de Atención" class="form-control" value="<%= @claim.attention_cause %>">
+            <datalist class="" id="causa">
+              <option value="Prevención"></option>
+              <option value="Embarazo"></option>
+              <option value="Enfermedad"></option>
+              <option value="Accidente"></option>
             </datalist>
           </div>
           <div class="col-md-offset-3 col-md-9">
@@ -61,8 +70,6 @@
     <div class="panel panel-default" style="background-color:#EAEDED">
 
       <div class="panel-body">
-
-
 
         <div class="col-md-4">
           <div class="panel panel-primary" >
@@ -91,7 +98,7 @@
                       <a href="/delete_claim/<%= claim.id %>" style="color:red" rel="nofollow" title="Eliminar solicitud"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></span>
                     </td>
                     <% else %>
-                    <td style="color:blue; text-align: center"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </td>
+                    <td style="color:blue; text-align: center" title="El doctor ya lo está trabajando"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </td>
 
                     <% end %>
                     <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
@@ -171,46 +178,46 @@
                                 <th >Ver</th>
                                 <th > Status</th>
                                 <th i class="fa fa-paperclip" aria-hidden="true"> </th>
-                                </tr>
+                              </tr>
 
-                                <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
+                              <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
 
-                                <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
+                              <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
 
-                                <tr style="font-size:12px">
-                                  <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
-                                    <%= Doctor.find(claim.doctor_id).practice_name %></td>
-                                    <td><%= claim.insurance_name %></td>
-                                    <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
-                                    <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
-                                    <% if claim.claim_follow.insurance_approved != nil %>
-                                    <% if claim.claim_follow.insurance_approved == true %>
-                                    <td  style="text-align: center"><span style="color:green" title="Aprobado"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></span></td>
+                              <tr style="font-size:12px">
+                                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
+                                  <%= Doctor.find(claim.doctor_id).practice_name %></td>
+                                  <td><%= claim.insurance_name %></td>
+                                  <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
+                                  <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+                                  <% if claim.claim_follow.insurance_approved != nil %>
+                                  <% if claim.claim_follow.insurance_approved == true %>
+                                  <td  style="text-align: center"><span style="color:green" title="Aprobado"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></span></td>
+                                  <% else %>
+                                  <td  style="text-align: center"><span style="color:red" title="Rechazado"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></i></span></td>
+                                  <% end %>
+                                  <% else %>
+                                  <td  style="text-align: center"><span style="color:blue" title="En proceso de revisión"> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </span></td>
+                                  <% end %>
+
+
+                                  <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
+                                  <!-- true -->
+                                  <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
                                     <% else %>
-                                    <td  style="text-align: center"><span style="color:red" title="Rechazado"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></i></span></td>
-                                    <% end %>
-                                    <% else %>
-                                    <td  style="text-align: center"><span style="color:blue" title="En proceso de revisión"> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </span></td>
-                                    <% end %>
-
-
-                                    <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
-                                    <!-- true -->
-                                    <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
+                                    <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
+                                      <% end %>
                                       <% else %>
-                                      <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
-                                        <% end %>
-                                        <% else %>
-                                        <% end %>
-                                        <% end %>
-                                      </tr>
-                                    </table>
-                                  </div>
+                                      <% end %>
+                                      <% end %>
+                                    </tr>
+                                  </table>
                                 </div>
-
-
-
-
                               </div>
+
+
+
+
                             </div>
                           </div>
+                        </div>
