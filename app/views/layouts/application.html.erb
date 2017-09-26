@@ -20,7 +20,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
+        <% if current_doctor == nil && current_patient == nil && current_insurer == nil  %>
+        <a href="https://www.medilinx.net" class="navbar-brand"><i class="fa fa-home" aria-hidden="true"></i> MediLinx</a>
+        <% else %>
         <a href="/" class="navbar-brand"><i class="fa fa-home" aria-hidden="true"></i> MediLinx</a>
+        <% end %>
+
       </div>
 <ul class="nav navbar-nav navbar-left">
 

@@ -1,14 +1,19 @@
 <div class="page-header">
-  <h3>Non Pathological #<%= @non_pathological.id %></h3>
+  <h3>Registro No Patológico</h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
+  <div class="col-md-8 mb-2">
     <dl class="dl-horizontal">
-      <dt>Paciente</dt>
+      
+      <dt>Doctor</dt>
+      <dd><%= @non_pathological.doctor.practice_name %></dd>
+
+      <dt>Fecha de Registro</dt>
+      <dd><%= @non_pathological.created_at.to_date %></dd>
 
       <dd><%= @non_pathological.patient.first_name %></dd>
-      <dt>Tipo de droga o bebida alcoholica</dt>
+      <dt>Tipo de consumo</dt>
       <dd><%= @non_pathological.drug_type %></dd>
 
       <dt>Detalles</dt>
@@ -18,11 +23,11 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/non_pathologicals" class="btn btn-primary">
+      <a href="/historial_medico" class="btn btn-primary">
         Regresar
       </a>
       <% if current_doctor != nil %>
-      
+
         <a href="/non_pathologicals/<%= @non_pathological.id %>/edit" class="btn btn-warning">
           Editar
         </a>

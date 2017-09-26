@@ -1,31 +1,38 @@
 <div class="page-header">
-  <h3>Surgical #<%= @surgical.id %></h3>
+  <h3>Registro de Cirugía</h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
+  <div class="col-md-8 mb-2">
     <dl class="dl-horizontal">
-      <dt>Patient</dt>
-      <dd><%= @surgical.patient_id %></dd>
 
-      <dt>Name</dt>
+<% if @surgical.doctor_id =! nil %>
+<dt>Doctor</dt>
+<dd><%= @surgical.doctor.practice_name %></dd>
+
+<dt>Fecha de Registro</dt>
+<dd><%= @surgical.created_at.to_date %></dd>
+<% end %>
+      <dt>Cirugía</dt>
       <dd><%= @surgical.name %></dd>
 
-      <dt>Date</dt>
+      <dt>Fecha</dt>
       <dd><%= @surgical.date %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/surgicals" class="btn btn-primary">
-        Back
+      <a href="/historial_medico" class="btn btn-primary">
+        Regresar
       </a>
+        <% if current_doctor != nil %>
       <a href="/surgicals/<%= @surgical.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_surgical/<%= @surgical.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end %>
     </div>
   </div>
 </div>

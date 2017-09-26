@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Other Background #<%= @other_background.id %></h3>
+  <h3>Editar Registro de Información Adicional</h3>
 </div>
 
 <div class="row">
@@ -28,7 +28,7 @@
       <!-- Label and input for perinatal -->
       <div class="form-group">
         <label for="perinatal" class="control-label">
-          Perinatal
+          Detalles de antecedentes perinatales
         </label>
 
         <input type="text" id="perinatal" name="perinatal" placeholder="Perinatal" class="form-control" value="<%= @other_background.perinatal %>">
@@ -37,7 +37,7 @@
       <!-- Label and input for other -->
       <div class="form-group">
         <label for="other" class="control-label">
-          Other
+          Otra información relevante para el histprial médico
         </label>
 
         <input type="text" id="other" name="other" placeholder="Other" class="form-control" value="<%= @other_background.other %>">
@@ -47,7 +47,9 @@
         Actualizar
       </button>
 
-      <%= link_to "Cancelar", :back %>
+      <a href="/historial_medico" >
+        Regresar
+      </a>
     </form>
   </div>
 </div>

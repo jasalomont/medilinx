@@ -1,31 +1,38 @@
 <div class="page-header">
-  <h3>Pathological #<%= @pathological.id %></h3>
+  <h3>Registro Patológico</h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
+  <div class="col-md-8 mb-2">
     <dl class="dl-horizontal">
-      <dt>Patient</dt>
-      <dd><%= @pathological.patient_id %></dd>
+      <dt>Doctor</dt>
+      <dd><%= @pathological.doctor.practice_name %></dd>
 
-      <dt>Disease</dt>
+      <dt>Fecha de Registro</dt>
+      <dd><%= @pathological.created_at.to_date %></dd>
+
+      <dt>Enfermedad</dt>
       <dd><%= @pathological.disease %></dd>
 
-      <dt>Start date</dt>
+      <dt>Inicio de Enfermedad</dt>
       <dd><%= @pathological.start_date %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/pathologicals" class="btn btn-primary">
-        Back
+      <a href="/historial_medico" class="btn btn-primary">
+        Regresar
       </a>
+
+      <% if current_doctor != nil %>
       <a href="/pathologicals/<%= @pathological.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_pathological/<%= @pathological.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end %>
+
     </div>
   </div>
 </div>

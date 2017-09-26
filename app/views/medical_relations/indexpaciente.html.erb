@@ -12,7 +12,7 @@
 <!-- patient online -->
 <div class="page-header">
   <!-- doctor online true -->
-  <h2><%= current_patient.first_name %>'s Chart</h2>
+  <h2>Expedientes de <%= current_patient.first_name %></h2>
   <a href="/historial_medico" class="btn btn-default">Historial Medico</a>
   <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
   <a href="/claims/record" class="btn btn-default">Reclamos</a>
@@ -71,15 +71,15 @@
 
 
         <td>
-          <a href="/doctors/<%= medical_relation.doctor_id %>" class="btn btn-primary">Ver Expediente</i></a>
+          <a href="/doctors/<%= medical_relation.doctor_id %>" class="btn btn-sm btn-primary">Ver Expediente</i></a>
           <!-- <a href="/medical_relations/<%= medical_relation.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_medical_relation/<%= medical_relation.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
         </td>
         <% if medical_relation.permission == true %>
           <!-- <td><a href="/medical_relations/<%= medical_relation.id %>/permission" class="btn btn-success" style="width:45px"><i class="fa fa-check" aria-hidden="true"></i></a></td> -->
-          <td style="color:green;text-align:center"><i class="fa fa-check" aria-hidden="true"></i></td>
+          <td style="color:green;text-align:center" title="Doctor tiene autorización para ver Historia Clínica"><a href="/medical_relations/<%= medical_relation.id %>/permission"><i class="fa fa-check" aria-hidden="true"></i></a></td>
           <%else %>
-            <td style="text-align:center"><a href="/medical_relations/<%= medical_relation.id %>/permission"  class="btn btn-warning" ><i class="fa fa-bell" aria-hidden="true"></i></a></td>
+            <td style="text-align:center"><a href="/medical_relations/<%= medical_relation.id %>/permission"  class="btn btn-sm btn-danger" ><i class="fa fa-bell" aria-hidden="true"></i></a></td>
             <!-- onClick="window.open('http://localhost:3000/medical_relations/<%= medical_relation.id %>/permission','pagename','resizable,height=260,width=370'); return false;" -->
         <% end %>
       </tr>
