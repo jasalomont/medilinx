@@ -1,0 +1,77 @@
+<!-- Validation failure messages -->
+<% if @broker_relation.errors.any? %>
+<% @broker_relation.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Agregar a un Agente de Seguros</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_broker_relation" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= current_patient.id %>">
+      </div>
+
+      <!-- Label and input for insurer_id -->
+      <div class="form-group">
+        <label for="insurer_id" class="control-label">
+          Correo electronico del Agente
+        </label>
+
+        <%= select_tag(:insurer_id, options_from_collection_for_select(Insurer.all, :id, :email, @broker_relation.insurer_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for insurance_company -->
+      <div class="form-group">
+        <label for="insurance_company" class="control-label">
+          Aseguradora que representa
+        </label>
+
+        <input type="text" id="insurance_company" name="insurance_company" placeholder="Insurance company" class="form-control" value="<%= @broker_relation.insurance_company %>">
+      </div>
+
+      <!-- Label and input for broker_notes -->
+      <!-- <div class="form-group">
+        <label for="broker_notes" class="control-label">
+          Broker notes
+        </label>
+
+        <input type="text" id="broker_notes" name="broker_notes" placeholder="Broker notes" class="form-control" value="<%= @broker_relation.broker_notes %>">
+      </div> -->
+
+      <!-- Label and input for contract_code -->
+      <div class="form-group">
+        <label for="contract_code" class="control-label">
+          Número de poliza que representa (opcional)
+        </label>
+
+        <input type="text" id="contract_code" name="contract_code" placeholder="Contract code" class="form-control" value="<%= @broker_relation.contract_code %>">
+      </div>
+
+
+      <!-- Label and input for permission -->
+      <div class="checkbox">
+        <label for="permission">
+          <input type="checkbox" id="permission" name="permission" value="1" <%= "checked" if @broker_relation.permission %>>
+          Otorgo permiso para compartir información personal
+        </label>
+      </div>
+      <button class="btn btn-success">
+        Agregar
+      </button>
+      o
+      <a href="/">Cancelar</a>
+    </form>
+  </div>
+</div>

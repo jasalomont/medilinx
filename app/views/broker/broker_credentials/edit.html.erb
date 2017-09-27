@@ -1,0 +1,149 @@
+<!-- Validation failure messages -->
+<% if @broker_credential.errors.any? %>
+<% @broker_credential.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Editar credenciales</h3>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_broker_credential/<%= @broker_credential.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <p style="font-size:20px; font-weight:bold">Resumen Profesional</p>
+        <!-- Label and input for practice -->
+
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="practice_name" class="control-label">
+              Nombre Profesional
+            </label>
+
+            <input type="text" id="practice_name" name="practice_name" placeholder="Lic. Juan Alvarez" class="form-control" value="<%= @broker_credential.practice_name %>">
+          </div>
+          <!-- Label and input for cedula_pro -->
+          <div class="form-group col-md-4">
+            <label for="company" class="control-label">
+              Nombre de Agencia
+            </label>
+            <input type="text" id="company" name="company" placeholder="Seguros ACME" class="form-control" value="<%= @broker_credential.company %>">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="job_title" class="control-label">
+              Puesto
+            </label>
+
+            <input type="text" id="job_title" name="job_title" placeholder="Gerente de Ventas" class="form-control" value="<%= @broker_credential.job_title %>">
+          </div>
+
+
+        </div>
+
+
+        <!-- Label and input for doctor_id -->
+
+        <input type="hidden" id="insurer_id" name="insurer_id" placeholder="" class="form-control" value="<%= @broker_credential.insurer_id %>">
+
+
+        <hr>
+        <p style="font-size:20px; font-weight:bold">Información de Contacto</p>
+
+        <div class="row">
+          <!-- Label and input for expertise -->
+
+
+
+          <!-- Label and input for cedula_esp -->
+          <div class="form-group  col-md-4">
+            <label for="phone_work" class="control-label">
+              Telefono Oficina
+            </label>
+
+            <input type="text" id="phone_work" name="phone_work" placeholder="" class="form-control" value="<%= @broker_credential.phone_work %>">
+          </div>
+
+          <!-- Label and input for languages -->
+          <div class="form-group col-md-4">
+            <label for="phone_mobile" class="control-label">
+              Celular
+            </label>
+
+            <input type="text" id="phone_mobile" name="phone_mobile" placeholder="" class="form-control" value="<%= @broker_credential.phone_mobile %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Label and input for expertise -->
+          <div class="form-group col-md-4">
+            <label for="address_work" class="control-label">
+              Calle Oficina
+            </label>
+
+            <input type="text" id="address_work" name="address_work" placeholder="" class="form-control" value="<%= @broker_credential.address_work %>">
+          </div>
+
+
+          <div class="form-group  col-md-4">
+            <label for="state_work" class="control-label">
+              Estado
+            </label>
+
+            <input type="text" id="state_work" name="state_work" placeholder="" class="form-control" value="<%= @broker_credential.state_work %>">
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="city_work" class="control-label">
+              Ciudad
+            </label>
+            <input type="text" id="city_work" name="city_work" placeholder="" class="form-control" value="<%= @broker_credential.city_work %>">
+          </div>
+
+
+          <div class="form-group col-md-4">
+            <label for="zip_work" class="control-label">
+              Código Postal
+            </label>
+            <input type="text" id="zip_work" name="zip_work" placeholder="" class="form-control" value="<%= @broker_credential.zip_work %>">
+          </div>
+        </div>
+
+
+        <hr>
+        <p style="font-size:20px; font-weight:bold">Información Adicional</p>
+
+        <!-- Label and input for photo -->
+        <div class="form-group">
+          <label for="photo" class="control-label">
+            Foto (URL)
+          </label>
+
+          <input type="text" id="photo" name="photo" placeholder="Copie en este espacio el URL de alguna imagen para su perfil (De click derecho sobre una imagen pública y seleccione copiar dirección)" class="form-control" value="<%= @broker_credential.photo %>">
+        </div>
+
+
+        <p></p>
+        <button class="btn btn-success">
+          Actualizar Credenciales
+        </button>
+
+        <%= link_to "Cancelar", :back%>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<% if current_patient == "adminpatient@medilinx.net" %>
+<!-- true -->
+<div class="page-header">
+  <h2>
+    Agentes registrados
+
+  </h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Paciente</th>
+        <th>Agente</th>
+        <th>Insurance company</th>
+        <th>Permission</th>
+        <th>Broker notes</th>
+        <th>Contract code</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @broker_relations.each do |broker_relation| %>
+      <tr>
+        <td><%= broker_relation.patient_id %></td>
+        <td><%= broker_relation.insurer_id %></td>
+        <td><%= broker_relation.insurance_company %></td>
+        <td><%= broker_relation.permission %></td>
+        <td><%= broker_relation.broker_notes %></td>
+        <td><%= broker_relation.contract_code %></td>
+        <td>
+          <a href="/broker_relations/<%= broker_relation.id %>" class="btn btn-primary">Show</a>
+          <a href="/broker_relations/<%= broker_relation.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_broker_relation/<%= broker_relation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+<% elsif current_patient != nil %>
+<!-- true -->
+
+<div class="page-header">
+  <h2>
+    Agentes registrados
+    <a href="/broker_relations/new" class="btn btn-lg btn-sm btn-success">Agregar agente</a>
+  </h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+
+      <% @broker_relations.where("patient_id"=>current_patient.id).each do |broker_relation| %>
+      <% insurer = Insurer.find(broker_relation.insurer_id) %>
+
+      <div class="col-md-6">
+        <div class="panel panel default">
+          <div class="panel-body" style="padding-bottom:0px; margin-bottom:0px; background-color:#E7E7E7">
+            <div class="row ">
+
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img src="<%= insurer.broker_credentials.first.photo %>" class="img-responsive" >
+
+                      </div>
+                      <div class="" style="position: absolute; bottom:35px; left:30px">
+
+                        <a href="/delete_broker_relation/<%= broker_relation.id %>" class="btn btn-sm btn-danger" rel="nofollow">Eliminar</a>
+                      </div>
+                      <div class="col-md-9">
+
+                        <div class="col-md-10">
+                          <h4><%= insurer.broker_credentials.first.practice_name %></h4>
+                        </div>
+                        <div class="col-md-10">
+                          <h5> <%= insurer.broker_credentials.first.company %></h5>
+                        </div>
+                        <div class="col-md-10">
+                          <b> <%= insurer.broker_credentials.first.job_title %></b>
+                        </div>
+
+                        <div class="row col-md-12">
+
+
+                          <p></p>
+                          <dl class="dl-horizontal" style="font-size:12px; margin:0px">
+                            <p></p>
+                            <br>
+                            <dt style="width:100px">e-mail</dt>
+                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.insurer.email %></dd>
+
+                            <dt style="width:100px"> Oficina</dt>
+                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.phone_work %></dd>
+
+                            <dt style="width:100px">Celular</dt>
+                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.phone_mobile %></dd>
+
+                            <dt style="width:100px">Dirección</dt>
+                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.address_work %></dd>
+
+
+                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.city_work %>, <%= insurer.broker_credentials.first.state_work %>, <%= insurer.broker_credentials.first.zip_work %></dd>
+
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </td>
+  </tr>
+  <% end %>
+</table>
+</div>
+</div>
+<% end %>

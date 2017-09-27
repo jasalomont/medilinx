@@ -2,6 +2,59 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Broker_insurer resource:
+  # CREATE
+  get "/broker_insurers/new", :controller => "broker_insurers", :action => "new"
+  post "/create_broker_insurer", :controller => "broker_insurers", :action => "create"
+
+  # READ
+  get "/broker_insurers", :controller => "broker_insurers", :action => "index"
+    get "/broker_insurers/:id", :controller => "broker_insurers", :action => "show"
+
+  # UPDATE
+  get "/broker_insurers/:id/edit", :controller => "broker_insurers", :action => "edit"
+  post "/update_broker_insurer/:id", :controller => "broker_insurers", :action => "update"
+
+  # DELETE
+  get "/delete_broker_insurer/:id", :controller => "broker_insurers", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Broker_credential resource:
+  # CREATE
+  get "/broker_credentials/new", :controller => "broker_credentials", :action => "new"
+  get "/broker_credentials/new/:iid", :controller => "broker_credentials", :action => "new_spec"
+  post "/create_broker_credential", :controller => "broker_credentials", :action => "create"
+
+  # READ
+  get "/broker_credentials", :controller => "broker_credentials", :action => "index"
+  get "/broker_credentials/:id", :controller => "broker_credentials", :action => "show"
+
+  # UPDATE
+  get "/broker_credentials/:id/edit", :controller => "broker_credentials", :action => "edit"
+  post "/update_broker_credential/:id", :controller => "broker_credentials", :action => "update"
+
+  # DELETE
+  get "/delete_broker_credential/:id", :controller => "broker_credentials", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Broker_relation resource:
+  # CREATE
+  get "/broker_relations/new", :controller => "broker_relations", :action => "new"
+  post "/create_broker_relation", :controller => "broker_relations", :action => "create"
+
+  # READ
+  get "/broker_relations", :controller => "broker_relations", :action => "index"
+  get "/directorio_agentes", :controller => "broker_relations", :action => "directorio"
+  get "/broker_relations/:id", :controller => "broker_relations", :action => "show"
+
+  # UPDATE
+  get "/broker_relations/:id/edit", :controller => "broker_relations", :action => "edit"
+  post "/update_broker_relation/:id", :controller => "broker_relations", :action => "update"
+
+  # DELETE
+  get "/delete_broker_relation/:id", :controller => "broker_relations", :action => "destroy"
+  #------------------------------
+
   # Routes for the Evol_mednote resource:
   # CREATE
   get "/evol_mednotes/new/:pid/:eid", :controller => "evol_mednotes", :action => "new"

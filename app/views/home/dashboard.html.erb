@@ -247,7 +247,7 @@
 
           <a href="/historial_medico" class="btn btn-default">Historial Medico</a>
           <a href="/doctors/index" class="btn btn-default">Búsqueda de Doctores</a>
-          <a href="/" class="btn btn-default">Relaciones Administrativas</a>
+          <a href="/broker_relations" class="btn btn-default">Relaciones Administrativas</a>
           <!-- <a href="/claims/record" class="btn btn-default">Lista de Informes</a> -->
           <!-- <a href="/" class="btn btn-default">Solicitudes</a> -->
         </div>
@@ -356,7 +356,7 @@
 
         <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
         <a href="/claims/controlpanel" class="btn btn-default">Lista de Informes</a>
-        <a href="/" class="btn btn-default">Busqueda de Pacientes</a>
+        <a href="/directorio_agentes" class="btn btn-default">Busqueda de Pacientes</a>
 
       </div>
     </div>
@@ -412,6 +412,27 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <h3><i class="fa fa-id-card" aria-hidden="true"></i> Credenciales</h3>
+
+                  <br>
+                  <div class="btn-group btn-group-justified">
+                    <% if BrokerCredential.where("insurer_id"=>current_insurer).count!=1 %>
+                    <a href="/broker_credentials/new/<%= current_insurer.id %>" class="btn btn-md btn-info"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+                    <% else%>
+                    <a href="/broker_credentials/<%=BrokerCredential.where("insurer_id"=>current_insurer.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
 

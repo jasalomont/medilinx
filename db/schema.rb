@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919042621) do
+ActiveRecord::Schema.define(version: 20170926020350) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,42 @@ ActiveRecord::Schema.define(version: 20170919042621) do
     t.integer  "author_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "broker_credentials", force: :cascade do |t|
+    t.string   "phone_work"
+    t.string   "address_work"
+    t.string   "city_work"
+    t.string   "zip_work"
+    t.string   "state_work"
+    t.string   "country_work"
+    t.string   "phone_mobile"
+    t.string   "practice_name"
+    t.string   "company"
+    t.integer  "insurer_id"
+    t.string   "photo"
+    t.string   "job_title"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "broker_insurers", force: :cascade do |t|
+    t.integer  "insurer_id"
+    t.string   "company_name"
+    t.string   "relation_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "broker_relations", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "insurer_id"
+    t.string   "insurance_company"
+    t.boolean  "permission"
+    t.text     "broker_notes"
+    t.string   "contract_code"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "claim_follows", force: :cascade do |t|
