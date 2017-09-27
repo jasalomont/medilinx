@@ -1,6 +1,5 @@
 class AddCredentialFields < ActiveRecord::Migration[5.0]
   def change
-
     add_column :credentials, :email, :string
     add_column :credentials, :phone_work, :string
     add_column :credentials, :phone_mobile, :string
