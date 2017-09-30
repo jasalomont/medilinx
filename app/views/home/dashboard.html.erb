@@ -2,6 +2,16 @@
 
 <html>
 <head>
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107259328-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107259328-1');
+  </script>
+
   <meta charset="utf-8">
   <title></title>
 </head>
@@ -43,11 +53,11 @@
           <div class="panel-body" style="height:220px;border:1px solid #ccc;font:16px/26px ;overflow:auto; padding:0px">
             <table class="table table-striped table-hover">
               <tr>
-                <td class="allianz-title" style="font-size:15px"><b> <i class="fa fa-caret-right" aria-hidden="true"></i> Informes</b></td>
+                <td class="allianz-title" style="font-size:15px"><b> <i class="fa fa-caret-right" aria-hidden="true"></i> Informes Médicos</b></td>
               </tr>
               <% Claim.where(doctor_id: current_doctor.id, doctor_start: true).each do |claim| %>
               <tr>
-                <td><a href="/claims">Terminar informe de <%= claim.patient_name %>, #<%= claim.id %></a></td>
+                <td><a href="/claims"><%= claim.created_at.to_date   %> | <%= claim.patient_name %> | <%= claim.attention_cause %></a></td>
               </tr>
               <% end %>
               <tr>
@@ -86,7 +96,7 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <h3><i class="fa fa-user-md" aria-hidden="true"></i> Perfil</h3>
-                  <p style="color:green"><%=((11-(Doctor.find(current_doctor.id).attributes.values.select(&:nil?).count + Doctor.find(current_doctor.id).attributes.values.count("")-5)).to_f/11*100).round(0)%>% Completado</p>
+                  <p style="color:green"><%=((16-(Doctor.find(current_doctor.id).attributes.values.select(&:nil?).count + Doctor.find(current_doctor.id).attributes.values.count(""))).to_f/13*100).round(0)%>% Completado</p>
 
                   <br>
                   <div class="btn-group btn-group-justified">
@@ -349,10 +359,58 @@
   <!-- doctor online true -->
   <h2><i class="fa fa-home" aria-hidden="true"></i> <%= current_insurer.insurance_name %></h2>
 </div>
-<h1 style="margin-bottom:0px">
+
+
+
+<div class="row">
+  <div class="col-md-3">
+    <br>
+    <div class="panel panel-default">
+
+      <div class="panel-body" style="height:285px; padding:20px" align="center">
+        <% if current_insurer.broker_credential != nil && current_insurer.broker_credential.photo != nil %>
+        <img class="img-circle" src="<%= current_insurer.broker_credential.photo %>" class="img-responsive" height="100" width="100" >
+        <% else %>
+        <%= image_tag("general/ins_icon.png", width:"100px" ) %>
+        <% end %>
+
+        <p></p>
+        <hr>
+        <h4><%= current_insurer.first_name %> </h4>
+        <hr>
+        <h3 style="margin-bottom:0px"> <%= BrokerRelation.where(insurer_id: current_insurer.id, permission: true).count %>  </h3>
+        <h5>Conexiones</h5>
+      </div>
+    </div>
+
+    <div class="panel panel-default"  >
+      <div class="panel-heading">
+        <h3 class="panel-title"><b><i class="fa fa-bell" aria-hidden="true"></i> Notificaciones</b></h3>
+      </div>
+      <div class="panel-body" style="height:220px;border:1px solid #ccc;font:16px/26px ;overflow:auto; padding:0px">
+        <table class="table table-striped table-hover">
+          <tr>
+            <td class="allianz-title" style="font-size:15px"><b> <i class="fa fa-caret-right" aria-hidden="true"></i> Informes Médicos</b></td>
+          </tr>
+
+
+          <tr>
+            <td class="allianz-title" style="font-size:15px"><b> <i class="fa fa-caret-right" aria-hidden="true"></i> Mensajes Directos</b></td>
+          </tr>
+          <tr>
+            <td class="allianz-title" style="font-size:15px"><b><i class="fa fa-caret-right" aria-hidden="true"></i> Conectividad</b></td>
+          </tr>
+        </table>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-9">
+  <h1 style="margin-bottom:0px"></h1>
   <div class="row">
-    <div class="col-md-8">
-      <div class="btn-group btn-group-justified">
+    <div class="col-md-12">
+      <div class="btn-group">
 
         <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
         <a href="/claims/controlpanel" class="btn btn-default">Lista de Informes</a>
@@ -361,113 +419,109 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default"  style="background-color:#E7E7E7">
+    <div class="panel-heading">
+      <h3 class="panel-title"><b>Panel de Control</b></h3>
+    </div>
+    <div class="panel-body">
 
+      <div class="row">
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default"  style="background-color:#E7E7E7">
-        <div class="panel-heading">
-          <h3 class="panel-title"><b>Panel de Control</b></h3>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3><i class="fa fa-user" aria-hidden="true"></i> Perfil</h3>
+              <p></p>
+              <br>
+              <div class="btn-group btn-group-justified">
+                <a href="/insurers/edit" class="btn btn-md btn-info">Ver/Editar mi Perfil</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-
-          <div class="row">
-
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h3><i class="fa fa-user" aria-hidden="true"></i> Perfil</h3>
-                  <p></p>
-                  <br>
-                  <div class="btn-group btn-group-justified">
-                    <a href="/insurers/edit" class="btn btn-md btn-info">Ver/Editar mi Perfil</a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
 
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h3><i class="fa fa-comments" aria-hidden="true"></i> Mensajería</h3>
-                  <p></p>
-                  <br>
-                  <div class="btn-group btn-group-justified">
-                    <a href="/" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i>Proximamente</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h3><i class="fa fa-money" aria-hidden="true"></i> Informes Médicos</h3>
-                  <p></p>
-                  <br>
-                  <div class="btn-group btn-group-justified">
-                    <a href="/claims/controlpanel" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                  </div>
-                </div>
+        <div class="col-md-4">
+          <div class="panel panel-default" style="height:170px">
+            <div class="panel-body">
+              <h3><i class="fa fa-comments" aria-hidden="true"></i> Mensajería</h3>
+              <p></p>
+              <br>
+              <div class="btn-group btn-group-justified">
+                <a href="/" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i>Proximamente</a>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h3><i class="fa fa-id-card" aria-hidden="true"></i> Credenciales</h3>
-
-                  <br>
-                  <div class="btn-group btn-group-justified">
-                    <% if BrokerCredential.where("insurer_id"=>current_insurer).count!=1 %>
-                    <a href="/broker_credentials/new/<%= current_insurer.id %>" class="btn btn-md btn-info"><i class="fa fa-plus" aria-hidden="true"></i></a>
-
-                    <% else%>
-                    <a href="/broker_credentials/<%=BrokerCredential.where("insurer_id"=>current_insurer.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                    <% end %>
-                  </div>
-                </div>
+        <div class="col-md-4">
+          <div class="panel panel-default" style="height:170px">
+            <div class="panel-body">
+              <h3><i class="fa fa-money" aria-hidden="true"></i> Panel Reclamos </h3>
+              <p></p>
+              <br>
+              <div class="btn-group btn-group-justified" >
+                <a href="/claims/controlpanel" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
               </div>
             </div>
-
           </div>
-
-
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default" style="height:170px">
+            <div class="panel-body">
+              <h3><i class="fa fa-id-card" aria-hidden="true"></i> Credenciales</h3>
+
+              <br>
+              <div class="btn-group btn-group-justified">
+                <% if BrokerCredential.where("insurer_id"=>current_insurer).count!=1 %>
+                <a href="/broker_credentials/new/<%= current_insurer.id %>" class="btn btn-md btn-info"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+                <% else%>
+                <a href="/broker_credentials/<%=BrokerCredential.where("insurer_id"=>current_insurer.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
   </div>
+</div>
+</div>
 
 
-  <% else %>
-  <div class="col-md-12">
-    <br>
-    <div class="col-md-12 align=center">
-      <table class="table userbox">
-        <td align="center"> <%= image_tag("general/Logo3.png", width:"250px" ) %></td>
-      </table>
-    </div>
-
+<% else %>
+<div class="col-md-12">
+  <br>
+  <div class="col-md-12 align=center">
     <table class="table userbox">
-      <tr>
-        <td align="center"><a href="/patients/sign_in"><%= image_tag("general/pat_icon.png", width:"100px" ) %></a></td>
-        <td align="center"><a href="/doctors/sign_in"><%= image_tag("general/doc_icon.png", width:"100px" ) %></a></td>
-        <td align="center"><a href="/insurers/sign_in"><%= image_tag("general/ins_icon.png", width:"100px" ) %></a></td>
-      </tr>
-      <tr>
-
-        <td align="center"><a href="/patients/sign_in"> Paciente </a></li></td>
-        <td align="center"><a href="/doctors/sign_in"> Doctor  </a></li></td>
-        <td align="center"><a href="/insurers/sign_in"> Broker / Aseguradora  </a></li></td>
-      </tr>
+      <td align="center"> <%= image_tag("general/Logo3.png", width:"250px" ) %></td>
     </table>
-
   </div>
 
-  <% end %>
+  <table class="table userbox">
+    <tr>
+      <td align="center"><a href="/patients/sign_in"><%= image_tag("general/pat_icon.png", width:"100px" ) %></a></td>
+      <td align="center"><a href="/doctors/sign_in"><%= image_tag("general/doc_icon.png", width:"100px" ) %></a></td>
+      <td align="center"><a href="/insurers/sign_in"><%= image_tag("general/ins_icon.png", width:"100px" ) %></a></td>
+    </tr>
+    <tr>
+
+      <td align="center"><a href="/patients/sign_in"> Paciente </a></li></td>
+      <td align="center"><a href="/doctors/sign_in"> Doctor  </a></li></td>
+      <td align="center"><a href="/insurers/sign_in"> Broker / Aseguradora  </a></li></td>
+    </tr>
+  </table>
+
+</div>
+
+<% end %>
 
 </div>
 </body>

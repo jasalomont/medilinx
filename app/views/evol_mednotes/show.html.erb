@@ -30,6 +30,7 @@
             <p> <%= @evol_mednote.mednote_responsible %></p>
           </div>
         </div>
+        
 
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -291,12 +292,14 @@
           <a href="/medical_relations/<%= @medical_relation %>" class="btn btn-primary">
             Regresar
           </a>
+<% if @evol_mednote.mednote_responsible_sign.nil? || @evol_mednote.mednote_responsible_sign.empty?%>
 
           <a href="/evol_mednotes/<%= @evol_mednote.id %>/edit" class="btn btn-warning">
             Editar
           </a>
           <a href="/delete_evol_mednote/<%= @evol_mednote.id %>" class="btn btn-danger" rel="nofollow">
             Eliminar
+<% end %>
           </a>
         </div>
       </div>

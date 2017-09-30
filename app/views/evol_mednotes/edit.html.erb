@@ -1,4 +1,9 @@
 <!-- Validation failure messages -->
+
+<% if @evol_mednote.mednote_responsible_sign.nil? || @evol_mednote.mednote_responsible_sign.empty? %>
+  <!-- true -->
+
+
 <% if @evol_mednote.errors.any? %>
   <% @evol_mednote.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
@@ -70,6 +75,10 @@
         </label>
 
         <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @evol_mednote.patient_id %>">
+      </div>
+
+      <div class="">
+        <input type="text" id="event_id" name="event_id" placeholder="" class="form-control" value="<%= @evol_mednote.event_id %>">
       </div>
 
       <!-- Label and input for patient_name -->
@@ -323,3 +332,7 @@
     </form>
   </div>
 </div>
+<% else %>
+<p style="color:red">Este documento ya fue firmado y no puede ser editado </p>
+
+<% end %>

@@ -29,7 +29,7 @@
           Correo electronico del Agente
         </label>
 
-        <%= select_tag(:insurer_id, options_from_collection_for_select(Insurer.all, :id, :email, @broker_relation.insurer_id), :class => "form-control") %>
+        <%= select_tag(:insurer_id, options_from_collection_for_select(BrokerCredential.all, :insurer_id, :practice_name, @broker_relation.insurer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for insurance_company -->

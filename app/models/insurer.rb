@@ -4,5 +4,5 @@ class Insurer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :broker_credentials, :dependent => :destroy    
+    has_one :broker_credential, :dependent => :destroy    
 end

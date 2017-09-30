@@ -32,7 +32,11 @@
             <label for="mednote_responsible" class="control-label">
               Nombre completo de quien elabora la nota
             </label>
+            <% if current_doctor.first_name.nil? || current_doctor.last_father.nil?  || current_doctor.last_mother.nil?  %>
+              <input type="text" id="mednote_responsible" name="mednote_responsible" placeholder="Mednote responsible" class="form-control" value="<%= @evol_mednote.mednote_responsible %>">
+            <% else %>
             <input type="text" id="mednote_responsible" name="mednote_responsible" placeholder="Mednote responsible" class="form-control" value="<%= current_doctor.first_name + " " + current_doctor.last_father + " " + current_doctor.last_mother %>">
+            <% end %>
           </div>
         </div>
 
