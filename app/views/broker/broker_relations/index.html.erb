@@ -67,7 +67,7 @@
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-md-3">
-                        <img src="<%= insurer.broker_credentials.first.photo %>" class="img-responsive" >
+                        <img src="<%= insurer.broker_credential.photo %>" class="img-responsive" >
 
                       </div>
                       <div class="" style="position: absolute; bottom:35px; left:30px">
@@ -77,13 +77,13 @@
                       <div class="col-md-9">
 
                         <div class="col-md-10">
-                          <h4><%= insurer.broker_credentials.first.practice_name %></h4>
+                          <h4><%= insurer.broker_credential.practice_name %></h4>
                         </div>
                         <div class="col-md-10">
-                          <h5> <%= insurer.broker_credentials.first.company %></h5>
+                          <h5> <%= insurer.broker_credential.company %></h5>
                         </div>
                         <div class="col-md-10">
-                          <b> <%= insurer.broker_credentials.first.job_title %></b>
+                          <b> <%= insurer.broker_credential.job_title %></b>
                         </div>
 
                         <div class="row col-md-12">
@@ -94,19 +94,19 @@
                             <p></p>
                             <br>
                             <dt style="width:100px">e-mail</dt>
-                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.insurer.email %></dd>
+                            <dd style="margin-left:100px"><%= insurer.broker_credential.insurer.email %></dd>
 
                             <dt style="width:100px"> Oficina</dt>
-                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.phone_work %></dd>
+                            <dd style="margin-left:100px"><%= insurer.broker_credential.phone_work %></dd>
 
                             <dt style="width:100px">Celular</dt>
-                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.phone_mobile %></dd>
+                            <dd style="margin-left:100px"><%= insurer.broker_credential.phone_mobile %></dd>
 
                             <dt style="width:100px">Dirección</dt>
-                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.address_work %></dd>
+                            <dd style="margin-left:100px"><%= insurer.broker_credential.address_work %></dd>
 
 
-                            <dd style="margin-left:100px"><%= insurer.broker_credentials.first.city_work %>, <%= insurer.broker_credentials.first.state_work %>, <%= insurer.broker_credentials.first.zip_work %></dd>
+                            <dd style="margin-left:100px"><%= insurer.broker_credential.city_work %>, <%= insurer.broker_credential.state_work %>, <%= insurer.broker_credential.zip_work %></dd>
 
                           </dl>
                         </div>

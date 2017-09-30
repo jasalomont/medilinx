@@ -1,39 +1,31 @@
 <div class="page-header">
-  <h3>Broker Relation #<%= @broker_relation.id %></h3>
+  <h3>Detalles de Cliente: <%= @broker_relation.patient.first_name + " " + @broker_relation.patient.last_father  %></h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
+  <div class="col-md-8 mb-2">
     <dl class="dl-horizontal">
-      <dt>Patient</dt>
-      <dd><%= @broker_relation.patient_id %></dd>
 
-      <dt>Insurer</dt>
-      <dd><%= @broker_relation.insurer_id %></dd>
-
-      <dt>Insurance company</dt>
+      <dt>Seguro que representa</dt>
       <dd><%= @broker_relation.insurance_company %></dd>
 
-      <dt>Permission</dt>
-      <dd><%= @broker_relation.permission %></dd>
-
-      <dt>Broker notes</dt>
-      <dd><%= @broker_relation.broker_notes %></dd>
-
-      <dt>Contract code</dt>
+      <dt>Número de Póliza</dt>
       <dd><%= @broker_relation.contract_code %></dd>
+
+      <dt>Notas de cliente</dt>
+      <dd><%= @broker_relation.broker_notes %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/broker_relations" class="btn btn-primary">
-        Back
+      <a href="/directorio_agentes" class="btn btn-primary">
+        Regresar
       </a>
       <a href="/broker_relations/<%= @broker_relation.id %>/edit" class="btn btn-warning">
-        Edit
+        Editar
       </a>
       <a href="/delete_broker_relation/<%= @broker_relation.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
+        Eliminar
       </a>
     </div>
   </div>
