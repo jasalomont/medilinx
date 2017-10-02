@@ -65,15 +65,17 @@
 
 
       <div class="btn-group btn-group-justified ">
-        <a href="/" class="btn btn-primary">
-          Regresar
-        </a>
+        <%= link_to "Regresar", :back, class: "btn btn-primary" %>
+
+        <% if current_insurer != nil && current_insurer.id == @broker_credential.insurer_id %>
+
         <a href="/broker_credentials/<%= @broker_credential.id %>/edit" class="btn btn-warning">
           Editar
         </a>
         <a href="/delete_broker_credential/<%= @broker_credential.id %>" class="btn btn-danger" rel="nofollow">
           Eliminar
         </a>
+        <% end %>
       </div>
       <p></p>
       </div>

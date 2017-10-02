@@ -5,6 +5,15 @@ class BrokerCredentialsController < ApplicationController
     render("broker/broker_credentials/index.html.erb")
   end
 
+  def directorio
+
+    @q = BrokerCredential.ransack(params[:q])
+    @broker_credentials = @q.result
+
+    
+    render("broker/broker_credentials/directorio_agentes.html.erb")
+  end
+
   def show
     @broker_credential = BrokerCredential.find(params[:id])
 

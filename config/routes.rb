@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/broker_credentials", :controller => "broker_credentials", :action => "index"
+  get "/directorio_agentes", :controller => "broker_credentials", :action => "directorio"
   get "/broker_credentials/:id", :controller => "broker_credentials", :action => "show"
 
   # UPDATE
@@ -44,7 +45,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/broker_relations", :controller => "broker_relations", :action => "index"
-  get "/directorio_agentes", :controller => "broker_relations", :action => "directorio"
+  get "/conexiones_agente", :controller => "broker_relations", :action => "conexiones"
   get "/broker_relations/:id", :controller => "broker_relations", :action => "show"
 
   # UPDATE

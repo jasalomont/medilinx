@@ -5,10 +5,10 @@ class BrokerRelationsController < ApplicationController
     render("broker/broker_relations/index.html.erb")
   end
 
-  def directorio
+  def conexiones
     @broker_relations = BrokerRelation.where("insurer_id"=>current_insurer.id)
 
-    render("broker/broker_relations/directorio_agentes.html.erb")
+    render("broker/broker_relations/conexiones.html.erb")
   end
 
   def show
