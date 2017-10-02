@@ -287,6 +287,7 @@ get "/historial_medico/doctor/:pid", :controller => "historial_medico", :action 
 
   # CREATE
   get "/medical_relations/new", :controller => "medical_relations", :action => "new"
+  get "/medical_relations/search", :controller => "medical_relations", :action => "search"
   post "/create_medical_relation", :controller => "medical_relations", :action => "create"
 
   # READ

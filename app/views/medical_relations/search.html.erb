@@ -1,0 +1,60 @@
+
+<h3>Resultado de búsqueda</h3>
+<p></p>
+
+<br>
+
+<% if @pacientes.count > 0 %>
+<h4><p>Se encontró <b> <%= @pacientes.count %> </b> paciente(s) con ese correo electrónico</p></h4>
+<% @pacientes.each do |paciente| %>
+<br>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+    <form action="/create_medical_relation" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+      <!-- Label and input for doctor_id -->
+      <div class="form-group">
+
+        <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
+      </div>
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <label for="patient_id" class="control-label">
+          Correo Electrónico del paciente: <%= paciente.email %>
+        </label>
+        <input type="hidden" id="patient_id" name="patient_id" placeholder="" class="form-control" value="<%= paciente.id %>">
+
+      <button class="btn btn-sm btn-success">
+        Enviar solicitud
+      </button>
+    </div>
+
+
+    </form>
+  </div>
+</div>
+
+<% end %>
+<% else %>
+<p style="color:red">No se encontró un paciente con ese correo electrónico</p>
+<a href="mailto:<%= params[:email] %>?subject=Unete%20a%20MediLinx&amp;body=Join%20MediLinx%20http://www.medilinx.co/patients/sign_up" class="btn btn-primary">Enviar invitación MediLinx</a>
+<% end %>
+<br>
+<hr>
+<h4>Buscar nuevamente:</h4>
+<form class="" action="/medical_relations/search">
+  <div>
+    <label for "APR">
+      Correo Electrónico
+    </label>
+    <input type="text" name="email" placeholder="paciente@medilinx.net" id="email">
+<button>Buscar</button>
+</div >
+</form>
+
+<%= link_to "Regresar", :back%>

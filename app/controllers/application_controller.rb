@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, :keys => [:practice_name])
+    devise_parameter_sanitizer.permit(:sign_up, :keys => [:insurance_co])
+    devise_parameter_sanitizer.permit(:sign_up, :keys => [:insurance_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:practice_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:first_name])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:practice_name])
@@ -27,7 +29,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, :keys => [:position])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:employee_id])
     devise_parameter_sanitizer.permit(:account_update, :keys => [:employee_ref])
-    
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:insurance_co])
+
   end
 
 end

@@ -77,6 +77,12 @@ end
 
 
 
+  def search
+    @pacientes = Patient.where("email"=>params[:email])
+
+    render("medical_relations/search.html.erb")
+  end
+
   def new
     @medical_relation = MedicalRelation.new
 

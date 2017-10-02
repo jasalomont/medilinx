@@ -9,32 +9,40 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Agregar Paciente</h3>
+<h3>Buscar Paciente</h3>
 </div>
 
-<div class="row">
+
+<form class="" action="/medical_relations/search">
+  <div>
+    <label for "APR">
+      Correo Electrónico
+    </label>
+    <input type="text" name="email" placeholder="paciente@medilinx.net" id="email">
+<button>Buscar</button>
+</div >
+</form>
+
+  <%= link_to "Regresar", :back%>
+
+<!-- <div class="row">
   <div class="col-sm-offset-1 col-sm-10">
     <form action="/create_medical_relation" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
+
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for doctor_id -->
+
       <div class="form-group">
         <h4><%=current_doctor.practice_name %></h4>
-
-
-
         <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
       </div>
 
-      <!-- Label and input for patient_id -->
       <div class="form-group">
         <label for="patient_id" class="control-label">
           Correo Electrónico del paciente
         </label>
-        <!-- <input type="hidden" id="patient_id" name="doctor_id" placeholder="paciente@ejemplo.com" class="form-control" value="<%= @medical_relation %>"> -->
-        <%= select_tag(:patient_id, options_from_collection_for_select(Patient.all, :id, :email, @medical_relation.patient_id), :class => "form-control") %>
 
+        <%= select_tag(:patient_id, options_from_collection_for_select(Patient.all, :id, :email, @medical_relation.patient_id), :class => "form-control") %>
 
       </div>
 
@@ -48,4 +56,4 @@
       <a href="mailto:?subject=The%20subject%20of%20the%20email&amp;body=Join%20MediLinx%20http://localhost:3000/patients/sign_up">Enviar invitación MediLinx</a>
     </form>
   </div>
-</div>
+</div> -->
