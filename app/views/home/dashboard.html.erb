@@ -16,7 +16,7 @@
   <title></title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" >
 
     <!-- Doctor Sign in -->
     <% if current_doctor != nil %>
@@ -86,7 +86,7 @@
       </h1>
       <div class="panel panel-default"  style="background-color:#E7E7E7">
         <div class="panel-heading">
-          <h3 class="panel-title"><b>Panel de Control</b></h3>
+          <h3 class="panel-title"><b>Herramientas</b></h3>
         </div>
         <div class="panel-body">
 
@@ -268,7 +268,7 @@
       <div class="col-md-12">
         <div class="panel panel-default"  style="background-color:#E7E7E7">
           <div class="panel-heading">
-            <h3 class="panel-title"><b>Panel de Control</b></h3>
+            <h3 class="panel-title"><b>Herramientas</b></h3>
           </div>
 
           <div class="panel-body">
@@ -368,9 +368,11 @@
 
 
 <%  elsif current_insurer != nil %>
-<div class="page-header">
+<div class="page-header"  style=" margin:0px; height:120px">
   <!-- doctor online true -->
-  <h2><i class="fa fa-home" aria-hidden="true"></i> <%= current_insurer.insurance_name %></h2>
+  <br>
+  <h2 style="background-color:white; margin:1px; padding:15px; border-style: solid; border-color:#7FB3D5"> <%= current_insurer.insurance_name %></h2>
+  <hr style="margin-top:0px; ">
 </div>
 
 
@@ -425,23 +427,23 @@
     <div class="col-md-12">
       <div class="btn-group">
 
-        <a href="/doctors/index" class="btn btn-default">Busqueda de Doctores</a>
+        <a href="/doctors/index" class="btn btn-default">Búsqueda de Doctores</a>
         <a href="/claims/controlpanel" class="btn btn-default">Lista de Informes</a>
-        <a href="/directorio_agentes" class="btn btn-default">Busqueda de Pacientes</a>
+        <a href="/conexiones_agente" class="btn btn-default">Búsqueda de Pacientes</a>
 
       </div>
     </div>
   </div>
   <div class="panel panel-default"  style="background-color:#E7E7E7">
     <div class="panel-heading">
-      <h3 class="panel-title"><b>Panel de Control</b></h3>
+      <h3 class="panel-title"><b>Herramientas</b></h3>
     </div>
     <div class="panel-body">
 
       <div class="row">
 
         <div class="col-md-4">
-          <div class="panel panel-default">
+          <div class="panel panel-default" style="height:170px">
             <div class="panel-body">
               <h3><i class="fa fa-user" aria-hidden="true"></i> Perfil</h3>
               <p></p>

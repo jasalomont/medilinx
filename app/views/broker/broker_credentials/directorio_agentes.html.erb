@@ -36,11 +36,15 @@
   <div class="col-md-8">
     <% @broker_credentials.each do |broker_credential| %>
     <div class="panel panel default" style="margin-bottom:2px">
-      <div class="panel-body" style="padding-bottom:1px; padding-top:1px; margin-bottom:0px; background-color:#E7E7E7">
+      <div class="panel-body" style="padding-bottom:1px; padding-top:1px; margin-bottom:0px; background-color:#FBFCFC">
         <div class="row ">
           <div class="row">
             <div class="col-md-2">
-              <img src="<%= broker_credential.photo %>" class="img-responsive" style="height:80px">
+              <% if broker_credential.photo.empty? ||  broker_credential.photo.blank? %>
+              <img src="http://file.vforum.vn/hinh/2014/5/anh-dai-dien-facebook-8.jpg" class="img-responsive" style="height:80px; width:80px">
+              <% else %>
+              <img src="<%= broker_credential.photo %>" class="img-responsive" style="height:80px; width:80px">
+              <% end %>
             </div>
             <div class="col-md-4">
               <div class="col-md-12">
