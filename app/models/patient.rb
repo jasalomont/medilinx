@@ -5,7 +5,7 @@ class Patient < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable
 
   has_many :doctors, :class_name => "MedicalRelation", :dependent => :destroy
-  has_many :patient_profiles, :dependent => :destroy
+  
   has_many :office_profiles, :dependent => :destroy
   has_many :events, :dependent => :destroy
   has_many :claims, :dependent => :destroy
