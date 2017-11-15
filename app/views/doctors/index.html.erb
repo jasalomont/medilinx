@@ -26,12 +26,17 @@
           <%= search_form_for(@q, url: "/doctors/index", method: :get) do |f| %>
           <div class="form-group">
             <%= f.label :practice_name_cont, "Nombre del doctor" %>
-            <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+            <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :practice_cont, "Especialidad" %>
+            <%= f.text_field :practice_cont, :class => "form-control", :placeholder => "" %>
           </div>
 
           <div class="form-group">
             <%= f.label :city_work_cont, "Ubicación (ciudad)" %>
-            <%= f.text_field :city_work_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+            <%= f.text_field :city_work_cont, :class => "form-control", :placeholder => "" %>
           </div>
 
           <%= f.submit :Buscar, :class => "btn btn-primary btn-block" %>
@@ -51,8 +56,8 @@
           <div class="row ">
             <div class="row">
               <div class="col-md-2">
-                <% if doctor.photo.empty? ||  doctor.photo.blank? %>
-                <img src="http://dravenstales.ch/wp-content/uploads/2012/01/fb_avatar10_special.jpg" class="img-responsive" style="height:80px; width:80px">
+                <% if doctor.photo.blank? %>
+                <%= image_tag("general/physician_avatar.png", width:"80px" ) %>
                 <% else %>
                 <img src="<%= doctor.photo %>" class="img-responsive" style="height:80px; width:80px">
                 <% end %>
