@@ -21,8 +21,11 @@ class DoctorsController < ApplicationController
   def index
 
     @q = Credential.ransack(params[:q])
-    @doctors = @q.result
+    @doctor = @q.result
+    @doctors = @doctor.order('created_at DESC').limit(10).offset(10*((params[:pg]).to_i-1))
     render("doctors/index.html.erb")
+    @page=params[:pg]
+    @next_page = (((params[:pg])))
 
   end
 

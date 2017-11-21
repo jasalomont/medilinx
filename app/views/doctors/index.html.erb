@@ -9,6 +9,7 @@
 <body>
   <div class="page-header">
     <h1>Directorio Médico</h1>
+
   </div>
 
 
@@ -23,7 +24,7 @@
           <h3 class="panel-title">Buscar Doctor:</h3>
         </div>
         <div class="panel-body">
-          <%= search_form_for(@q, url: "/doctors/index", method: :get) do |f| %>
+          <%= search_form_for(@q, url: "/doctor/index/1", method: :get) do |f| %>
           <div class="form-group">
             <%= f.label :practice_name_cont, "Nombre del doctor" %>
             <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "" %>
@@ -40,7 +41,7 @@
           </div>
 
           <%= f.submit :Buscar, :class => "btn btn-primary btn-block" %>
-          <a href="/doctors/index" class="btn btn-default btn-block">Eliminar Filtros</a>
+          <a href="/doctor/index/1" class="btn btn-default btn-block">Eliminar Filtros</a>
 
           <% end %>
         </div>
@@ -50,6 +51,7 @@
 
 
     <div class="col-md-8">
+
       <% @doctors.each do |doctor| %>
       <div class="panel panel default" style="margin-bottom:2px">
         <div class="panel-body" style="padding-bottom:1px; padding-top:1px; margin-bottom:0px; background-color:#FBFCFC">
@@ -64,7 +66,7 @@
               </div>
               <div class="col-md-4">
                 <div class="col-md-12">
-                  <h4>  <a href="/credentials/<%= doctor.id %>"> <%= doctor.practice_name %></a></h4>
+                  <h4>  <a href="/public_credentials/<%= doctor.id %>"> <%= doctor.practice_name %></a></h4>
                 </div>
                 <div class="col-md-12">
                   <h5> <%= doctor.practice %></h5>
@@ -73,18 +75,16 @@
                   <b> <%=  %></b>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="col-md-12">
                   <b> <%= doctor.city_work %></b>
                 </div>
                 <div class="col-md-12">
-                  Consultorio: <%= doctor.hospital_name %>
+                   <%= doctor.hospital_name %>
                 </div>
+
                 <div class="col-md-12">
-                  <%= doctor.email %>
-                </div>
-                <div class="col-md-12">
-                  Telefono: <%= doctor.phone_work %>
+                   <i class="fa fa-phone" aria-hidden="true"></i> <%= doctor.phone_work %>
                 </div>
               </div>
               <div class="col-md-2">
@@ -95,8 +95,40 @@
         </div>
       </div>
       <% end %>
+      <p style='text-align: right'>
+
+
+        <% if @doctor.count > 10 %>
+        <% if params[:pg].to_i > 1 %>
+
+        <a href="/doctor/index/<%= (params[:pg]).to_i-1 %>"> <i class="fa fa-step-backward" aria-hidden="true"></i> </a>
+        ...
+        <% end %>
+        <a href="/doctor/index/<%= (params[:pg]).to_i+1 %>"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+        <% end %>
+      </p>
     </div>
+</div>
 
 
+  <br>
+  <br>
+  <div class="row">
+
+
+  <div class="under-row"  >
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+  </div>
+  </div>
   </body>
   </html>
