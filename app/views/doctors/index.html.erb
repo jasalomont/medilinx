@@ -24,7 +24,7 @@
           <h3 class="panel-title">Buscar Doctor:</h3>
         </div>
         <div class="panel-body">
-          <%= search_form_for(@q, url: "/doctor/index/1", method: :get) do |f| %>
+          <%= search_form_for(@q, url: "/doctor/search", method: :get) do |f| %>
           <div class="form-group">
             <%= f.label :practice_name_cont, "Nombre del doctor" %>
             <%= f.text_field :practice_name_cont, :class => "form-control", :placeholder => "" %>
@@ -51,7 +51,20 @@
 
 
     <div class="col-md-8">
-
+      <p style='text-align: right'>
+        <% if params[:pg] != nil %>
+        <% if @doctor.count > 10 %>
+        <% if params[:pg].to_i > 1 %>
+        <a href="/doctor/index/<%= (params[:pg]).to_i-1 %>"> <i class="fa fa-step-backward" aria-hidden="true"></i> </a>
+        ... <%= params[:pg ] %>
+        <% end %>
+        <% if @page < @last_page %>
+        ...
+        <a href="/doctor/index/<%= (params[:pg]).to_i+1 %>"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+        <% end %>
+        <% end %>
+        <% end %>
+      </p>
       <% @doctors.each do |doctor| %>
       <div class="panel panel default" style="margin-bottom:2px">
         <div class="panel-body" style="padding-bottom:1px; padding-top:1px; margin-bottom:0px; background-color:#FBFCFC">
@@ -80,11 +93,11 @@
                   <b> <%= doctor.city_work %></b>
                 </div>
                 <div class="col-md-12">
-                   <%= doctor.hospital_name %>
+                  <%= doctor.hospital_name %>
                 </div>
 
                 <div class="col-md-12">
-                   <i class="fa fa-phone" aria-hidden="true"></i> <%= doctor.phone_work %>
+                  <i class="fa fa-phone" aria-hidden="true"></i> <%= doctor.phone_work %>
                 </div>
               </div>
               <div class="col-md-2">
@@ -95,20 +108,9 @@
         </div>
       </div>
       <% end %>
-      <p style='text-align: right'>
 
-
-        <% if @doctor.count > 10 %>
-        <% if params[:pg].to_i > 1 %>
-
-        <a href="/doctor/index/<%= (params[:pg]).to_i-1 %>"> <i class="fa fa-step-backward" aria-hidden="true"></i> </a>
-        ...
-        <% end %>
-        <a href="/doctor/index/<%= (params[:pg]).to_i+1 %>"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
-        <% end %>
-      </p>
     </div>
-</div>
+  </div>
 
 
   <br>
@@ -116,19 +118,19 @@
   <div class="row">
 
 
-  <div class="under-row"  >
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="under-row"  >
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
 
+    </div>
   </div>
-  </div>
-  </body>
-  </html>
+</body>
+</html>

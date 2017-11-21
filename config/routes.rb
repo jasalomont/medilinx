@@ -334,6 +334,7 @@ get "/historial_medico/doctor/:pid", :controller => "historial_medico", :action 
 
     #READ
 
+  get "doctor/search", :controller => "doctors", :action => "search"
   get "doctor/index/:pg", :controller => "doctors", :action => "index"
   get "doctors/:id", :controller => "doctors", :action => "read"
   get "doctors_profile/:id", :controller => "doctors", :action => "show"

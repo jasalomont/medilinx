@@ -20,12 +20,22 @@ class DoctorsController < ApplicationController
 
   def index
 
+    @q = Credential.where("permission_public" => true).ransack(params[:q])
+    @doctor = @q.result
+    n = 10
+    @doctors = @doctor.order('created_at DESC').limit(n).offset(n*((params[:pg]).to_i-1))
+    @last_page = (Credential.count.to_f/n.to_f).ceil
+    @page=params[:pg].to_i
+    render("doctors/index.html.erb")
+
+  end
+
+  def search
+
     @q = Credential.ransack(params[:q])
     @doctor = @q.result
-    @doctors = @doctor.order('created_at DESC').limit(10).offset(10*((params[:pg]).to_i-1))
+    @doctors = @doctor
     render("doctors/index.html.erb")
-    @page=params[:pg]
-    @next_page = (((params[:pg])))
 
   end
 
