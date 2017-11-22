@@ -83,6 +83,8 @@ end
     render("medical_relations/search.html.erb")
   end
 
+
+
   def new
     @medical_relation = MedicalRelation.new
 
@@ -106,7 +108,12 @@ end
 
 
     if save_status == true
+      if current_doctor != nil
       redirect_to("/medical_relations", :notice => "Medical relation created successfully.")
+    else
+
+      redirect_to("/expediente/paciente", :notice => "Medical relation created successfully.")
+      end
     else
       render("medical_relations/new.html.erb")
     end
