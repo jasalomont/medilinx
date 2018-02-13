@@ -19,20 +19,20 @@
 
             <table class="table table-striped table-hover" style="table-layout:fixed; border-collapse:collapse; ">
               <tr style="font-size;">
-                <th style="width:30%">Paciente</th>
-                <th style="width:20%">Seguro</th>
-                <th style=" width:20%">Tipo</th>
+                <th style="width:50%">Paciente</th>
+                <th style="width:30%">Seguro</th>
                 <th ></th>
 
               </tr>
 
-              <% @claims.reverse.each do |claim| %>
-              <% if @claim_follows.where("claim_id"=>claim.id).exists? == true && claim.claim_follow.insurance_read == nil%>
+              <% @claim_events.reverse.each do |claim| %>
+              <% if @claim_follows.where("claim_event_id"=>claim.id).exists? == true && claim.claim_follow.insurance_read == nil%>
               <tr style="font-size:12px">
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.patient_name %></td>
+                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.patient.first_name %> <%= claim.patient.last_father %></td>
                 <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.insurance_name %></td>
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.claim_type %></td>
-                <td style="text-align: left"><form action="/update_claim_follow/<%= claim.claim_follow.id %>" method="post">
+
+                <td style="text-align: left">
+                  <form action="/update_claim_follow/<%= claim.claim_follow.id %>" method="post">
                   <!-- Hidden input for authenticity token to protect from forgery -->
                   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
                   <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" if claim.claim_follow.patient_request %>>
@@ -60,18 +60,18 @@
             <tr style="font-size;">
               <th style="height:10px; width:30%">Paciente</th>
               <th style="height:10px; width:20%">Seguro</th>
-              <th style=" width:20%">Tipo</th>
+              <th style=" width:20%">Fecha</th>
               <th></th>
               <th><i class="fa fa-paperclip" aria-hidden="true"></i></th>
 
             </tr>
 
-            <% @claims.reverse.each do |claim| %>
-            <% if @claim_follows.where("claim_id"=>claim.id).exists? == true && claim.claim_follow.insurance_read == true && claim.claim_follow.insurance_approved == nil%>
+            <% @claim_events.reverse.each do |claim| %>
+            <% if @claim_follows.where("claim_event_id"=>claim.id).exists? == true && claim.claim_follow.insurance_read == true && claim.claim_follow.insurance_approved == nil%>
             <tr style="font-size:12px">
-              <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.patient_name %></td>
+              <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.patient.first_name %></td>
               <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.insurance_name %></td>
-              <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.claim_type %></td>
+              <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim.claim_follows.created_at %></td>
               <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
 
               <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
