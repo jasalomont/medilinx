@@ -47,7 +47,6 @@ Rails.application.routes.draw do
   get "/directorio_agentes", :controller => "broker_credentials", :action => "directorio"
   get "/broker_credentials/:id", :controller => "broker_credentials", :action => "show"
 
-
   # UPDATE
   get "/broker_credentials/:id/edit", :controller => "broker_credentials", :action => "edit"
   post "/update_broker_credential/:id", :controller => "broker_credentials", :action => "update"
@@ -142,9 +141,6 @@ Rails.application.routes.draw do
   # READ
   get "/credentials", :controller => "credentials", :action => "index"
   get "/credentials/:id", :controller => "credentials", :action => "show"
-
-    #Public READ
-    get "/public_credentials/:id", :controller => "credentials", :action => "show_public"
 
   # UPDATE
   get "/credentials/:id/edit", :controller => "credentials", :action => "edit"
@@ -351,8 +347,12 @@ get "/historial_medico/doctor/:pid", :controller => "historial_medico", :action 
 
     #READ
 
+<<<<<<< HEAD
   get "doctor/search", :controller => "doctors", :action => "search"
   get "doctor/index/:pg", :controller => "doctors", :action => "index"
+=======
+  get "doctors/index", :controller => "doctors", :action => "index"
+>>>>>>> parent of 05c9605... directorio medico paginas
   get "doctors/:id", :controller => "doctors", :action => "read"
   get "doctors_profile/:id", :controller => "doctors", :action => "show"
   get "/delete_doctor/:id", :controller => "doctors", :action => "destroy"

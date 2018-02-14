@@ -33,8 +33,12 @@ class DoctorsController < ApplicationController
   def search
 
     @q = Credential.ransack(params[:q])
+<<<<<<< HEAD
     @doctor = @q.result
     @doctors = @doctor
+=======
+    @doctors = @q.result
+>>>>>>> parent of 05c9605... directorio medico paginas
     render("doctors/index.html.erb")
 
   end

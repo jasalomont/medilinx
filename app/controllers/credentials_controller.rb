@@ -11,12 +11,6 @@ class CredentialsController < ApplicationController
     render("credentials/show.html.erb")
   end
 
-  def show_public
-    @credential = Credential.find(params[:id])
-
-    render("credentials/show_public.html.erb")
-  end
-
   def new
     @credential = Credential.new
 
@@ -53,7 +47,6 @@ class CredentialsController < ApplicationController
     @credential.state_work = params[:state_work]
     @credential.practice_name = params[:practice_name]
     @credential.permission_public = params[:permission_public]
-    @credential.hospital_name = params[:hospital_name]
 
 
     save_status = @credential.save
@@ -96,7 +89,6 @@ class CredentialsController < ApplicationController
     @credential.state_work = params[:state_work]
     @credential.practice_name = params[:practice_name]
     @credential.permission_public = params[:permission_public]
-    @credential.hospital_name = params[:hospital_name]
 
 
     save_status = @credential.save
