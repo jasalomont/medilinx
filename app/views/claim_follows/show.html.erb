@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Recibo de confirmación de envío  </h3>
+  <h3>Recibo de confirmación de envío a <%= @claim_follow.claim.insurance_name %> </h3>
   <h4 style="color:gray">Folio #<%= @claim_follow.id %></h4>
 </div>
 
@@ -9,19 +9,19 @@
 
 
       <dt>Paciente</dt>
-      <dd><%= Patient.find(@claim_follow.patient_id).first_name %> <%= Patient.find(@claim_follow.patient_id).last_father %></dd>
+      <dd><%= @claim_follow.claim.patient_name %></dd>
 
       <dt>Fecha y Hora de envío</dt>
       <dd><%= @claim_follow.created_at %></dd>
 
       <dt>Doctor</dt>
-      <dd></dd>
+      <dd><%= @claim_follow.claim.doctor_name %></dd>
 
       <dt>Fecha de firma de documento</dt>
-      <dd></dd>
+      <dd><%= @claim_follow.claim.doctor_signature_date %></dd>
 
       <dt>Aseguradora</dt>
-      <dd><%= @claim_follow.claim_event.insurance_name %></dd>
+      <dd><%= @claim_follow.claim.insurance_name %></dd>
 
       <dt>Folio</dt>
       <dd><%= @claim_follow.claim_id %></dd>
@@ -48,24 +48,24 @@
 
     </dl>
 
-    <% if current_patient != nil %>
-    <a href="/claims/record" class="btn btn-primary">
-      Salir
-    </a>
-    <% elsif current_insurer != nil %>
-    <a href="/claims/controlpanel" class="btn btn-primary">
-      Salir
-    </a>
-    <% end %>
-    <a href="/claims/<%= @claim_follow.claim_id %>" class="btn btn-info">
-      Ver informe
-    </a>
-    <!-- <a href="/claim_follows/<%= @claim_follow.id %>/edit" class="btn btn-warning">
-    Edit
+<% if current_patient != nil %>
+<a href="/claims/record" class="btn btn-primary">
+  Salir
+</a>
+  <% elsif current_insurer != nil %>
+  <a href="/claims/controlpanel" class="btn btn-primary">
+    Salir
   </a>
-  <a href="/delete_claim_follow/<%= @claim_follow.id %>" class="btn btn-danger" rel="nofollow">
-  Delete
-</a> -->
+<% end %>
+<a href="/claims/<%= @claim_follow.claim_id %>" class="btn btn-info">
+  Ver informe
+</a>
+      <!-- <a href="/claim_follows/<%= @claim_follow.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_claim_follow/<%= @claim_follow.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a> -->
 
-</div>
+  </div>
 </div>

@@ -4,7 +4,6 @@ class Claim < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
   belongs_to :event, :required => false
-  belongs_to :claim_event
 
   has_one :pathological, :through => :patient, :source => :pathological
   has_one :non_pathological, :through => :patient, :source => :non_pathological

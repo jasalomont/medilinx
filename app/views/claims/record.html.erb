@@ -5,118 +5,6 @@
   </h1>
 </div>
 
-<!-- Iniciar Reclamo -->
-
-<form action="/create_claim_event" method="post">
-  <!-- Hidden input for authenticity token to protect from forgery -->
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-  <input type="hidden" id="patient_id" name="patient_id" placeholder="" class="form-control" value="<%= current_patient.id %>">
-
-  <div class="row">
-    <div class="col-md-10">
-      <div class="panel panel-default" style="background-color:#E7E7E7" >
-        <div class="panel-body">
-          <div class="col-md-3">
-            <button class="btn btn-primary">
-              Crear Registro de Reclamo
-            </button>
-          </div>
-
-
-          <div class="col-md-6">
-            <input list="nombre_aseguradora" id="insurance_name" name="insurance_name" placeholder="Nombre de Aseguradora*" class="form-control" value="<%= @claim.insurance_name %>">
-            <datalist class="" id="nombre_aseguradora">
-              <option value="Allianz"></option>
-              <option value="AXA"></option>
-
-            </datalist>
-          </div>
-
-          <div class="col-md-offset-3 col-md-9">
-
-            <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" %>>
-            <!-- <span style="color:red">Acepto las condiciones de enviar la solicitud de reclamo</span> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-
-<div class="row">
-  <div class="col-md-10">
-    <div class="panel panel-default" style="background-color:#EAEDED">
-      <div class="panel-body">
-
-        <div class="col-md-12">
-          <div class="panel panel-primary" >
-            <div class="panel-heading">
-              <h3 class="panel-title">Registros Históricos</h3>
-            </div>
-
-            <table class="table table-striped table-hover" >
-              <tr style="font-size:12px">
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Seguro</th>
-                <th>Agente</th>
-                <th>Status</th>
-                <th><i class="fa fa-paperclip" aria-hidden="true"> </i> </th>
-                <th>Informes MDX</th>
-              </tr>
-              <% @claim_events.reverse.each do |claim_event| %>
-              <tr style="font-size:12px">
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= claim_event.id %></td>
-                <td><%= claim_event.created_at.to_date %></td>
-                <td><%= claim_event.insurance_name %></td>
-                <% if BrokerRelation.where(:insurance_company => claim_event.insurance_name, :patient_id => current_patient.id).exists? %>
-                <td> <%= BrokerRelation.where(:insurance_company => claim_event.insurance_name, :patient_id => current_patient.id).first.insurer.first_name %>
-                </td>
-                <% else %>
-                <td><%=  %></td>
-                <% end %>
-                <% if @claim_follows.where("claim_event_id"=>claim_event.id).exists? == true %>
-                <td style="color:blue; text-align: center" title="El agente lo está revisando"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
-                </td>
-                <% else %>
-                <td style="text-align: center">
-                  <form action="/create_claim_follow" method="post">
-                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                    <input type="hidden" id="patient_id" name="patient_id" placeholder="Claim" class="form-control" value="<%= current_patient.id %>">
-
-                    <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" %>>
-                    <input type="hidden" id="claim_event_id" name="claim_event_id" placeholder="Claim" class="form-control" value="<%= claim_event.id %>">
-                    <button class="btn btn-sm btn-success" style="">
-                      Enviar
-                    </button>
-                  </form>
-                </td>
-                <% end %>
-                <% if Attachment.where("claim_event_id"=>claim_event.id).size > 0 %>
-                <td style="color:blue; text-align: center"><a href="/attachment/<%= claim_event.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></a></td>
-                <% else %>
-                <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim_event.id %>" class: "btn btn-sm btn-default">+</a></td>
-                <% end %>
-                <% if Claim.where("claim_event_id"=>claim_event.id).exists? %>
-                <% Claim.where("claim_event_id"=>claim_event.id).each do |claim| %>
-                <td> <a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a> </td>
-                <% end %>
-                <% else %>
-                <td> - </td>
-                <% end %>
-
-              </tr>
-              <% end %>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Solicitar reclamo -->
 
 <form action="/create_claim" method="post">
   <!-- Hidden input for authenticity token to protect from forgery -->
@@ -130,19 +18,10 @@
     <div class="col-md-12">
       <div class="panel panel-default" style="background-color:#E7E7E7" >
         <div class="panel-body">
-          <% if @relations.count == 0 %>
-          Registrar a doctores para poder solicitar informes directamente
-          <% else %>
-
-          <div class="col-md-2">
+          <div class="col-md-3">
             <button class="btn btn-success">
               Solicitar Informe Médico
             </button>
-          </div>
-
-          <div class="col-md-1">
-
-            <%= select_tag(:claim_event_id, options_from_collection_for_select(@claim_events, :id, :id, @claim.claim_event_id), :class => "form-control") %>
           </div>
           <div class="col-md-3">
 
@@ -178,7 +57,6 @@
             <input type="hidden" id="patient_request" name="patient_request" value="1" <%= "checked" %>>
             <!-- <span style="color:red">Acepto las condiciones de enviar la solicitud de reclamo</span> -->
           </div>
-          <% end %>
         </div>
       </div>
     </div>
@@ -188,7 +66,9 @@
 
 <div class="row">
   <div class="col-md-12">
+
     <div class="panel panel-default" style="background-color:#EAEDED">
+
       <div class="panel-body">
 
         <div class="col-md-4">
@@ -201,130 +81,143 @@
               <tr style="font-size;">
                 <th style="height:10px; width:140px">Doctor</th>
                 <th>Seguro</th>
-                <th style=" width:80px">Status</th>
-                <th style=" width:50px"><i class="fa fa-paperclip" aria-hidden="true"> </i> </th>
-              </tr>
-
-              <tr style="font-size:12px">
-                <% @claims.where("doctor_sign" => nil).reverse.each do |claim| %>
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= Doctor.find(claim.doctor_id).practice_name %> </td>
-                <td><%= claim.insurance_name %></td>
-                <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
-                <% if claim.patient_request == true %>
-                <td  style="text-align: center"><span style="color:red">
-                  <!-- <i class="fa fa-bell-o fa-lg" aria-hidden="true"></i>  -->
-                  <a href="/delete_claim/<%= claim.id %>" style="color:red" rel="nofollow" title="Eliminar solicitud"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></span>
-                </td>
-                <% else %>
-                <td style="color:blue; text-align: center" title="El doctor ya lo está trabajando"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
-                </td>
-
-                <% end %>
-                <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
-                <!-- true -->
-                <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></a></td>
-                <% else %>
-                <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</a></td>
-                <% end %>
-              </tr>
-              <% end %>
-            </table>
-          </div>
-        </div>
-
-
-        <div class="col-md-4">
-          <div class="panel panel-primary" >
-
-            <div class="panel-heading">
-              <h3 class="panel-title">Firmados (Revisar para envío)</h3>
-            </div>
-
-            <table class="table table-striped table-hover" style="table-layout:fixed; border-collapse:collapse">
-              <tr style="font-size;">
-                <th style="height:10px; width:140px">Doctor</th>
-                <th>Seguro</th>
                 <!-- <th>Días</th> -->
-                <th style=" width:80px"></th>
-                <th style=" width:50px"><i class="fa fa-paperclip" aria-hidden="true"></i> </th>
-              </tr>
-
-              <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
-
-              <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
-
-              <% else %>
-
-              <tr style="font-size:12px">
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px"><%= Doctor.find(claim.doctor_id).practice_name %> </td>
-                <td><%= claim.insurance_name %></td>
-                <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
-                <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
-
-                <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
-                <!-- true -->
-                <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></a></td>
-                <% else %>
-                <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</a></td>
-
-                <!-- <td style=" text-align: center"><%= link_to "+", new_attachment_path, class: "btn btn-sm btn-default", style:"color:blue" %></td> -->
-                <% end %>
-                <% end %>
-                <% end %>
-              </tr>
-            </table>
-          </div>
-        </div>
-
-
-        <div class="col-md-4">
-          <div class="panel panel-primary" >
-            <div class="panel-heading">
-              <h3 class="panel-title">Enviados a Agente</h3>
-            </div>
-
-            <table class="table table-striped table-hover" style="table-layout:fixed; border-collapse:collapse">
-              <tr style="font-size;">
-                <th style="height:10px; width:90px">Doctor</th>
-                <th>Seguro</th>
-                <th >Ver</th>
-                <th > Status</th>
-                <th i class="fa fa-paperclip" aria-hidden="true"> </th>
-              </tr>
-
-              <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
-
-              <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
-
-              <tr style="font-size:12px">
-                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
-                  <%= Doctor.find(claim.doctor_id).practice_name %></td>
-                  <td><%= claim.insurance_name %></td>
-                  <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
-                  <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
-                  <% if claim.claim_follow.insurance_approved != nil %>
-                  <% if claim.claim_follow.insurance_approved == true %>
-                  <td  style="text-align: center"><span style="color:green" title="Aprobado"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></span></td>
-                  <% else %>
-                  <td  style="text-align: center"><span style="color:red" title="Rechazado"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></span></td>
-                  <% end %>
-                  <% else %>
-                  <td  style="text-align: center"><span style="color:blue" title="En proceso de revisión"> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </span></td>
-                  <% end %>
-
-                  <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
-                  <!-- true -->
-                  <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></a></td>
-                  <% else %>
-                  <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</a></td>
-                  <% end %>
-                  <% end %>
+                <th style=" width:80px">Status</th>
+                <th style=" width:50px"><i class="fa fa-paperclip" aria-hidden="true"> </th>
                 </tr>
-                <% end %>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+                <% @claims.where("doctor_sign" => nil).reverse.each do |claim| %>
+                <tr style="font-size:12px">
+                  <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
+                    <%= Doctor.find(claim.doctor_id).practice_name %> </td>
+                    <td><%= claim.insurance_name %></td>
+                    <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
+                    <% if claim.patient_request == true %>
+                    <td  style="text-align: center"><span style="color:red">
+                      <!-- <i class="fa fa-bell-o fa-lg" aria-hidden="true"></i>  -->
+                      <a href="/delete_claim/<%= claim.id %>" style="color:red" rel="nofollow" title="Eliminar solicitud"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></span>
+                    </td>
+                    <% else %>
+                    <td style="color:blue; text-align: center" title="El doctor ya lo está trabajando"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </td>
+
+                    <% end %>
+                    <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
+                    <!-- true -->
+                    <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
+                      <% else %>
+                      <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
+
+                        <!-- <td style=" text-align: center"><%= link_to "+", new_attachment_path, class: "btn btn-sm btn-default", style:"color:blue" %></td> -->
+                        <% end %>
+
+                        <% end %>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="panel panel-primary" >
+
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Firmados (Revisar para envío)</h3>
+                    </div>
+
+                    <table class="table table-striped table-hover" style="table-layout:fixed; border-collapse:collapse">
+                      <tr style="font-size;">
+                        <th style="height:10px; width:140px">Doctor</th>
+                        <th>Seguro</th>
+                        <!-- <th>Días</th> -->
+                        <th style=" width:80px"></th>
+                        <th style=" width:50px"><i class="fa fa-paperclip" aria-hidden="true"> </th>
+                        </tr>
+
+                        <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
+
+                        <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
+
+                        <% else %>
+
+                        <tr style="font-size:12px">
+                          <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
+                            <%= Doctor.find(claim.doctor_id).practice_name %> </td>
+                            <td><%= claim.insurance_name %></td>
+                            <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
+                            <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+
+                            <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
+                            <!-- true -->
+                            <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
+                              <% else %>
+                              <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
+
+                                <!-- <td style=" text-align: center"><%= link_to "+", new_attachment_path, class: "btn btn-sm btn-default", style:"color:blue" %></td> -->
+                                <% end %>
+
+                                <% end %>
+                                <% end %>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <div class="panel panel-primary" >
+
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Enviados a Agente</h3>
+                            </div>
+
+                            <table class="table table-striped table-hover" style="table-layout:fixed; border-collapse:collapse">
+                              <tr style="font-size;">
+                                <th style="height:10px; width:90px">Doctor</th>
+                                <th>Seguro</th>
+                                <!-- <th>Días</th> -->
+                                <th >Ver</th>
+                                <th > Status</th>
+                                <th i class="fa fa-paperclip" aria-hidden="true"> </th>
+                              </tr>
+
+                              <% @claims.where("doctor_sign" => true).reverse.each do |claim| %>
+
+                              <% if @claim_follows.where("claim_id"=>claim.id).exists? == true %>
+
+                              <tr style="font-size:12px">
+                                <td style="overflow: hidden; text-overflow: ellipsis; max-height:15px;white-space: nowrap;  height:15px">
+                                  <%= Doctor.find(claim.doctor_id).practice_name %></td>
+                                  <td><%= claim.insurance_name %></td>
+                                  <!-- <td><%= (Time.now.utc.to_date - claim.created_at.to_date).to_i %></td> -->
+                                  <td style="text-align: left"><a href="/claims/<%= claim.id %>" ><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+                                  <% if claim.claim_follow.insurance_approved != nil %>
+                                  <% if claim.claim_follow.insurance_approved == true %>
+                                  <td  style="text-align: center"><span style="color:green" title="Aprobado"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></span></td>
+                                  <% else %>
+                                  <td  style="text-align: center"><span style="color:red" title="Rechazado"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></i></span></td>
+                                  <% end %>
+                                  <% else %>
+                                  <td  style="text-align: center"><span style="color:blue" title="En proceso de revisión"> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> </span></td>
+                                  <% end %>
+
+
+                                  <% if Attachment.where("claim_id"=>claim.id).size > 0 %>
+                                  <!-- true -->
+                                  <td style="color:blue; text-align: center"><a href="/attachment/<%= claim.id %>" ><i class="fa fa-paperclip" aria-hidden="true"></i></td>
+                                    <% else %>
+                                    <td  style="color:blue; text-align: center"><a href="/attachment/new/<%= claim.id %>" class: "btn btn-sm btn-default">+</td>
+                                      <% end %>
+                                      <% else %>
+                                      <% end %>
+                                      <% end %>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+
+
+
+
+                            </div>
+                          </div>
+                        </div>
