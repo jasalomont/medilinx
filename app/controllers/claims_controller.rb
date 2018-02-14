@@ -12,11 +12,12 @@ class ClaimsController < ApplicationController
     @claim = Claim.new
     @claim_follows = ClaimFollow.all
     @attachments = Attachment.all
-
+    @claim_events = ClaimEvent.where("patient_id"=>current_patient.id)
     ary1 = Array.new
     MedicalRelation.where("patient_id"=>current_patient.id).each do |rels|
     ary1.push(rels.doctor_id)
   end
+    @claim_events = ClaimEvent.where("patient_id"=>current_patient.id)
     @relations = Doctor.where("id"=>ary1)
 
 
@@ -24,7 +25,9 @@ class ClaimsController < ApplicationController
   end
 
   def controlpanel
+    @claim_events = ClaimEvent.where("insurance_name"=>current_insurer.insurance_name)
     @claims = Claim.where("insurance_name"=>current_insurer.insurance_name)
+
   @claim_follows = ClaimFollow.all
 
 
@@ -185,6 +188,8 @@ class ClaimsController < ApplicationController
     @claim.insurance_approved = params[:insurance_approved]
     @claim.insurance_comments = params[:insurance_comments]
 
+    @claim.claim_event_id = params[:claim_event_id]
+
 
     save_status = @claim.save
 
@@ -342,6 +347,8 @@ class ClaimsController < ApplicationController
     @claim.insurance_read = params[:insurance_read]
     @claim.insurance_approved = params[:insurance_approved]
     @claim.insurance_comments = params[:insurance_comments]
+
+        @claim.claim_event_id = params[:claim_event_id]
 
     save_status = @claim.save
 

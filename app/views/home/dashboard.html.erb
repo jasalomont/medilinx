@@ -30,7 +30,7 @@
         <br>
         <div class="panel panel-default">
 
-          <div class="panel-body" style="height:285px; padding:20px" align="center">
+          <div class="panel-body" style=" padding:20px" align="center">
             <% if current_doctor.credential == nil %>
             <%= image_tag("general/doc_icon.png", width:"100px" ) %>
             <% elsif current_doctor.credential != nil && current_doctor.credential.photo.blank? %>
@@ -212,7 +212,7 @@
     <br>
     <div class="panel panel-default">
 
-      <div class="panel-body" style="height:285px; padding:20px" align="center">
+      <div class="panel-body" style=" padding:20px" align="center">
         <%= image_tag("general/pat_icon.png", width:"100px" ) %>
 
         <p></p>
@@ -384,11 +384,13 @@
     <br>
     <div class="panel panel-default">
 
-      <div class="panel-body" style="height:285px; padding:20px" align="center">
-        <% if current_insurer.broker_credential != nil && current_insurer.broker_credential.photo != nil %>
-        <img class="img-circle" src="<%= current_insurer.broker_credential.photo %>" class="img-responsive" height="100" width="100" >
-        <% else %>
+      <div class="panel-body" style=" padding:20px" align="center">
+        <% if current_insurer.broker_credential == nil %>
         <%= image_tag("general/ins_icon.png", width:"100px" ) %>
+        <% elsif current_insurer.broker_credential != nil && current_insurer.broker_credential.photo.blank? %>
+        <%= image_tag("general/ins_icon.png", width:"100px" ) %>
+        <% else %>
+        <img class="img-circle" src="<%= current_insurer.broker_credential.photo %>" class="img-responsive" height="100" width="100" >
         <% end %>
 
         <p></p>
@@ -516,13 +518,13 @@
 <% else %>
 <div class="col-md-12">
   <br>
-  <div class="col-md-12 align=center">
+  <!-- <div class="col-md-12 align=center">
     <table class="table userbox">
       <td align="center"> <%= image_tag("general/Logo3.png", width:"250px" ) %></td>
     </table>
-  </div>
+  </div> -->
 
-  <table class="table userbox">
+  <table class="table">
     <tr>
       <td align="center"><a href="/patients/sign_in"><%= image_tag("general/pat_icon.png", width:"100px" ) %></a></td>
       <td align="center"><a href="/doctors/sign_in"><%= image_tag("general/doc_icon.png", width:"100px" ) %></a></td>
@@ -561,20 +563,4 @@
 </div> -->
 
 
-<div class="under-row"  >
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-</div>
 </html>
