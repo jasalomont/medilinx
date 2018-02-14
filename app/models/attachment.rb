@@ -4,6 +4,5 @@ class Attachment < ApplicationRecord
   #  validates :claim_id, presence: true # Make sure the owner's name is present.
 
    belongs_to :claim
-    belongs_to :claim_event
 
 end

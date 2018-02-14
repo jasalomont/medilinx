@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123012546) do
+ActiveRecord::Schema.define(version: 20171115045102) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
     t.string   "type"
     t.integer  "claim_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "claim_event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -54,7 +53,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.string   "job_title"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "url"
   end
 
   create_table "broker_insurers", force: :cascade do |t|
@@ -76,17 +74,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "claim_events", force: :cascade do |t|
-    t.integer  "patient_id"
-    t.integer  "insurer_id"
-    t.string   "insurance_name"
-    t.boolean  "permission"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "patient_name"
-    t.string   "claim_type"
-  end
-
   create_table "claim_follows", force: :cascade do |t|
     t.boolean  "patient_request"
     t.boolean  "doctor_start"
@@ -101,8 +88,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.integer  "patient_id"
     t.integer  "insurer_id"
     t.integer  "agent_id"
-    t.integer  "claim_event_id"
-    t.string   "insurance_name"
   end
 
   create_table "claims", force: :cascade do |t|
@@ -237,7 +222,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.boolean  "insurance_read"
     t.boolean  "insurance_approved"
     t.text     "insurance_comments"
-    t.integer  "claim_event_id"
   end
 
   create_table "credentials", force: :cascade do |t|
@@ -266,11 +250,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.string   "practice_name"
     t.boolean  "permission_public"
     t.string   "hospital_name"
-    t.string   "url"
-    t.string   "first_name"
-    t.string   "last_father"
-    t.string   "last_mother"
-    t.string   "gender"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -373,7 +352,6 @@ ActiveRecord::Schema.define(version: 20171123012546) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "insurance_co"
-    t.boolean  "hr"
     t.index ["email"], name: "index_insurers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_insurers_on_reset_password_token", unique: true
   end
