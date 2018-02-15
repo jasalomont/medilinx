@@ -11,9 +11,8 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.new(attachment_params)
 
     @attachment.name = params[:name]
-    @attachment.claim_event_id = params[:claim_event_id]
     @attachment.claim_id = params[:claim_id]
-
+    
     save_status = @attachment.save
     # save_status == true
     if @attachment.save
