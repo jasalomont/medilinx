@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @claim_event.errors.any? %>
+  <% @claim_event.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Claim Event #<%= @claim_event.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_claim_event/<%= @claim_event.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for patient_id -->
+      <div class="form-group">
+        <label for="patient_id" class="control-label">
+          Patient
+        </label>
+
+        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @claim_event.patient_id %>">
+      </div>
+
+      <!-- Label and input for insurer_id -->
+      <div class="form-group">
+        <label for="insurer_id" class="control-label">
+          Insurer
+        </label>
+
+        <input type="text" id="insurer_id" name="insurer_id" placeholder="Insurer" class="form-control" value="<%= @claim_event.insurer_id %>">
+      </div>
+
+      <!-- Label and input for insurance_name -->
+      <div class="form-group">
+        <label for="insurance_name" class="control-label">
+          Insurance name
+        </label>
+
+        <input type="text" id="insurance_name" name="insurance_name" placeholder="Insurance name" class="form-control" value="<%= @claim_event.insurance_name %>">
+      </div>
+
+      <!-- Label and input for permission_broker -->
+      <div class="checkbox">
+        <label for="permission">
+          <input type="checkbox" id="permission" name="permission" value="1" <%= "checked" if @claim_event.permission %>>
+          Permission broker
+        </label>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Claim Event
+      </button>
+      or
+      <a href="/claim_events/<%= @claim_event.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

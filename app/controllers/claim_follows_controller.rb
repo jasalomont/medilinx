@@ -30,6 +30,8 @@ class ClaimFollowsController < ApplicationController
     @claim_follow.insurance_approved = params[:insurance_approved]
     @claim_follow.insurance_comments = params[:insurance_comments]
     @claim_follow.claim_id = params[:claim_id]
+      @claim_follow.claim_event_id = params[:claim_event_id]
+        @claim_follow.patient_id = params[:patient_id]
 
     save_status = @claim_follow.save
 
@@ -56,6 +58,9 @@ class ClaimFollowsController < ApplicationController
     @claim_follow.insurance_approved = params[:insurance_approved]
     @claim_follow.insurance_comments = params[:insurance_comments]
     @claim_follow.claim_id = params[:claim_id]
+    @claim_follow.claim_event_id = params[:claim_event_id]
+    @claim_follow.patient_id = params[:patient_id]
+
 
     save_status = @claim_follow.save
 
