@@ -6,13 +6,16 @@ git_source(:github) do |repo_name|
 end
 
 #PDF upload
+
+gem 'pg', '~> 0.18.4'
+
 gem 'carrierwave', '~> 0.9'
 gem 'bootstrap-sass', '~> 2.3.2'
 gem 'fog', '~> 1.38'
 gem "mini_magick"
 gem "fog-aws"
 
-gem "pg", :group => :production
+
 gem "rails_12factor", :group => :production
 gem 'filterrific'
 gem 'ransack'
