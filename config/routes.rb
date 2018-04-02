@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #rotes for Analyitics
+  # READ
+  get "/analytics/doctors", :controller => "analytics", :action => "doctor"
+  get "/analytics/doctor/:id", :controller => "analytics", :action => "doctor_show"
 
 
   # Routes for the Claim_event resource:

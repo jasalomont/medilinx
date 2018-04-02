@@ -7,13 +7,14 @@ end
 
 #PDF upload
 
-gem 'pg', '~> 0.18.4'
+gem 'pg', '~> 0.18.4', :group => :production
 
 gem 'carrierwave', '~> 0.9'
 gem 'bootstrap-sass', '~> 2.3.2'
 gem 'fog', '~> 1.38'
 gem "mini_magick"
 gem "fog-aws"
+
 
 
 gem "rails_12factor", :group => :production
