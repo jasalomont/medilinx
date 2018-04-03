@@ -1155,6 +1155,12 @@ hr {
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eeeeee;
+  }
+.hr2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3;
+  border-top: 1px solid #eeeeee;
 }
 .sr-only {
   position: absolute;
@@ -6992,4 +6998,10 @@ position: absolute;
     width: 100%;
     left: 0;
 
+}
+.vertical_line{
+  border-left: 3px solid #284B63;
+      height: 100%;
+      margin-left: -3px;
+      top: 0;
 }

@@ -14,7 +14,7 @@ class AnalyticsController < ApplicationController
   def doctor_show
     @doctor = Doctor.find(params[:id])
 
-    render("analytics/doctor.html.erb")
+    render("analytics/doctor"+params[:id]+".html.erb")
   end
 
 

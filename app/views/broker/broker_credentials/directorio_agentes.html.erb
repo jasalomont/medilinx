@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col-md-2">
               <% if broker_credential.photo.empty? ||  broker_credential.photo.blank? %>
-              <img src="http://file.vforum.vn/hinh/2014/5/anh-dai-dien-facebook-8.jpg" class="img-responsive" style="height:80px; width:80px">
+              <%= image_tag("general/broker_avatar.png", width:"80px", height:"90px" ) %>
               <% else %>
               <img src="<%= broker_credential.photo %>" class="img-responsive" style="height:80px; width:80px">
               <% end %>

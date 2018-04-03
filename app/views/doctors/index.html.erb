@@ -72,7 +72,7 @@
             <div class="row">
               <div class="col-md-2">
                 <% if doctor.photo.blank? %>
-                <%= image_tag("general/physician_avatar.png", width:"80px" ) %>
+                <%= image_tag("general/physician_avatar.jpg", width:"80px", height:"90px" ) %>
                 <% else %>
                 <img src="<%= doctor.photo %>" class="img-responsive" style="height:80px; width:80px">
                 <% end %>
