@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doctor_id: 1
+  status: MyString
+  pplot1_html: MyString
+  splot1_png: MyString
+  splot2_png: MyString
+
+two:
+  doctor_id: 1
+  status: MyString
+  pplot1_html: MyString
+  splot1_png: MyString
+  splot2_png: MyString
