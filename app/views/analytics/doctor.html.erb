@@ -12,7 +12,7 @@
   <div class="col-md-12">
     <hr style=" border-top:3px solid #284B63">
     <h3> <font color="grey"> Recurrencia de Visitas y Pacientes por Doctor </font> </h3>
-    <%= @plots.last.pplot1_html %>
+    <%=raw @plots.last.pplot1_html %>
     <br>
   </div>
 </div>
@@ -22,13 +22,13 @@
     <hr style=" border-top:3px solid #284B63">
     <div class="col-md-6">
       <h3> <font color="grey"> Recurrencia de Pacientes </font> </h3>
-        <%= @plots.last.splot1_png %>
+        <%=raw @plots.last.splot1_png %>
       <br>
     </div>
 
     <div class="col-md-6 vertical_line">
       <h3> <font color="grey"> Recurrencia de Visitas </font> </h3>
-    <%= @plots.last.splot2_png %>
+    <%=raw @plots.last.splot2_png %>
           <br>
     </div>
   </div>
