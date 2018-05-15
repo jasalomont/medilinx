@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Office Profile #<%= @office_profile.id %></h3>
+  <h3>Editar #<%= @office_profile.id %></h3>
 </div>
 
 <div class="row">
@@ -30,16 +30,16 @@
       <!-- Label and input for patient_id -->
       <div class="form-group">
         <label for="patient_id" class="control-label">
-          Patient
+          Nombre(s) paciente
         </label>
 
-        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @office_profile.patient_id %>">
+        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @office_profile.first_name %>">
       </div>
 
       <!-- Label and input for birthdate -->
       <div class="form-group">
         <label for="birthdate" class="control-label">
-          Birthdate
+          Fecha de nacimiento
         </label>
 
         <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @office_profile.birthdate %>">
@@ -48,7 +48,7 @@
       <!-- Label and input for gender -->
       <div class="form-group">
         <label for="gender" class="control-label">
-          Gender
+          Sexo
         </label>
 
         <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @office_profile.gender %>">
@@ -57,17 +57,17 @@
       <!-- Label and input for phone_mobile -->
       <div class="form-group">
         <label for="phone_mobile" class="control-label">
-          Phone mobile
+          Celular
         </label>
 
         <input type="text" id="phone_mobile" name="phone_mobile" placeholder="Phone mobile" class="form-control" value="<%= @office_profile.phone_mobile %>">
       </div>
 
       <button class="btn btn-warning">
-        Update Office Profile
+        Actualizar
       </button>
-      or
-      <a href="/office_profiles/<%= @office_profile.id %>">Cancel</a>
+
+      <a href="/office_profiles/<%= @office_profile.id %>">Cancelar</a>
     </form>
   </div>
 </div>

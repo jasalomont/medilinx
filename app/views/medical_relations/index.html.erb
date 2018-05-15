@@ -27,20 +27,21 @@
       <div class="panel-body">
         <%= search_form_for(@q, url: "/medical_relations", method: :get) do |f| %>
 
-        <div class="form-group">
-          <%= f.label :patient_first_name_cont, "Nombre de paciente" %>
-          <%= f.text_field :patient_first_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
-        </div>
 
-        <div class="form-group">
-          <%= f.label :patient_last_father_cont, "Apellido paterno" %>
-          <%= f.text_field :patient_last_father_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
-        </div>
+          <div class="form-group">
+            <%= f.label :first_name_cont, "Nombre de paciente" %>
+            <%= f.text_field :first_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+          </div>
 
-        <div class="form-group">
-          <%= f.label :patient_last_mother_cont, "Apellido materno" %>
-          <%= f.text_field :patient_last_mother_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
-        </div>
+          <div class="form-group">
+            <%= f.label :last_father_cont, "Apellido paterno" %>
+            <%= f.text_field :last_father_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Last_mother_cont, "Apellido materno" %>
+            <%= f.text_field :Last_mother_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+          </div>
 
 
 
@@ -66,12 +67,12 @@
         </tr>
         <% @medical_relations.where("doctor_id"=>current_doctor.id).each do |medical_relation| %>
         <tr>
-          <td><%= medical_relation.patient.last_father %></td>
-          <td> <%= medical_relation.patient.last_mother %></td>
-          <td><%= medical_relation.patient.first_name %> </td>
+          <td><%= medical_relation.last_father %></td>
+          <td> <%= medical_relation.Last_mother %></td>
+          <td><%= medical_relation.first_name %> </td>
 
-          <% if medical_relation.patient.birthdate != nil %>
-          <% dob = medical_relation.patient.birthdate %>
+          <% if medical_relation.birthdate != nil %>
+          <% dob = medical_relation.birthdate %>
           <%   now = Time.now.utc.to_date %>
           <%   year = now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1) %>
           <%   age = year %>

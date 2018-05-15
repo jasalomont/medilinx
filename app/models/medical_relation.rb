@@ -1,9 +1,10 @@
 class MedicalRelation < ApplicationRecord
 
-  validates :patient_id, :presence => true, :uniqueness=> {:scope => :doctor_id}
+# validates :patient_id, :presence => true, :uniqueness=> {:scope => :doctor_id}
 
 belongs_to :doctor
 belongs_to :patient
+belongs_to :office_profile
 
 has_one :credential, :through => :doctor, :source => :credentials
 #

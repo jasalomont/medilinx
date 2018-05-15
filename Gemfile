@@ -16,12 +16,11 @@ gem "mini_magick"
 gem "fog-aws"
 
 
-
 gem "rails_12factor", :group => :production
 gem 'filterrific'
 gem 'ransack'
 
-gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
+
 gem "devise"
 
 gem 'bcrypt', platforms: :ruby

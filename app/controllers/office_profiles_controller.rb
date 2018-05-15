@@ -25,6 +25,10 @@ class OfficeProfilesController < ApplicationController
     @office_profile.birthdate = params[:birthdate]
     @office_profile.gender = params[:gender]
     @office_profile.phone_mobile = params[:phone_mobile]
+    @office_profile.first_name = params[:first_name]
+    @office_profile.Last_mother = params[:Last_mother]
+    @office_profile.last_father = params[:last_father]
+
 
     save_status = @office_profile.save
 
@@ -49,6 +53,10 @@ class OfficeProfilesController < ApplicationController
     @office_profile.birthdate = params[:birthdate]
     @office_profile.gender = params[:gender]
     @office_profile.phone_mobile = params[:phone_mobile]
+    @office_profile.first_name = params[:first_name]
+    @office_profile.Last_mother = params[:Last_mother]
+    @office_profile.last_father = params[:last_father]
+
 
     save_status = @office_profile.save
 

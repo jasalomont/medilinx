@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416014247) do
+ActiveRecord::Schema.define(version: 20180515165927) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -391,19 +391,27 @@ ActiveRecord::Schema.define(version: 20180416014247) do
   create_table "medical_relations", force: :cascade do |t|
     t.integer  "doctor_id"
     t.integer  "patient_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.boolean  "permission"
     t.string   "patient_email"
+    t.integer  "office_profiles_id"
+    t.integer  "office_profile_id"
+    t.string   "first_name"
+    t.string   "last_father"
+    t.string   "Last_mother"
+    t.date     "birthdate"
   end
 
   create_table "non_pathologicals", force: :cascade do |t|
     t.string   "drug_type"
     t.string   "quantity"
     t.integer  "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "doctor_id"
+    t.integer  "office_profiles_id"
+    t.integer  "office_profile_id"
   end
 
   create_table "office_profiles", force: :cascade do |t|
@@ -412,26 +420,60 @@ ActiveRecord::Schema.define(version: 20180416014247) do
     t.date     "birthdate"
     t.string   "gender"
     t.string   "phone_mobile"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "religion"
+    t.string   "civil_status"
+    t.string   "address_home"
+    t.string   "neighborhood"
+    t.string   "zip"
+    t.string   "city"
+    t.string   "state"
+    t.string   "phone_home"
+    t.string   "profession"
+    t.string   "address_office"
+    t.string   "zip_office"
+    t.string   "city_office"
+    t.string   "state_office"
+    t.string   "neighborhood_office"
+    t.string   "phone_office"
+    t.string   "emergency_name"
+    t.string   "phone_emergency"
+    t.string   "age_emergency"
+    t.string   "referral"
+    t.string   "RFC"
+    t.string   "CURP"
+    t.string   "address_fiscal"
+    t.string   "neighborhood_fiscal"
+    t.string   "zip_fiscal"
+    t.string   "city_fiscal"
+    t.string   "email"
+    t.integer  "medical_relations_ID"
+    t.string   "first_name"
+    t.string   "last_father"
+    t.string   "Last_mother"
   end
 
   create_table "other_backgrounds", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "perinatal"
     t.string   "other"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "doctor_id"
+    t.integer  "office_profiles_id"
+    t.integer  "office_profile_id"
   end
 
   create_table "pathologicals", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "disease"
     t.date     "start_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "doctor_id"
+    t.integer  "office_profiles_id"
+    t.integer  "office_profile_id"
   end
 
   create_table "patient_profiles", force: :cascade do |t|
