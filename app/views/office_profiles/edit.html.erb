@@ -20,11 +20,7 @@
 
       <!-- Label and input for doctor_id -->
       <div class="form-group">
-        <label for="doctor_id" class="control-label">
-          Doctor
-        </label>
-
-        <input type="text" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= @office_profile.doctor_id %>">
+  <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= @office_profile.doctor_id %>">
       </div>
 
       <!-- Label and input for patient_id -->
@@ -33,7 +29,7 @@
           Nombre(s) paciente
         </label>
 
-        <input type="text" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @office_profile.first_name %>">
+        <input type="text" id="patient_id" name="patient_id" placeholder="<%@office_profile.first_name%>" class="form-control" value="<%= @office_profile.first_name %>">
       </div>
 
       <!-- Label and input for birthdate -->
@@ -42,7 +38,7 @@
           Fecha de nacimiento
         </label>
 
-        <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @office_profile.birthdate %>">
+        <input type="text" id="birthdate" name="birthdate" placeholder="" class="form-control" value="<%= @office_profile.birthdate %>">
       </div>
 
       <!-- Label and input for gender -->
@@ -51,7 +47,16 @@
           Sexo
         </label>
 
-        <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @office_profile.gender %>">
+        <br>
+        <% if  @office_profile.gender == "f" %>
+        <input type="radio" id="gender" name="gender" value="M" > Masculino
+        <input type="radio" id="gender" name="gender" value="F" checked="checked"> Femenino
+
+        <% else %>
+        <input type="radio" id="gender" name="gender" value="M" checked="checked"> Masculino
+        <input type="radio" id="gender" name="gender" value="F"> Femenino
+        <% end %>
+
       </div>
 
       <!-- Label and input for phone_mobile -->
@@ -60,7 +65,7 @@
           Celular
         </label>
 
-        <input type="text" id="phone_mobile" name="phone_mobile" placeholder="Phone mobile" class="form-control" value="<%= @office_profile.phone_mobile %>">
+        <input type="text" id="phone_mobile" name="phone_mobile" placeholder="" class="form-control" value="<%= @office_profile.phone_mobile %>">
       </div>
 
       <button class="btn btn-warning">
