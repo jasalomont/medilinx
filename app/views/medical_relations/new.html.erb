@@ -28,7 +28,7 @@
 <div>
 <div class="row">
   <div class="col-sm-12">
-    <form action="/create_office_profile" method="post">
+    <form action="/create_medical_relation" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
       <!-- Label and input for doctor_id -->
@@ -39,25 +39,25 @@
         <label for="first_name" class="control-label">
           Nombre(s)
         </label>
-        <input type="text" id="first_name" name="first_name" placeholder="Nombre" class="form-control" value="<%= @office_profile.first_name %>">
+        <input type="text" id="first_name" name="first_name" placeholder="Nombre" class="form-control" value="<%= @medical_relation.first_name %>">
       </div>
       <div class="col-sm-3 form-group">
         <label for="last_father" class="control-label">
           Apellido Paterno
         </label>
-        <input type="text" id="last_father" name="last_father" placeholder="Apellido Paterno" class="form-control" value="<%= @office_profile.last_father %>">
+        <input type="text" id="last_father" name="last_father" placeholder="Apellido Paterno" class="form-control" value="<%= @medical_relation.last_father %>">
       </div>
       <div class="col-sm-3 form-group">
         <label for="Last_mother" class="control-label">
           Apellido Materno
         </label>
-        <input type="text" id="Last_mother" name="Last_mother" placeholder="Apellido Materno" class="form-control" value="<%= @office_profile.Last_mother %>">
+        <input type="text" id="Last_mother" name="Last_mother" placeholder="Apellido Materno" class="form-control" value="<%= @medical_relation.Last_mother %>">
       </div>
       <div class="col-sm-3 form-group">
         <label for="birthdate" class="control-label">
           Fecha de nacimiento
         </label>
-        <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @office_profile.birthdate %>">
+        <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @medical_relation.birthdate %>">
       </div>
       <button class="btn btn-sm btn-success">
         Crear Ficha de Paciente Nuevo

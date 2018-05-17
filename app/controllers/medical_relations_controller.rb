@@ -65,14 +65,14 @@ class MedicalRelationsController < ApplicationController
       else
         @gender = ""
       end
-    else
-      if @medical_relation.patient.gender == "m"
-        @gender = "Masculino"
-      elsif @medical_relation.patient.gender == "f"
-        @gender = "Femenino"
-      else
-        @gender = ""
-      end
+    # else
+    #   if @medical_relation.patient.gender == "m"
+    #     @gender = "Masculino"
+    #   elsif @medical_relation.patient.gender == "f"
+    #     @gender = "Femenino"
+    #   else
+    #     @gender = ""
+    #   end
     end
 
     if current_doctor != nil
@@ -98,6 +98,7 @@ class MedicalRelationsController < ApplicationController
   def new
     @medical_relation = MedicalRelation.new
     @office_profile = OfficeProfile.new
+
     render("medical_relations/new.html.erb")
   end
 

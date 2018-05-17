@@ -22,7 +22,7 @@
     <div class="btn-group btn-group-justified">
       <form action="/create_medical_relation" method="post">
         <!-- Hidden input for authenticity token to protect from forgery -->
-        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
         <!-- Label and input for doctor_id -->
         <div class="form-group">
           <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
@@ -31,11 +31,11 @@
         <div class="form-group">
           <label for="office_profile_id" class="control-label">
           </label>
-          <input type="hidden" id="office_profile_id" name="office_profile_id" placeholder="" class="form-control" value="<%= @office_profile.id %>">
-            <input type="hidden" id="first_name" name="first_name" placeholder="" class="form-control" value="<%= @office_profile.first_name %>">
-              <input type="hidden" id="Last_mother" name="Last_mother" placeholder="" class="form-control" value="<%= @office_profile.Last_mother %>">
-                <input type="hidden" id="last_father" name="last_father" placeholder="" class="form-control" value="<%= @office_profile.last_father %>">
-                  <input type="hidden" id="birthdate" name="birthdate" placeholder="" class="form-control" value="<%= @office_profile.birthdate %>">
+          <input type="text" id="office_profile_id" name="office_profile_id" placeholder="" class="form-control" value="<%= @office_profile.id %>">
+            <input type="text" id="first_name" name="first_name" placeholder="" class="form-control" value="<%= @office_profile.first_name %>">
+              <input type="text" id="Last_mother" name="Last_mother" placeholder="" class="form-control" value="<%= @office_profile.Last_mother %>">
+                <input type="text" id="last_father" name="last_father" placeholder="" class="form-control" value="<%= @office_profile.last_father %>">
+                  <input type="text" id="birthdate" name="birthdate" placeholder="" class="form-control" value="<%= @office_profile.birthdate %>">
                   <button class="btn btn-sm btn-success">
             Crear
           </button>

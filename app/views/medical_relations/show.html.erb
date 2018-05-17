@@ -116,7 +116,30 @@
               <h4 style="margin:0px">
                 <span style="text-align:left"><b> Ficha de Identificación</b></span>
               </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <%= image_tag("general/pat_icon.png", width:"100px" ) %>
+                  </div>
+                  <div class="col-md-10">
+                    <dl class="dl-horizontal">
+                      <dt style="font-size:20px">Paciente</dt>
+                      <dd style="font-size:20px; color:#317eac; font-weight:bold"><%= @medical_relation.first_name %> <%= @medical_relation.last_father %> <%= @medical_relation.Last_mother %></dd>
+                      <dt>Sexo</dt>
+                      <dd> <%= %></dd>
+                      <dt>Edad</dt>
+                      <dd><%= @age %></dd>
+                      <dt>Telefono</dt>
+                      <dd><%=  %></dd>
+                      <dt>E-mail</dt>
+                      <dd><%=  %></dd>
+                      <dt>Domicilio</dt>
+                      <dd><%= %>, <%=  %></dd>
 
+                    </dl>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
