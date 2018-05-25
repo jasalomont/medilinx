@@ -7,13 +7,13 @@ class EvolMednotesController < ApplicationController
 
   def show
     @evol_mednote = EvolMednote.find(params[:id])
-    @medical_relation = MedicalRelation.where(patient_id: @evol_mednote.patient_id, doctor_id: @evol_mednote.doctor_id).last.id
+    # @medical_relation = MedicalRelation.where(patient_id: @evol_mednote.patient_id, doctor_id: @evol_mednote.doctor_id).last.id
     render("evol_mednotes/show.html.erb")
   end
 
   def new
     @evol_mednote = EvolMednote.new
-    @patient = Patient.find(params[:pid])
+    @patient = MedicalRelation.find(params[:pid])
     @event = Event.find(params[:eid])
 
 
@@ -74,6 +74,7 @@ render("evol_mednotes/new.html.erb")
     @evol_mednote.evol_med_intake = params[:evol_med_intake]
     @evol_mednote.evol_med_periodicity = params[:evol_med_periodicity]
     @evol_mednote.event_id = params[:event_id]
+    @evol_mednote.medical_relation_id = params[:medical_relation_id]
 
     save_status = @evol_mednote.save
 
@@ -127,6 +128,8 @@ render("evol_mednotes/new.html.erb")
     @evol_mednote.evol_med_intake = params[:evol_med_intake]
     @evol_mednote.evol_med_periodicity = params[:evol_med_periodicity]
     @evol_mednote.event_id = params[:event_id]
+    @evol_mednote.medical_relation_id = params[:medical_relation_id]
+
 
     save_status = @evol_mednote.save
 

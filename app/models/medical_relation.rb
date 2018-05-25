@@ -3,6 +3,7 @@ class MedicalRelation < ApplicationRecord
 # validates :patient_id, :presence => true, :uniqueness=> {:scope => :doctor_id}
 
 belongs_to :doctor
+has_many :events
 
 
 has_one :credential, :through => :doctor, :source => :credentials

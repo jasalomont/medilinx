@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Record Clínico - <%= @event.patient.first_name %></h3>
+  <h3>Record Clínico - <%= @event.medical_relation.first_name %></h3>
 </div>
 
 <form action="/update_event/<%= @event.id %>" method="post">
@@ -24,7 +24,7 @@
 
         </label>
 
-        <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @event.patient_id %>">
+        <input type="hidden" id="medical_relation_id" name="medical_relation_id" placeholder="Patient" class="form-control" value="<%= @event.medical_relation_id %>">
       </div>
 
       <!-- Label and input for doctor_id -->

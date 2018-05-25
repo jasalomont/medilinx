@@ -59,9 +59,45 @@
         </label>
         <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control" value="<%= @medical_relation.birthdate %>">
       </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-3 form-group">
+          <label for="birthdate" class="control-label">
+            Correo Electronico
+          </label>
+          <input type="text" id="email" name="email" placeholder="@" class="form-control" value="<%= @medical_relation.email %>">
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="gender" class="control-label">
+              Sexo:
+            </label>
+            <br>
+            <% if  @medical_relation.gender == "f" %>
+            <input type="radio" id="gender" name="gender" value="M" > Masculino
+            <input type="radio" id="gender" name="gender" value="F" checked="checked"> Femenino
+
+            <% else %>
+            <input type="radio" id="gender" name="gender" value="M" checked="checked"> Masculino
+            <input type="radio" id="gender" name="gender" value="F"> Femenino
+            <% end %>
+
+            </div>
+            <div class="col-sm-3 form-group">
+            <label for="birthdate" class="control-label">
+              Grupo Sanguíneo
+            </label>
+            <input type="text" id="blood_type" name="blood_type" placeholder="" class="form-control" value="<%= @medical_relation.blood_type %>">
+            </div>
+
+          </div>
+
+      </div>
+
       <button class="btn btn-sm btn-success">
         Crear Ficha de Paciente Nuevo
       </button>
+
     </div>
 
 

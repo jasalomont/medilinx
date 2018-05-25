@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     @event.weight = params[:weight]
     @event.treatment = params[:treatment]
     @event.encounter_type = params[:encounter_type]
-
+    @event.medical_relation_id = params[:medical_relation_id]
     save_status = @event.save
 
     if save_status == true
@@ -56,6 +56,7 @@ class EventsController < ApplicationController
     @event.weight = params[:weight]
     @event.treatment = params[:treatment]
     @event.encounter_type = params[:encounter_type]
+      @event.medical_relation_id = params[:medical_relation_id]
 
     save_status = @event.save
 

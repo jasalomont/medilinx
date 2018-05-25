@@ -84,7 +84,7 @@
                   <dt style="font-size:20px">Paciente</dt>
                   <dd style="font-size:20px; color:#317eac; font-weight:bold"><%= @medical_relation.first_name %> <%= @medical_relation.last_father %> <%= @medical_relation.Last_mother %></dd>
                   <dt>Sexo</dt>
-                  <dd> <%=@gender %></dd>
+                  <dd> <%=@medical_relation.gender %></dd>
                   <dt>Edad</dt>
                   <dd><%= @age %></dd>
                   <dt>Telefono</dt>
@@ -104,9 +104,9 @@
 
     <%else%>
     <!-- En caso de no tener permiso -->
-    <span style="color:red; font-size:12px">
+    <!-- <span style="color:red; font-size:12px">
       <i class="fa fa-clock-o" aria-hidden="true"></i> <b>En Espera de Aprobación:</b> Este Usuario no ha otorgado permisos para compartir información personal.  Se requieren de los permisos para ver Ficha de identificación y el Historial Médico Completo </span></a>
-      <p></p>
+      <p></p> -->
       <div class="row">
         <div class="col-md-8">
           <div class="panel panel-default">
@@ -126,13 +126,13 @@
                       <dt style="font-size:20px">Paciente</dt>
                       <dd style="font-size:20px; color:#317eac; font-weight:bold"><%= @medical_relation.first_name %> <%= @medical_relation.last_father %> <%= @medical_relation.Last_mother %></dd>
                       <dt>Sexo</dt>
-                      <dd> <%= %></dd>
+                      <dd> <%= @medical_relation.gender%></dd>
                       <dt>Edad</dt>
                       <dd><%= @age %></dd>
                       <dt>Telefono</dt>
                       <dd><%=  %></dd>
                       <dt>E-mail</dt>
-                      <dd><%=  %></dd>
+                      <dd><%=  @medical_relation.email %></dd>
                       <dt>Domicilio</dt>
                       <dd><%= %>, <%=  %></dd>
 
@@ -169,7 +169,7 @@
 
                       </div>
                       <div class="form-group">
-                        <input type="hidden" id="patient_id" name="patient_id" placeholder="patient_id" class="form-control" value="<%= @medical_relation.patient_id %>">
+                        <input type="hidden" id="medical_relation_id" name="medical_relation_id" placeholder="patient_id" class="form-control" value="<%= @medical_relation.id %>">
                       </div>
                       <div class="form-group">
                         <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
@@ -218,7 +218,7 @@
 
                 </tr>
 
-                <% @events.where("patient_id" => @medical_relation.patient_id).reverse.each do |event| %>
+                <% @events.where("medical_relation_id" => @medical_relation.id).reverse.each do |event| %>
                 <tr>
                   <td><%= event.created_at.to_date%></td>
                   <td><a href="/events/<%= event.id %>"> <%= event.encounter_type %></a></td>
@@ -231,51 +231,14 @@
                   <% end %>
                   <% if ary1.empty? %>
                   <!-- true -->
-                  <td style="text-align:center">  <a href="/evol_mednotes/new/<%= @medical_relation.patient_id %>/<%= event.id %>" class="btn btn-sm btn-success">+
+                  <td style="text-align:center">  <a href="/evol_mednotes/new/<%= @medical_relation.id %>/<%= event.id %>" class="btn btn-sm btn-success">+
                   </a></td>
                   <% else %>
                   <td style="text-align:center">  <a href="/evol_mednotes/<%= event.evol_mednote.id %>" class="btn btn-sm btn-primary">Ver
                   </a></td>
                   <% end %>
 
-                  <!-- <td> -->
-                  <!-- <a href="/events/<%= event.id %>/edit" class="btn btn-warning; background-color:blue">Editar</a> -->
-                  <!-- <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                </a> -->
-                <!-- </td> -->
-                <!-- <td>
-                <% ary2 = Array.new %>
-                <% @claims.where("event_id"=> event.id).each do |claim|%>
-                <% ary2.push(claim.id) %>
-                <% end %>
-                <% if ary2.empty? %>
 
-
-                <form action="/create_claim" method="post">
-
-                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-                <input type="hidden" id="doctor_id" name="doctor_id" placeholder="Doctor" class="form-control" value="<%= current_doctor.id %>">
-                <input type="hidden" id="patient_id" name="patient_id" placeholder="Patient" class="form-control" value="<%= @medical_relation.patient_id %>">
-                <input type="hidden" id="doctor_name" name="doctor_name" placeholder="Doctor name" class="form-control" value="<%= @medical_relation.doctor.practice_name %>">
-                <input type="hidden" id="age" name="age" placeholder="Age" class="form-control" value="<%= @age %>">
-                <input type="hidden" id="patient_name" name="patient_name" placeholder="" class="form-control" value="<%= @medical_relation.patient.first_name %> <%= @medical_relation.patient.last_father %> <%= @medical_relation.patient.last_mother %>">
-                <% if @medical_relation.patient.gender != nil %>
-                <input type="hidden" id="gender" name="gender" placeholder="" class="form-control" value="<%= @medical_relation.patient.gender.capitalize %>">
-                <% end %>
-                <input type="hidden" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= event.id %>">
-                <input type="hidden" id="definite_diagnose" name="definite_diagnose" placeholder="Event" class="form-control" value="<%= event.diagnose %>">
-
-                <button class="btn btn-sm btn-success" style="width:130px">
-                Generar Informe
-              </button>
-            </form>
-            <% else %>
-            <a href="/claims/<%= ary1.first %>" class="btn btn-sm btn-primary" style="width:130px">Ver Informe</a>
-            <% end %>
-          </td>
-
-        </td> -->
       </tr>
       <% end %>
     </table>
@@ -294,7 +257,7 @@
   <!-- <a href="/medical_relations/<%= @medical_relation.id %>/edit" class="btn btn-warning">
   Edit
 </a> -->
-<% if @events.where("patient_id" => @medical_relation.patient_id).count == 0 %>
+<% if @events.where("medical_relation_id" => @medical_relation.id).count == 0 %>
 <!-- true -->
 <a href="/delete_medical_relation/<%= @medical_relation.id %>" class="btn btn-danger" rel="nofollow" style="width:180px">
   Eliminar Paciente !

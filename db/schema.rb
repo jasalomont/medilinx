@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515165927) do
+ActiveRecord::Schema.define(version: 20180524185121) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -318,9 +318,10 @@ ActiveRecord::Schema.define(version: 20180515165927) do
     t.string   "diagnose"
     t.string   "weight"
     t.string   "treatment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "encounter_type"
+    t.integer  "medical_relation_id"
   end
 
   create_table "evol_mednotes", force: :cascade do |t|
@@ -360,6 +361,7 @@ ActiveRecord::Schema.define(version: 20180515165927) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "event_id"
+    t.integer  "medical_relation_id"
   end
 
   create_table "insurers", force: :cascade do |t|
@@ -401,17 +403,21 @@ ActiveRecord::Schema.define(version: 20180515165927) do
     t.string   "last_father"
     t.string   "Last_mother"
     t.date     "birthdate"
+    t.string   "gender"
+    t.string   "email"
+    t.string   "blood_type"
   end
 
   create_table "non_pathologicals", force: :cascade do |t|
     t.string   "drug_type"
     t.string   "quantity"
     t.integer  "patient_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "doctor_id"
     t.integer  "office_profiles_id"
     t.integer  "office_profile_id"
+    t.integer  "medical_relation_id"
   end
 
   create_table "office_profiles", force: :cascade do |t|
@@ -452,28 +458,31 @@ ActiveRecord::Schema.define(version: 20180515165927) do
     t.string   "first_name"
     t.string   "last_father"
     t.string   "Last_mother"
+    t.integer  "medical_relation_id"
   end
 
   create_table "other_backgrounds", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "perinatal"
     t.string   "other"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "doctor_id"
     t.integer  "office_profiles_id"
     t.integer  "office_profile_id"
+    t.integer  "medical_relation_id"
   end
 
   create_table "pathologicals", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "disease"
     t.date     "start_date"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "doctor_id"
     t.integer  "office_profiles_id"
     t.integer  "office_profile_id"
+    t.integer  "medical_relation_id"
   end
 
   create_table "patient_profiles", force: :cascade do |t|
@@ -534,18 +543,20 @@ ActiveRecord::Schema.define(version: 20180515165927) do
     t.integer  "abortion"
     t.integer  "caesarean"
     t.integer  "normal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "doctor_id"
+    t.integer  "medical_relation_id"
   end
 
   create_table "surgicals", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "name"
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "doctor_id"
+    t.integer  "medical_relation_id"
   end
 
 end

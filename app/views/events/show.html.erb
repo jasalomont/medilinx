@@ -13,7 +13,7 @@
       <div class="panel-body">
         <dl class="dl-horizontal">
           <dt>Paciente</dt>
-          <dd><%= @event.patient.first_name%> <%= @event.patient.last_father%></dd>
+          <dd><%= @event.medical_relation.first_name%> <%= @event.medical_relation.last_father%></dd>
 
           <dt>Doctor</dt>
           <dd><%= @event.doctor.practice_name %></dd>
@@ -53,7 +53,9 @@
     Regresar
   </a> -->
 
-  <%= link_to "Regresar", :back, class: "btn btn-primary" %>
+  <a href="/medical_relations/<%= @event.medical_relation_id %>" class="btn btn-primary" rel="nofollow">
+    Regresar
+  </a>
   <a href="/events/<%= @event.id %>/edit" class="btn btn-info">
     Editar
   </a>

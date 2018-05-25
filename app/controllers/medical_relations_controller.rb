@@ -112,6 +112,9 @@ class MedicalRelationsController < ApplicationController
     @medical_relation.Last_mother = params[:Last_mother]
     @medical_relation.last_father = params[:last_father]
     @medical_relation.birthdate = params[:birthdate]
+      @medical_relation.email = params[:email]
+          @medical_relation.gender = params[:gender]
+          @medical_relation.blood_type = params[:blood_type]
 
     save_status = @medical_relation.save
 
@@ -154,6 +157,9 @@ class MedicalRelationsController < ApplicationController
     @medical_relation.Last_mother = params[:Last_mother]
     @medical_relation.last_father = params[:last_father]
     @medical_relation.birthdate = params[:birthdate]
+    @medical_relation.email = params[:email]
+    @medical_relation.gender = params[:gender]
+    @medical_relation.blood_type = params[:blood_type]
 
 
     save_status = @medical_relation.save
