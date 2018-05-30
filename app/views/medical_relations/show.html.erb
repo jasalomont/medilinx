@@ -221,7 +221,11 @@
                 <% @events.where("medical_relation_id" => @medical_relation.id).reverse.each do |event| %>
                 <tr>
                   <td><%= event.created_at.to_date%></td>
+                    <% if event.encounter_type != "" %>
                   <td><a href="/events/<%= event.id %>"> <%= event.encounter_type %></a></td>
+                    <% else %>
+                    <td><a href="/events/<%= event.id %>"> No definido</a></td>
+                    <% end %>
                   <td><%= event.diagnose %></td>
                   <td><%= event.treatment %></td>
 
