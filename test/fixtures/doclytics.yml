@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doctor_id: 1
+  paxcounts: MyText
+  paxrecurrence: MyText
+  paxreference: MyText
+  diagnostics: MyText
+  prescriptions: MyText
+
+two:
+  doctor_id: 1
+  paxcounts: MyText
+  paxrecurrence: MyText
+  paxreference: MyText
+  diagnostics: MyText
+  prescriptions: MyText

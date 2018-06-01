@@ -1,0 +1,2 @@
+class Doclytic < ApplicationRecord
+end
