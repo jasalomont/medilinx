@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524185121) do
+ActiveRecord::Schema.define(version: 20180601181531) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -281,6 +281,17 @@ ActiveRecord::Schema.define(version: 20180524185121) do
     t.string   "splot2_png"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "doclytics", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.text     "paxcounts"
+    t.text     "paxrecurrence"
+    t.text     "paxreference"
+    t.text     "diagnostics"
+    t.text     "prescriptions"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "doctors", force: :cascade do |t|
