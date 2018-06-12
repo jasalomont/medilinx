@@ -504,6 +504,7 @@
       </div>
 
       <div class="row">
+
         <div class="col-md-4">
           <div class="panel panel-default" style="height:170px">
             <div class="panel-body">
@@ -517,6 +518,19 @@
                 <% else%>
                 <a href="/broker_credentials/<%=BrokerCredential.where("insurer_id"=>current_insurer.id).first.id%>" class="btn btn-md btn-info"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="panel panel-default" style="height:170px">
+            <div class="panel-body">
+              <h3><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</h3>
+
+              <br>
+              <div class="btn-group btn-group-justified">
+                <a href="/analytics/broker/<%= current_insurer.id %>" class="btn btn-md btn-info"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>

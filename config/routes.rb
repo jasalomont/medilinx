@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   #rotes for Analyitics
   # READ
+  get "/analytics/brokers", :controller => "analytics", :action => "broker"
+  get "/analytics/broker/:id", :controller => "analytics", :action => "broker_show"
+
   get "/analytics/doctors", :controller => "analytics", :action => "doctor"
   get "/analytics/doctor/:id", :controller => "analytics", :action => "doctor_show"
 

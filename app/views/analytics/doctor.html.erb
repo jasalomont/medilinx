@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <hr style=" border-top:3px solid #284B63">
     <h3> <font color="grey"> NUMERO Y DISTRIBUCI&Oacute;N DE PACIENTES </font> </h3>
-    <%=raw @plots.last.pplot1_html %>
+      <%=raw @plots.last.pplot1_html %>
     <br>
   </div>
 </div>
@@ -24,8 +24,8 @@
     </div>
 
     <div class="col-md-6 vertical_line">
-      <h3> <font color="grey"> PADECIMIENTOS DIAGNOSTICADOS </font> </h3>
-    <%=raw @plots.last.splot2_png %>
+      <h3> <font color="grey"> PACIENTES NUEVOS VS. RECURRENTES </font> </h3>
+
           <br>
     </div>
   </div>
@@ -34,8 +34,18 @@
     <div class="row">
       <div class="col-md-12">
           <hr style=" border-top:3px solid #284B63">
-        <!-- <h3> <font color="grey"> PADECIMIENTOS DIAGNOSTICADOS </font> </h3> -->
+        <h3> <font color="grey"> PADECIMIENTOS DIAGNOSTICADOS </font> </h3>
+              <%=raw @plots.last.splot2_png %>
         <br>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+          <hr style=" border-top:3px solid #284B63">
+        <h3> <font color="grey"> MEDICAMENTOS RECETADOS </font> </h3>
+        <br>
+      </div>
+    </div>
+
       <!-- <hr style=" border-top:3px solid #284B63"> -->
