@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <hr style=" border-top:3px solid #284B63">
     <h3> <font color="grey"> NUMERO DE CLIENTES ACTUALES </font> </h3>
-
+        <%=raw @plots.last.clirecurrence %>
     <br>
   </div>
 </div>
@@ -19,7 +19,7 @@
     <hr style=" border-top:3px solid #284B63">
     <div class="col-md-6">
       <h3> <font color="grey"> CRECIMIENTO DE CLIENTES </font> </h3>
-
+        <%=raw @plots.last.clievolution %>
       <br>
     </div>
 
@@ -34,8 +34,17 @@
   <div class="row">
     <div class="col-md-12">
         <hr style=" border-top:3px solid #284B63">
-      <h3> <font color="grey"> AHORRO DE TIEMPO </font> </h3>
-      <br>
+        <div class="col-md-6">
+          <h3> <font color="grey"> TIEMPO DE PROCESAMIENTO POR RECLAMO </font> </h3>
+            <%=raw @plots.last.claimtimes %>
+          <br>
+        </div>
+
+      <div class="col-md-6 ">
+        <h3> <font color="grey">  </font> </h3>
+          <%=raw @plots.last.claimtimetable %>
+            <br>
+      </div>
     </div>
   </div>
 
@@ -44,13 +53,13 @@
       <hr style=" border-top:3px solid #284B63">
       <div class="col-md-6">
         <h3> <font color="grey"> CASOS APROBADOS VS RECHAZADOS </font> </h3>
-
+          <%=raw @plots.last.claimstatus %>
         <br>
       </div>
 
       <div class="col-md-6 vertical_line">
         <h3> <font color="grey"> RAZONES DE RECHAZO </font> </h3>
-
+        <%=raw @plots.last.claimrejects %>
             <br>
       </div>
     </div>
@@ -61,16 +70,26 @@
         <hr style=" border-top:3px solid #284B63">
         <div class="col-md-6">
           <h3> <font color="grey"> NUMERO DE CASOS FRAUDULENTOS DETECTADOS </font> </h3>
-
+          <%=raw @plots.last.claimrejects %>
           <br>
         </div>
 
         <div class="col-md-6 vertical_line">
           <h3> <font color="grey"> PROBABILIDAD DE FRAUDE </font> </h3>
-
+            <%=raw @plots.last.claimfrauds %>
               <br>
         </div>
       </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <hr style=" border-top:3px solid #284B63">
+          <h3> <font color="grey"> ITERACIONES CON EL CLIENTE </font> </h3>
+              <%=raw @plots.last.claimiters %>
+          <br>
+        </div>
       </div>
 
 
