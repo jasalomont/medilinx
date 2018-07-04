@@ -12,7 +12,7 @@ class AnalyticsController < ApplicationController
   def doctor_show
     @doctor = Doctor.find(params[:id])
 
-    @plots = DevAbv0.where("doctor_id"=>current_doctor.id)
+    @plots = Doclytic.where("doctor_id"=>current_doctor.id)
 
     render("analytics/doctor.html.erb")
   end
@@ -20,7 +20,7 @@ class AnalyticsController < ApplicationController
   def broker_show
     @broker = Insurer.find(params[:id])
 
-
+    @plots = Broklytic.where("insurer_id"=>current_insurer.id)
 
     render("analytics/broker.html.erb")
   end
