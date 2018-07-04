@@ -24,16 +24,25 @@
           Insurer
         </label>
 
-        <input type="text" id="insurer_id" name="insurer_id" placeholder="Insurer" class="form-control" value="<%= @broker_insurer.insurer_id %>">
+        <input type="hidden" id="insurer_id" name="insurer_id" placeholder="Insurer" class="form-control" value="<%= current_insurer.id %>">
       </div>
 
       <!-- Label and input for company_name -->
       <div class="form-group">
         <label for="company_name" class="control-label">
-          Company name
+          Aseguradora afiliada
         </label>
+        <input list="aseguradora" id="company_name" name="company_name" placeholder="" class="form-control" value="<%= @broker_insurer.company_name %>">
+        <datalist class="" id="aseguradora">
+          <option value="Allianz"></option>
+          <option value="Axa"></option>
+          <option value="GNP"></option>
+          <option value="Metlife"></option>
+          <option value="Bupa"></option>
+          <option value="Zurich"></option>
+        </datalist>
 
-        <input type="text" id="company_name" name="company_name" placeholder="Company name" class="form-control" value="<%= @broker_insurer.company_name %>">
+
       </div>
 
       <!-- Label and input for relation_type -->

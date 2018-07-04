@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601181531) do
+ActiveRecord::Schema.define(version: 20180704180216) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
@@ -74,6 +74,22 @@ ActiveRecord::Schema.define(version: 20180601181531) do
     t.string   "contract_code"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "broklytics", force: :cascade do |t|
+    t.text     "clirecurrence"
+    t.text     "clievolution"
+    t.text     "claimtimetable"
+    t.text     "claimtimes"
+    t.text     "claimstatus"
+    t.text     "claimrejects"
+    t.text     "claimiters"
+    t.text     "claimfrauds"
+    t.text     "fraudprobab"
+    t.text     "clisatisfaction"
+    t.integer  "insurer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "claim_events", force: :cascade do |t|

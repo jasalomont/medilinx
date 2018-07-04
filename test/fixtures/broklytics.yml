@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clirecurrence: MyText
+  clievolution: MyText
+  claimtimetable: MyText
+  claimtimes: MyText
+  claimstatus: MyText
+  claimrejects: MyText
+  claimiters: MyText
+  claimfrauds: MyText
+  fraudprobab: MyText
+  clisatisfaction: MyText
+  insurer_id: 1
+
+two:
+  clirecurrence: MyText
+  clievolution: MyText
+  claimtimetable: MyText
+  claimtimes: MyText
+  claimstatus: MyText
+  claimrejects: MyText
+  claimiters: MyText
+  claimfrauds: MyText
+  fraudprobab: MyText
+  clisatisfaction: MyText
+  insurer_id: 1

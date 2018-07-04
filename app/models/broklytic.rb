@@ -1,0 +1,2 @@
+class Broklytic < ApplicationRecord
+end
