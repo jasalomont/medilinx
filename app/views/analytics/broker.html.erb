@@ -8,41 +8,35 @@
 <div class="row">
   <div class="col-md-12">
     <hr style=" border-top:3px solid #284B63">
+    <div class="col-md-4">
     <h3> <font color="grey"> NUMERO DE CLIENTES ACTUALES </font> </h3>
         <%=raw @plots.last.clirecurrence %>
     <br>
   </div>
+
+  <div class="col-md-8 vertical_line">
+    <h3> <font color="grey"> CRECIMIENTO DE CLIENTES </font> </h3>
+    <%=raw @plots.last.clievolution %>
+        <br>
+  </div>
+  </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <hr style=" border-top:3px solid #284B63">
-    <div class="col-md-6">
-      <h3> <font color="grey"> CRECIMIENTO DE CLIENTES </font> </h3>
-        <%=raw @plots.last.clievolution %>
-      <br>
-    </div>
 
-    <div class="col-md-6 vertical_line">
-      <h3> <font color="grey"> CLIENTES SATISFECHOS VS. INCONFORMES </font> </h3>
-
-          <br>
-    </div>
-  </div>
-  </div>
 
   <div class="row">
     <div class="col-md-12">
         <hr style=" border-top:3px solid #284B63">
         <div class="col-md-6">
           <h3> <font color="grey"> TIEMPO DE PROCESAMIENTO POR RECLAMO </font> </h3>
-            <%=raw @plots.last.claimtimes %>
+          <%=raw @plots.last.claimtimetable %>
+
           <br>
         </div>
 
       <div class="col-md-6 ">
         <h3> <font color="grey">  </font> </h3>
-          <%=raw @plots.last.claimtimetable %>
+          <%=raw @plots.last.claimtimes %>
             <br>
       </div>
     </div>
@@ -63,34 +57,42 @@
             <br>
       </div>
     </div>
-    </div>
+  </div>
 
     <div class="row">
       <div class="col-md-12">
         <hr style=" border-top:3px solid #284B63">
         <div class="col-md-6">
           <h3> <font color="grey"> NUMERO DE CASOS FRAUDULENTOS DETECTADOS </font> </h3>
-          <%=raw @plots.last.claimrejects %>
+          <%=raw @plots.last.claimfrauds %>
           <br>
         </div>
 
         <div class="col-md-6 vertical_line">
           <h3> <font color="grey"> PROBABILIDAD DE FRAUDE </font> </h3>
-            <%=raw @plots.last.claimfrauds %>
+            <%=raw @plots.last.fraudprobab %>
               <br>
         </div>
       </div>
-      </div>
+    </div>
 
-
-      <div class="row">
+    <div class="row">
         <div class="col-md-12">
           <hr style=" border-top:3px solid #284B63">
-          <h3> <font color="grey"> ITERACIONES CON EL CLIENTE </font> </h3>
+          <div class="col-md-8">
+            <h3> <font color="grey"> ITERACIONES CON EL CLIENTE </font> </h3>
               <%=raw @plots.last.claimiters %>
-          <br>
+            <br>
+          </div>
+
+          <div class="col-md-4 vertical_line">
+            <h3> <font color="grey"> CLIENTES SATISFECHOS VS. INCONFORMES </font> </h3>
+
+            <br>
+          </div>
         </div>
       </div>
+
 
 
       <!-- <hr style=" border-top:3px solid #284B63"> -->
